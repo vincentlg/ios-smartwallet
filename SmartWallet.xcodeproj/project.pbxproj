@@ -1,0 +1,539 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		66AF6F1480713AC43621E657 /* Pods_SmartWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */; };
+		DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */; };
+		DC40D7AC2412A35C00C792EB /* WithoutWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */; };
+		DC40D7AF2412AC2F00C792EB /* UIViewController+Rockside.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40D7AE2412AC2F00C792EB /* UIViewController+Rockside.swift */; };
+		DC40D7B12412B1C300C792EB /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40D7B02412B1C300C792EB /* RecoveryViewController.swift */; };
+		DC4ADC9B2418F523008C23C7 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADC9A2418F523008C23C7 /* BalanceViewController.swift */; };
+		DC4ADC9D2418F7D5008C23C7 /* TransactionViewContrller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADC9C2418F7D5008C23C7 /* TransactionViewContrller.swift */; };
+		DC4ADCA024190E61008C23C7 /* TokenBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADC9F24190E61008C23C7 /* TokenBalance.swift */; };
+		DC4ADCA22419140A008C23C7 /* BalanceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA12419140A008C23C7 /* BalanceViewCell.swift */; };
+		DC4ADCA424191AAA008C23C7 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA324191AAA008C23C7 /* Transaction.swift */; };
+		DC4ADCA6241928EC008C23C7 /* TransactionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA5241928EC008C23C7 /* TransactionViewCell.swift */; };
+		DC4ADCA82419332F008C23C7 /* Chain+Etherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA72419332F008C23C7 /* Chain+Etherscan.swift */; };
+		DC4ADCAA24193FC4008C23C7 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA924193FC4008C23C7 /* ExchangeViewController.swift */; };
+		DC4ADCAC241940F5008C23C7 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCAB241940F5008C23C7 /* Token.swift */; };
+		DC4ECCEC241795CC0062425E /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ECCEB241795CC0062425E /* SendViewController.swift */; };
+		DC7AC3A323EC647000CC1C0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */; };
+		DC7AC3A523EC647000CC1C0D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */; };
+		DC7AC3A723EC647000CC1C0D /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A623EC647000CC1C0D /* WalletViewController.swift */; };
+		DC7AC3AA23EC647000CC1C0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC7AC3A823EC647000CC1C0D /* Main.storyboard */; };
+		DC7AC3AC23EC647200CC1C0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7AC3AB23EC647200CC1C0D /* Assets.xcassets */; };
+		DC7AC3AF23EC647200CC1C0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC7AC3AD23EC647200CC1C0D /* LaunchScreen.storyboard */; };
+		DC996BE42418E20300248748 /* WalletTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC996BE32418E20300248748 /* WalletTabViewController.swift */; };
+		DCA3F398241FCA9B007E72D2 /* RestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA3F397241FCA9B007E72D2 /* RestoreViewController.swift */; };
+		DCD11D09241B9C050046ECD0 /* TokensTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B15DEB8371F308910BBC9556 /* Pods-SmartWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.debug.xcconfig"; path = "Target Support Files/Pods-SmartWallet/Pods-SmartWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		CB43F175874C92802541C5AD /* Pods-SmartWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.release.xcconfig"; path = "Target Support Files/Pods-SmartWallet/Pods-SmartWallet.release.xcconfig"; sourceTree = "<group>"; };
+		DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
+		DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutWalletViewController.swift; sourceTree = "<group>"; };
+		DC40D7AE2412AC2F00C792EB /* UIViewController+Rockside.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rockside.swift"; sourceTree = "<group>"; };
+		DC40D7B02412B1C300C792EB /* RecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
+		DC4ADC9A2418F523008C23C7 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
+		DC4ADC9C2418F7D5008C23C7 /* TransactionViewContrller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewContrller.swift; sourceTree = "<group>"; };
+		DC4ADC9F24190E61008C23C7 /* TokenBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBalance.swift; sourceTree = "<group>"; };
+		DC4ADCA12419140A008C23C7 /* BalanceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewCell.swift; sourceTree = "<group>"; };
+		DC4ADCA324191AAA008C23C7 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		DC4ADCA5241928EC008C23C7 /* TransactionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewCell.swift; sourceTree = "<group>"; };
+		DC4ADCA72419332F008C23C7 /* Chain+Etherscan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chain+Etherscan.swift"; sourceTree = "<group>"; };
+		DC4ADCA924193FC4008C23C7 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		DC4ADCAB241940F5008C23C7 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		DC4ECCEB241795CC0062425E /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
+		DC7AC39F23EC647000CC1C0D /* SmartWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		DC7AC3A623EC647000CC1C0D /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		DC7AC3A923EC647000CC1C0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DC7AC3AB23EC647200CC1C0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DC7AC3AE23EC647200CC1C0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DC7AC3B023EC647200CC1C0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC8DA74223FAD66C0080C0D7 /* SmartWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWalletTests.swift; sourceTree = "<group>"; };
+		DC8DA74423FAD66C0080C0D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC996BE32418E20300248748 /* WalletTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTabViewController.swift; sourceTree = "<group>"; };
+		DCA3F397241FCA9B007E72D2 /* RestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreViewController.swift; sourceTree = "<group>"; };
+		DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokensTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC7AC39C23EC647000CC1C0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66AF6F1480713AC43621E657 /* Pods_SmartWallet.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1D6C8C335769497ACD99F76 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B15DEB8371F308910BBC9556 /* Pods-SmartWallet.debug.xcconfig */,
+				CB43F175874C92802541C5AD /* Pods-SmartWallet.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BD5C74D5907F4EAFBB5E6AD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC40D7AD2412AC1B00C792EB /* application */ = {
+			isa = PBXGroup;
+			children = (
+				DC40D7AE2412AC2F00C792EB /* UIViewController+Rockside.swift */,
+			);
+			path = application;
+			sourceTree = "<group>";
+		};
+		DC4ADC992418ED0B008C23C7 /* wallet */ = {
+			isa = PBXGroup;
+			children = (
+				DC7AC3A623EC647000CC1C0D /* WalletViewController.swift */,
+				DC996BE32418E20300248748 /* WalletTabViewController.swift */,
+				DC4ADC9C2418F7D5008C23C7 /* TransactionViewContrller.swift */,
+				DC4ADCA5241928EC008C23C7 /* TransactionViewCell.swift */,
+				DC4ADC9A2418F523008C23C7 /* BalanceViewController.swift */,
+				DC4ADCA12419140A008C23C7 /* BalanceViewCell.swift */,
+			);
+			path = wallet;
+			sourceTree = "<group>";
+		};
+		DC4ADC9E24190E0B008C23C7 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				DC4ADCAB241940F5008C23C7 /* Token.swift */,
+				DC4ADC9F24190E61008C23C7 /* TokenBalance.swift */,
+				DC4ADCA324191AAA008C23C7 /* Transaction.swift */,
+				DC4ADCA72419332F008C23C7 /* Chain+Etherscan.swift */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		DC7AC39623EC647000CC1C0D = {
+			isa = PBXGroup;
+			children = (
+				DC7AC3A123EC647000CC1C0D /* SmartWallet */,
+				DC8DA74123FAD66C0080C0D7 /* SmartWalletTests */,
+				DC7AC3A023EC647000CC1C0D /* Products */,
+				A1D6C8C335769497ACD99F76 /* Pods */,
+				BD5C74D5907F4EAFBB5E6AD4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DC7AC3A023EC647000CC1C0D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC7AC39F23EC647000CC1C0D /* SmartWallet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC7AC3A123EC647000CC1C0D /* SmartWallet */ = {
+			isa = PBXGroup;
+			children = (
+				DC4ADC9E24190E0B008C23C7 /* domain */,
+				DC996BE22418DBBE00248748 /* view */,
+				DC40D7AD2412AC1B00C792EB /* application */,
+				DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */,
+				DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */,
+				DC7AC3A823EC647000CC1C0D /* Main.storyboard */,
+				DC7AC3AB23EC647200CC1C0D /* Assets.xcassets */,
+				DC7AC3AD23EC647200CC1C0D /* LaunchScreen.storyboard */,
+				DC7AC3B023EC647200CC1C0D /* Info.plist */,
+			);
+			path = SmartWallet;
+			sourceTree = "<group>";
+		};
+		DC8DA74123FAD66C0080C0D7 /* SmartWalletTests */ = {
+			isa = PBXGroup;
+			children = (
+				DC8DA74223FAD66C0080C0D7 /* SmartWalletTests.swift */,
+				DC8DA74423FAD66C0080C0D7 /* Info.plist */,
+			);
+			path = SmartWalletTests;
+			sourceTree = "<group>";
+		};
+		DC996BE22418DBBE00248748 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				DCD11D07241B9BE40046ECD0 /* exchange */,
+				DC4ADC992418ED0B008C23C7 /* wallet */,
+				DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */,
+				DC40D7B02412B1C300C792EB /* RecoveryViewController.swift */,
+				DCA3F397241FCA9B007E72D2 /* RestoreViewController.swift */,
+				DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */,
+				DC4ECCEB241795CC0062425E /* SendViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		DCD11D07241B9BE40046ECD0 /* exchange */ = {
+			isa = PBXGroup;
+			children = (
+				DC4ADCA924193FC4008C23C7 /* ExchangeViewController.swift */,
+				DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */,
+			);
+			path = exchange;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC7AC39E23EC647000CC1C0D /* SmartWallet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC7AC3B323EC647200CC1C0D /* Build configuration list for PBXNativeTarget "SmartWallet" */;
+			buildPhases = (
+				1BD60598C7543BF6D02EB1A9 /* [CP] Check Pods Manifest.lock */,
+				DC7AC39B23EC647000CC1C0D /* Sources */,
+				DC7AC39C23EC647000CC1C0D /* Frameworks */,
+				DC7AC39D23EC647000CC1C0D /* Resources */,
+				06A48F9145862D3DD438BB8C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartWallet;
+			productName = SmartWallet;
+			productReference = DC7AC39F23EC647000CC1C0D /* SmartWallet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC7AC39723EC647000CC1C0D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Frederic DE MATOS";
+				TargetAttributes = {
+					DC7AC39E23EC647000CC1C0D = {
+						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
+					};
+				};
+			};
+			buildConfigurationList = DC7AC39A23EC647000CC1C0D /* Build configuration list for PBXProject "SmartWallet" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DC7AC39623EC647000CC1C0D;
+			productRefGroup = DC7AC3A023EC647000CC1C0D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC7AC39E23EC647000CC1C0D /* SmartWallet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC7AC39D23EC647000CC1C0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC7AC3AF23EC647200CC1C0D /* LaunchScreen.storyboard in Resources */,
+				DC7AC3AC23EC647200CC1C0D /* Assets.xcassets in Resources */,
+				DC7AC3AA23EC647000CC1C0D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06A48F9145862D3DD438BB8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartWallet/Pods-SmartWallet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartWallet/Pods-SmartWallet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartWallet/Pods-SmartWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1BD60598C7543BF6D02EB1A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartWallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC7AC39B23EC647000CC1C0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC4ADCA424191AAA008C23C7 /* Transaction.swift in Sources */,
+				DC4ADCA6241928EC008C23C7 /* TransactionViewCell.swift in Sources */,
+				DC40D7AC2412A35C00C792EB /* WithoutWalletViewController.swift in Sources */,
+				DC4ADCA024190E61008C23C7 /* TokenBalance.swift in Sources */,
+				DC40D7B12412B1C300C792EB /* RecoveryViewController.swift in Sources */,
+				DC4ADCA22419140A008C23C7 /* BalanceViewCell.swift in Sources */,
+				DC996BE42418E20300248748 /* WalletTabViewController.swift in Sources */,
+				DC40D7AF2412AC2F00C792EB /* UIViewController+Rockside.swift in Sources */,
+				DC7AC3A723EC647000CC1C0D /* WalletViewController.swift in Sources */,
+				DCA3F398241FCA9B007E72D2 /* RestoreViewController.swift in Sources */,
+				DC4ADCAC241940F5008C23C7 /* Token.swift in Sources */,
+				DC4ECCEC241795CC0062425E /* SendViewController.swift in Sources */,
+				DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */,
+				DC4ADCA82419332F008C23C7 /* Chain+Etherscan.swift in Sources */,
+				DC4ADC9B2418F523008C23C7 /* BalanceViewController.swift in Sources */,
+				DCD11D09241B9C050046ECD0 /* TokensTableViewController.swift in Sources */,
+				DC7AC3A323EC647000CC1C0D /* AppDelegate.swift in Sources */,
+				DC4ADC9D2418F7D5008C23C7 /* TransactionViewContrller.swift in Sources */,
+				DC7AC3A523EC647000CC1C0D /* SceneDelegate.swift in Sources */,
+				DC4ADCAA24193FC4008C23C7 /* ExchangeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DC7AC3A823EC647000CC1C0D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC7AC3A923EC647000CC1C0D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DC7AC3AD23EC647200CC1C0D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC7AC3AE23EC647200CC1C0D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DC7AC3B123EC647200CC1C0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DC7AC3B223EC647200CC1C0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DC7AC3B423EC647200CC1C0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B15DEB8371F308910BBC9556 /* Pods-SmartWallet.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5C9WNEN864;
+				INFOPLIST_FILE = SmartWallet/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.smartfrog.fr.SmartWallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DC7AC3B523EC647200CC1C0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB43F175874C92802541C5AD /* Pods-SmartWallet.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5C9WNEN864;
+				INFOPLIST_FILE = SmartWallet/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.smartfrog.fr.SmartWallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC7AC39A23EC647000CC1C0D /* Build configuration list for PBXProject "SmartWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC7AC3B123EC647200CC1C0D /* Debug */,
+				DC7AC3B223EC647200CC1C0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC7AC3B323EC647200CC1C0D /* Build configuration list for PBXNativeTarget "SmartWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC7AC3B423EC647200CC1C0D /* Debug */,
+				DC7AC3B523EC647200CC1C0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DC7AC39723EC647000CC1C0D /* Project object */;
+}

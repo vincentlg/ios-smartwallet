@@ -1,0 +1,43 @@
+PODS:
+  - BigInt (5.0.0)
+  - KeychainAccess (4.1.0)
+  - Pageboy (3.5.0)
+  - RocksideWalletSdk (0.1.0):
+    - BigInt
+    - KeychainAccess (~> 4.1.0)
+    - TrezorCrypto (~> 0.0.8)
+  - Starscream (4.0.0)
+  - Tabman (2.8.0):
+    - Pageboy (~> 3.5.0)
+  - TrezorCrypto (0.0.9)
+
+DEPENDENCIES:
+  - RocksideWalletSdk (from `/Users/fredericdematos/Documents/projets/bcs/rockside-wallet-sdk-ios`)
+  - Starscream (~> 4.0.0)
+  - Tabman (~> 2.6)
+
+SPEC REPOS:
+  trunk:
+    - BigInt
+    - KeychainAccess
+    - Pageboy
+    - Starscream
+    - Tabman
+    - TrezorCrypto
+
+EXTERNAL SOURCES:
+  RocksideWalletSdk:
+    :path: "/Users/fredericdematos/Documents/projets/bcs/rockside-wallet-sdk-ios"
+
+SPEC CHECKSUMS:
+  BigInt: 74b4d88367b0e819d9f77393549226d36faeb0d8
+  KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
+  Pageboy: 3794c578aae5fcce06e90b3ed4a0ad6b807d75bb
+  RocksideWalletSdk: 761276c1d24c71564210eec1154b996776ae5341
+  Starscream: 04b26f02727e10a002e6b5d21b188ba0d049910b
+  Tabman: f62ad94ee54a7d96e3fbab34f677d9ea4d38ece6
+  TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
+
+PODFILE CHECKSUM: 81d6890ebf347c558e45f6e3c08a41564ea88f7c
+
+COCOAPODS: 1.8.4
