@@ -10,7 +10,6 @@ import UIKit
 import RocksideWalletSdk
 
 class SendViewController: UIViewController {
-
     
     @IBOutlet weak var destinationTextField: UITextField!
     
@@ -19,34 +18,35 @@ class SendViewController: UIViewController {
     @IBAction func scanAddressAction(_ sender: Any) {
     }
     
+    public func getReceipt(txHash: String) {
+        
+    }
+    
     @IBAction func sendAction(_ sender: Any) {
         
         //TODO: Encapsulate in SDK
         let formatter = EtherNumberFormatter()
         let amount =  formatter.number(from: self.amountTextField.text!)
         let weiAmount = amount?.magnitude.serialize()
-       
+        
         self.rockside.relayTransaction(to: destinationTextField.text!, value: weiAmount!.hexValueNoLeadingZero, data: "" ) { (result) in
             switch result {
             case .success(let txHash):
-                 DispatchQueue.main.async {
-                    //self.dismiss(animated: true, completion: nil)
-                    print(txHash)
-                    self.rockside.transactionReceipt(txHash: txHash) { (result) in
-                    switch result {
-                         case .success(let txReceipt):
-                            print(txReceipt)
-                        break
-                            case .failure(let error):
-                                print(error)
-                                break
-                            }
-                        }
+                print("ICI "+txHash)
+                DispatchQueue.main.async {
+        
+                    if let walletViewController = (self.presentingViewController as? UINavigationController)?.topViewController as? WalletViewController{
+                        walletViewController.watchTx(txHash: txHash)
+                    }
+                    self.dismiss(animated: true, completion: nil)
                 }
-                
                 break
+                
             case .failure(let error):
                 print(error)
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
                 break
             }
         }

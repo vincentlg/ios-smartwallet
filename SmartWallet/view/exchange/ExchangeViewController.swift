@@ -148,11 +148,11 @@ class ExchangeViewController: UIViewController {
                 
                 if response.error != nil {
                     DispatchQueue.main.async {
-                     let alertController = UIAlertController(title: "Error", message:
-                        response.error, preferredStyle: .alert)
-                       alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-
-                       self.present(alertController, animated: true, completion: nil)
+                        let alertController = UIAlertController(title: "Error", message:
+                            response.error, preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                        
+                        self.present(alertController, animated: true, completion: nil)
                     }
                 } else {
                     
@@ -162,17 +162,28 @@ class ExchangeViewController: UIViewController {
                     let weiAmount = amount?.magnitude.serialize()
                     
                     self.rockside.relayTransaction(to: response.to!,
-                                              value: weiAmount!.hexValueNoLeadingZero,
-                                              data: response.data!, gas: response.gas!) { (result) in
-                                           switch result {
-                                           case .success(let txhash):
-                                               print(txhash)
-                                               break
-                                           case .failure(let error):
-                                               print(error)
-                                               break
-                                           }
-                                       }
+                                                   value: weiAmount!.hexValueNoLeadingZero,
+                                                   data: response.data!, gas: response.gas!) { (result) in
+                                                    switch result {
+                                                    case .success(let txhash):
+                                                        print("ICI "+txhash)
+                                                        DispatchQueue.main.async {
+                                                            if let walletViewController = (self.presentingViewController as? UINavigationController)?.topViewController as? WalletViewController{
+                                                                walletViewController.watchTx(txHash: txhash)
+                                                            }
+                                                            self.dismiss(animated: true, completion: nil)
+                                                        }
+                                                        break
+                                                    case .failure(let error):
+                                                        print(error)
+                                                        DispatchQueue.main.async {
+                                                            
+                                                            
+                                                            self.dismiss(animated: true, completion: nil)
+                                                        }
+                                                        break
+                                                    }
+                    }
                 }
                 
             }
@@ -192,7 +203,7 @@ class ExchangeViewController: UIViewController {
             self.amountWei = amountWeiBigInt.description
             
             if (amountWei != "0") {
-            
+                
                 var request = URLRequest(url: URL(string: "https://paraswap.io/api/v1/prices/1/\(sourceToken!.address)/\(destToken!.address)/"+self.amountWei!)!,timeoutInterval: Double.infinity)
                 request.httpMethod = "GET"
                 
