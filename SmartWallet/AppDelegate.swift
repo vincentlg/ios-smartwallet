@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-            self.rockside = Rockside(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnaW4iOiJmci5zbWFydGZyb2cuZnIuU21hcnRXYWxsZXQiLCJ1c2VySUQiOiIxIiwiY29udHJhY3RzIjpbIjB4Zjg0NWIyNTAxQTY5ZUY0ODBhQzU3N2I5OWU5Njc5NmMyQjZBRTg4RSIsIjB4RjkyQzFhZDc1MDA1RTY0MzZCNEVFODRlODhjQjIzRWQ4QTI5MDk4OCJdfQ.KUmXCx7DSLXgWSURgX5ODhxP0FzK9xMdmp1lP3Bf5FQ", chain:.ropsten)
+            self.rockside = Rockside(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnaW4iOiJmci5zbWFydGZyb2cuZnIuU21hcnRXYWxsZXQiLCJjdXN0b21lcl9pZCI6IjEiLCJlbmRfdXNlcl9pZCI6IndhbGxldCIsImNvbnRyYWN0cyI6WyIweGY4NDViMjUwMUE2OWVGNDgwYUM1NzdiOTllOTY3OTZjMkI2QUU4OEUiLCIweDJjNjhiZkJjNkYyMjc0RTcwMTFDZDRBQjhENWMwZTY5QjIzNDEzMDkiLCIweEY5MkMxYWQ3NTAwNUU2NDM2QjRFRTg0ZTg4Y0IyM0VkOEEyOTA5ODgiLCIweDZiMTc1NDc0ZTg5MDk0YzQ0ZGE5OGI5NTRlZWRlYWM0OTUyNzFkMGYiXX0.IWNKXfXHz89l7StJNTXTAOwXCgHAObu6sCERKKQYAEU", chain:.mainnet)
         
         /*self.rockside = Rockside(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnaW4iOiJmci5zbWFydGZyb2cuZnIuU21hcnRXYWxsZXQiLCJjdXN0b21lcl9pZCI6IjIiLCJlbmRfdXNlcl9pZCI6InRvb3QiLCJjb250cmFjdHMiOlsiMHhmODQ1YjI1MDFBNjllRjQ4MGFDNTc3Yjk5ZTk2Nzk2YzJCNkFFODhFIiwiMHgyYzY4YmZCYzZGMjI3NEU3MDExQ2Q0QUI4RDVjMGU2OUIyMzQxMzA5IiwiMHhGOTJDMWFkNzUwMDVFNjQzNkI0RUU4NGU4OGNCMjNFZDhBMjkwOTg4Il19.bnlL93mmZ9OBwgmxuUyefAMcbVtkL1F_oOcIURAnEg8", chain:.mainnet)
         

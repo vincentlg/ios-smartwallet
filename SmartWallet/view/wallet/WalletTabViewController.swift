@@ -64,6 +64,7 @@ class WalletTabViewController: TabmanViewController {
         self.retriveAllTransactions()
     }
     
+    
     public func retriveAllTransactions() {
         self.transactions = []
         retrieveTransaction(action: "txlist")
@@ -108,6 +109,25 @@ class WalletTabViewController: TabmanViewController {
         
     }
     
+    public func tokenBalanceArray() -> [TokenBalance] {
+        var tokenBalances = Array<TokenBalance>(self.tokenBalances.values)
+        
+        tokenBalances.sort {
+            if $0.symbol == "ETH" {
+                return true
+            }
+            
+            if $1.symbol == "ETH" {
+                return false
+            }
+            
+            return $1.symbol > $0.symbol
+            
+        }
+        
+        return tokenBalances
+    }
+    
     private func getEthBalance() {
         self.rockside.getBalance() { (result) in
             switch result {
@@ -115,7 +135,7 @@ class WalletTabViewController: TabmanViewController {
                 DispatchQueue.main.async {
                     let balanceString = self.etherFormatter.string(from: balance)
                     self.tokenBalances["ETH"]?.balance = balanceString
-                    self.balanceViewController?.display(balances: Array<TokenBalance>(self.tokenBalances.values))
+                    self.balanceViewController?.display(balances: self.tokenBalanceArray())
                     
                     self.balanceUpdatedHandler?()
                 }
@@ -129,27 +149,23 @@ class WalletTabViewController: TabmanViewController {
     }
     
     private func get(tokenBalance: TokenBalance) {
-        let url  = URL(string: "\(self.rockside.chain.etherscanAPIUrl)?module=account&action=tokenbalance&address=\(self.rockside.identity!.ethereumAddress)&contractaddress=\(tokenBalance.address!)&tag=lates&apikey=\(etherscanApiKey)")!
         
-        var request = URLRequest(url:url ,timeoutInterval: Double.infinity)
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                print(String(describing: error))
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            let response = try! decoder.decode(EtherscanTokenBalanceResponse.self, from: data)
-            DispatchQueue.main.async {
-                let balanceString = self.etherFormatter.string(from: BigInt(response.result)!)
-                self.tokenBalances[tokenBalance.symbol]?.balance = balanceString
-                self.balanceViewController?.display(balances: Array<TokenBalance>(self.tokenBalances.values))
+        self.rockside.getErc20Balance(ercAddress: tokenBalance.address!) { (result) in
+            switch result {
+            case .success(let balance):
+                DispatchQueue.main.async {
+                    let balanceString = self.etherFormatter.string(from: balance)
+                    self.tokenBalances[tokenBalance.symbol]?.balance = balanceString
+                    self.balanceViewController?.display(balances:self.tokenBalanceArray())
+                }
+                break
+                
+            case .failure(let error):
+                print(error)
+                break
             }
         }
         
-        task.resume()
     }
     
     private func updateBalance() {
@@ -158,6 +174,8 @@ class WalletTabViewController: TabmanViewController {
                 self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(name: $0.tokenName!, symbol: $0.tokenSymbol!, address: $0.contractAddress)
             }
         }
+        
+        
         for (symbol, balance) in self.tokenBalances {
             
             if (symbol == "ETH") {
@@ -175,7 +193,7 @@ class WalletTabViewController: TabmanViewController {
         if (index == 1) {
             self.retriveAllTransactions()
         }
-           
+        
     }
     
 }
@@ -208,6 +226,6 @@ extension WalletTabViewController: PageboyViewControllerDataSource, TMBarDataSou
         return nil
     }
     
-   
+    
     
 }

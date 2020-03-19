@@ -48,9 +48,18 @@ class WalletViewController: UIViewController {
                 break
             }
         }
-        
-        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "send-token-segue" {
+               if let destinationVC = segue.destination as? SendViewController {
+                  
+                destinationVC.tokens = self.walletTabViewController.tokenBalanceArray()
+                destinationVC.fromToken = destinationVC.tokens![0]
+               }
+           }
+           
+       }
     
     
     
