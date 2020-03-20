@@ -100,13 +100,13 @@ class SendViewController: UIViewController {
     
     public func selectToken(token: TokenBalance) {
         self.fromToken = token
+        print(self.fromToken?.address)
         self.refreshView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "select-token-balance-segue" {
-            print("LA")
             if let destinationVC = segue.destination as? TokenBalanceTableViewController {
                 destinationVC.tokens = self.tokens
                 destinationVC.selectionHandler = self.selectToken

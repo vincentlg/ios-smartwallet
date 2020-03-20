@@ -29,9 +29,8 @@ class WalletViewController: UIViewController {
     }
     
     public func watchTx(txHash: String) {
-        print("Watch "+txHash)
         self.transactionInProgressView.isHidden = false
-        _ = self.rockside.waitTxToBeMined(txHash: txHash) { (result) in
+        _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
             switch result {
             case .success(let txReceipt):
                 print (txReceipt)
