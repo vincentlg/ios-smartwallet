@@ -16,10 +16,7 @@ class RestoreViewController: UIViewController {
     @IBOutlet weak var wordsTextView: UITextView!
     @IBAction func RestoreAction(_ sender: Any) {
         
-        let identityAddress = EthereumAddress(string: walletAddressTextField.text!)
-        let identity = Identity(mnemonic:wordsTextView.text, address: identityAddress!)
-        self.rockside.identity = identity
-        try? self.rockside.store()
+        try? self.rockside.restoreIdentity(mnemonic: self.wordsTextView.text, address: walletAddressTextField.text!)
         
         self.performSegue(withIdentifier: "show-wallet-segue", sender: self)
         

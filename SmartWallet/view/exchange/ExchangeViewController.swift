@@ -59,7 +59,6 @@ class ExchangeViewController: UIViewController {
     }
     
     @IBAction func buyAction(_ sender: Any) {
-        
         self.getParaSwapTx()
     }
     
@@ -161,7 +160,7 @@ class ExchangeViewController: UIViewController {
                     let amount = BigInt(response.value!)
                     let weiAmount = amount?.magnitude.serialize()
                     
-                    self.rockside.relayTransaction(to: response.to!,
+                    self.rockside.identity!.relayTransaction(to: response.to!,
                                                    value: weiAmount!.hexValueNoLeadingZero,
                                                    data: response.data!, gas: response.gas!) { (result) in
                                                     switch result {

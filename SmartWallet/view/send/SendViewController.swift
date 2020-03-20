@@ -51,7 +51,7 @@ class SendViewController: UIViewController {
     }
     
     func sendERC20(amount: String) {
-        self.rockside.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount) { (result) in
+        self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount) { (result) in
             switch result {
             case .success(let txHash):
                 print("ICI "+txHash)
@@ -75,7 +75,7 @@ class SendViewController: UIViewController {
     }
     
     func sendEth(amount: String) {
-        self.rockside.relayTransaction(to: destinationTextField.text!, value: amount, data: "" ) { (result) in
+        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount, data: "" ) { (result) in
             switch result {
             case .success(let txHash):
                 print("ICI "+txHash)
