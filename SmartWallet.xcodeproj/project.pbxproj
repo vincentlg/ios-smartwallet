@@ -32,6 +32,8 @@
 		DCA3CCEF2423885000FC135C /* TokenBalanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA3CCEE2423885000FC135C /* TokenBalanceTableViewController.swift */; };
 		DCA3F398241FCA9B007E72D2 /* RestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA3F397241FCA9B007E72D2 /* RestoreViewController.swift */; };
 		DCBA5CFE24290D6600EE8CA9 /* WalletNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */; };
+		DCBA5D002429264100EE8CA9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA5CFF2429264100EE8CA9 /* GradientView.swift */; };
+		DCBA5D02242928CE00EE8CA9 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA5D01242928CE00EE8CA9 /* UIColor+hex.swift */; };
 		DCD11D09241B9C050046ECD0 /* TokensTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		DCA3CCEE2423885000FC135C /* TokenBalanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBalanceTableViewController.swift; sourceTree = "<group>"; };
 		DCA3F397241FCA9B007E72D2 /* RestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreViewController.swift; sourceTree = "<group>"; };
 		DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationViewController.swift; sourceTree = "<group>"; };
+		DCBA5CFF2429264100EE8CA9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		DCBA5D01242928CE00EE8CA9 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokensTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				DC40D7AE2412AC2F00C792EB /* UIViewController+Rockside.swift */,
+				DCBA5CFF2429264100EE8CA9 /* GradientView.swift */,
 			);
 			path = application;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				DC7AC3AB23EC647200CC1C0D /* Assets.xcassets */,
 				DC7AC3AD23EC647200CC1C0D /* LaunchScreen.storyboard */,
 				DC7AC3B023EC647200CC1C0D /* Info.plist */,
+				DCBA5D01242928CE00EE8CA9 /* UIColor+hex.swift */,
 			);
 			path = SmartWallet;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC4ADCA424191AAA008C23C7 /* Transaction.swift in Sources */,
+				DCBA5D002429264100EE8CA9 /* GradientView.swift in Sources */,
 				DC4ADCA6241928EC008C23C7 /* TransactionViewCell.swift in Sources */,
 				DC40D7AC2412A35C00C792EB /* WithoutWalletViewController.swift in Sources */,
 				DCA3CCEF2423885000FC135C /* TokenBalanceTableViewController.swift in Sources */,
@@ -332,6 +339,7 @@
 				DC40D7B12412B1C300C792EB /* RecoveryViewController.swift in Sources */,
 				DC4ADCA22419140A008C23C7 /* BalanceViewCell.swift in Sources */,
 				DCBA5CFE24290D6600EE8CA9 /* WalletNavigationViewController.swift in Sources */,
+				DCBA5D02242928CE00EE8CA9 /* UIColor+hex.swift in Sources */,
 				DC996BE42418E20300248748 /* WalletTabViewController.swift in Sources */,
 				DC40D7AF2412AC2F00C792EB /* UIViewController+Rockside.swift in Sources */,
 				DC7AC3A723EC647000CC1C0D /* WalletViewController.swift in Sources */,
