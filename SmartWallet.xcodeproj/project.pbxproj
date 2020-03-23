@@ -31,6 +31,7 @@
 		DC996BE42418E20300248748 /* WalletTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC996BE32418E20300248748 /* WalletTabViewController.swift */; };
 		DCA3CCEF2423885000FC135C /* TokenBalanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA3CCEE2423885000FC135C /* TokenBalanceTableViewController.swift */; };
 		DCA3F398241FCA9B007E72D2 /* RestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA3F397241FCA9B007E72D2 /* RestoreViewController.swift */; };
+		DCBA5CFE24290D6600EE8CA9 /* WalletNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */; };
 		DCD11D09241B9C050046ECD0 /* TokensTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		DC996BE32418E20300248748 /* WalletTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTabViewController.swift; sourceTree = "<group>"; };
 		DCA3CCEE2423885000FC135C /* TokenBalanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBalanceTableViewController.swift; sourceTree = "<group>"; };
 		DCA3F397241FCA9B007E72D2 /* RestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreViewController.swift; sourceTree = "<group>"; };
+		DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationViewController.swift; sourceTree = "<group>"; };
 		DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokensTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +158,7 @@
 				DC40D7AD2412AC1B00C792EB /* application */,
 				DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */,
 				DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */,
+				DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */,
 				DC7AC3A823EC647000CC1C0D /* Main.storyboard */,
 				DC7AC3AB23EC647200CC1C0D /* Assets.xcassets */,
 				DC7AC3AD23EC647200CC1C0D /* LaunchScreen.storyboard */,
@@ -328,6 +331,7 @@
 				DC4ADCA024190E61008C23C7 /* TokenBalance.swift in Sources */,
 				DC40D7B12412B1C300C792EB /* RecoveryViewController.swift in Sources */,
 				DC4ADCA22419140A008C23C7 /* BalanceViewCell.swift in Sources */,
+				DCBA5CFE24290D6600EE8CA9 /* WalletNavigationViewController.swift in Sources */,
 				DC996BE42418E20300248748 /* WalletTabViewController.swift in Sources */,
 				DC40D7AF2412AC2F00C792EB /* UIViewController+Rockside.swift in Sources */,
 				DC7AC3A723EC647000CC1C0D /* WalletViewController.swift in Sources */,

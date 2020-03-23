@@ -40,10 +40,10 @@ class SendViewController: UIViewController {
         //TODO: Encapsulate in SDK
         let formatter = EtherNumberFormatter()
         let amount =  formatter.number(from: self.amountTextField.text!)
-        let weiAmount = amount?.magnitude.serialize()
+       
         
         if (self.fromToken?.symbol == "ETH") {
-            self.sendEth(amount: weiAmount!.hexValueNoLeadingZero)
+            self.sendEth(amount: amount!.description)
         } else {
             self.sendERC20(amount: amount!.description)
         }

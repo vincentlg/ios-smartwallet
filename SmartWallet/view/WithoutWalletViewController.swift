@@ -15,11 +15,7 @@ class WithoutWalletViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if (try? self.rockside.retrieveIdentity()) != nil {
-            print(self.rockside.identity?.eoa.ethereumAddress)
-            print(self.rockside.identity?.hdwallet.mnemonic)
-            self.performSegue(withIdentifier: "show-wallet-segue", sender: self)
-        }
+       
         
     }
     

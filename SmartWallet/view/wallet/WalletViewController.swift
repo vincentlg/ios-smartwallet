@@ -21,6 +21,8 @@ class WalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
         self.transactionInProgressView.isHidden = true
         
         self.amountLabel.text = self.rockside.identity?.ethereumAddress
