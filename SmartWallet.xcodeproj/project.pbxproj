@@ -10,6 +10,7 @@
 		66AF6F1480713AC43621E657 /* Pods_SmartWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */; };
 		DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */; };
 		DC3E7183242A324100C40194 /* WalletTabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3E7182242A324100C40194 /* WalletTabLayout.swift */; };
+		DC3E7187242A440A00C40194 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3E7186242A440A00C40194 /* ListItemView.swift */; };
 		DC40D7AC2412A35C00C792EB /* WithoutWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */; };
 		DC40D7AF2412AC2F00C792EB /* UIViewController+Rockside.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40D7AE2412AC2F00C792EB /* UIViewController+Rockside.swift */; };
 		DC40D7B12412B1C300C792EB /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40D7B02412B1C300C792EB /* RecoveryViewController.swift */; };
@@ -47,6 +48,7 @@
 		CB43F175874C92802541C5AD /* Pods-SmartWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.release.xcconfig"; path = "Target Support Files/Pods-SmartWallet/Pods-SmartWallet.release.xcconfig"; sourceTree = "<group>"; };
 		DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		DC3E7182242A324100C40194 /* WalletTabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTabLayout.swift; sourceTree = "<group>"; };
+		DC3E7186242A440A00C40194 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutWalletViewController.swift; sourceTree = "<group>"; };
 		DC40D7AE2412AC2F00C792EB /* UIViewController+Rockside.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rockside.swift"; sourceTree = "<group>"; };
 		DC40D7B02412B1C300C792EB /* RecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				DCBA5D05242A128500EE8CA9 /* TabButtonBar.swift */,
 				DCBA5D07242A20A900EE8CA9 /* WalletButton.swift */,
 				DC3E7182242A324100C40194 /* WalletTabLayout.swift */,
+				DC3E7186242A440A00C40194 /* ListItemView.swift */,
 			);
 			path = application;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				DCD11D09241B9C050046ECD0 /* TokensTableViewController.swift in Sources */,
 				DC3E7183242A324100C40194 /* WalletTabLayout.swift in Sources */,
 				DC7AC3A323EC647000CC1C0D /* AppDelegate.swift in Sources */,
+				DC3E7187242A440A00C40194 /* ListItemView.swift in Sources */,
 				DC4ADC9D2418F7D5008C23C7 /* TransactionViewContrller.swift in Sources */,
 				DCBA5D06242A128500EE8CA9 /* TabButtonBar.swift in Sources */,
 				DC7AC3A523EC647000CC1C0D /* SceneDelegate.swift in Sources */,

@@ -24,7 +24,7 @@ class WalletButton: UIButton {
         self.layer.cornerRadius = 5;
         self.titleLabel?.textAlignment = .center
         self.titleLabel?.setContentCompressionResistancePriority(.required, for: .vertical)
-        self.titleLabel?.font = .systemFont(ofSize: 14)
+        self.titleLabel?.font = .systemFont(ofSize: 16)
     }
     
     func select() {
@@ -32,6 +32,6 @@ class WalletButton: UIButton {
     }
     
     func deselect() {
-         self.backgroundColor = UIColor(hexString: "1b2754")
+        self.backgroundColor = .clear
     }
 }

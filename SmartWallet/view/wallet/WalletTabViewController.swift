@@ -46,6 +46,7 @@ class WalletTabViewController: TabmanViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //TODO
         
         self.balanceViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BalanceViewController") as? BalanceViewContrller
         
@@ -55,13 +56,10 @@ class WalletTabViewController: TabmanViewController {
         
         self.dataSource = self
         
-        let bar = TMBarView<WalletTabLayout, TabButtonBar, TMBarIndicator.None>()
-        bar.layout.transitionStyle = .snap // Customize
-        bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 10.0)
-            
         
-        // Add to view
-        addBar(bar, dataSource: self, at: .top)
+        
+   
+            
         
         self.retriveAllTransactions()
     }
