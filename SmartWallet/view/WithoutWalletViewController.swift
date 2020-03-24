@@ -11,14 +11,6 @@ import UIKit
 class WithoutWalletViewController: UIViewController {
     
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-       
-        
-    }
-    
     @IBAction func createWalletAction(_ sender: Any) {
         self.rockside.createIdentity() { (result) in
             switch result {

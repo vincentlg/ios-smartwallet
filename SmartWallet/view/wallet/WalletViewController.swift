@@ -20,14 +20,20 @@ class WalletViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        
+    
         self.transactionInProgressView.isHidden = true
-        
         self.amountLabel.text = self.rockside.identity?.ethereumAddress
-        walletTabViewController.view.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.width, height: self.contentView.frame.height)
         self.contentView.addSubview(walletTabViewController.view)
+        
+        walletTabViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            walletTabViewController.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            walletTabViewController.view.topAnchor.constraint(equalTo: contentView.topAnchor),
+            walletTabViewController.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            walletTabViewController.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        
     }
     
     public func watchTx(txHash: String) {
