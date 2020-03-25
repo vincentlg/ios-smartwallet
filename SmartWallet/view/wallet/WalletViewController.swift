@@ -11,6 +11,11 @@ import RocksideWalletSdk
 import Tabman
 import MaterialComponents.MaterialSnackbar
 
+
+
+typealias WatchTxHandler = (_: String) -> Void
+typealias DisplayErrorHandler = () -> Void
+
 class WalletViewController: UIViewController {
     
     @IBOutlet weak var amountLabel: UILabel!
@@ -91,10 +96,20 @@ class WalletViewController: UIViewController {
            if segue.identifier == "send-token-segue" {
                if let destinationVC = segue.destination as? SendViewController {
                   
+                destinationVC.watchTxHandler = self.watchTx
+                destinationVC.displayErrorHandler = self.displayWaitingForTx
+                
                 destinationVC.tokens = self.walletTabViewController.tokenBalanceArray()
                 destinationVC.fromToken = destinationVC.tokens![0]
                }
            }
+        
+            if segue.identifier == "exchange-segue" {
+                if let destinationVC = segue.destination as? ExchangeViewController {
+                    destinationVC.watchTxHandler = self.watchTx
+                    destinationVC.displayErrorHandler = self.displayWaitingForTx
+                }
+            }
        }
     
     

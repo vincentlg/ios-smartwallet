@@ -14,6 +14,9 @@ class SendViewController: UIViewController {
     var tokens: [TokenBalance]?
     var fromToken: TokenBalance?
     
+    var watchTxHandler: WatchTxHandler?
+    var displayErrorHandler: DisplayErrorHandler?
+    
     @IBOutlet weak var destinationTextField: UITextField!
     
     @IBOutlet weak var amountTextField: UITextField!
@@ -53,23 +56,16 @@ class SendViewController: UIViewController {
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {
-                    
-                    let presentingController = self.presentingViewController
                     self.dismiss(animated: true, completion: {
-                        if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
-                            walletViewController.watchTx(txHash: txHash)
-                        }
+                        self.watchTxHandler?(txHash)
                     })
                 }
                 break
                 
             case .failure(_):
                 DispatchQueue.main.async {
-                    let presentingController = self.presentingViewController
                     self.dismiss(animated: true, completion: {
-                        if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
-                            walletViewController.displayErrorOccured()
-                        }
+                        self.displayErrorHandler?()
                     })
                 }
                 break
@@ -82,23 +78,16 @@ class SendViewController: UIViewController {
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {
-                    
-                    let presentingController = self.presentingViewController
                     self.dismiss(animated: true, completion: {
-                        if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
-                            walletViewController.watchTx(txHash: txHash)
-                        }
+                        self.watchTxHandler?(txHash)
                     })
                 }
                 break
                 
             case .failure(_):
                 DispatchQueue.main.async {
-                    let presentingController = self.presentingViewController
                     self.dismiss(animated: true, completion: {
-                        if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
-                            walletViewController.displayErrorOccured()
-                        }
+                        self.displayErrorHandler?()
                     })
                 }
                 break

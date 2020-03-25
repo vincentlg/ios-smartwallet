@@ -12,7 +12,7 @@
             <objects>
                 <viewController storyboardIdentifier="WalletViewController" id="BYZ-38-t0r" customClass="WalletViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="SmartWallet" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsV-Y1-RrE">
@@ -54,7 +54,7 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="exchange"/>
                                         <connections>
-                                            <segue destination="tZB-LC-HMu" kind="presentation" id="3Tz-pZ-38e"/>
+                                            <segue destination="tZB-LC-HMu" kind="presentation" identifier="exchange-segue" id="3Tz-pZ-38e"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZU-UF-NAg">

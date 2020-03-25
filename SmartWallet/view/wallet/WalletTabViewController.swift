@@ -34,7 +34,7 @@ class WalletTabViewController: TabmanViewController {
     
     private let etherFormatter = EtherNumberFormatter()
     
-    var balanceUpdatedHandler:BalanceUpdatedHandler?
+    var balanceUpdatedHandler: BalanceUpdatedHandler?
     var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(name: "Ethereum", symbol: "ETH")]
     var transactions: [Transaction] = []
     
