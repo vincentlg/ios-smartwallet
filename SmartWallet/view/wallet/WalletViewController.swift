@@ -31,6 +31,7 @@ class WalletViewController: UIViewController {
         
         self.walletTabViewController.view.translatesAutoresizingMaskIntoConstraints = false
         self.walletTabViewController.balanceUpdatedHandler = self.updateBalance
+        self.walletTabViewController.displayErrorHandler = self.displayErrorOccured
         
         let bar = TMBarView<WalletTabLayout, TabButtonBar, TMBarIndicator.None>()
         bar.backgroundView.style = .clear

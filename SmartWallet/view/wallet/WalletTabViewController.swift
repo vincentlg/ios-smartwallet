@@ -29,18 +29,16 @@ typealias BalanceUpdatedHandler = () -> Void
 class WalletTabViewController: TabmanViewController {
     
     private var viewControllers: [UIViewController]?
-    
     private var etherscanApiKey = "HCYC8QMVAN8M5RSMKWT7FFGG2KTU1N3IVG"
-    
     private let etherFormatter = EtherNumberFormatter()
+    private var balanceViewController: BalanceViewContrller?
+    private var transactionViewController: TransactionViewContrller?
     
     var balanceUpdatedHandler: BalanceUpdatedHandler?
     var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(name: "Ethereum", symbol: "ETH")]
     var transactions: [Transaction] = []
     
-    private var balanceViewController: BalanceViewContrller?
-    private var transactionViewController: TransactionViewContrller?
-    
+    var displayErrorHandler: DisplayErrorHandler?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +70,7 @@ class WalletTabViewController: TabmanViewController {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 print(String(describing: error))
+                self.displayErrorHandler?()
                 return
             }
 
@@ -93,7 +92,7 @@ class WalletTabViewController: TabmanViewController {
                     }
                 }
             } else {
-                print("ERROR")
+                self.displayErrorHandler?()
             }
         }
         
@@ -151,8 +150,8 @@ class WalletTabViewController: TabmanViewController {
                 }
                 break
                 
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self.displayErrorHandler?()
                 break
             }
         }
