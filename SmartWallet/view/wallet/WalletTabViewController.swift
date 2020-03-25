@@ -24,7 +24,6 @@ struct EtherscanTokenBalanceResponse: Codable{
     var result: String
 }
 
-
 typealias BalanceUpdatedHandler = () -> Void
 
 class WalletTabViewController: TabmanViewController {
@@ -39,14 +38,12 @@ class WalletTabViewController: TabmanViewController {
     var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(name: "Ethereum", symbol: "ETH")]
     var transactions: [Transaction] = []
     
-    
     private var balanceViewController: BalanceViewContrller?
     private var transactionViewController: TransactionViewContrller?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TODO
         
         self.balanceViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BalanceViewController") as? BalanceViewContrller
         
@@ -55,15 +52,8 @@ class WalletTabViewController: TabmanViewController {
         self.viewControllers = [self.balanceViewController!, self.transactionViewController!]
         
         self.dataSource = self
-        
-        
-        
-   
-            
-        
         self.retriveAllTransactions()
     }
-    
     
     public func retriveAllTransactions() {
         self.transactions = []
@@ -84,29 +74,30 @@ class WalletTabViewController: TabmanViewController {
                 print(String(describing: error))
                 return
             }
-            
+
             let decoder = JSONDecoder()
-            let response = try! decoder.decode(EtherscanTransactionResponse.self, from: data)
-            DispatchQueue.main.async {
-                self.transactions.append(contentsOf: response.result)
-                
-                self.transactions = self.transactions.filter{ $0.type != "Relay" }
-                
-                self.transactions.sort {
-                    $0.block > $1.block
+            if let response = try? decoder.decode(EtherscanTransactionResponse.self, from: data) {
+                DispatchQueue.main.async {
+                    self.transactions.append(contentsOf: response.result)
+                    
+                    self.transactions = self.transactions.filter{ $0.type != "Relay" }
+                    
+                    self.transactions.sort {
+                        $0.block > $1.block
+                    }
+                    
+                    self.transactionViewController?.display(transactions: self.transactions)
+                    
+                    if (action == "tokentx") {
+                        self.updateBalance()
+                    }
                 }
-                
-                self.transactionViewController?.display(transactions: self.transactions)
-                
-                if (action == "tokentx") {
-                    self.updateBalance()
-                }
+            } else {
+                print("ERROR")
             }
         }
         
         task.resume()
-        
-        
     }
     
     public func tokenBalanceArray() -> [TokenBalance] {
@@ -193,9 +184,7 @@ class WalletTabViewController: TabmanViewController {
         if (index == 1) {
             self.retriveAllTransactions()
         }
-        
     }
-    
 }
 
 extension WalletTabViewController: PageboyViewControllerDataSource, TMBarDataSource {
@@ -225,7 +214,5 @@ extension WalletTabViewController: PageboyViewControllerDataSource, TMBarDataSou
     func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
         return nil
     }
-    
-    
     
 }

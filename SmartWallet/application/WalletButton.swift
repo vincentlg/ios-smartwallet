@@ -12,11 +12,10 @@ class WalletButton: UIButton {
     
     required init() {
         super.init(frame: .zero)
-        self.initialize()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     func initialize() {
@@ -25,6 +24,12 @@ class WalletButton: UIButton {
         self.titleLabel?.textAlignment = .center
         self.titleLabel?.setContentCompressionResistancePriority(.required, for: .vertical)
         self.titleLabel?.font = .systemFont(ofSize: 16)
+        self.titleLabel?.textColor = UIColor.white
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.initialize()
     }
     
     func select() {

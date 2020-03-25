@@ -9,4 +9,5 @@ target 'SmartWallet' do
   pod 'RocksideWalletSdk', :path => '/Users/fredericdematos/Documents/projets/bcs/rockside-wallet-sdk-ios'
   pod 'Tabman', '~> 2.6'
   pod 'Starscream', '~> 4.0.0'
+  pod 'MaterialComponents/Snackbar'
 end

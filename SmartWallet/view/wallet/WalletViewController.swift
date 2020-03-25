@@ -9,9 +9,9 @@
 import UIKit
 import RocksideWalletSdk
 import Tabman
+import MaterialComponents.MaterialSnackbar
 
 class WalletViewController: UIViewController {
-    
     
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var contentView: UIView!
@@ -21,7 +21,7 @@ class WalletViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         self.contentView.addSubview(walletTabViewController.view)
         
         self.walletTabViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -45,22 +45,31 @@ class WalletViewController: UIViewController {
     private func updateBalance() {
         self.amountLabel.text = self.walletTabViewController.tokenBalances["ETH"]!.formattedAmout
     }
+
     
     public func watchTx(txHash: String) {
-       // self.transactionInProgressView.isHidden = false
+        let snackBarMessage = MDCSnackbarMessage()
+        snackBarMessage.automaticallyDismisses = false
+        snackBarMessage.text = "Your transaction is being validating"
+        
+        let action = MDCSnackbarMessageAction()
+        action.title = "OK"
+        snackBarMessage.action = action
+        MDCSnackbarManager.show(snackBarMessage)
+        
         _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
             switch result {
             case .success(let txReceipt):
                 print (txReceipt)
                 DispatchQueue.main.async {
-                    //self.transactionInProgressView.isHidden = true
+                    MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
                     self.walletTabViewController.retriveAllTransactions()
                 }
                 break
             case .failure(let error):
                 print(error)
                 DispatchQueue.main.async {
-                    //self.transactionInProgressView.isHidden = true
+                    MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
                 }
                 break
             }
@@ -75,7 +84,6 @@ class WalletViewController: UIViewController {
                 destinationVC.fromToken = destinationVC.tokens![0]
                }
            }
-           
        }
     
     

@@ -54,13 +54,14 @@ class SendViewController: UIViewController {
         self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount) { (result) in
             switch result {
             case .success(let txHash):
-                print("ICI "+txHash)
                 DispatchQueue.main.async {
                     
-                    if let walletViewController = (self.presentingViewController as? UINavigationController)?.topViewController as? WalletViewController{
-                        walletViewController.watchTx(txHash: txHash)
-                    }
-                    self.dismiss(animated: true, completion: nil)
+                    let presentingController = self.presentingViewController
+                    self.presentingViewController?.dismiss(animated: true, completion: {
+                        if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
+                            walletViewController.watchTx(txHash: txHash)
+                        }
+                    })
                 }
                 break
                 
@@ -78,13 +79,14 @@ class SendViewController: UIViewController {
         self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount, data: "" ) { (result) in
             switch result {
             case .success(let txHash):
-                print("ICI "+txHash)
                 DispatchQueue.main.async {
                     
-                    if let walletViewController = (self.presentingViewController as? UINavigationController)?.topViewController as? WalletViewController{
-                        walletViewController.watchTx(txHash: txHash)
-                    }
-                    self.dismiss(animated: true, completion: nil)
+                    let presentingController = self.presentingViewController
+                    self.presentingViewController?.dismiss(animated: true, completion: {
+                        if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
+                            walletViewController.watchTx(txHash: txHash)
+                        }
+                    })
                 }
                 break
                 
