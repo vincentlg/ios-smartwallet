@@ -36,11 +36,9 @@ class SendViewController: UIViewController {
     }
     
     @IBAction func sendAction(_ sender: Any) {
-        
-        //TODO: Encapsulate in SDK
         let formatter = EtherNumberFormatter()
         let amount =  formatter.number(from: self.amountTextField.text!)
-       
+        
         
         if (self.fromToken?.symbol == "ETH") {
             self.sendEth(amount: amount!.description)
@@ -57,7 +55,7 @@ class SendViewController: UIViewController {
                 DispatchQueue.main.async {
                     
                     let presentingController = self.presentingViewController
-                    self.presentingViewController?.dismiss(animated: true, completion: {
+                    self.dismiss(animated: true, completion: {
                         if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
                             walletViewController.watchTx(txHash: txHash)
                         }
@@ -65,10 +63,14 @@ class SendViewController: UIViewController {
                 }
                 break
                 
-            case .failure(let error):
-                print(error)
+            case .failure(_):
                 DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
+                    let presentingController = self.presentingViewController
+                    self.dismiss(animated: true, completion: {
+                        if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
+                            walletViewController.displayErrorOccured()
+                        }
+                    })
                 }
                 break
             }
@@ -82,7 +84,7 @@ class SendViewController: UIViewController {
                 DispatchQueue.main.async {
                     
                     let presentingController = self.presentingViewController
-                    self.presentingViewController?.dismiss(animated: true, completion: {
+                    self.dismiss(animated: true, completion: {
                         if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
                             walletViewController.watchTx(txHash: txHash)
                         }
@@ -90,10 +92,14 @@ class SendViewController: UIViewController {
                 }
                 break
                 
-            case .failure(let error):
-                print(error)
+            case .failure(_):
                 DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
+                    let presentingController = self.presentingViewController
+                    self.dismiss(animated: true, completion: {
+                        if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
+                            walletViewController.displayErrorOccured()
+                        }
+                    })
                 }
                 break
             }
@@ -102,7 +108,6 @@ class SendViewController: UIViewController {
     
     public func selectToken(token: TokenBalance) {
         self.fromToken = token
-        print(self.fromToken?.address)
         self.refreshView()
     }
     

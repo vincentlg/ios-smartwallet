@@ -47,7 +47,7 @@ class WalletViewController: UIViewController {
     }
 
     
-    public func watchTx(txHash: String) {
+    private func displayWaitingForTx() {
         let snackBarMessage = MDCSnackbarMessage()
         snackBarMessage.automaticallyDismisses = false
         snackBarMessage.text = "Your transaction is being validating"
@@ -56,6 +56,17 @@ class WalletViewController: UIViewController {
         action.title = "OK"
         snackBarMessage.action = action
         MDCSnackbarManager.show(snackBarMessage)
+    }
+    
+    public func displayErrorOccured() {
+        let snackBarMessage = MDCSnackbarMessage()
+        snackBarMessage.text = "An error occured"
+        MDCSnackbarManager.show(snackBarMessage)
+    }
+    
+    public func watchTx(txHash: String) {
+        
+        self.displayWaitingForTx()
         
         _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
             switch result {

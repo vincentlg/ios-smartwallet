@@ -12,10 +12,12 @@ class WalletButton: UIButton {
     
     required init() {
         super.init(frame: .zero)
+        self.initialize()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.initialize()
     }
     
     func initialize() {
@@ -29,7 +31,7 @@ class WalletButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.initialize()
+        self.titleLabel?.textColor = UIColor.white
     }
     
     func select() {

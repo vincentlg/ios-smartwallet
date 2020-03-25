@@ -161,27 +161,32 @@ class ExchangeViewController: UIViewController {
                     let weiAmount = amount?.magnitude.serialize()
                     
                     self.rockside.identity!.relayTransaction(to: response.to!,
-                                                   value: weiAmount!.hexValueNoLeadingZero,
-                                                   data: response.data!, gas: response.gas!) { (result) in
-                                                    switch result {
-                                                    case .success(let txhash):
-                                                        print("ICI "+txhash)
-                                                        DispatchQueue.main.async {
-                                                            if let walletViewController = (self.presentingViewController as? UINavigationController)?.topViewController as? WalletViewController{
-                                                                walletViewController.watchTx(txHash: txhash)
-                                                            }
-                                                            self.dismiss(animated: true, completion: nil)
-                                                        }
-                                                        break
-                                                    case .failure(let error):
-                                                        print(error)
-                                                        DispatchQueue.main.async {
-                                                            
-                                                            
-                                                            self.dismiss(animated: true, completion: nil)
-                                                        }
-                                                        break
-                                                    }
+                                                             value: weiAmount!.hexValueNoLeadingZero,
+                                                             data: response.data!, gas: response.gas!) { (result) in
+                                                                switch result {
+                                                                case .success(let txHash):
+                                                                    DispatchQueue.main.async {
+                                                                        
+                                                                        let presentingController = self.presentingViewController
+                                                                        self.dismiss(animated: true, completion: {
+                                                                            if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
+                                                                                walletViewController.watchTx(txHash: txHash)
+                                                                            }
+                                                                        })
+                                                                    }
+                                                                    break
+                                                                    
+                                                                case .failure(_):
+                                                                    DispatchQueue.main.async {
+                                                                        let presentingController = self.presentingViewController
+                                                                        self.dismiss(animated: true, completion: {
+                                                                            if let walletViewController = (presentingController as? UINavigationController)?.topViewController as? WalletViewController{
+                                                                                walletViewController.displayErrorOccured()
+                                                                            }
+                                                                        })
+                                                                    }
+                                                                    break
+                                                                }
                     }
                 }
                 
@@ -194,8 +199,6 @@ class ExchangeViewController: UIViewController {
     private func getRate() {
         
         if amountTextField.text != ""{
-            // let fullFormatter = EtherNumberFormatter()
-            // let balanceString = fullFormatter.string(from: balance)
             let formatter = EtherNumberFormatter()
             let amountWeiBigInt = formatter.number(from: amountTextField.text!)!
             
