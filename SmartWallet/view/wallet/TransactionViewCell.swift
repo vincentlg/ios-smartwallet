@@ -13,13 +13,15 @@ class TransactionViewCell: UITableViewCell {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var circleImageView: UIImageView!
     
     public func display(transaction: Transaction){
         self.typeLabel?.text = transaction.type
         
         
         if (transaction.value != "0") {
-            self.amountLabel?.text = transaction.ethValue
+            self.circleImageView.isHidden = false
+            self.amountLabel?.text = transaction.formattedAmount
             
             if transaction.isERC {
                 self.symbolLabel?.text = transaction.tokenSymbol
@@ -27,6 +29,7 @@ class TransactionViewCell: UITableViewCell {
                 self.symbolLabel?.text = "ETH"
             }
         } else {
+            self.circleImageView.isHidden = true
             self.amountLabel?.text = ""
             self.symbolLabel?.text = ""
         }

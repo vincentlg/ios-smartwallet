@@ -651,6 +651,7 @@ Please note that the order of the words is important.</string>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="amountLabel" destination="S2m-7n-GXp" id="0Dr-kW-2v0"/>
+                                    <outlet property="circleImageView" destination="993-63-AON" id="noZ-Yh-585"/>
                                     <outlet property="symbolLabel" destination="bXn-jD-tPn" id="bCu-W8-bmL"/>
                                     <outlet property="typeLabel" destination="DWX-h0-9Is" id="twd-42-b15"/>
                                 </connections>

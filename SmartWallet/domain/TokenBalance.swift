@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BigInt
 
 struct TokenBalance {
     
@@ -15,4 +16,9 @@ struct TokenBalance {
     var address: String?     
     var balance: String = "0"
     
+    
+    var formattedAmout: String {
+        let value = (self.balance as NSString).floatValue
+        return String(format: "%.3f", value)+" "+self.symbol
+    }
 }

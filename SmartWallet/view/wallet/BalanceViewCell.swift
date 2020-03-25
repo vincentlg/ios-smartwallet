@@ -16,7 +16,7 @@ class BalanceViewCell: UITableViewCell {
     
     public func display(balance:TokenBalance){
         self.nameLabel?.text = balance.name
-        self.balanceLabel?.text = balance.balance
+        self.balanceLabel?.text = balance.formattedAmout
         self.symbolLabel?.text = balance.symbol
     }
 }

@@ -54,9 +54,18 @@ extension Transaction {
         return "Unknown"
     }
     
-    var ethValue: String {
+    var formattedAmount: String {
         let fullFormatter = EtherNumberFormatter()
-        return fullFormatter.string(from: BigInt(value)! )
+        let ethValue = fullFormatter.string(from: BigInt(value)!)
+        
+        let floatValue = (ethValue as NSString).floatValue
+        let stringValue = String(format: "%.3f", floatValue)
+        if let symbole = self.tokenSymbol {
+            return stringValue+" "+symbole
+        }
+        
+        return stringValue+" ETH"
+        
     }
     
     var isERC: Bool {

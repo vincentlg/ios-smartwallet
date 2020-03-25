@@ -43,7 +43,7 @@ class WalletViewController: UIViewController {
     }
     
     private func updateBalance() {
-        self.amountLabel.text = self.walletTabViewController.tokenBalances["ETH"]!.balance+" ETH"
+        self.amountLabel.text = self.walletTabViewController.tokenBalances["ETH"]!.formattedAmout
     }
     
     public func watchTx(txHash: String) {

@@ -14,7 +14,6 @@ class CardView: UIView {
         super.init(coder: aDecoder)
         self.layer.cornerRadius = 15;
         self.layer.masksToBounds = true;
-
     }
     
 }
