@@ -30,8 +30,6 @@ class TransactionViewContrller: UITableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionViewCell", for: indexPath) as! TransactionViewCell
         cell.display(transaction:  transactions[indexPath.row])
-        
-
         return cell
     }
     

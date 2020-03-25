@@ -8,31 +8,42 @@
 
 import UIKit
 import RocksideWalletSdk
+import MaterialComponents.MaterialTextFields
 
 class SendViewController: UIViewController {
     
+    @IBOutlet weak var amountTextField: MDCTextField!
+    var amountTextFieldController: MDCTextInputControllerUnderline?
+    
+    @IBOutlet weak var destinationTextField: MDCTextField!
+    var destinationTextFieldController: MDCTextInputControllerUnderline?
+      
     var tokens: [TokenBalance]?
     var fromToken: TokenBalance?
     
     var watchTxHandler: WatchTxHandler?
     var displayErrorHandler: DisplayErrorHandler?
     
-    @IBOutlet weak var destinationTextField: UITextField!
     
-    @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var tokenLabel: UILabel!
     
     @IBAction func selectTokenAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "select-token-balance-segue", sender: self)
     }
     
     @IBAction func scanAddressAction(_ sender: Any) {
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.refreshView()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.amountTextFieldController = MDCTextInputControllerUnderline(textInput: amountTextField)
+        self.destinationTextFieldController = MDCTextInputControllerUnderline(textInput: destinationTextField)
+         self.refreshView()
+        
     }
+
     
     func refreshView() {
         self.tokenLabel.text = self.fromToken?.symbol
@@ -103,7 +114,7 @@ class SendViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "select-token-balance-segue" {
-            if let destinationVC = segue.destination as? TokenBalanceTableViewController {
+            if let destinationVC = segue.destination as? TokensSelectionViewController {
                 destinationVC.tokens = self.tokens
                 destinationVC.selectionHandler = self.selectToken
             }

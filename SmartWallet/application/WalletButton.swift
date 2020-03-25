@@ -21,7 +21,7 @@ class WalletButton: UIButton {
     }
     
     func initialize() {
-        self.backgroundColor = UIColor(hexString: "0080eb")
+        self.backgroundColor = UIColor(hexString: "1281E3")
         self.layer.cornerRadius = 5;
         self.titleLabel?.textAlignment = .center
         self.titleLabel?.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -35,7 +35,7 @@ class WalletButton: UIButton {
     }
     
     func select() {
-         self.backgroundColor = UIColor(hexString: "0080eb")
+         self.backgroundColor = UIColor(hexString: "1281E3")
     }
     
     func deselect() {

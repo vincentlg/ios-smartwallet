@@ -25,6 +25,7 @@ PODS:
   - MaterialComponents/OverlayWindow (107.2.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Application
+  - MaterialComponents/Palettes (107.2.0)
   - MaterialComponents/private/Application (107.2.0)
   - MaterialComponents/private/Color (107.2.0):
     - MaterialComponents/Availability
@@ -56,6 +57,14 @@ PODS:
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
+  - MaterialComponents/TextFields (107.2.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Buttons
+    - MaterialComponents/Elevation
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/Typography
+    - MDFInternationalization
   - MaterialComponents/Typography (107.2.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
@@ -73,6 +82,7 @@ PODS:
 
 DEPENDENCIES:
   - MaterialComponents/Snackbar
+  - MaterialComponents/TextFields
   - RocksideWalletSdk (from `/Users/fredericdematos/Documents/projets/bcs/rockside-wallet-sdk-ios`)
   - Starscream (~> 4.0.0)
   - Tabman (~> 2.6)
@@ -105,6 +115,6 @@ SPEC CHECKSUMS:
   Tabman: f62ad94ee54a7d96e3fbab34f677d9ea4d38ece6
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
 
-PODFILE CHECKSUM: fd1b3605f7d3e19b4d0a502f91a4ab40066e5b8f
+PODFILE CHECKSUM: 683ba1095a9ca9ea3c5390bdd122c0c95c2e7c59
 
 COCOAPODS: 1.8.4

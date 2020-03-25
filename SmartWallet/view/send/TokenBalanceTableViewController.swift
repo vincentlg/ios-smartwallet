@@ -11,17 +11,25 @@ import RocksideWalletSdk
 
 typealias TokenBalanceSelectionHandler = (_: TokenBalance) -> Void
 
-class TokenBalanceTableViewController: UITableViewController {
+class TokensSelectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tokens: [TokenBalance]?
     
+    @IBOutlet weak var tokenBalanceTableView: UITableView!
+    
     var selectionHandler: TokenBalanceSelectionHandler?
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tokenBalanceTableView.dataSource = self
+        self.tokenBalanceTableView.delegate = self
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard self.tokens != nil else {
             return 0
         }
@@ -29,14 +37,14 @@ class TokenBalanceTableViewController: UITableViewController {
         return self.tokens!.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TokenBalanceViewCell", for: indexPath)
-        cell.textLabel?.text = self.tokens![indexPath.row].symbol
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BalanceViewCell", for: indexPath) as! BalanceViewCell
+        cell.display(balance: self.tokens![indexPath.row])
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectionHandler!(self.tokens![indexPath.row])
         self.dismiss(animated: true, completion: nil)
     }
