@@ -102,7 +102,7 @@ class SendViewController: UIViewController {
     }
     
     func sendEth(amount: String) {
-        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount, data: "" ) { (result) in
+        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount) { (result) in
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {

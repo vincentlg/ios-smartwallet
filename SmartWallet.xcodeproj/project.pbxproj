@@ -116,6 +116,7 @@
 		DC40D7AD2412AC1B00C792EB /* application */ = {
 			isa = PBXGroup;
 			children = (
+				DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */,
 				DC40D7AE2412AC2F00C792EB /* UIViewController+Rockside.swift */,
 				DCBA5CFF2429264100EE8CA9 /* GradientView.swift */,
 				DCBA5D032429F66100EE8CA9 /* CardView.swift */,
@@ -178,7 +179,6 @@
 				DC40D7AD2412AC1B00C792EB /* application */,
 				DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */,
 				DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */,
-				DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */,
 				DC7AC3A823EC647000CC1C0D /* Main.storyboard */,
 				DC7AC3AB23EC647200CC1C0D /* Assets.xcassets */,
 				DC7AC3AD23EC647200CC1C0D /* LaunchScreen.storyboard */,
@@ -531,7 +531,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -552,7 +552,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -22,6 +22,7 @@ struct Transaction: Codable {
     var contractAddress: String
     var tokenSymbol: String?
     var tokenName: String?
+    var timeStamp: String?
  
     var block: Int {
         return Int(blockNumber)!
@@ -74,6 +75,20 @@ extension Transaction {
         }
         return false
     }
+    
+    var formattedDate: String? {
+        
+        if let tmpStp = self.timeStamp, let value = Double(tmpStp) {
+            let date = Date(timeIntervalSince1970:value)
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "MMMM d, HH:mm"
+            
+            return dateFormatterPrint.string(from: date)
+        }
+        return nil
+    }
+    
+    
     
 }
 

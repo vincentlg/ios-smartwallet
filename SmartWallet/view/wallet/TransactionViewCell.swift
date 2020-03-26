@@ -14,10 +14,11 @@ class TransactionViewCell: UITableViewCell {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var circleImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     public func display(transaction: Transaction){
         self.typeLabel?.text = transaction.type
-        
+        self.dateLabel?.text = transaction.formattedDate
         
         if (transaction.value != "0") {
             self.circleImageView.isHidden = false
