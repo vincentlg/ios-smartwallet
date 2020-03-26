@@ -87,9 +87,6 @@ extension Transaction {
         }
         return nil
     }
-    
-    
-    
 }
 
 extension Transaction {

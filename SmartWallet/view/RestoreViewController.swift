@@ -43,9 +43,29 @@ class RestoreViewController: UIViewController {
         }
         
         if let mnemonic = self.twelvesWordsView.text?.trimmingCharacters(in: .whitespacesAndNewlines), mnemonic != "" {
-            try? self.rockside.restoreIdentity(mnemonic: self.twelvesWordsView.text!, address: walletAddressTextField.text!)
+            self.rockside.restoreIdentity(mnemonic: self.twelvesWordsView.text!, address: walletAddressTextField.text!)
+           
+            self.rockside.identity!.isEOAWhiteListed(eoa: self.rockside.identity!.eoa.ethereumAddress){ (result) in
+                switch result {
+                case .success(let result):
+                    DispatchQueue.main.async {
                        
-            self.performSegue(withIdentifier: "show-wallet-segue", sender: self)
+                        if (result) {
+                            try? self.rockside.storeIdentity()
+                            self.performSegue(withIdentifier: "show-wallet-segue", sender: self)
+                        } else {
+                            self.twelvesWordsViewController?.setErrorText("Mnemonic is not valid", errorAccessibilityValue: "Mnemonic is not valid")
+                        }
+                    }
+                    break
+                    
+                case .failure(_):
+                     self.twelvesWordsViewController?.setErrorText("An error occured please try again", errorAccessibilityValue: "An error occured please try again")
+                    break
+                }
+            }
+            
+            
         } else {
             self.twelvesWordsViewController?.setErrorText("Should not be empty", errorAccessibilityValue: "Should not be empty")
         }
