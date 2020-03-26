@@ -40,27 +40,44 @@ class SendViewController: UIViewController {
 
         self.amountTextFieldController = MDCTextInputControllerUnderline(textInput: amountTextField)
         self.destinationTextFieldController = MDCTextInputControllerUnderline(textInput: destinationTextField)
-         self.refreshView()
+        self.amountTextField.becomeFirstResponder()
+        
+        self.refreshView()
         
     }
 
-    
     func refreshView() {
         self.tokenLabel.text = self.fromToken?.symbol
     }
     
     @IBAction func sendAction(_ sender: Any) {
         let formatter = EtherNumberFormatter()
-        let amount =  formatter.number(from: self.amountTextField.text!)
         
+        self.amountTextFieldController?.setErrorText(nil, errorAccessibilityValue:nil)
+        self.destinationTextFieldController?.setErrorText(nil, errorAccessibilityValue:nil)
         
-        if (self.fromToken?.symbol == "ETH") {
-            self.sendEth(amount: amount!.description)
-        } else {
-            self.sendERC20(amount: amount!.description)
+        guard let amountText = self.amountTextField.text, let amount = formatter.number(from: amountText) else {
+            self.amountTextFieldController?.setErrorText("Amount invaid", errorAccessibilityValue: "Amount invaid")
+            return
         }
         
+        if amount.description.description == "0" {
+            self.amountTextFieldController?.setErrorText("Amount invaid", errorAccessibilityValue: "Amount invaid")
+            return
+        }
+        
+        if  !EthereumAddress.isValid(string: destinationTextField.text!) {
+            self.destinationTextFieldController?.setErrorText("Invalid address", errorAccessibilityValue: "Invalid addresss")
+            return
+        }
+            
+        if (self.fromToken?.symbol == "ETH") {
+            self.sendEth(amount: amount.description)
+        } else {
+            self.sendERC20(amount: amount.description)
+        }
     }
+    
     
     func sendERC20(amount: String) {
         self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount) { (result) in
