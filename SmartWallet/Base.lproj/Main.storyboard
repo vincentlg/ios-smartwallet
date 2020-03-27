@@ -1125,7 +1125,7 @@ Please note that the order of the words is important.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Token" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2X-CL-ffF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select token" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2X-CL-ffF">
                                 <rect key="frame" x="20" y="30" width="374" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1134,8 +1134,14 @@ Please note that the order of the words is important.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVI-Iy-Rb3" customClass="CardView" customModule="SmartWallet" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="374" height="697"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUp-a3-cNu">
+                                        <rect key="frame" x="30" y="30" width="63" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="96" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mtm-qU-qpP">
-                                        <rect key="frame" x="0.0" y="30" width="374" height="647"/>
+                                        <rect key="frame" x="0.0" y="68" width="374" height="609"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TokenViewCell" id="FGc-dQ-olo" customClass="TokenTableViewCell" customModule="SmartWallet" customModuleProvider="target">
@@ -1154,10 +1160,10 @@ Please note that the order of the words is important.</string>
                                                                         <constraint firstAttribute="width" constant="30" id="P8l-Ev-Ohr"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="orange_circle" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-2a-eS2">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="green_circle" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-2a-eS2">
                                                                     <rect key="frame" x="8" y="14" width="53" height="53"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="Tx1-2a-eS2" secondAttribute="height" multiplier="1:1" id="yhZ-sn-Bmv"/>
@@ -1201,9 +1207,11 @@ Please note that the order of the words is important.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Mtm-qU-qpP" secondAttribute="trailing" id="7Pd-Tv-eUX"/>
-                                    <constraint firstItem="Mtm-qU-qpP" firstAttribute="top" secondItem="FVI-Iy-Rb3" secondAttribute="top" constant="30" id="MLE-Ae-oJE"/>
+                                    <constraint firstItem="Mtm-qU-qpP" firstAttribute="top" secondItem="MUp-a3-cNu" secondAttribute="bottom" constant="20" id="Enh-8K-2K0"/>
+                                    <constraint firstItem="MUp-a3-cNu" firstAttribute="leading" secondItem="FVI-Iy-Rb3" secondAttribute="leading" constant="30" id="HGo-Kk-c6X"/>
                                     <constraint firstAttribute="bottom" secondItem="Mtm-qU-qpP" secondAttribute="bottom" constant="20" id="Vfl-LQ-Szf"/>
                                     <constraint firstItem="Mtm-qU-qpP" firstAttribute="leading" secondItem="FVI-Iy-Rb3" secondAttribute="leading" id="bI4-tr-hui"/>
+                                    <constraint firstItem="MUp-a3-cNu" firstAttribute="top" secondItem="FVI-Iy-Rb3" secondAttribute="top" constant="30" id="fBL-2E-EKU"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1231,7 +1239,7 @@ Please note that the order of the words is important.</string>
     <resources>
         <image name="down-arrow" width="14" height="8"/>
         <image name="exchange" width="55" height="55"/>
-        <image name="orange_circle" width="43" height="43"/>
+        <image name="green_circle" width="43" height="43"/>
         <image name="paraswap" width="400" height="78.333335876464844"/>
         <image name="purple_circle" width="43" height="43"/>
         <image name="qrcode" catalog="system" width="64" height="56"/>
