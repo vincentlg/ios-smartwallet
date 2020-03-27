@@ -107,6 +107,9 @@ class WalletViewController: UIViewController {
         
             if segue.identifier == "exchange-segue" {
                 if let destinationVC = segue.destination as? ExchangeViewController {
+                    
+                    destinationVC.tokensBalance = self.walletTabViewController.tokenBalanceArray()
+                    
                     destinationVC.watchTxHandler = self.watchTx
                     destinationVC.displayErrorHandler = self.displayErrorOccured
                 }

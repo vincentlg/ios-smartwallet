@@ -32,4 +32,5 @@ struct TokenBalance {
         let etherFormatter = EtherNumberFormatter()
         return etherFormatter.string(from: balanceValue)
     }
+    
 }

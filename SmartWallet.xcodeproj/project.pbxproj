@@ -24,6 +24,7 @@
 		DC4ADCAA24193FC4008C23C7 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA924193FC4008C23C7 /* ExchangeViewController.swift */; };
 		DC4ADCAC241940F5008C23C7 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCAB241940F5008C23C7 /* Token.swift */; };
 		DC4ECCEC241795CC0062425E /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ECCEB241795CC0062425E /* SendViewController.swift */; };
+		DC607136242E5F8600CED3BF /* TokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC607135242E5F8600CED3BF /* TokenTableViewCell.swift */; };
 		DC7AC3A323EC647000CC1C0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */; };
 		DC7AC3A523EC647000CC1C0D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */; };
 		DC7AC3A723EC647000CC1C0D /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A623EC647000CC1C0D /* WalletViewController.swift */; };
@@ -62,6 +63,7 @@
 		DC4ADCA924193FC4008C23C7 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		DC4ADCAB241940F5008C23C7 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		DC4ECCEB241795CC0062425E /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
+		DC607135242E5F8600CED3BF /* TokenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenTableViewCell.swift; sourceTree = "<group>"; };
 		DC7AC39F23EC647000CC1C0D /* SmartWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				DC4ADCA924193FC4008C23C7 /* ExchangeViewController.swift */,
 				DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */,
+				DC607135242E5F8600CED3BF /* TokenTableViewCell.swift */,
 			);
 			path = exchange;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCBA5D08242A20A900EE8CA9 /* WalletButton.swift in Sources */,
+				DC607136242E5F8600CED3BF /* TokenTableViewCell.swift in Sources */,
 				DCBA5D042429F66100EE8CA9 /* CardView.swift in Sources */,
 				DC4ADCA424191AAA008C23C7 /* Transaction.swift in Sources */,
 				DCBA5D002429264100EE8CA9 /* GradientView.swift in Sources */,

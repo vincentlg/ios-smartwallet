@@ -11,6 +11,7 @@ import Foundation
 struct Token: Codable {
     
     var symbol: String
+    var description:String?
     var address: String
     
 }

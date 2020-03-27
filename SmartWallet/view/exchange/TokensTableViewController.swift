@@ -11,17 +11,27 @@ import UIKit
 
 typealias TokenSelectionHandler = (_: Token) -> Void
 
-class TokensTableViewController: UITableViewController {
+class TokensTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var tokens: [Token]?
     
     var selectionHandler: TokenSelectionHandler?
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        self.tableView?.delegate = self
+        self.tableView?.dataSource = self
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard self.tokens != nil else {
             return 0
         }
@@ -29,14 +39,14 @@ class TokensTableViewController: UITableViewController {
         return self.tokens!.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TokenViewCell", for: indexPath)
-        cell.textLabel?.text = self.tokens![indexPath.row].symbol
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TokenViewCell", for: indexPath) as! TokenTableViewCell
+        cell.display(token:self.tokens![indexPath.row])
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectionHandler!(self.tokens![indexPath.row])
     }
     

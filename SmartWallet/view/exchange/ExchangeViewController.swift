@@ -9,6 +9,7 @@
 import UIKit
 import RocksideWalletSdk
 import BigInt
+import MaterialComponents.MaterialTextFields
 
 struct GetTokenResponse:Codable {
     var tokens: [Token]
@@ -27,9 +28,19 @@ struct BuildTxResponse:Codable {
 
 class ExchangeViewController: UIViewController {
     
-    var tokens: [Token]?
+    @IBOutlet weak var maxAmountLabel: UILabel!
+    @IBOutlet weak var destLabel: UILabel!
+    @IBOutlet weak var sourceLabel: UILabel!
+       
+    @IBOutlet weak var amountTextField: MDCTextField!
+    var amountTextFieldController: MDCTextInputControllerUnderline?
     
-    var sourceToken: Token?
+    @IBOutlet weak var destAmountLabel: UILabel!
+    
+    var tokens: [Token]?
+    var tokensBalance: [TokenBalance]?
+    
+    var sourceToken: TokenBalance?
     var destToken: Token?
     
     var amountWei: String?
@@ -39,16 +50,13 @@ class ExchangeViewController: UIViewController {
     var watchTxHandler: WatchTxHandler?
     var displayErrorHandler: DisplayErrorHandler?
     
-    @IBOutlet weak var destLabel: UILabel!
-    @IBOutlet weak var sourceLabel: UILabel!
-    
-    @IBOutlet weak var amountTextField: UITextField!
-    @IBOutlet weak var destAmountLabel: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.getTokens()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.amountTextFieldController = MDCTextInputControllerUnderline(textInput: amountTextField)
+        self.amountTextField.becomeFirstResponder()
+               self.getTokens()
+               self.sourceToken = self.tokensBalance![0]
     }
     
     @IBAction func amountValueChanged(_ sender: Any) {
@@ -67,9 +75,15 @@ class ExchangeViewController: UIViewController {
     
     private func refreshView(){
         self.sourceLabel.text = self.sourceToken?.symbol
+        self.maxAmountLabel.text = "Max: "+self.sourceToken!.formattedAmout
         self.destLabel.text = self.destToken?.symbol
         
         self.getRate()
+    }
+    
+    public func selectSourceToken(token: TokenBalance) {
+        self.sourceToken = token
+        self.refreshView()
     }
     
     private func getTokens() {
@@ -109,7 +123,7 @@ class ExchangeViewController: UIViewController {
                 return $0.symbol.lowercased() < $1.symbol.lowercased()
             }
             
-            self.sourceToken = self.tokens![0]
+            
             self.destToken = self.tokens![1]
             
             DispatchQueue.main.async {
@@ -120,18 +134,27 @@ class ExchangeViewController: UIViewController {
         task.resume()
     }
     
+    func getSourceTokenAddress() -> String {
+        let sourceAddress: String
+        if let address = self.sourceToken?.address {
+            sourceAddress = address
+        } else {
+            sourceAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+        
+        return sourceAddress
+    }
+        
     private func getParaSwapTx(){
         
         let requestBody: [String: Any] = ["priceRoute": self.priceRoute!,
-                                          "srcToken": self.sourceToken!.address,
+                                          "srcToken": getSourceTokenAddress(),
                                           "destToken": self.destToken!.address,
                                           "srcAmount": self.amountWei!,
                                           "destAmount": self.destAmountWei!,
                                           "userAddress": self.rockside.identity!.ethereumAddress
         ]
         if let postData = (try? JSONSerialization.data(withJSONObject: requestBody, options: [])) {
-            
-            print(String(data: postData, encoding: .utf8)!)
             
             var request = URLRequest(url: URL(string: "https://paraswap.io/api/v1/transactions/1")!,timeoutInterval: Double.infinity)
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -193,16 +216,14 @@ class ExchangeViewController: UIViewController {
     }
     
     private func getRate() {
-        
-        if amountTextField.text != ""{
-            let formatter = EtherNumberFormatter()
-            let amountWeiBigInt = formatter.number(from: amountTextField.text!)!
+        let formatter = EtherNumberFormatter()
+        if let amountText = amountTextField.text, let amountWeiBigInt = formatter.number(from:amountText) {
             
             self.amountWei = amountWeiBigInt.description
             
             if (amountWei != "0") {
                 
-                var request = URLRequest(url: URL(string: "https://paraswap.io/api/v1/prices/1/\(sourceToken!.address)/\(destToken!.address)/"+self.amountWei!)!,timeoutInterval: Double.infinity)
+                var request = URLRequest(url: URL(string: "https://paraswap.io/api/v1/prices/1/\(getSourceTokenAddress())/\(destToken!.address)/"+self.amountWei!)!,timeoutInterval: Double.infinity)
                 request.httpMethod = "GET"
                 
                 let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -228,19 +249,15 @@ class ExchangeViewController: UIViewController {
                 }
                 
                 task.resume()
+                
+                
+                
             } else {
                 self.destAmountLabel.text = "0"
             }
         } else {
             self.destAmountLabel.text = "0"
         }
-    }
-    
-    
-    func selectSourceToken(token: Token) -> Void {
-        self.sourceToken = token
-        self.refreshView()
-        self.dismiss(animated: true)
     }
     
     func selectDestToken(token: Token) -> Void {
@@ -250,15 +267,16 @@ class ExchangeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "select-source-token-segue" {
-            if let destinationVC = segue.destination as? TokensTableViewController {
-                destinationVC.tokens = self.tokens
+        if segue.identifier == "select-token-balance-segue" {
+            if let destinationVC = segue.destination as? TokensSelectionViewController {
+                destinationVC.tokens = self.tokensBalance
                 destinationVC.selectionHandler = self.selectSourceToken
             }
         }
         
         if segue.identifier == "select-dest-token-segue" {
             if let destinationVC = segue.destination as? TokensTableViewController {
+                print("LALLA")
                 destinationVC.tokens = self.tokens
                 destinationVC.selectionHandler = self.selectDestToken
             }
