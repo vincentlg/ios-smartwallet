@@ -12,6 +12,8 @@ import MaterialComponents.MaterialTextFields
 
 class SendViewController: UIViewController {
     
+    @IBOutlet weak var maxAmountLabel: UILabel!
+    
     @IBOutlet weak var amountTextField: MDCTextField!
     var amountTextFieldController: MDCTextInputControllerUnderline?
     
@@ -34,7 +36,6 @@ class SendViewController: UIViewController {
     @IBAction func scanAddressAction(_ sender: Any) {
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -48,6 +49,7 @@ class SendViewController: UIViewController {
 
     func refreshView() {
         self.tokenLabel.text = self.fromToken?.symbol
+        self.maxAmountLabel.text = "Max: "+self.fromToken!.formattedAmout
     }
     
     @IBAction func sendAction(_ sender: Any) {
@@ -66,6 +68,11 @@ class SendViewController: UIViewController {
             return
         }
         
+        if amount > fromToken!.balance! {
+            self.amountTextFieldController?.setErrorText("Insuffisant balance", errorAccessibilityValue: "Insuffisant balance")
+            return
+        }
+        
         if  !EthereumAddress.isValid(string: destinationTextField.text!) {
             self.destinationTextFieldController?.setErrorText("Invalid address", errorAccessibilityValue: "Invalid addresss")
             return
@@ -77,7 +84,6 @@ class SendViewController: UIViewController {
             self.sendERC20(amount: amount.description)
         }
     }
-    
     
     func sendERC20(amount: String) {
         self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount) { (result) in

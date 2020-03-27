@@ -30,7 +30,7 @@ class WalletTabViewController: TabmanViewController {
     
     private var viewControllers: [UIViewController]?
     private var etherscanApiKey = "HCYC8QMVAN8M5RSMKWT7FFGG2KTU1N3IVG"
-    private let etherFormatter = EtherNumberFormatter()
+
     private var balanceViewController: BalanceViewContrller?
     private var transactionViewController: TransactionViewContrller?
     
@@ -123,8 +123,7 @@ class WalletTabViewController: TabmanViewController {
             switch result {
             case .success(let balance):
                 DispatchQueue.main.async {
-                    let balanceString = self.etherFormatter.string(from: balance)
-                    self.tokenBalances["ETH"]?.balance = balanceString
+                    self.tokenBalances["ETH"]?.balance = balance
                     self.balanceViewController?.display(balances: self.tokenBalanceArray())
                     
                     self.balanceUpdatedHandler?()
@@ -144,8 +143,7 @@ class WalletTabViewController: TabmanViewController {
             switch result {
             case .success(let balance):
                 DispatchQueue.main.async {
-                    let balanceString = self.etherFormatter.string(from: balance)
-                    self.tokenBalances[tokenBalance.symbol]?.balance = balanceString
+                    self.tokenBalances[tokenBalance.symbol]?.balance = balance
                     self.balanceViewController?.display(balances:self.tokenBalanceArray())
                 }
                 break

@@ -8,17 +8,28 @@
 
 import Foundation
 import BigInt
+import RocksideWalletSdk
 
 struct TokenBalance {
     
     var name: String
     var symbol: String
     var address: String?     
-    var balance: String = "0"
+    var balance: BigInt?
     
     
     var formattedAmout: String {
-        let value = (self.balance as NSString).floatValue
+        let value = (self.balaceString as NSString).floatValue
         return String(format: "%.3f", value)+" "+self.symbol
+    }
+    
+    var  balaceString: String {
+        
+        guard let balanceValue = self.balance else {
+            return "0"
+        }
+        
+        let etherFormatter = EtherNumberFormatter()
+        return etherFormatter.string(from: balanceValue)
     }
 }
