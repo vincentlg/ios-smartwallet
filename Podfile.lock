@@ -1,5 +1,6 @@
 PODS:
   - BigInt (5.0.0)
+  - JGProgressHUD (2.1)
   - KeychainAccess (4.1.0)
   - MaterialComponents/AnimationTiming (107.2.0)
   - MaterialComponents/Availability (107.2.0)
@@ -81,6 +82,7 @@ PODS:
   - TrezorCrypto (0.0.9)
 
 DEPENDENCIES:
+  - JGProgressHUD
   - MaterialComponents/Snackbar
   - MaterialComponents/TextFields
   - RocksideWalletSdk (from `/Users/fredericdematos/Documents/projets/bcs/rockside-wallet-sdk-ios`)
@@ -90,6 +92,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - BigInt
+    - JGProgressHUD
     - KeychainAccess
     - MaterialComponents
     - MDFInternationalization
@@ -105,6 +108,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BigInt: 74b4d88367b0e819d9f77393549226d36faeb0d8
+  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
   MaterialComponents: 4dd1927cd2257e564983018906e152d18cda0c03
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
@@ -115,6 +119,6 @@ SPEC CHECKSUMS:
   Tabman: f62ad94ee54a7d96e3fbab34f677d9ea4d38ece6
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
 
-PODFILE CHECKSUM: 683ba1095a9ca9ea3c5390bdd122c0c95c2e7c59
+PODFILE CHECKSUM: bdffdc89e7d0c522468cadd891c8420c750f319e
 
 COCOAPODS: 1.8.4
