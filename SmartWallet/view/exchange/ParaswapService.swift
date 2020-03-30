@@ -76,30 +76,7 @@ class ParaswapService {
         Http.execute(with: request, receive: GetTokenResponse.self)  { (result) in
             switch result {
             case .success(let response):
-                
-                var tokens = response.tokens
-                tokens.sort {
-                    
-                    if $0.symbol == "ETH" {
-                        return true
-                    }
-                    
-                    if $1.symbol == "ETH" {
-                        return false
-                    }
-                    
-                    if $0.symbol == "DAI" {
-                        return true
-                    }
-                    
-                    if $1.symbol == "DAI" {
-                        return false
-                    }
-                    
-                    return $0.symbol.lowercased() < $1.symbol.lowercased()
-                }
-                
-                completion(.success(tokens))
+                completion(.success(response.tokens))
                 return
                 
             case .failure(let error):

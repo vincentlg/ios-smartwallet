@@ -89,6 +89,26 @@ class ExchangeViewController: UIViewController {
             switch result {
             case .success(let response):
                 self.tokens = response
+                self.tokens!.sort {
+                    
+                    if $0.symbol == "ETH" {
+                        return true
+                    }
+                    
+                    if $1.symbol == "ETH" {
+                        return false
+                    }
+                    
+                    if $0.symbol == "DAI" {
+                        return true
+                    }
+                    
+                    if $1.symbol == "DAI" {
+                        return false
+                    }
+                    
+                    return $0.symbol.lowercased() < $1.symbol.lowercased()
+                }
                 
                 DispatchQueue.main.async {
                     self.destToken = self.tokens![1]
