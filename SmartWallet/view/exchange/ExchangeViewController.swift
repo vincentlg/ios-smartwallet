@@ -11,27 +11,12 @@ import RocksideWalletSdk
 import BigInt
 import MaterialComponents.MaterialTextFields
 
-struct GetTokenResponse:Codable {
-    var tokens: [Token]
-}
-
-struct BuildTxResponse:Codable {
-    var error: String?
-    var from: String?
-    var to: String?
-    var value: String?
-    var data: String?
-    var gasPrice: String?
-    var gas: String?
-}
-
-
 class ExchangeViewController: UIViewController {
     
     @IBOutlet weak var maxAmountLabel: UILabel!
     @IBOutlet weak var destLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
-       
+    
     @IBOutlet weak var amountTextField: MDCTextField!
     var amountTextFieldController: MDCTextInputControllerUnderline?
     
@@ -43,20 +28,22 @@ class ExchangeViewController: UIViewController {
     var sourceToken: TokenBalance?
     var destToken: Token?
     
-    var amountWei: String?
-    var destAmountWei: String?
-    var priceRoute: NSDictionary?
+    var amountWei: BigInt?
+    var destAmountWei: BigInt?
+    var priceRoute: PriceRoute?
+    
+    var paraswapService = ParaswapService()
     
     var watchTxHandler: WatchTxHandler?
     var displayErrorHandler: DisplayErrorHandler?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         self.amountTextFieldController = MDCTextInputControllerUnderline(textInput: amountTextField)
         self.amountTextField.becomeFirstResponder()
-               self.getTokens()
-               self.sourceToken = self.tokensBalance![0]
+        self.getTokens()
+        self.sourceToken = self.tokensBalance![0]
     }
     
     @IBAction func amountValueChanged(_ sender: Any) {
@@ -73,6 +60,11 @@ class ExchangeViewController: UIViewController {
         self.getParaSwapTx()
     }
     
+    public func selectSourceToken(token: TokenBalance) {
+        self.sourceToken = token
+        self.refreshView()
+    }
+    
     private func refreshView(){
         self.sourceLabel.text = self.sourceToken?.symbol
         self.maxAmountLabel.text = "Max: "+self.sourceToken!.formattedAmout
@@ -81,60 +73,7 @@ class ExchangeViewController: UIViewController {
         self.getRate()
     }
     
-    public func selectSourceToken(token: TokenBalance) {
-        self.sourceToken = token
-        self.refreshView()
-    }
-    
-    private func getTokens() {
-        var request = URLRequest(url: URL(string: "https://paraswap.io/api/v1/tokens/1")!,timeoutInterval: Double.infinity)
-        request.httpMethod = "GET"
-        
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                print(String(describing: error))
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            let response = try! decoder.decode(GetTokenResponse.self, from: data)
-            
-            self.tokens = response.tokens
-            
-            self.tokens!.sort {
-                
-                if $0.symbol == "ETH" {
-                    return true
-                }
-                
-                if $1.symbol == "ETH" {
-                    return false
-                }
-                
-                if $0.symbol == "DAI" {
-                    return true
-                }
-                
-                if $1.symbol == "DAI" {
-                    return false
-                }
-                
-                return $0.symbol.lowercased() < $1.symbol.lowercased()
-            }
-            
-            
-            self.destToken = self.tokens![1]
-            
-            DispatchQueue.main.async {
-                self.refreshView()
-            }
-        }
-        
-        task.resume()
-    }
-    
-    func getSourceTokenAddress() -> String {
+    private func getSourceTokenAddress() -> String {
         let sourceAddress: String
         if let address = self.sourceToken?.address {
             sourceAddress = address
@@ -144,48 +83,65 @@ class ExchangeViewController: UIViewController {
         
         return sourceAddress
     }
-        
-    private func getParaSwapTx(){
-        
-        let requestBody: [String: Any] = ["priceRoute": self.priceRoute!,
-                                          "srcToken": getSourceTokenAddress(),
-                                          "destToken": self.destToken!.address,
-                                          "srcAmount": self.amountWei!,
-                                          "destAmount": self.destAmountWei!,
-                                          "userAddress": self.rockside.identity!.ethereumAddress
-        ]
-        if let postData = (try? JSONSerialization.data(withJSONObject: requestBody, options: [])) {
-            
-            var request = URLRequest(url: URL(string: "https://paraswap.io/api/v1/transactions/1")!,timeoutInterval: Double.infinity)
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            request.httpMethod = "POST"
-            request.httpBody = postData
-            
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                guard let data = data else {
-                    print(String(describing: error))
-                    return
+    
+    private func getTokens() {
+        self.paraswapService.getTokens() { (result) in
+            switch result {
+            case .success(let response):
+                self.tokens = response
+                
+                DispatchQueue.main.async {
+                    self.destToken = self.tokens![1]
+                    self.refreshView()
                 }
                 
-                let decoder = JSONDecoder()
-                let response = try! decoder.decode(BuildTxResponse.self, from: data)
+                return
                 
-                if response.error != nil {
-                    DispatchQueue.main.async {
-                        let alertController = UIAlertController(title: "Error", message:
-                            response.error, preferredStyle: .alert)
-                        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-                        
-                        self.present(alertController, animated: true, completion: nil)
-                    }
-                } else {
-                    
-                    print(response)
-                    
-                    let amount = BigInt(response.value!)
-                    let weiAmount = amount?.magnitude.serialize()
-                    
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.dispayErrorAlert(message: error.localizedDescription)
+                }
+                return
+            }
+        }
+    }
+    
+    private func dispayErrorAlert(message: String) {
+        let alertController = UIAlertController(title: "Error", message:
+            message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func getParaSwapTx(){
+        self.amountTextFieldController?.setErrorText(nil, errorAccessibilityValue:nil)
+        
+        if self.destAmountLabel.text == "0" {
+            self.amountTextFieldController?.setErrorText("Amount invaid", errorAccessibilityValue: "Amount invaid")
+            return
+        }
+        
+        if self.amountWei! > sourceToken!.balance! {
+            self.amountTextFieldController?.setErrorText("Insuffisant balance", errorAccessibilityValue: "Insuffisant balance")
+            return
+        }
+        
+        
+        let body = GetTxRequest(priceRoute: self.priceRoute!,
+                                srcToken: getSourceTokenAddress(),
+                                destToken: self.destToken!.address,
+                                srcAmount: self.amountWei!.description,
+                                destAmount: self.destAmountWei!.description,
+                                userAddress: self.rockside.identity!.ethereumAddress)
+        
+        self.paraswapService.getParaswapTx(body: body) { (result) in
+            switch result {
+            case .success(let response):
+                let amount = BigInt(response.value!)
+                let weiAmount = amount?.magnitude.serialize()
+                
+                DispatchQueue.main.async {
                     self.rockside.identity!.relayTransaction(to: response.to!,
                                                              value: weiAmount!.hexValueNoLeadingZero,
                                                              data: response.data!, gas: response.gas!) { (result) in
@@ -198,7 +154,8 @@ class ExchangeViewController: UIViewController {
                                                                     }
                                                                     break
                                                                     
-                                                                case .failure(_):
+                                                                case .failure(let error):
+                                                                    print(error)
                                                                     DispatchQueue.main.async {
                                                                         self.dismiss(animated: true, completion: {
                                                                             self.displayErrorHandler?()
@@ -209,49 +166,47 @@ class ExchangeViewController: UIViewController {
                     }
                 }
                 
+                return
+                
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.dispayErrorAlert(message: error.localizedDescription)
+                }
+                return
             }
             
-            task.resume()
         }
     }
     
     private func getRate() {
         let formatter = EtherNumberFormatter()
         if let amountText = amountTextField.text, let amountWeiBigInt = formatter.number(from:amountText) {
-            
-            self.amountWei = amountWeiBigInt.description
-            
-            if (amountWei != "0") {
-                
-                var request = URLRequest(url: URL(string: "https://paraswap.io/api/v1/prices/1/\(getSourceTokenAddress())/\(destToken!.address)/"+self.amountWei!)!,timeoutInterval: Double.infinity)
-                request.httpMethod = "GET"
-                
-                let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    guard let data = data else {
-                        print(String(describing: error))
+            self.amountWei = amountWeiBigInt
+            if (amountWei?.description != "0") {
+                self.paraswapService.getRate(sourceTokenAddress: getSourceTokenAddress(), destTokenAddress: destToken!.address, amount: amountWei!.description) { (result) in
+                    switch result {
+                    case .success(let response):
+                        self.priceRoute = response
+                        
+                        let destAmountBigInt =  BigInt(response.amount)!
+                        let desAmountWithMargin = destAmountBigInt * BigInt(90) / BigInt(100)
+                        self.destAmountWei = desAmountWithMargin
+                        
+                        DispatchQueue.main.async {
+                            let amountString = formatter.string(from:desAmountWithMargin)
+                            let shortAmountString = String(format: "%.3f", (amountString as NSString).floatValue)
+                            self.destAmountLabel.text = shortAmountString
+                        }
+                        
                         return
-                    }
-                    
-                    guard let json = try? (JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary)  else{
+                        
+                    case .failure(let error):
+                        DispatchQueue.main.async {
+                            self.dispayErrorAlert(message: error.localizedDescription)
+                        }
                         return
-                    }
-                    
-                    self.priceRoute = json["priceRoute"] as? NSDictionary
-                    
-                    //TODO: Ugly should define the struct instead of using dictionnary
-                    self.destAmountWei = self.priceRoute!["amount"] as? String
-                    
-                    DispatchQueue.main.async {
-                        let amountBigInt = BigInt(self.destAmountWei!)!
-                        let amountString = formatter.string(from:amountBigInt)
-                        self.destAmountLabel.text = amountString
                     }
                 }
-                
-                task.resume()
-                
-                
-                
             } else {
                 self.destAmountLabel.text = "0"
             }
@@ -276,12 +231,9 @@ class ExchangeViewController: UIViewController {
         
         if segue.identifier == "select-dest-token-segue" {
             if let destinationVC = segue.destination as? TokensTableViewController {
-                print("LALLA")
                 destinationVC.tokens = self.tokens
                 destinationVC.selectionHandler = self.selectDestToken
             }
         }
     }
-    
-    
 }

@@ -22,7 +22,6 @@ class TokensTableViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
     }

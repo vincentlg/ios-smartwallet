@@ -25,6 +25,8 @@
 		DC4ADCAC241940F5008C23C7 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCAB241940F5008C23C7 /* Token.swift */; };
 		DC4ECCEC241795CC0062425E /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ECCEB241795CC0062425E /* SendViewController.swift */; };
 		DC607136242E5F8600CED3BF /* TokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC607135242E5F8600CED3BF /* TokenTableViewCell.swift */; };
+		DC6071382431E5B100CED3BF /* ParaswapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6071372431E5B100CED3BF /* ParaswapService.swift */; };
+		DC60713B2431F9FF00CED3BF /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60713A2431F9FF00CED3BF /* Http.swift */; };
 		DC7AC3A323EC647000CC1C0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */; };
 		DC7AC3A523EC647000CC1C0D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */; };
 		DC7AC3A723EC647000CC1C0D /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A623EC647000CC1C0D /* WalletViewController.swift */; };
@@ -64,6 +66,8 @@
 		DC4ADCAB241940F5008C23C7 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		DC4ECCEB241795CC0062425E /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		DC607135242E5F8600CED3BF /* TokenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenTableViewCell.swift; sourceTree = "<group>"; };
+		DC6071372431E5B100CED3BF /* ParaswapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParaswapService.swift; sourceTree = "<group>"; };
+		DC60713A2431F9FF00CED3BF /* Http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
 		DC7AC39F23EC647000CC1C0D /* SmartWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +158,14 @@
 			path = domain;
 			sourceTree = "<group>";
 		};
+		DC6071392431F9E100CED3BF /* infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				DC60713A2431F9FF00CED3BF /* Http.swift */,
+			);
+			path = infrastructure;
+			sourceTree = "<group>";
+		};
 		DC7AC39623EC647000CC1C0D = {
 			isa = PBXGroup;
 			children = (
@@ -176,9 +188,10 @@
 		DC7AC3A123EC647000CC1C0D /* SmartWallet */ = {
 			isa = PBXGroup;
 			children = (
+				DC40D7AD2412AC1B00C792EB /* application */,
 				DC4ADC9E24190E0B008C23C7 /* domain */,
 				DC996BE22418DBBE00248748 /* view */,
-				DC40D7AD2412AC1B00C792EB /* application */,
+				DC6071392431F9E100CED3BF /* infrastructure */,
 				DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */,
 				DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */,
 				DC7AC3A823EC647000CC1C0D /* Main.storyboard */,
@@ -228,6 +241,7 @@
 				DC4ADCA924193FC4008C23C7 /* ExchangeViewController.swift */,
 				DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */,
 				DC607135242E5F8600CED3BF /* TokenTableViewCell.swift */,
+				DC6071372431E5B100CED3BF /* ParaswapService.swift */,
 			);
 			path = exchange;
 			sourceTree = "<group>";
@@ -353,12 +367,14 @@
 				DCBA5D042429F66100EE8CA9 /* CardView.swift in Sources */,
 				DC4ADCA424191AAA008C23C7 /* Transaction.swift in Sources */,
 				DCBA5D002429264100EE8CA9 /* GradientView.swift in Sources */,
+				DC60713B2431F9FF00CED3BF /* Http.swift in Sources */,
 				DC4ADCA6241928EC008C23C7 /* TransactionViewCell.swift in Sources */,
 				DC40D7AC2412A35C00C792EB /* WithoutWalletViewController.swift in Sources */,
 				DCA3CCEF2423885000FC135C /* TokenBalanceTableViewController.swift in Sources */,
 				DC4ADCA024190E61008C23C7 /* TokenBalance.swift in Sources */,
 				DC40D7B12412B1C300C792EB /* RecoveryViewController.swift in Sources */,
 				DC4ADCA22419140A008C23C7 /* BalanceViewCell.swift in Sources */,
+				DC6071382431E5B100CED3BF /* ParaswapService.swift in Sources */,
 				DCBA5CFE24290D6600EE8CA9 /* WalletNavigationViewController.swift in Sources */,
 				DCBA5D02242928CE00EE8CA9 /* UIColor+hex.swift in Sources */,
 				DC996BE42418E20300248748 /* WalletTabViewController.swift in Sources */,
