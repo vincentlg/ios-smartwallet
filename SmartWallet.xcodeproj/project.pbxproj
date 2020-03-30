@@ -27,6 +27,7 @@
 		DC607136242E5F8600CED3BF /* TokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC607135242E5F8600CED3BF /* TokenTableViewCell.swift */; };
 		DC6071382431E5B100CED3BF /* ParaswapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6071372431E5B100CED3BF /* ParaswapService.swift */; };
 		DC60713B2431F9FF00CED3BF /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60713A2431F9FF00CED3BF /* Http.swift */; };
+		DC60713D2432520A00CED3BF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC60713C2432520A00CED3BF /* MessageUI.framework */; };
 		DC7AC3A323EC647000CC1C0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */; };
 		DC7AC3A523EC647000CC1C0D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */; };
 		DC7AC3A723EC647000CC1C0D /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A623EC647000CC1C0D /* WalletViewController.swift */; };
@@ -68,6 +69,7 @@
 		DC607135242E5F8600CED3BF /* TokenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenTableViewCell.swift; sourceTree = "<group>"; };
 		DC6071372431E5B100CED3BF /* ParaswapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParaswapService.swift; sourceTree = "<group>"; };
 		DC60713A2431F9FF00CED3BF /* Http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
+		DC60713C2432520A00CED3BF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DC7AC39F23EC647000CC1C0D /* SmartWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC60713D2432520A00CED3BF /* MessageUI.framework in Frameworks */,
 				66AF6F1480713AC43621E657 /* Pods_SmartWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +117,7 @@
 		BD5C74D5907F4EAFBB5E6AD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC60713C2432520A00CED3BF /* MessageUI.framework */,
 				491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */,
 			);
 			name = Frameworks;

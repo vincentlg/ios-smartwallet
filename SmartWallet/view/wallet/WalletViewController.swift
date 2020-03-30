@@ -22,6 +22,8 @@ class WalletViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tabHeaderView: UIView!
     
+    public var isNewWallet = false
+    
     let walletTabViewController = WalletTabViewController()
     
     override func viewDidLoad() {
@@ -46,6 +48,11 @@ class WalletViewController: UIViewController {
         ])
         
         self.walletTabViewController.addBar(bar, dataSource: walletTabViewController, at: .custom(view: self.tabHeaderView, layout: nil))
+        
+        if (self.isNewWallet) {
+            self.isNewWallet = false
+            self.performSegue(withIdentifier: "show-recovery-segue", sender: self)
+        }
     }
     
     private func updateBalance() {

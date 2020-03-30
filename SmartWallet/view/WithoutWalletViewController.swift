@@ -32,7 +32,7 @@ class WithoutWalletViewController: UIViewController {
                             DispatchQueue.main.async {
                                 hud.dismiss()
                                 try? self.rockside.storeIdentity()
-                                self.performSegue(withIdentifier: "show-recovery-segue", sender: self)
+                                self.performSegue(withIdentifier: "show-wallet-segue", sender: self)
                             }
                             break
                             
@@ -63,5 +63,14 @@ class WithoutWalletViewController: UIViewController {
         let snackBarMessage = MDCSnackbarMessage()
         snackBarMessage.text = "An error occured. Please try again."
         MDCSnackbarManager.show(snackBarMessage)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "show-wallet-segue" {
+            if let destinationVC = segue.destination as? WalletViewController {
+                destinationVC.isNewWallet = true
+            }
+        }
+    
     }
 }
