@@ -144,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="195.6521739130435" y="-12.053571428571429"/>
+            <point key="canvasLocation" x="196" y="-72"/>
         </scene>
         <!--Receive View Controller-->
         <scene sceneID="7Wh-uJ-q7L">
@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7oG-7B-IpA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1511.5942028985507" y="-12.053571428571429"/>
+            <point key="canvasLocation" x="1512" y="-788"/>
         </scene>
         <!--Send View Controller-->
         <scene sceneID="U7y-PD-vw7">
@@ -363,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Af3-6e-MVE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512" y="708"/>
+            <point key="canvasLocation" x="1512" y="-72"/>
         </scene>
         <!--Without Wallet View Controller-->
         <scene sceneID="eyJ-aS-HBc">
@@ -432,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sa-be-vaD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-754" y="-745"/>
+            <point key="canvasLocation" x="-755" y="-788"/>
         </scene>
         <!--Recovery View Controller-->
         <scene sceneID="3Uq-xg-Cd7">
@@ -532,7 +532,7 @@ Please note that the order of the words is important.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Te-06-jWi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="196" y="-765"/>
+            <point key="canvasLocation" x="196" y="-788"/>
         </scene>
         <!--Wallet Navigation View Controller-->
         <scene sceneID="mgt-wf-YvK">
@@ -544,7 +544,7 @@ Please note that the order of the words is important.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cSv-Eo-pc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2397" y="724"/>
+            <point key="canvasLocation" x="-1799" y="-72"/>
         </scene>
         <!--Balance View Contrller-->
         <scene sceneID="DMm-2I-qLH">
@@ -632,7 +632,7 @@ Please note that the order of the words is important.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N2A-eI-yAm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="195.6521739130435" y="742.63392857142856"/>
+            <point key="canvasLocation" x="-41" y="724"/>
         </scene>
         <!--Transaction View Contrller-->
         <scene sceneID="34X-fD-OBB">
@@ -729,7 +729,7 @@ Please note that the order of the words is important.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnt-F7-P6k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-671.01449275362324" y="742.63392857142856"/>
+            <point key="canvasLocation" x="-755" y="724"/>
         </scene>
         <!--Exchange View Controller-->
         <scene sceneID="ayr-Sg-KAk">
@@ -880,7 +880,7 @@ Please note that the order of the words is important.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DcI-c3-zRX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1511.5942028985507" y="1507.3660714285713"/>
+            <point key="canvasLocation" x="1512" y="708"/>
         </scene>
         <!--Restore View Controller-->
         <scene sceneID="ykV-9J-djG">
@@ -987,7 +987,7 @@ Please note that the order of the words is important.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4n-j3-cIH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-723.1884057971015" y="-12.053571428571429"/>
+            <point key="canvasLocation" x="-755" y="-72"/>
         </scene>
         <!--Tokens Selection View Controller-->
         <scene sceneID="um3-dx-0ml">
@@ -1115,7 +1115,7 @@ Please note that the order of the words is important.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ln0-8h-HHM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2601" y="724"/>
+            <point key="canvasLocation" x="2777" y="-72"/>
         </scene>
         <!--Tokens Table View Controller-->
         <scene sceneID="Tee-kA-J77">
@@ -1233,7 +1233,7 @@ Please note that the order of the words is important.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSC-xH-53c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2740.579710144928" y="1523.4375"/>
+            <point key="canvasLocation" x="2777" y="724"/>
         </scene>
     </scenes>
     <resources>
@@ -1250,7 +1250,7 @@ Please note that the order of the words is important.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dek-VQ-0nm"/>
-        <segue reference="wVg-VO-eVh"/>
-        <segue reference="F6B-Po-DpZ"/>
+        <segue reference="O4c-ic-Kcb"/>
+        <segue reference="2Ej-jj-aeC"/>
     </inferredMetricsTieBreakers>
 </document>
