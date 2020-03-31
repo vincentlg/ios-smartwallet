@@ -16,7 +16,10 @@ class TransactionViewCell: UITableViewCell {
     @IBOutlet weak var circleImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var transaction: Transaction?
+    
     public func display(transaction: Transaction){
+        self.transaction = transaction
         self.typeLabel?.text = transaction.type
         self.dateLabel?.text = transaction.formattedDate
         
@@ -34,6 +37,14 @@ class TransactionViewCell: UITableViewCell {
             self.amountLabel?.text = ""
             self.symbolLabel?.text = ""
         }
+    }
+    @IBAction func viewTxAction(_ sender: Any) {
+        
+        if let tx = self.transaction {
+            
+            UIApplication.shared.open(URL(string: "https://etherscan.io/tx/"+tx.hash)!, options: [:], completionHandler: nil)
+        }
+        
     }
     
 }

@@ -459,38 +459,41 @@ The order of the words is important.</string>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toto tata titi rominet robinet cacahuette haricot haribot vie grand petit bonbon" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdq-jm-kxf">
-                                        <rect key="frame" x="30" y="141" width="314" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toto tata titi rominet robinet cacahuette haricot haribot vie grand petit bonbon" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Zdq-jm-kxf">
+                                        <rect key="frame" x="30" y="141" width="314" height="40"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ivQ-so-jte"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is your wallet address, it will be necessary to recover your wallet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYk-co-rjj">
-                                        <rect key="frame" x="30" y="241" width="314" height="36"/>
+                                        <rect key="frame" x="30" y="240" width="314" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qy1-cG-Fgl">
-                                        <rect key="frame" x="30" y="212" width="314" height="21"/>
+                                        <rect key="frame" x="30" y="211" width="314" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x7a6afc2d27cFE5940d6f4388e93B232d22F857b2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="uxD-Nw-4T2">
-                                        <rect key="frame" x="30" y="287" width="314" height="38.5"/>
+                                        <rect key="frame" x="30" y="286" width="314" height="36"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yW9-2M-sVc">
-                                        <rect key="frame" x="30" y="325.5" width="314" height="20"/>
+                                        <rect key="frame" x="30" y="322" width="314" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="lAQ-ig-ZWG"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <state key="normal" title="Copy address"/>
                                         <connections>
                                             <action selector="CopyAddressAction:" destination="q4a-iN-KJg" eventType="touchUpInside" id="LW2-kD-0Ye"/>
@@ -718,33 +721,42 @@ The order of the words is important.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43V-IC-iL4">
-                                                    <rect key="frame" x="74" y="40" width="280" height="18"/>
+                                                    <rect key="frame" x="74" y="40" width="246" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2m-7n-GXp">
-                                                    <rect key="frame" x="113.5" y="22" width="240.5" height="18"/>
+                                                    <rect key="frame" x="113.5" y="22" width="206.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82h-ER-0Bz">
+                                                    <rect key="frame" x="330" y="28" width="24" height="22"/>
+                                                    <state key="normal" image="eye"/>
+                                                    <connections>
+                                                        <action selector="viewTxAction:" destination="VKm-ab-gMX" eventType="touchUpInside" id="zlU-zY-k6N"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstItem="993-63-AON" firstAttribute="top" secondItem="eEH-Ca-aFt" secondAttribute="top" constant="14" id="9fe-8r-K3j"/>
+                                                <constraint firstItem="82h-ER-0Bz" firstAttribute="leading" secondItem="43V-IC-iL4" secondAttribute="trailing" constant="10" id="FMb-jh-cge"/>
                                                 <constraint firstItem="bXn-jD-tPn" firstAttribute="centerY" secondItem="993-63-AON" secondAttribute="centerY" id="Fzg-ZI-bcS"/>
                                                 <constraint firstAttribute="bottom" secondItem="993-63-AON" secondAttribute="bottom" constant="14" id="H97-a0-S59"/>
+                                                <constraint firstAttribute="trailing" secondItem="82h-ER-0Bz" secondAttribute="trailing" constant="20" id="MrZ-8M-gIE"/>
                                                 <constraint firstItem="DWX-h0-9Is" firstAttribute="leading" secondItem="993-63-AON" secondAttribute="trailing" constant="16" id="Opg-yN-7aO"/>
                                                 <constraint firstItem="bXn-jD-tPn" firstAttribute="centerX" secondItem="993-63-AON" secondAttribute="centerX" id="PLR-s6-JYG"/>
                                                 <constraint firstItem="S2m-7n-GXp" firstAttribute="leading" secondItem="DWX-h0-9Is" secondAttribute="trailing" constant="5" id="Qfh-VO-QZk"/>
-                                                <constraint firstAttribute="trailing" secondItem="S2m-7n-GXp" secondAttribute="trailing" constant="20" id="Xaj-7L-DEX"/>
                                                 <constraint firstItem="S2m-7n-GXp" firstAttribute="centerY" secondItem="DWX-h0-9Is" secondAttribute="centerY" id="dJE-gW-5wW"/>
-                                                <constraint firstAttribute="trailing" secondItem="43V-IC-iL4" secondAttribute="trailing" constant="20" id="kti-h4-lVx"/>
+                                                <constraint firstItem="82h-ER-0Bz" firstAttribute="leading" secondItem="S2m-7n-GXp" secondAttribute="trailing" constant="10" id="gsQ-xs-GkE"/>
                                                 <constraint firstItem="43V-IC-iL4" firstAttribute="top" secondItem="DWX-h0-9Is" secondAttribute="bottom" id="ofd-Ob-xRM"/>
                                                 <constraint firstAttribute="bottom" secondItem="43V-IC-iL4" secondAttribute="bottom" constant="20" id="qJc-6x-dBv"/>
                                                 <constraint firstItem="43V-IC-iL4" firstAttribute="leading" secondItem="993-63-AON" secondAttribute="trailing" constant="16" id="qJn-xx-x4f"/>
                                                 <constraint firstItem="993-63-AON" firstAttribute="leading" secondItem="eEH-Ca-aFt" secondAttribute="leading" constant="8" id="vKp-zR-vuI"/>
+                                                <constraint firstItem="82h-ER-0Bz" firstAttribute="centerY" secondItem="eEH-Ca-aFt" secondAttribute="centerY" id="yhb-YB-eHu"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -1282,6 +1294,7 @@ The order of the words is important.</string>
     <resources>
         <image name="down-arrow" width="14" height="8"/>
         <image name="exchange" width="55" height="55"/>
+        <image name="eye" width="24" height="18"/>
         <image name="green_circle" width="43" height="43"/>
         <image name="purple_circle" width="43" height="43"/>
         <image name="qrcode" catalog="system" width="64" height="56"/>
