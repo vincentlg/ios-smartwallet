@@ -307,6 +307,7 @@
                                         <state key="normal" image="qrcode" catalog="system"/>
                                         <connections>
                                             <action selector="scanAddressAction:" destination="4Ov-db-tfA" eventType="touchUpInside" id="NO5-Nh-Glt"/>
+                                            <segue destination="76r-iW-V58" kind="presentation" identifier="scan_qrcode_segue" id="MZs-3v-s8X"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max 10.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-Cx-1N2">
@@ -961,12 +962,12 @@ The order of the words is important.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cih-od-cKh" customClass="MDCTextField">
-                                        <rect key="frame" x="30" y="50.5" width="266" height="34"/>
+                                        <rect key="frame" x="30" y="50.5" width="314" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill your twelve words." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVD-QQ-sKv">
-                                        <rect key="frame" x="30" y="127.5" width="314" height="20.5"/>
+                                        <rect key="frame" x="30" y="124.5" width="314" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -981,20 +982,8 @@ The order of the words is important.</string>
                                             <action selector="RestoreAction:" destination="CI7-Bq-WEo" eventType="touchUpInside" id="wWR-4U-ogb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8y-1Y-IMw">
-                                        <rect key="frame" x="304" y="47.5" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="0z6-uC-dgd"/>
-                                            <constraint firstAttribute="height" constant="40" id="StJ-Lu-K61"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="qrcode" catalog="system"/>
-                                        <connections>
-                                            <action selector="scanAddressAction:" destination="4Ov-db-tfA" eventType="touchUpInside" id="x60-LL-Nth"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQh-En-cNf" customClass="MDCMultilineTextField">
-                                        <rect key="frame" x="30" y="148" width="314" height="132"/>
+                                        <rect key="frame" x="30" y="145" width="314" height="135"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -1005,15 +994,13 @@ The order of the words is important.</string>
                                     <constraint firstItem="SQh-En-cNf" firstAttribute="leading" secondItem="jcU-XF-Wig" secondAttribute="leading" constant="30" id="74R-1O-KF3"/>
                                     <constraint firstAttribute="trailing" secondItem="hxq-ft-k9k" secondAttribute="trailing" constant="30" id="9iW-kj-vVo"/>
                                     <constraint firstItem="HVD-QQ-sKv" firstAttribute="leading" secondItem="jcU-XF-Wig" secondAttribute="leading" constant="30" id="CiM-y6-CHe"/>
+                                    <constraint firstItem="HVD-QQ-sKv" firstAttribute="top" secondItem="Cih-od-cKh" secondAttribute="bottom" constant="40" id="DEj-vF-iqH"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cih-od-cKh" secondAttribute="trailing" constant="30" id="FZu-2a-Vev"/>
                                     <constraint firstItem="hxq-ft-k9k" firstAttribute="leading" secondItem="jcU-XF-Wig" secondAttribute="leading" constant="30" id="Itf-au-7D9"/>
                                     <constraint firstAttribute="trailing" secondItem="Dwo-hg-azj" secondAttribute="trailing" constant="30" id="J9M-Mg-2a6"/>
-                                    <constraint firstAttribute="trailing" secondItem="a8y-1Y-IMw" secondAttribute="trailing" constant="30" id="NA7-v1-AEz"/>
-                                    <constraint firstItem="a8y-1Y-IMw" firstAttribute="centerY" secondItem="Cih-od-cKh" secondAttribute="centerY" id="Y4o-UE-vZW"/>
-                                    <constraint firstItem="a8y-1Y-IMw" firstAttribute="leading" secondItem="Cih-od-cKh" secondAttribute="trailing" constant="8" id="ZoF-DF-LIq"/>
                                     <constraint firstItem="Cih-od-cKh" firstAttribute="leading" secondItem="jcU-XF-Wig" secondAttribute="leading" constant="30" id="bf9-bM-aSr"/>
                                     <constraint firstItem="SQh-En-cNf" firstAttribute="top" secondItem="HVD-QQ-sKv" secondAttribute="bottom" id="d5o-cl-VbC"/>
                                     <constraint firstAttribute="trailing" secondItem="HVD-QQ-sKv" secondAttribute="trailing" constant="30" id="jQ0-jC-r4S"/>
-                                    <constraint firstItem="HVD-QQ-sKv" firstAttribute="top" secondItem="a8y-1Y-IMw" secondAttribute="bottom" constant="40" id="kUm-E3-Bbm"/>
                                     <constraint firstItem="Cih-od-cKh" firstAttribute="top" secondItem="hxq-ft-k9k" secondAttribute="bottom" id="kgC-Lm-Qk2"/>
                                     <constraint firstItem="Dwo-hg-azj" firstAttribute="top" secondItem="SQh-En-cNf" secondAttribute="bottom" constant="20" id="lkb-qR-WL7"/>
                                     <constraint firstItem="Dwo-hg-azj" firstAttribute="leading" secondItem="jcU-XF-Wig" secondAttribute="leading" constant="30" id="p8l-Nc-iyv"/>
@@ -1290,6 +1277,21 @@ The order of the words is important.</string>
             </objects>
             <point key="canvasLocation" x="2777" y="724"/>
         </scene>
+        <!--Scanner View Controller-->
+        <scene sceneID="rWf-7r-Uq4">
+            <objects>
+                <viewController id="76r-iW-V58" customClass="ScannerViewController" customModule="Walloo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kAt-YM-evm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Npt-Gd-Did"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebm-Af-rj1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196" y="-788"/>
+        </scene>
     </scenes>
     <resources>
         <image name="down-arrow" width="14" height="8"/>
@@ -1304,7 +1306,7 @@ The order of the words is important.</string>
         <image name="settings" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dek-VQ-0nm"/>
-        <segue reference="2Ej-jj-aeC"/>
+        <segue reference="yog-dw-0Rd"/>
+        <segue reference="F6B-Po-DpZ"/>
     </inferredMetricsTieBreakers>
 </document>
