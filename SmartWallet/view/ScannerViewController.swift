@@ -61,7 +61,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     func failed() {
         DispatchQueue.main.async {
             let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            ac.addAction(UIAlertAction(title: "OK", style: .default) { _ in self.dismiss(animated: true, completion: nil)})
             self.present(ac, animated: true)
             self.captureSession = nil
         }
