@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>83680851823-uq50fs2p9putc06h10iuulpr7rn738fm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.83680851823-uq50fs2p9putc06h10iuulpr7rn738fm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAV6iHoJTf062EhIomdCcxzO2bNywTQpNQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>83680851823</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>io.rockside.smartwallet</string>
+	<key>PROJECT_ID</key>
+	<string>smartwallet-b677c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>smartwallet-b677c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:83680851823:ios:6830fba6960177a7a95a9a</string>
+	<key>DATABASE_URL</key>
+	<string>https://smartwallet-b677c.firebaseio.com</string>
+</dict>
+</plist>

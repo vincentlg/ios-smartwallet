@@ -9,6 +9,7 @@
 import UIKit
 import RocksideWalletSdk
 import MaterialComponents.MaterialTextFields
+import JGProgressHUD
 
 class SendViewController: UIViewController {
     
@@ -86,10 +87,15 @@ class SendViewController: UIViewController {
     }
     
     func sendERC20(amount: String) {
+        
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+        
         self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount) { (result) in
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {
+                    hud.dismiss()
                     self.dismiss(animated: true, completion: {
                         self.watchTxHandler?(txHash)
                     })
@@ -98,6 +104,7 @@ class SendViewController: UIViewController {
                 
             case .failure(_):
                 DispatchQueue.main.async {
+                    hud.dismiss()
                     self.dismiss(animated: true, completion: {
                         self.displayErrorHandler?()
                     })
@@ -108,10 +115,14 @@ class SendViewController: UIViewController {
     }
     
     func sendEth(amount: String) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+              
         self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount) { (result) in
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {
+                    hud.dismiss()
                     self.dismiss(animated: true, completion: {
                         self.watchTxHandler?(txHash)
                     })
@@ -120,6 +131,7 @@ class SendViewController: UIViewController {
                 
             case .failure(_):
                 DispatchQueue.main.async {
+                    hud.dismiss()
                     self.dismiss(animated: true, completion: {
                         self.displayErrorHandler?()
                     })

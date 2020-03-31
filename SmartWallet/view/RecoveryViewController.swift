@@ -39,7 +39,7 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
             mail.setSubject("Wallet Backup")
             mail.setMessageBody("Hi,<br /> <p>Your wallet address: "+self.rockside.identity!.ethereumAddress+"</p><p>Your mnemonic : "+self.rockside.identity!.hdwallet.mnemonic+"</p>", isHTML: true)
             
-            present(mail, animated: true)
+            self.present(mail, animated: true)
         } else {
             let alertController = UIAlertController(title: "Configure email account", message:
                 "You need to configure an email account on your iPhone, in oder to send your wallet backup.", preferredStyle: .alert)

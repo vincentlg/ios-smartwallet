@@ -1,5 +1,44 @@
 PODS:
   - BigInt (5.0.0)
+  - Firebase/CoreOnly (6.21.0):
+    - FirebaseCore (= 6.6.5)
+  - Firebase/Crashlytics (6.21.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.0.0-beta.6)
+  - FirebaseAnalyticsInterop (1.5.0)
+  - FirebaseCore (6.6.5):
+    - FirebaseCoreDiagnostics (~> 1.2)
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+  - FirebaseCoreDiagnostics (1.2.2):
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleDataTransportCCTSupport (~> 2.0)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+    - nanopb (~> 0.3.901)
+  - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseCrashlytics (4.0.0-beta.6):
+    - FirebaseAnalyticsInterop (~> 1.2)
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.1)
+    - GoogleDataTransport (~> 5.1)
+    - GoogleDataTransportCCTSupport (>= 2.0.1, ~> 2.0)
+    - nanopb (~> 0.3.901)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstallations (1.1.1):
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - PromisesObjC (~> 1.2)
+  - GoogleDataTransport (5.1.0)
+  - GoogleDataTransportCCTSupport (2.0.1):
+    - GoogleDataTransport (~> 5.1)
+    - nanopb (~> 0.3.901)
+  - GoogleUtilities/Environment (6.5.2)
+  - GoogleUtilities/Logger (6.5.2):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/UserDefaults (6.5.2):
+    - GoogleUtilities/Logger
   - JGProgressHUD (2.1)
   - KeychainAccess (4.1.0)
   - MaterialComponents/AnimationTiming (107.2.0)
@@ -71,7 +110,13 @@ PODS:
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
   - MDFTextAccessibility (2.0.0)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
   - Pageboy (3.5.0)
+  - PromisesObjC (1.2.8)
   - RocksideWalletSdk (0.1.0):
     - BigInt
     - KeychainAccess (~> 4.1.0)
@@ -82,6 +127,7 @@ PODS:
   - TrezorCrypto (0.0.9)
 
 DEPENDENCIES:
+  - Firebase/Crashlytics
   - JGProgressHUD
   - MaterialComponents/Snackbar
   - MaterialComponents/TextFields
@@ -92,12 +138,24 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - BigInt
+    - Firebase
+    - FirebaseAnalyticsInterop
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCoreDiagnosticsInterop
+    - FirebaseCrashlytics
+    - FirebaseInstallations
+    - GoogleDataTransport
+    - GoogleDataTransportCCTSupport
+    - GoogleUtilities
     - JGProgressHUD
     - KeychainAccess
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
+    - nanopb
     - Pageboy
+    - PromisesObjC
     - Starscream
     - Tabman
     - TrezorCrypto
@@ -108,17 +166,29 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BigInt: 74b4d88367b0e819d9f77393549226d36faeb0d8
+  Firebase: f378c80340dd41c0ad0914af740c021eb282a04b
+  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
+  FirebaseCore: 9f495d3afacb7b558711e6218ebb14b1c51b5802
+  FirebaseCoreDiagnostics: e9b4cd8ba60dee0f2d13347332e4b7898cca5b61
+  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseCrashlytics: b9e729da8b80d9c45f234f791a73b5fe647d4c31
+  FirebaseInstallations: acb3216eb9784d3b1d2d2d635ff74fa892cc0c44
+  GoogleDataTransport: b29a21d813e906014ca16c00897827e40e4a24ab
+  GoogleDataTransportCCTSupport: 6f15a89b0ca35d6fa523e1f752ef818588885988
+  GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
   MaterialComponents: 4dd1927cd2257e564983018906e152d18cda0c03
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Pageboy: 3794c578aae5fcce06e90b3ed4a0ad6b807d75bb
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   RocksideWalletSdk: 761276c1d24c71564210eec1154b996776ae5341
   Starscream: 04b26f02727e10a002e6b5d21b188ba0d049910b
   Tabman: f62ad94ee54a7d96e3fbab34f677d9ea4d38ece6
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
 
-PODFILE CHECKSUM: bdffdc89e7d0c522468cadd891c8420c750f319e
+PODFILE CHECKSUM: 80ea0383f3f6c323a05d8af09354e71a1e37f829
 
 COCOAPODS: 1.8.4

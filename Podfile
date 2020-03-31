@@ -10,6 +10,7 @@ target 'SmartWallet' do
   pod 'Tabman', '~> 2.6'
   pod 'Starscream', '~> 4.0.0'
   pod 'JGProgressHUD'
+  pod 'Firebase/Crashlytics'
   pod 'MaterialComponents/Snackbar'
   pod 'MaterialComponents/TextFields'
   

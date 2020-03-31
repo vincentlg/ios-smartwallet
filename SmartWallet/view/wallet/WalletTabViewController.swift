@@ -11,6 +11,7 @@ import Tabman
 import Pageboy
 import RocksideWalletSdk
 import BigInt
+import JGProgressHUD
 
 struct EtherscanTransactionResponse: Codable{
     var status: String
@@ -36,9 +37,14 @@ class WalletTabViewController: TabmanViewController {
     
     var balanceUpdatedHandler: BalanceUpdatedHandler?
     var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(name: "Ethereum", symbol: "ETH")]
-    var transactions: [Transaction] = []
     
     var displayErrorHandler: DisplayErrorHandler?
+    
+    var transactions: [Transaction] = []
+    var transactionsBuffer: [Transaction] = []
+    var transactionCallRetrieved:Int = 0
+    
+    let hud = JGProgressHUD(style: .light)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +60,15 @@ class WalletTabViewController: TabmanViewController {
     }
     
     public func retriveAllTransactions() {
-        self.transactions = []
+        
+        if (transactions.count == 0) {
+            DispatchQueue.main.async {
+                self.hud.show(in: self.view)
+            }
+        }
+        
+        self.transactionsBuffer = []
+        self.transactionCallRetrieved = 0
         retrieveTransaction(action: "txlist")
         retrieveTransaction(action: "txlistinternal")
         retrieveTransaction(action: "tokentx")
@@ -68,6 +82,8 @@ class WalletTabViewController: TabmanViewController {
         request.httpMethod = "GET"
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            self.transactionCallRetrieved += 1
+            
             guard let data = data else {
                 print(String(describing: error))
                 self.displayErrorHandler?()
@@ -77,17 +93,18 @@ class WalletTabViewController: TabmanViewController {
             let decoder = JSONDecoder()
             if let response = try? decoder.decode(EtherscanTransactionResponse.self, from: data) {
                 DispatchQueue.main.async {
-                    self.transactions.append(contentsOf: response.result)
+                    self.transactionsBuffer.append(contentsOf: response.result)
                     
-                    self.transactions = self.transactions.filter{ $0.type != "Relay" }
+                    self.transactionsBuffer = self.transactionsBuffer.filter{ $0.type != "Relay" }
                     
-                    self.transactions.sort {
+                    self.transactionsBuffer.sort {
                         $0.block > $1.block
                     }
                     
-                    self.transactionViewController?.display(transactions: self.transactions)
-                    
-                    if (action == "tokentx") {
+                    if (self.transactionCallRetrieved == 3){
+                        self.transactions = self.transactionsBuffer
+                        self.transactionViewController?.display(transactions: self.transactions)
+            
                         self.updateBalance()
                     }
                 }
@@ -131,6 +148,7 @@ class WalletTabViewController: TabmanViewController {
                 
                 break
             case .failure(let error):
+                self.hud.dismiss()
                 print(error)
                 break
             }
@@ -143,12 +161,14 @@ class WalletTabViewController: TabmanViewController {
             switch result {
             case .success(let balance):
                 DispatchQueue.main.async {
+                    self.hud.dismiss()
                     self.tokenBalances[tokenBalance.symbol]?.balance = balance
                     self.balanceViewController?.display(balances:self.tokenBalanceArray())
                 }
                 break
                 
             case .failure(_):
+                self.hud.dismiss()
                 self.displayErrorHandler?()
                 break
             }
@@ -159,7 +179,9 @@ class WalletTabViewController: TabmanViewController {
     private func updateBalance() {
         self.transactions.forEach {
             if $0.isERC {
-                self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(name: $0.tokenName!, symbol: $0.tokenSymbol!, address: $0.contractAddress)
+                if (self.tokenBalances[$0.tokenSymbol!] == nil) {
+                     self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(name: $0.tokenName!, symbol: $0.tokenSymbol!, address: $0.contractAddress)
+                }
             }
         }
         

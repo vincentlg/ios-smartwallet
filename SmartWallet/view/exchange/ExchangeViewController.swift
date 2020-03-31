@@ -10,6 +10,7 @@ import UIKit
 import RocksideWalletSdk
 import BigInt
 import MaterialComponents.MaterialTextFields
+import JGProgressHUD
 
 class ExchangeViewController: UIViewController {
     
@@ -155,6 +156,10 @@ class ExchangeViewController: UIViewController {
                                 destAmount: self.destAmountWei!.description,
                                 userAddress: self.rockside.identity!.ethereumAddress)
         
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+        
+        
         self.paraswapService.getParaswapTx(body: body) { (result) in
             switch result {
             case .success(let response):
@@ -168,6 +173,7 @@ class ExchangeViewController: UIViewController {
                                                                 switch result {
                                                                 case .success(let txHash):
                                                                     DispatchQueue.main.async {
+                                                                        hud.dismiss()
                                                                         self.dismiss(animated: true, completion: {
                                                                             self.watchTxHandler?(txHash)
                                                                         })
@@ -177,6 +183,7 @@ class ExchangeViewController: UIViewController {
                                                                 case .failure(let error):
                                                                     print(error)
                                                                     DispatchQueue.main.async {
+                                                                        hud.dismiss()
                                                                         self.dismiss(animated: true, completion: {
                                                                             self.displayErrorHandler?()
                                                                         })
@@ -190,6 +197,7 @@ class ExchangeViewController: UIViewController {
                 
             case .failure(let error):
                 DispatchQueue.main.async {
+                    hud.dismiss()
                     self.dispayErrorAlert(message: error.localizedDescription)
                 }
                 return
