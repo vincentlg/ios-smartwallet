@@ -140,6 +140,7 @@ class WalletTabViewController: TabmanViewController {
             switch result {
             case .success(let balance):
                 DispatchQueue.main.async {
+                    self.hud.dismiss()
                     self.tokenBalances["ETH"]?.balance = balance
                     self.balanceViewController?.display(balances: self.tokenBalanceArray())
                     

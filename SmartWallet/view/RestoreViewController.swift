@@ -16,9 +16,7 @@ class RestoreViewController: UIViewController {
     @IBOutlet weak var walletAddressTextField: MDCTextField!
     var walletAddressTextFieldController: MDCTextInputControllerUnderline?
     
-    @IBOutlet weak var wordsTextView: UITextView!
-    
-    @IBOutlet weak var twelvesWordsView: MDCMultilineTextField!
+    @IBOutlet weak var twelvesWordsView: MDCTextField!
      var twelvesWordsViewController: MDCTextInputControllerUnderline?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,4 +68,9 @@ class RestoreViewController: UIViewController {
             self.twelvesWordsViewController?.setErrorText("Should not be empty", errorAccessibilityValue: "Should not be empty")
         }
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+       
 }

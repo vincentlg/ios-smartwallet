@@ -8,9 +8,13 @@
 import AVFoundation
 import UIKit
 
+typealias QrcodeHandler = (_: String) -> Void
+
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    
+    var qrCodeHandler: QrcodeHandler?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +102,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
     func found(code: String) {
         print(code)
+        self.qrCodeHandler?(code)
     }
 
     override var prefersStatusBarHidden: Bool {

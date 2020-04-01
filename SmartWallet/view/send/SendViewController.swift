@@ -146,12 +146,23 @@ class SendViewController: UIViewController {
         self.refreshView()
     }
     
+    func qrCodeFound(qrcode: String) {
+        let address = qrcode.replacingOccurrences(of: "ethereum:", with: "")
+        self.destinationTextField.text = address
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "select-token-balance-segue" {
             if let destinationVC = segue.destination as? TokensSelectionViewController {
                 destinationVC.tokens = self.tokens
                 destinationVC.selectionHandler = self.selectToken
+            }
+        }
+        
+        if segue.identifier == "scan_qrcode_segue" {
+            if let destinationVC = segue.destination as? ScannerViewController {
+                destinationVC.qrCodeHandler = self.qrCodeFound
             }
         }
     }

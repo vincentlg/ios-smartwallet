@@ -222,7 +222,7 @@ class ExchangeViewController: UIViewController {
                         
                         DispatchQueue.main.async {
                             let amountString = formatter.string(from:desAmountWithMargin)
-                            let shortAmountString = String(format: "%.3f", (amountString as NSString).floatValue)
+                            let shortAmountString = String(format: "%.3f", (amountString.replacingOccurrences(of: ",", with: ".") as NSString).floatValue)
                             self.destAmountLabel.text = shortAmountString
                         }
                         

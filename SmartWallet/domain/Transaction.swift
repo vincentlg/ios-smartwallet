@@ -59,7 +59,7 @@ extension Transaction {
         let fullFormatter = EtherNumberFormatter()
         let ethValue = fullFormatter.string(from: BigInt(value)!)
         
-        let floatValue = (ethValue as NSString).floatValue
+        let floatValue = (ethValue.replacingOccurrences(of: ",", with: ".")  as NSString).floatValue
         let stringValue = String(format: "%.3f", floatValue)
         if let symbole = self.tokenSymbol {
             return stringValue+" "+symbole

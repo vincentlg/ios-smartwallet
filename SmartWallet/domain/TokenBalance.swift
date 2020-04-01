@@ -19,7 +19,7 @@ struct TokenBalance {
     
     
     var formattedAmout: String {
-        let value = (self.balaceString as NSString).floatValue
+        let value = (self.balaceString.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
         return String(format: "%.3f", value)+" "+self.symbol
     }
     
