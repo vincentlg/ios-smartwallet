@@ -308,7 +308,7 @@
                                             <segue destination="76r-iW-V58" kind="presentation" identifier="scan_qrcode_segue" id="MZs-3v-s8X"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max 10.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-Cx-1N2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max 10.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-Cx-1N2">
                                         <rect key="frame" x="30" y="91" width="314" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -663,7 +663,7 @@ The order of the words is important.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="IPY-dg-jet" firstAttribute="centerY" secondItem="Yo6-FN-9T2" secondAttribute="centerY" id="GQB-t6-wWf"/>
                                                 <constraint firstAttribute="trailing" secondItem="ZTl-tT-hIZ" secondAttribute="trailing" constant="10" id="P1b-uR-MjU"/>
@@ -764,7 +764,7 @@ The order of the words is important.</string>
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="993-63-AON" firstAttribute="top" secondItem="eEH-Ca-aFt" secondAttribute="top" constant="14" id="9fe-8r-K3j"/>
                                                 <constraint firstItem="82h-ER-0Bz" firstAttribute="leading" secondItem="43V-IC-iL4" secondAttribute="trailing" constant="10" id="FMb-jh-cge"/>
@@ -890,7 +890,7 @@ The order of the words is important.</string>
                                             <action selector="buyAction:" destination="tZB-LC-HMu" eventType="touchUpInside" id="ywu-eT-cix"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max: 10.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnI-nD-aKK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max: 10.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnI-nD-aKK">
                                         <rect key="frame" x="30" y="92" width="314" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1331,7 +1331,7 @@ The order of the words is important.</string>
         <image name="settings" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dek-VQ-0nm"/>
+        <segue reference="yog-dw-0Rd"/>
         <segue reference="F6B-Po-DpZ"/>
     </inferredMetricsTieBreakers>
 </document>

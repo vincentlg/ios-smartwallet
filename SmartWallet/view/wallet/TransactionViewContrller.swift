@@ -12,11 +12,21 @@ import UIKit
 class TransactionViewContrller: UITableViewController{
     
     var transactions: [Transaction] = []
+    var refreshHandler: RefreshHandler?
+    
   
     override func viewDidLoad() {
         super.viewDidLoad()
         let safeAreaBottom: CGFloat = UIApplication.shared.keyWindow!.safeAreaInsets.bottom
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: safeAreaBottom, right: 0.0)
+        
+        self.refreshControl = UIRefreshControl()
+        tableView.refreshControl = refreshControl
+        refreshControl!.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+          
+    @objc private func refresh() {
+        self.refreshHandler?()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

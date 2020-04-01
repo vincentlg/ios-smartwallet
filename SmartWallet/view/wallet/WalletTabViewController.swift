@@ -26,6 +26,7 @@ struct EtherscanTokenBalanceResponse: Codable{
 }
 
 typealias BalanceUpdatedHandler = () -> Void
+typealias RefreshHandler = () -> Void
 
 class WalletTabViewController: TabmanViewController {
     
@@ -51,7 +52,11 @@ class WalletTabViewController: TabmanViewController {
         
         self.balanceViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BalanceViewController") as? BalanceViewContrller
         
+        self.balanceViewController?.refreshHandler = self.retriveAllTransactions
+        
         self.transactionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TransactionViewController") as? TransactionViewContrller
+        
+        self.transactionViewController?.refreshHandler = self.retriveAllTransactions
         
         self.viewControllers = [self.balanceViewController!, self.transactionViewController!]
         
@@ -72,6 +77,7 @@ class WalletTabViewController: TabmanViewController {
         retrieveTransaction(action: "txlist")
         retrieveTransaction(action: "txlistinternal")
         retrieveTransaction(action: "tokentx")
+        
     }
     
     private func retrieveTransaction(action: String) {
@@ -104,11 +110,12 @@ class WalletTabViewController: TabmanViewController {
                     if (self.transactionCallRetrieved == 3){
                         self.transactions = self.transactionsBuffer
                         self.transactionViewController?.display(transactions: self.transactions)
-            
+                        self.transactionViewController?.refreshControl?.endRefreshing()
                         self.updateBalance()
                     }
                 }
             } else {
+                self.transactionViewController?.refreshControl?.endRefreshing()
                 self.displayErrorHandler?()
             }
         }
@@ -143,12 +150,13 @@ class WalletTabViewController: TabmanViewController {
                     self.hud.dismiss()
                     self.tokenBalances["ETH"]?.balance = balance
                     self.balanceViewController?.display(balances: self.tokenBalanceArray())
-                    
+                    self.balanceViewController?.refreshControl?.endRefreshing()
                     self.balanceUpdatedHandler?()
                 }
                 
                 break
             case .failure(let error):
+                self.balanceViewController?.refreshControl?.endRefreshing()
                 self.hud.dismiss()
                 print(error)
                 break
