@@ -49,8 +49,14 @@ class RestoreViewController: UIViewController {
                     DispatchQueue.main.async {
                        
                         if (result) {
-                            try? self.rockside.storeIdentity()
-                            self.performSegue(withIdentifier: "show-wallet-segue", sender: self)
+                             DispatchQueue.main.async {
+                                do {
+                                    try self.rockside.storeIdentity()
+                                } catch (let error) {
+                                    print("ERROR "+error.localizedDescription)
+                                }
+                            }
+                            self.navigationController?.displayWalletView(animated: true)
                         } else {
                             self.twelvesWordsViewController?.setErrorText("Mnemonic is not valid", errorAccessibilityValue: "Mnemonic is not valid")
                         }

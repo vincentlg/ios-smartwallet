@@ -10,9 +10,9 @@
         <!--Wallet View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="WalletViewController" id="BYZ-38-t0r" customClass="WalletViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="SmartWallet" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                <viewController storyboardIdentifier="WalletViewController" id="BYZ-38-t0r" customClass="WalletViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsV-Y1-RrE">
@@ -118,8 +118,8 @@
                                     <constraint firstItem="4b0-jG-EMh" firstAttribute="top" secondItem="8h2-94-2rn" secondAttribute="bottom" constant="5" id="wOS-iS-3Lj"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHD-Ko-xJ9" customClass="CardView" customModule="SmartWallet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="280" width="414" height="582"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHD-Ko-xJ9" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="280" width="414" height="636"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -149,12 +149,12 @@
         <!--Receive View Controller-->
         <scene sceneID="7Wh-uJ-q7L">
             <objects>
-                <viewController id="ukE-wL-kas" customClass="ReceiveViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Dsi-aZ-CE4" customClass="GradientView" customModule="SmartWallet" customModuleProvider="target">
+                <viewController id="ukE-wL-kas" customClass="ReceiveViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dsi-aZ-CE4" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Z-fi-vGY" customClass="CardView" customModule="SmartWallet" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Z-fi-vGY" customClass="CardView" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="374" height="431.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XPj-tt-sFc">
@@ -170,7 +170,7 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q89-o1-NFH" customClass="WalletButton" customModule="SmartWallet" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q89-o1-NFH" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
                                         <rect key="frame" x="30" y="351.5" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Jgi-4x-NxL"/>
@@ -233,8 +233,8 @@
         <!--Send View Controller-->
         <scene sceneID="U7y-PD-vw7">
             <objects>
-                <viewController id="4Ov-db-tfA" customClass="SendViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nIn-rE-H7r" customClass="GradientView" customModule="SmartWallet" customModuleProvider="target">
+                <viewController id="4Ov-db-tfA" customClass="SendViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nIn-rE-H7r" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -244,7 +244,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nX-Hz-KzG" customClass="CardView" customModule="SmartWallet" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nX-Hz-KzG" customClass="CardView" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="374" height="274"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Destination address" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="mUX-kQ-vrI" customClass="MDCTextField">
@@ -262,7 +262,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSs-4z-0kx" customClass="WalletButton" customModule="SmartWallet" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSs-4z-0kx" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
                                         <rect key="frame" x="30" y="194" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="tM5-kp-y4C"/>
@@ -367,8 +367,8 @@
         <!--Without Wallet View Controller-->
         <scene sceneID="eyJ-aS-HBc">
             <objects>
-                <viewController storyboardIdentifier="WithoutWalletViewController" id="cZb-6B-ApA" customClass="WithoutWalletViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="v0J-iS-AqD" customClass="GradientView" customModule="SmartWallet" customModuleProvider="target">
+                <viewController storyboardIdentifier="WithoutWalletViewController" id="cZb-6B-ApA" customClass="WithoutWalletViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v0J-iS-AqD" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -378,7 +378,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-jS-TIm" customClass="WalletButton" customModule="SmartWallet" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-jS-TIm" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="724" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fYk-84-g0h"/>
@@ -389,7 +389,7 @@
                                     <action selector="createWalletAction:" destination="cZb-6B-ApA" eventType="touchUpInside" id="Qdh-5E-e5F"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvQ-8d-03b" customClass="WalletButton" customModule="SmartWallet" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvQ-8d-03b" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="782" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="vc0-U3-acj"/>
@@ -424,19 +424,16 @@
                         <viewLayoutGuide key="safeArea" id="4Ze-uB-Lgx"/>
                     </view>
                     <navigationItem key="navigationItem" id="gsQ-eh-Ani"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="show-wallet-segue" animates="NO" id="2Ej-jj-aeC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sa-be-vaD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-755" y="-788"/>
+            <point key="canvasLocation" x="-2845" y="-1079"/>
         </scene>
         <!--Recovery View Controller-->
         <scene sceneID="3Uq-xg-Cd7">
             <objects>
-                <viewController id="q4a-iN-KJg" customClass="RecoveryViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hzV-M6-Afv" customClass="GradientView" customModule="SmartWallet" customModuleProvider="target">
+                <viewController id="q4a-iN-KJg" customClass="RecoveryViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hzV-M6-Afv" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -446,7 +443,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hg-28-ISi" customClass="CardView" customModule="SmartWallet" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hg-28-ISi" customClass="CardView" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="374" height="520"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ya-Gb-N4K">
@@ -510,7 +507,7 @@ The order of the words is important.</string>
                                         <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBD-O3-ySf" customClass="WalletButton" customModule="SmartWallet" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBD-O3-ySf" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
                                         <rect key="frame" x="30" y="440" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="HBH-xb-MGF"/>
@@ -520,7 +517,7 @@ The order of the words is important.</string>
                                             <action selector="closeAction:" destination="q4a-iN-KJg" eventType="touchUpInside" id="mUB-IB-tZd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ju2-Di-znc" customClass="WalletButton" customModule="SmartWallet" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ju2-Di-znc" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
                                         <rect key="frame" x="30" y="385" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="dmv-rO-sTw"/>
@@ -607,32 +604,32 @@ The order of the words is important.</string>
         <!--Wallet Navigation View Controller-->
         <scene sceneID="mgt-wf-YvK">
             <objects>
-                <navigationController navigationBarHidden="YES" id="gCH-c2-CdX" customClass="WalletNavigationViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="gCH-c2-CdX" customClass="WalletNavigationViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uMp-Ed-WmN">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cSv-Eo-pc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1799" y="-72"/>
+            <point key="canvasLocation" x="-2771" y="-72"/>
         </scene>
         <!--Balance View Contrller-->
         <scene sceneID="DMm-2I-qLH">
             <objects>
-                <tableViewController storyboardIdentifier="BalanceViewController" id="KRQ-a2-DAB" customClass="BalanceViewContrller" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BalanceViewController" id="KRQ-a2-DAB" customClass="BalanceViewContrller" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="93" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="L8h-q9-GS8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BalanceViewCell" id="ZZf-52-HXC" customClass="BalanceViewCell" customModule="SmartWallet" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BalanceViewCell" id="ZZf-52-HXC" customClass="BalanceViewCell" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TokenViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZZf-52-HXC" id="lsz-Kt-cGG">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0YV-3x-ZFD" customClass="ListItemView" customModule="SmartWallet" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0YV-3x-ZFD" customClass="ListItemView" customModule="Walloo" customModuleProvider="target">
                                             <rect key="frame" x="20" y="15" width="374" height="78"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="IPY-dg-jet">
@@ -707,20 +704,20 @@ The order of the words is important.</string>
         <!--Transaction View Contrller-->
         <scene sceneID="34X-fD-OBB">
             <objects>
-                <tableViewController storyboardIdentifier="TransactionViewController" id="2h1-xm-1pJ" customClass="TransactionViewContrller" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TransactionViewController" id="2h1-xm-1pJ" customClass="TransactionViewContrller" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="93" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WHC-8c-3XG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionViewCell" id="VKm-ab-gMX" customClass="TransactionViewCell" customModule="SmartWallet" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionViewCell" id="VKm-ab-gMX" customClass="TransactionViewCell" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VKm-ab-gMX" id="jL3-A9-Dtk">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEH-Ca-aFt" customClass="ListItemView" customModule="SmartWallet" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEH-Ca-aFt" customClass="ListItemView" customModule="Walloo" customModuleProvider="target">
                                             <rect key="frame" x="20" y="15" width="374" height="78"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="purple_circle" translatesAutoresizingMaskIntoConstraints="NO" id="993-63-AON">
@@ -813,12 +810,12 @@ The order of the words is important.</string>
         <!--Exchange View Controller-->
         <scene sceneID="ayr-Sg-KAk">
             <objects>
-                <viewController id="tZB-LC-HMu" customClass="ExchangeViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZE2-mI-PLx" customClass="GradientView" customModule="SmartWallet" customModuleProvider="target">
+                <viewController id="tZB-LC-HMu" customClass="ExchangeViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZE2-mI-PLx" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vx-Cx-Odj" customClass="CardView" customModule="SmartWallet" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vx-Cx-Odj" customClass="CardView" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="374" height="320"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="oF8-QJ-OKl">
@@ -880,7 +877,7 @@ The order of the words is important.</string>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXg-Od-8sk" customClass="WalletButton" customModule="SmartWallet" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXg-Od-8sk" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
                                         <rect key="frame" x="30" y="240" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2ah-RH-vzc"/>
@@ -966,8 +963,8 @@ The order of the words is important.</string>
         <!--Restore View Controller-->
         <scene sceneID="ykV-9J-djG">
             <objects>
-                <viewController id="CI7-Bq-WEo" customClass="RestoreViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UiT-d8-SNM" customClass="GradientView" customModule="SmartWallet" customModuleProvider="target">
+                <viewController id="CI7-Bq-WEo" customClass="RestoreViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UiT-d8-SNM" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -977,7 +974,7 @@ The order of the words is important.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jcU-XF-Wig" customClass="CardView" customModule="SmartWallet" customModuleProvider="target">
+                            <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jcU-XF-Wig" customClass="CardView" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="95" width="374" height="350"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxq-ft-k9k">
@@ -997,7 +994,7 @@ The order of the words is important.</string>
                                         <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwo-hg-azj" customClass="WalletButton" customModule="SmartWallet" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwo-hg-azj" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
                                         <rect key="frame" x="30" y="270" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="FbF-Wu-gSL"/>
@@ -1049,18 +1046,17 @@ The order of the words is important.</string>
                     <connections>
                         <outlet property="twelvesWordsView" destination="qFh-w4-Bah" id="xhr-gb-KeD"/>
                         <outlet property="walletAddressTextField" destination="Cih-od-cKh" id="Sz0-1t-3FB"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="show-wallet-segue" id="F6B-Po-DpZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4n-j3-cIH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-755.07246376811599" y="-72.321428571428569"/>
+            <point key="canvasLocation" x="-1800" y="-1079"/>
         </scene>
         <!--Tokens Selection View Controller-->
         <scene sceneID="um3-dx-0ml">
             <objects>
-                <viewController id="NmP-A0-eh6" customClass="TokensSelectionViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ylt-4e-YGb" customClass="GradientView" customModule="SmartWallet" customModuleProvider="target">
+                <viewController id="NmP-A0-eh6" customClass="TokensSelectionViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ylt-4e-YGb" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1070,7 +1066,7 @@ The order of the words is important.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCa-SS-MpB" customClass="CardView" customModule="SmartWallet" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCa-SS-MpB" customClass="CardView" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="105" width="374" height="673"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEV-ec-mN8">
@@ -1083,14 +1079,14 @@ The order of the words is important.</string>
                                         <rect key="frame" x="0.0" y="68" width="374" height="585"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BalanceViewCell" id="7VS-Ei-c1M" customClass="BalanceViewCell" customModule="SmartWallet" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BalanceViewCell" id="7VS-Ei-c1M" customClass="BalanceViewCell" customModule="Walloo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="374" height="96"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TokenViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7VS-Ei-c1M" id="WPm-8x-6Gm">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="96"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjl-Mi-R5V" customClass="ListItemView" customModule="SmartWallet" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjl-Mi-R5V" customClass="ListItemView" customModule="Walloo" customModuleProvider="target">
                                                             <rect key="frame" x="20" y="15" width="334" height="81"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="CWc-0B-kvF">
@@ -1187,8 +1183,8 @@ The order of the words is important.</string>
         <!--Tokens Table View Controller-->
         <scene sceneID="Tee-kA-J77">
             <objects>
-                <viewController id="QlI-qJ-quZ" customClass="TokensTableViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vxk-f6-TbN" customClass="GradientView" customModule="SmartWallet" customModuleProvider="target">
+                <viewController id="QlI-qJ-quZ" customClass="TokensTableViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vxk-f6-TbN" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1198,7 +1194,7 @@ The order of the words is important.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVI-Iy-Rb3" customClass="CardView" customModule="SmartWallet" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVI-Iy-Rb3" customClass="CardView" customModule="Walloo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="374" height="697"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUp-a3-cNu">
@@ -1211,14 +1207,14 @@ The order of the words is important.</string>
                                         <rect key="frame" x="0.0" y="68" width="374" height="609"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TokenViewCell" id="FGc-dQ-olo" customClass="TokenTableViewCell" customModule="SmartWallet" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TokenViewCell" id="FGc-dQ-olo" customClass="TokenTableViewCell" customModule="Walloo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="374" height="96"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TokenViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FGc-dQ-olo" id="vaq-oX-Q62">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="96"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYk-yn-7eK" customClass="ListItemView" customModule="SmartWallet" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYk-yn-7eK" customClass="ListItemView" customModule="Walloo" customModuleProvider="target">
                                                             <rect key="frame" x="20" y="15" width="334" height="81"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="OVA-av-Hvn">
@@ -1317,6 +1313,57 @@ The order of the words is important.</string>
             </objects>
             <point key="canvasLocation" x="196" y="-788"/>
         </scene>
+        <!--Connect View Controller-->
+        <scene sceneID="dEb-3V-K7o">
+            <objects>
+                <viewController storyboardIdentifier="ConnectViewController" id="7jd-9O-yh4" customClass="ConnectViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="atf-24-DLX" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy wallet, easy money" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOJ-Am-yqt">
+                                <rect key="frame" x="62" y="431" width="290.5" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRe-Zy-wF2" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="782" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fSm-G8-10j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Connect"/>
+                                <connections>
+                                    <action selector="connectAction:" destination="7jd-9O-yh4" eventType="touchUpInside" id="qwC-JK-F2y"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walloo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQ9-Uh-MJW">
+                                <rect key="frame" x="20" y="335" width="374" height="91"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="76"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GQ9-Uh-MJW" firstAttribute="leading" secondItem="2x7-tk-coz" secondAttribute="leading" constant="20" id="2Jd-va-5aa"/>
+                            <constraint firstItem="rOJ-Am-yqt" firstAttribute="centerX" secondItem="atf-24-DLX" secondAttribute="centerX" id="CdA-X3-njX"/>
+                            <constraint firstItem="2x7-tk-coz" firstAttribute="trailing" secondItem="GQ9-Uh-MJW" secondAttribute="trailing" constant="20" id="Cx5-Ty-3Gy"/>
+                            <constraint firstItem="2x7-tk-coz" firstAttribute="trailing" secondItem="ZRe-Zy-wF2" secondAttribute="trailing" constant="20" id="Dcc-8v-a8Q"/>
+                            <constraint firstItem="rOJ-Am-yqt" firstAttribute="centerY" secondItem="atf-24-DLX" secondAttribute="centerY" id="T3z-GE-s8W"/>
+                            <constraint firstItem="2x7-tk-coz" firstAttribute="bottom" secondItem="ZRe-Zy-wF2" secondAttribute="bottom" constant="30" id="oGN-JQ-rcS"/>
+                            <constraint firstItem="ZRe-Zy-wF2" firstAttribute="leading" secondItem="2x7-tk-coz" secondAttribute="leading" constant="20" id="pO2-CL-LPS"/>
+                            <constraint firstItem="rOJ-Am-yqt" firstAttribute="top" secondItem="GQ9-Uh-MJW" secondAttribute="bottom" constant="5" id="qgK-Sg-EKs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2x7-tk-coz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="o0k-eS-8rT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sRZ-CT-d9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2846" y="-1864"/>
+        </scene>
     </scenes>
     <resources>
         <image name="down-arrow" width="14" height="8"/>
@@ -1332,6 +1379,5 @@ The order of the words is important.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yog-dw-0Rd"/>
-        <segue reference="F6B-Po-DpZ"/>
     </inferredMetricsTieBreakers>
 </document>

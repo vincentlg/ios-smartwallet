@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		66AF6F1480713AC43621E657 /* Pods_SmartWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */; };
 		DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */; };
+		DC352DB6243CCDDA00654C5E /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC352DB5243CCDDA00654C5E /* ConnectViewController.swift */; };
 		DC3E7183242A324100C40194 /* WalletTabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3E7182242A324100C40194 /* WalletTabLayout.swift */; };
 		DC3E7187242A440A00C40194 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3E7186242A440A00C40194 /* ListItemView.swift */; };
 		DC40D7AC2412A35C00C792EB /* WithoutWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */; };
@@ -53,6 +54,7 @@
 		B15DEB8371F308910BBC9556 /* Pods-SmartWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.debug.xcconfig"; path = "Target Support Files/Pods-SmartWallet/Pods-SmartWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		CB43F175874C92802541C5AD /* Pods-SmartWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.release.xcconfig"; path = "Target Support Files/Pods-SmartWallet/Pods-SmartWallet.release.xcconfig"; sourceTree = "<group>"; };
 		DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
+		DC352DB5243CCDDA00654C5E /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		DC3E7182242A324100C40194 /* WalletTabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTabLayout.swift; sourceTree = "<group>"; };
 		DC3E7186242A440A00C40194 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutWalletViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,15 @@
 				491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC352DB4243CC72600654C5E /* withoutwallet */ = {
+			isa = PBXGroup;
+			children = (
+				DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */,
+				DCA3F397241FCA9B007E72D2 /* RestoreViewController.swift */,
+			);
+			path = withoutwallet;
 			sourceTree = "<group>";
 		};
 		DC40D7AD2412AC1B00C792EB /* application */ = {
@@ -226,10 +237,10 @@
 			children = (
 				DCD11D07241B9BE40046ECD0 /* exchange */,
 				DCA3CCED242387C900FC135C /* send */,
+				DC352DB4243CC72600654C5E /* withoutwallet */,
 				DC4ADC992418ED0B008C23C7 /* wallet */,
-				DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */,
+				DC352DB5243CCDDA00654C5E /* ConnectViewController.swift */,
 				DC40D7B02412B1C300C792EB /* RecoveryViewController.swift */,
-				DCA3F397241FCA9B007E72D2 /* RestoreViewController.swift */,
 				DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */,
 				DC607142243399ED00CED3BF /* ScannerViewController.swift */,
 			);
@@ -426,6 +437,7 @@
 				DC607143243399ED00CED3BF /* ScannerViewController.swift in Sources */,
 				DCBA5D02242928CE00EE8CA9 /* UIColor+hex.swift in Sources */,
 				DC996BE42418E20300248748 /* WalletTabViewController.swift in Sources */,
+				DC352DB6243CCDDA00654C5E /* ConnectViewController.swift in Sources */,
 				DC40D7AF2412AC2F00C792EB /* UIViewController+Rockside.swift in Sources */,
 				DC7AC3A723EC647000CC1C0D /* WalletViewController.swift in Sources */,
 				DCA3F398241FCA9B007E72D2 /* RestoreViewController.swift in Sources */,
@@ -588,6 +600,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5C9WNEN864;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
@@ -611,6 +624,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5C9WNEN864;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

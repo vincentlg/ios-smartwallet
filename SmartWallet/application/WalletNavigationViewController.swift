@@ -13,18 +13,28 @@ class WalletNavigationViewController: UINavigationController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let vc:UIViewController
-        
+        //TODO DEBUG
+        //try? self.rockside.clearIdentity()
+      
         if (try? self.rockside.retrieveIdentity()) != nil {
-            
-            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
-                  
-            
+            self.displayWalletView()
         } else {
-            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WithoutWalletViewController") as! WithoutWalletViewController
+            self.displayNoWalletView()
         }
-        
+    }
+    
+    func displayWalletView(animated: Bool = false) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
+        self.setViewControllers([vc], animated: animated)
+    }
+    
+    func displayNoWalletView(animated: Bool = false) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WithoutWalletViewController") as! WithoutWalletViewController
+        self.setViewControllers([vc], animated: animated)
+    }
+    
+    func displayConnectView() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConnectViewController") as! ConnectViewController
         self.setViewControllers([vc], animated: false)
     }
     
