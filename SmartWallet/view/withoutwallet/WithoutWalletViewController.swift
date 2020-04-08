@@ -32,7 +32,7 @@ class WithoutWalletViewController: UIViewController {
                             DispatchQueue.main.async {
                                 hud.dismiss()
                                 try? self.rockside.storeIdentity()
-                                self.navigationController?.displayWalletView(animated: true)
+                                self.navigationController?.displayWalletView(animated: true, newWallet: true)
                             }
                             break
                             

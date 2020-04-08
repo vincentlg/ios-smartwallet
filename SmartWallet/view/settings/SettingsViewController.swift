@@ -48,7 +48,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
         let sectionLabel = UILabel(frame: CGRect(x: 30, y: 28, width:
             tableView.bounds.size.width, height: tableView.bounds.size.height))
-        sectionLabel.font = UIFont(name: "System Medium", size: 15)
+        sectionLabel.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium)
         sectionLabel.textColor = UIColor.link
         sectionLabel.text = self.sections[section]
         sectionLabel.sizeToFit()

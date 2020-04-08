@@ -23,8 +23,9 @@ class WalletNavigationViewController: UINavigationController {
         }
     }
     
-    func displayWalletView(animated: Bool = false) {
+    func displayWalletView(animated: Bool = false, newWallet: Bool = false) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
+        vc.isNewWallet = newWallet
         self.setViewControllers([vc], animated: animated)
     }
     
