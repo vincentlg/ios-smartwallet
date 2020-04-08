@@ -101,7 +101,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func showWhitelist() {
-        
+        self.performSegue(withIdentifier: "add_whitelist_segue", sender: self)
     }
     
     func showRocksideTwitter() {

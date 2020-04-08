@@ -7,6 +7,107 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Whitelist Address View Controller-->
+        <scene sceneID="RJt-8R-R4x">
+            <objects>
+                <viewController id="c6Q-8H-0dD" customClass="WhitelistAddressViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b9O-Py-DU2" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whitelist address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0u-MF-Kxl">
+                                <rect key="frame" x="20" y="20" width="374" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA7-OV-87h" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="105" width="374" height="274"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address to whitelist" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Kbq-jh-ReN" customClass="MDCTextField">
+                                        <rect key="frame" x="30" y="114" width="266" height="34"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTx-Qn-TPp" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="194" width="314" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RpD-ny-BUo"/>
+                                        </constraints>
+                                        <state key="normal" title="Add"/>
+                                        <connections>
+                                            <action selector="addAction:" destination="c6Q-8H-0dD" eventType="touchUpInside" id="6y5-li-wqC"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rd6-rI-EQm">
+                                        <rect key="frame" x="30" y="30" width="314" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dw1-I5-gvR">
+                                        <rect key="frame" x="304" y="111" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="NIY-up-vaz"/>
+                                            <constraint firstAttribute="height" constant="40" id="YM1-xH-f4a"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="qrcode" catalog="system"/>
+                                        <connections>
+                                            <action selector="scanAddressAction:" destination="4Ov-db-tfA" eventType="touchUpInside" id="rqO-Md-qD2"/>
+                                            <segue destination="76r-iW-V58" kind="presentation" identifier="show_scanner_segue" id="RCM-oJ-AnQ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you loose access to your phone, you will still have control of your wallet with this address." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="kuG-9r-g7b">
+                                        <rect key="frame" x="30" y="56" width="314" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="BcY-DI-Nbs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Dw1-I5-gvR" secondAttribute="trailing" constant="30" id="F0E-dp-dOI"/>
+                                    <constraint firstItem="Kbq-jh-ReN" firstAttribute="left" secondItem="lA7-OV-87h" secondAttribute="left" constant="30" id="I1Q-bL-LGB"/>
+                                    <constraint firstItem="Rd6-rI-EQm" firstAttribute="top" secondItem="lA7-OV-87h" secondAttribute="top" constant="30" id="LQ0-dz-TxN"/>
+                                    <constraint firstItem="Dw1-I5-gvR" firstAttribute="top" secondItem="kuG-9r-g7b" secondAttribute="bottom" constant="15" id="PHQ-yV-lwR"/>
+                                    <constraint firstItem="kuG-9r-g7b" firstAttribute="top" secondItem="Rd6-rI-EQm" secondAttribute="bottom" constant="8" id="b23-VB-bjc"/>
+                                    <constraint firstAttribute="trailing" secondItem="kuG-9r-g7b" secondAttribute="trailing" constant="30" id="cnP-eQ-wTE"/>
+                                    <constraint firstAttribute="height" constant="274" id="dRG-QN-JtJ"/>
+                                    <constraint firstItem="Rd6-rI-EQm" firstAttribute="left" secondItem="lA7-OV-87h" secondAttribute="left" constant="30" id="eAH-SA-RbZ"/>
+                                    <constraint firstItem="Dw1-I5-gvR" firstAttribute="leading" secondItem="Kbq-jh-ReN" secondAttribute="trailing" constant="8" id="gRq-ha-yHk"/>
+                                    <constraint firstItem="kuG-9r-g7b" firstAttribute="leading" secondItem="lA7-OV-87h" secondAttribute="leading" constant="30" id="hSe-dn-fqy"/>
+                                    <constraint firstItem="OTx-Qn-TPp" firstAttribute="leading" secondItem="lA7-OV-87h" secondAttribute="leading" constant="30" id="hzH-0u-E7u"/>
+                                    <constraint firstItem="Dw1-I5-gvR" firstAttribute="centerY" secondItem="Kbq-jh-ReN" secondAttribute="centerY" id="pbS-8a-xLx"/>
+                                    <constraint firstAttribute="right" secondItem="OTx-Qn-TPp" secondAttribute="right" constant="30" id="s5T-Zp-SCA"/>
+                                    <constraint firstAttribute="bottom" secondItem="OTx-Qn-TPp" secondAttribute="bottom" constant="30" id="v1O-lf-X7F"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rd6-rI-EQm" secondAttribute="trailing" constant="30" id="y3j-oJ-Kpw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Krj-Ab-3Zl" firstAttribute="trailing" secondItem="lA7-OV-87h" secondAttribute="trailing" constant="20" id="9cK-ay-7FO"/>
+                            <constraint firstItem="a0u-MF-Kxl" firstAttribute="top" secondItem="Krj-Ab-3Zl" secondAttribute="top" constant="20" id="Cr3-kv-LcL"/>
+                            <constraint firstItem="a0u-MF-Kxl" firstAttribute="leading" secondItem="Krj-Ab-3Zl" secondAttribute="leading" constant="20" id="KMh-h2-ahu"/>
+                            <constraint firstItem="lA7-OV-87h" firstAttribute="leading" secondItem="Krj-Ab-3Zl" secondAttribute="leading" constant="20" id="Nho-qT-lxo"/>
+                            <constraint firstItem="lA7-OV-87h" firstAttribute="top" secondItem="a0u-MF-Kxl" secondAttribute="bottom" constant="50" id="WvA-9C-xTv"/>
+                            <constraint firstItem="Krj-Ab-3Zl" firstAttribute="trailing" secondItem="a0u-MF-Kxl" secondAttribute="trailing" constant="20" id="tlI-ho-nPm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Krj-Ab-3Zl"/>
+                    </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="Kbq-jh-ReN" id="Idn-09-caa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acs-ZY-vFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="195.6521739130435" y="-1615.1785714285713"/>
+        </scene>
         <!--Settings View Controller-->
         <scene sceneID="XVg-HI-E7R">
             <objects>
@@ -111,6 +212,7 @@
                     <connections>
                         <outlet property="tableView" destination="Zk7-xj-69B" id="xwY-LL-fae"/>
                         <segue destination="q4a-iN-KJg" kind="presentation" identifier="show_recovery_segue" id="Eqw-uf-ziv"/>
+                        <segue destination="c6Q-8H-0dD" kind="presentation" identifier="add_whitelist_segue" id="WXE-SM-Bb2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0L8-cH-EWi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -548,7 +650,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup your wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-AO-BKW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recovery Kit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-AO-BKW">
                                 <rect key="frame" x="20" y="30" width="374" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1477,6 +1579,7 @@ The order of the words is important.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="RCM-oJ-AnQ"/>
         <segue reference="yog-dw-0Rd"/>
         <segue reference="Eqw-uf-ziv"/>
     </inferredMetricsTieBreakers>

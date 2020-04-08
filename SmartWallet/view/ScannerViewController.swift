@@ -101,8 +101,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
 
     func found(code: String) {
-        print(code)
-        self.qrCodeHandler?(code)
+        let address = code.replacingOccurrences(of: "ethereum:", with: "")
+        self.qrCodeHandler?(address)
     }
 
     override var prefersStatusBarHidden: Bool {
