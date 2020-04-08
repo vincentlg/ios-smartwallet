@@ -47,6 +47,8 @@
 		DCBA5D06242A128500EE8CA9 /* TabButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA5D05242A128500EE8CA9 /* TabButtonBar.swift */; };
 		DCBA5D08242A20A900EE8CA9 /* WalletButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA5D07242A20A900EE8CA9 /* WalletButton.swift */; };
 		DCD11D09241B9C050046ECD0 /* TokensTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */; };
+		DCD8CE46243DD7CB0078BB1D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE45243DD7CB0078BB1D /* SettingsViewController.swift */; };
+		DCD8CE48243DDD400078BB1D /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE47243DDD400078BB1D /* SettingsViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,8 @@
 		DCBA5D05242A128500EE8CA9 /* TabButtonBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonBar.swift; sourceTree = "<group>"; };
 		DCBA5D07242A20A900EE8CA9 /* WalletButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletButton.swift; sourceTree = "<group>"; };
 		DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokensTableViewController.swift; sourceTree = "<group>"; };
+		DCD8CE45243DD7CB0078BB1D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		DCD8CE47243DDD400078BB1D /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +239,7 @@
 		DC996BE22418DBBE00248748 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				DCD8CE44243DD7AF0078BB1D /* settings */,
 				DCD11D07241B9BE40046ECD0 /* exchange */,
 				DCA3CCED242387C900FC135C /* send */,
 				DC352DB4243CC72600654C5E /* withoutwallet */,
@@ -265,6 +270,15 @@
 				DC6071372431E5B100CED3BF /* ParaswapService.swift */,
 			);
 			path = exchange;
+			sourceTree = "<group>";
+		};
+		DCD8CE44243DD7AF0078BB1D /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				DCD8CE45243DD7CB0078BB1D /* SettingsViewController.swift */,
+				DCD8CE47243DDD400078BB1D /* SettingsViewCell.swift */,
+			);
+			path = settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCBA5D08242A20A900EE8CA9 /* WalletButton.swift in Sources */,
+				DCD8CE48243DDD400078BB1D /* SettingsViewCell.swift in Sources */,
 				DC607136242E5F8600CED3BF /* TokenTableViewCell.swift in Sources */,
 				DCBA5D042429F66100EE8CA9 /* CardView.swift in Sources */,
 				DC4ADCA424191AAA008C23C7 /* Transaction.swift in Sources */,
@@ -443,6 +458,7 @@
 				DCA3F398241FCA9B007E72D2 /* RestoreViewController.swift in Sources */,
 				DC4ADCAC241940F5008C23C7 /* Token.swift in Sources */,
 				DC4ECCEC241795CC0062425E /* SendViewController.swift in Sources */,
+				DCD8CE46243DD7CB0078BB1D /* SettingsViewController.swift in Sources */,
 				DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */,
 				DC4ADCA82419332F008C23C7 /* Chain+Etherscan.swift in Sources */,
 				DC4ADC9B2418F523008C23C7 /* BalanceViewController.swift in Sources */,
