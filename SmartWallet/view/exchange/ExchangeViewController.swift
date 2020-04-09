@@ -58,7 +58,23 @@ class ExchangeViewController: UIViewController {
     }
     
     @IBAction func buyAction(_ sender: Any) {
-        self.getParaSwapTx()
+        self.amountTextFieldController?.setErrorText(nil, errorAccessibilityValue:nil)
+        
+        if self.destAmountLabel.text == "0" {
+            self.amountTextFieldController?.setErrorText("Amount invaid", errorAccessibilityValue: "Amount invaid")
+            return
+        }
+        
+        if self.amountWei! > sourceToken!.balance! {
+            self.amountTextFieldController?.setErrorText("Insuffisant balance", errorAccessibilityValue: "Insuffisant balance")
+            return
+        }
+        
+        if (sourceToken?.symbol == "ETH") {
+            self.getParaSwapTx()
+        } else {
+            self.upadateAllowForParaswap()
+        }
     }
     
     public func selectSourceToken(token: TokenBalance) {
@@ -135,19 +151,63 @@ class ExchangeViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    
+    private func upadateAllowForParaswap(){
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+        
+        self.paraswapService.getParaswapSenderAddress() { (result) in
+            switch result {
+            case .success(let result):
+               print(result)
+               self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description) { (result) in
+                   switch result {
+                   case .success(let txHash):
+                       DispatchQueue.main.async {
+                           _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
+                               switch result {
+                               case .success(_):
+                                   DispatchQueue.main.async {
+                                       hud.dismiss()
+                                       self.getParaSwapTx()
+                                   }
+                                   break
+                                   
+                               case .failure(let error):
+                                   print(error)
+                                   DispatchQueue.main.async {
+                                       hud.dismiss()
+                                       self.dispayErrorAlert(message: error.localizedDescription)
+                                   }
+                                   break
+                               }
+                           }
+                       }
+                       
+                       break
+                       
+                   case .failure(let error):
+                       print(error)
+                       DispatchQueue.main.async {
+                           hud.dismiss()
+                           self.dispayErrorAlert(message: error.localizedDescription)
+                       }
+                       break
+                   }
+                   
+               }
+                break
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+        
+    }
+    
+    
     private func getParaSwapTx(){
-        self.amountTextFieldController?.setErrorText(nil, errorAccessibilityValue:nil)
-        
-        if self.destAmountLabel.text == "0" {
-            self.amountTextFieldController?.setErrorText("Amount invaid", errorAccessibilityValue: "Amount invaid")
-            return
-        }
-        
-        if self.amountWei! > sourceToken!.balance! {
-            self.amountTextFieldController?.setErrorText("Insuffisant balance", errorAccessibilityValue: "Insuffisant balance")
-            return
-        }
-        
         
         let body = GetTxRequest(priceRoute: self.priceRoute!,
                                 srcToken: getSourceTokenAddress(),
@@ -164,11 +224,11 @@ class ExchangeViewController: UIViewController {
             switch result {
             case .success(let response):
                 let amount = BigInt(response.value!)
-                let weiAmount = amount?.magnitude.serialize()
+                let weiAmount = amount!.magnitude.serialize()
                 
                 DispatchQueue.main.async {
                     self.rockside.identity!.relayTransaction(to: response.to!,
-                                                             value: weiAmount!.hexValueNoLeadingZero,
+                                                             value: weiAmount.hexValueNoLeadingZero,
                                                              data: response.data!, gas: response.gas!) { (result) in
                                                                 switch result {
                                                                 case .success(let txHash):

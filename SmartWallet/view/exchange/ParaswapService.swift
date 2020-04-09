@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RocksideWalletSdk
 
 struct GetTokenResponse: Codable {
     var tokens: [Token]
@@ -63,11 +64,30 @@ struct GetTxResponse:Codable {
     var data: String?
     var gasPrice: String?
     var gas: String?
+    
+    //Paraswap API return value as a String when swapping ETH and as Int when changing ERC20
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        from = try values.decode(String.self, forKey: .from)
+        to = try values.decode(String.self, forKey: .to)
+        data = try values.decode(String.self, forKey: .data)
+        gasPrice = try values.decode(String.self, forKey: .gasPrice)
+        gas = try values.decode(String.self, forKey: .gas)
+        
+        do {
+            value = try values.decode(String.self, forKey: .value)
+        } catch {
+            value = "0"
+        }
+            
+       }
+    
 }
 
 class ParaswapService {
     
     let url = "https://paraswap.io/api/v1/"
+    let paraswapContract = "0xF92C1ad75005E6436B4EE84e88cB23Ed8A290988"
     
     public func getTokens(completion: @escaping (Result<[Token], Error>) -> Void) -> Void {
         var request = URLRequest(url: URL(string: url+"tokens/1")!)
@@ -109,7 +129,35 @@ class ParaswapService {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()
+        
+        print(String(data:body.toJSONData()!, encoding: .utf8)!)
         Http.execute(with: request, receive: GetTxResponse.self, completion: completion).resume()
+    }
+    
+    public func getParaswapSenderAddress(completion: @escaping (Result<String, Error>) -> Void) -> Void {
+        
+        let function = Function(name: "getTokenTransferProxy", parameters: [])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: function, arguments: [])
+        
+        let body = JSONRPCRequest(jsonrpc: "2.0", method: "eth_call", params: [["to":paraswapContract, "data":encoder.data.hexValue ]], id: 1)
+        
+        self.rockside.rpc.executeJSONRpc(with:body, receive: JSONRPCResult<String>.self) { (result) in
+            switch result {
+            case .success(let response):
+                let strippedResult = response.result.replacingOccurrences(of: "0x000000000000000000000000", with: "0x")
+                completion(.success(strippedResult))
+                return
+                
+            case .failure(let error):
+                completion(.failure(error))
+                break
+            }
+        }.resume()
+    }
+    
+    var rockside: Rockside {
+        return (UIApplication.shared.delegate as! AppDelegate).rockside!
     }
     
 }
