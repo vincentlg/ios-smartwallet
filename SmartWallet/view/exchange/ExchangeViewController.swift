@@ -155,6 +155,7 @@ class ExchangeViewController: UIViewController {
     
     private func upadateAllowForParaswap(){
         let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Allowing Paraswap"
         hud.show(in: self.view)
         
         self.paraswapService.getParaswapSenderAddress() { (result) in
@@ -217,6 +218,7 @@ class ExchangeViewController: UIViewController {
                                 userAddress: self.rockside.identity!.ethereumAddress)
         
         let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Executing transfer"
         hud.show(in: self.view)
         
         
