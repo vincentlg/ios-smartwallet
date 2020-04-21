@@ -91,7 +91,7 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         
-        self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount) { (result) in
+        self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount, gasPrice: "13000000000") { (result) in
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {
@@ -118,7 +118,7 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
               
-        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount) { (result) in
+        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount, gasPrice: "13000000000" ) { (result) in
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {
@@ -129,7 +129,8 @@ class SendViewController: UIViewController {
                 }
                 break
                 
-            case .failure(_):
+            case .failure(let error):
+                NSLog(error.localizedDescription)
                 DispatchQueue.main.async {
                     hud.dismiss()
                     self.dismiss(animated: true, completion: {
