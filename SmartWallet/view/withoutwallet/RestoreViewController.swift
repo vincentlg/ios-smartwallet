@@ -64,8 +64,11 @@ class RestoreViewController: UIViewController {
                     break
                     
                 case .failure(_):
+                    DispatchQueue.main.async {
                      self.twelvesWordsViewController?.setErrorText("An error occured please try again", errorAccessibilityValue: "An error occured please try again")
+                    }
                     break
+                        
                 }
             }
             

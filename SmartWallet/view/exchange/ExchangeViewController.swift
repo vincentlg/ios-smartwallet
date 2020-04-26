@@ -70,6 +70,11 @@ class ExchangeViewController: UIViewController {
             return
         }
         
+        if self.amountWei! > sourceToken!.balance! {
+            self.amountTextFieldController?.setErrorText("Insuffisant balance", errorAccessibilityValue: "Insuffisant balance")
+            return
+        }
+        
         if (sourceToken?.symbol == "ETH") {
             self.getParaSwapTx()
         } else {
@@ -162,7 +167,7 @@ class ExchangeViewController: UIViewController {
             switch result {
             case .success(let result):
                print(result)
-               self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description) { (result) in
+               self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description, gasPrice: .normal) { (result) in
                    switch result {
                    case .success(let txHash):
                        DispatchQueue.main.async {
@@ -231,7 +236,7 @@ class ExchangeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.rockside.identity!.relayTransaction(to: response.to!,
                                                              value: weiAmount.hexValueNoLeadingZero,
-                                                             data: response.data!, gas: response.gas!) { (result) in
+                                                             data: response.data!, gas: response.gas!, gasPrice: .normal) { (result) in
                                                                 switch result {
                                                                 case .success(let txHash):
                                                                     DispatchQueue.main.async {

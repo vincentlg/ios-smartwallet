@@ -10,6 +10,7 @@ import UIKit
 import RocksideWalletSdk
 import MaterialComponents.MaterialTextFields
 import JGProgressHUD
+import BigInt
 
 class SendViewController: UIViewController {
     
@@ -74,6 +75,11 @@ class SendViewController: UIViewController {
             return
         }
         
+        if self.tokens![0].balance! < BigInt(700000000000000)  {
+            self.amountTextFieldController?.setErrorText("Need more ETH for gas", errorAccessibilityValue: "Need more ETH for gas")
+                 return
+        }
+        
         if  !EthereumAddress.isValid(string: destinationTextField.text!) {
             self.destinationTextFieldController?.setErrorText("Invalid address", errorAccessibilityValue: "Invalid addresss")
             return
@@ -91,7 +97,7 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         
-        self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount, gasPrice: "13000000000") { (result) in
+        self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount, gasPrice: .normal) { (result) in
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {
@@ -118,7 +124,7 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
               
-        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount, gasPrice: "13000000000" ) { (result) in
+        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount, gasPrice: .normal ) { (result) in
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {
