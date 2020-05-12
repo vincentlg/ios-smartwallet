@@ -83,9 +83,8 @@ class WalletViewController: UIViewController {
         
         _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
             switch result {
-            case .success(let txReceipt):
-                print (txReceipt)
-                DispatchQueue.main.async {
+            case .success(_):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
                     self.walletTabViewController.retriveAllTransactions()
                 }

@@ -40,4 +40,9 @@ class WalletNavigationViewController: UINavigationController {
         self.setViewControllers([vc], animated: false)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    
 }

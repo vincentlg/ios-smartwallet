@@ -16,7 +16,7 @@ class BalanceViewContrller: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         let safeAreaBottom: CGFloat = UIApplication.shared.keyWindow!.safeAreaInsets.bottom
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: safeAreaBottom, right: 0.0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: safeAreaBottom + 30, right: 0.0)
         
         self.refreshControl = UIRefreshControl()
         tableView.refreshControl = refreshControl

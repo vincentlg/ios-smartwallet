@@ -31,16 +31,28 @@ struct Transaction: Codable {
 
 extension Transaction {
     
+    func isContractCreation() -> Bool {
+       return to != walletaddress.lowercased() && from != walletaddress.lowercased()
+    }
+    
+    func isSend() -> Bool {
+       return from == walletaddress.lowercased() && value != "0"
+    }
+    
+    func isReceive() -> Bool {
+        return to == walletaddress.lowercased() && value != "0"
+    }
+    
     var type: String {
-        if from == walletaddress.lowercased() && value != "0" {
+        if  isSend() {
             return "Send"
         }
         
-        if to == walletaddress.lowercased() && value != "0" {
+        if isReceive() {
             return "Receive"
         }
         
-        if to != walletaddress.lowercased() && from != walletaddress.lowercased() {
+        if isContractCreation() {
             return "Wallet creation"
         }
         
@@ -61,12 +73,18 @@ extension Transaction {
         
         let floatValue = (ethValue.replacingOccurrences(of: ",", with: ".")  as NSString).floatValue
         let stringValue = String(format: "%.3f", floatValue)
+       
+        return stringValue+" "+symbol
+        
+    }
+    
+    
+    var symbol: String {
         if let symbole = self.tokenSymbol {
-            return stringValue+" "+symbole
+            return symbole
         }
-        
-        return stringValue+" ETH"
-        
+               
+       return "ETH"
     }
     
     var isERC: Bool {

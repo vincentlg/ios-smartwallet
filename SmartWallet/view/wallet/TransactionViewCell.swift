@@ -15,8 +15,10 @@ class TransactionViewCell: UITableViewCell {
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var circleImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var txTypeIcon: UIImageView!
     
     var transaction: Transaction?
+
     
     public func display(transaction: Transaction){
         self.transaction = transaction
@@ -27,17 +29,24 @@ class TransactionViewCell: UITableViewCell {
             self.circleImageView.isHidden = false
             self.amountLabel?.text = transaction.formattedAmount
             
-            if transaction.isERC {
-                self.symbolLabel?.text = transaction.tokenSymbol
-            }  else {
-                self.symbolLabel?.text = "ETH"
+            if transaction.isReceive() {
+                self.txTypeIcon.image = UIImage(named: "tx-receive")
+            } else if transaction.isSend()  {
+                self.txTypeIcon.image = UIImage(named: "tx-send")
             }
+            
+        } else if transaction.isContractCreation() {
+                self.txTypeIcon.image = UIImage(named: "tx-newwallet")
+                self.amountLabel?.text = ""
         } else {
+            self.txTypeIcon.image = nil
             self.circleImageView.isHidden = true
             self.amountLabel?.text = ""
-            self.symbolLabel?.text = ""
         }
+        
+        self.txTypeIcon.setImageColor(color: UIColor(hexString: "AF52DE"))
     }
+    
     @IBAction func viewTxAction(_ sender: Any) {
         
         if let tx = self.transaction {

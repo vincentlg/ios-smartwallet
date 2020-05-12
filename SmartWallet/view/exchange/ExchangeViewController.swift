@@ -23,6 +23,9 @@ class ExchangeViewController: UIViewController {
     
     @IBOutlet weak var destAmountLabel: UILabel!
     
+    @IBAction func showParaswapInfo(_ sender: UIButton) {
+         UIApplication.shared.open(URL(string: "https://paraswap.io")!, options: [:], completionHandler: nil)
+    }
     var tokens: [Token]?
     var tokensBalance: [TokenBalance]?
     

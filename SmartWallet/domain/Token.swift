@@ -14,4 +14,12 @@ struct Token: Codable {
     var description:String?
     var address: String
     
+    var name: String {
+        if let _name = description {
+            return _name
+        }
+        
+        return symbol
+    }
+    
 }

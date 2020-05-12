@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import MaterialComponents.MaterialSnackbar
 
 class RecoveryViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
@@ -24,6 +25,10 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     @IBAction func CopyAddressAction(_ sender: Any) {
         UIPasteboard.general.string = self.rockside.identity!.ethereumAddress+"\n"+self.rockside.identity!.hdwallet.mnemonic
+        let snackBarMessage = MDCSnackbarMessage()
+        snackBarMessage.text = "Address and recovery phrase copied to clipboard."
+        snackBarMessage.duration = 1
+        MDCSnackbarManager.show(snackBarMessage)
     }
     
     override func viewDidLoad() {

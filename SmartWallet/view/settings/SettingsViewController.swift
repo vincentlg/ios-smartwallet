@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         
         self.securityItems = [ItemSettings(label: "Recovery kit", iconName: "shield", action:self.showRecovery), ItemSettings(label: "Whitelist address", iconName: "award", action: self.showWhitelist)]
-        self.contactItems = [ItemSettings(label: "Follow Rockside", iconName: "twitter", action: self.showRocksideTwitter), ItemSettings(label: "Follow Paraswap", iconName: "twitter", action: showParaswapTwitter)]
+        self.contactItems = [ItemSettings(label: "Rockside", iconName: "twitter", action: self.showRocksideTwitter), ItemSettings(label: "Paraswap", iconName: "twitter", action: showParaswapTwitter)]
         
         
         self.tableView.delegate = self
@@ -71,17 +71,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsViewCell", for: indexPath) as! SettingsViewCell
         
-       
-        let item = getItem(indexPath: indexPath)
-        cell.itemLabel.text = item.label
-        cell.itemImageView.image = UIImage(named: item.iconName)
+        cell.display(item:  getItem(indexPath: indexPath))
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = getItem(indexPath: indexPath)
-        item.action()
+        self.tableView.deselectRow(at: indexPath, animated: false)
+        getItem(indexPath: indexPath).action()
     }
     
     func getItem(indexPath: IndexPath) -> ItemSettings {

@@ -12,5 +12,12 @@ class SettingsViewCell: UITableViewCell {
     
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
+ 
+    var item: ItemSettings?
     
+    func display(item: ItemSettings) {
+        self.item = item
+        self.itemLabel.text = item.label
+        self.itemImageView.image = UIImage(named: item.iconName)
+    }
 }
