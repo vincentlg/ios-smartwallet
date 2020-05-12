@@ -70,11 +70,13 @@ class ExchangeViewController: UIViewController {
             return
         }
         
-        if self.amountWei! > sourceToken!.balance! {
-            self.amountTextFieldController?.setErrorText("Insuffisant balance", errorAccessibilityValue: "Insuffisant balance")
+        if self.tokensBalance![0].balance! < BigInt(1000000000000000)  {
+            self.amountTextFieldController?.setErrorText("Need more ETH for gas", errorAccessibilityValue: "Need more ETH for gas")
             return
         }
         
+        
+        self.view.endEditing(true)
         if (sourceToken?.symbol == "ETH") {
             self.getParaSwapTx()
         } else {
@@ -166,43 +168,45 @@ class ExchangeViewController: UIViewController {
         self.paraswapService.getParaswapSenderAddress() { (result) in
             switch result {
             case .success(let result):
-               print(result)
-               self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description, gasPrice: .normal) { (result) in
-                   switch result {
-                   case .success(let txHash):
-                       DispatchQueue.main.async {
-                           _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
-                               switch result {
-                               case .success(_):
-                                   DispatchQueue.main.async {
-                                       hud.dismiss()
-                                       self.getParaSwapTx()
-                                   }
-                                   break
-                                   
-                               case .failure(let error):
-                                   print(error)
-                                   DispatchQueue.main.async {
-                                       hud.dismiss()
-                                       self.dispayErrorAlert(message: error.localizedDescription)
-                                   }
-                                   break
-                               }
-                           }
-                       }
-                       
-                       break
-                       
-                   case .failure(let error):
-                       print(error)
-                       DispatchQueue.main.async {
-                           hud.dismiss()
-                           self.dispayErrorAlert(message: error.localizedDescription)
-                       }
-                       break
-                   }
-                   
-               }
+                DispatchQueue.main.async {
+                    self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description, gasPrice: .ultrafast) { (result) in
+                        switch result {
+                        case .success(let txHash):
+                            DispatchQueue.main.async {
+                                _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
+                                    switch result {
+                                    case .success(_):
+                                        NSLog("Success")
+                                        DispatchQueue.main.async {
+                                            hud.dismiss()
+                                            self.getParaSwapTx()
+                                        }
+                                        break
+                                        
+                                    case .failure(let error):
+                                        print(error)
+                                        DispatchQueue.main.async {
+                                            hud.dismiss()
+                                            self.dispayErrorAlert(message: error.localizedDescription)
+                                        }
+                                        break
+                                    }
+                                }
+                            }
+                            
+                            break
+                            
+                        case .failure(let error):
+                            print(error)
+                            DispatchQueue.main.async {
+                                hud.dismiss()
+                                self.dispayErrorAlert(message: error.localizedDescription)
+                            }
+                            break
+                        }
+                        
+                    }
+                }
                 break
             case .failure(let error):
                 print(error)
@@ -232,11 +236,12 @@ class ExchangeViewController: UIViewController {
             case .success(let response):
                 let amount = BigInt(response.value!)
                 let weiAmount = amount!.magnitude.serialize()
-                
+               
+
                 DispatchQueue.main.async {
                     self.rockside.identity!.relayTransaction(to: response.to!,
                                                              value: weiAmount.hexValueNoLeadingZero,
-                                                             data: response.data!, gas: response.gas!, gasPrice: .normal) { (result) in
+                                                             data: response.data!, gas: response.gas!) { (result) in
                                                                 switch result {
                                                                 case .success(let txHash):
                                                                     DispatchQueue.main.async {
@@ -283,9 +288,14 @@ class ExchangeViewController: UIViewController {
                     case .success(let response):
                         self.priceRoute = response
                         
+                        // We take a marge of 5% to avoid market change
                         let destAmountBigInt =  BigInt(response.amount)!
-                        let desAmountWithMargin = destAmountBigInt * BigInt(90) / BigInt(100)
+                        let desAmountWithMargin = destAmountBigInt * BigInt(95) / BigInt(100)
                         self.destAmountWei = desAmountWithMargin
+                        
+                        //Update priceRoute object with marged amount
+                        self.priceRoute?.updateDestAmount(newAmount: self.destAmountWei!.description)
+                        
                         
                         DispatchQueue.main.async {
                             let amountString = formatter.string(from:desAmountWithMargin)

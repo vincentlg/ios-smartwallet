@@ -75,7 +75,7 @@ class WithoutWalletViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-             return .lightContent
-         }
+        return .lightContent
+    }
        
 }

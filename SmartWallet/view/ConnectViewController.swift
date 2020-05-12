@@ -39,4 +39,8 @@ class ConnectViewController: UIViewController {
             self.navigationController?.displayWalletView()
         }
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

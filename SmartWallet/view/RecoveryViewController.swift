@@ -23,7 +23,7 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     @IBAction func CopyAddressAction(_ sender: Any) {
-        UIPasteboard.general.string = self.rockside.identity?.ethereumAddress
+        UIPasteboard.general.string = self.rockside.identity!.ethereumAddress+"\n"+self.rockside.identity!.hdwallet.mnemonic
     }
     
     override func viewDidLoad() {

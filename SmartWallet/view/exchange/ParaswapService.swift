@@ -17,7 +17,7 @@ struct GetRateResponse: Codable {
     var priceRoute: PriceRoute
 }
 
-struct PriceRoute: Codable {
+class PriceRoute: Codable {
     var amount: String
     var multiPath: Bool
     var fromUSD: String
@@ -25,6 +25,15 @@ struct PriceRoute: Codable {
     var details: PriceRouteDetails?
     var bestRoute: [Route]
     var others: [Route]?
+    
+    
+    func updateDestAmount(newAmount: String) {
+        self.amount = newAmount
+        
+        for route in self.bestRoute {
+            route.amount = newAmount
+        }
+    }
 }
 
 struct PriceRouteDetails: Codable {
@@ -33,7 +42,7 @@ struct PriceRouteDetails: Codable {
     var srcAmount: String
 }
 
-struct Route: Codable {
+class Route: Codable {
     var exchange: String?
     var amount: String?
     var srcAmount: String?
@@ -130,7 +139,7 @@ class ParaswapService {
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()
         
-        print(String(data:body.toJSONData()!, encoding: .utf8)!)
+        
         Http.execute(with: request, receive: GetTxResponse.self, completion: completion).resume()
     }
     

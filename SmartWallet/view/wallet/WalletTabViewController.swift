@@ -156,9 +156,11 @@ class WalletTabViewController: TabmanViewController {
                 
                 break
             case .failure(let error):
-                self.balanceViewController?.refreshControl?.endRefreshing()
-                self.hud.dismiss()
-                print(error)
+                DispatchQueue.main.async {
+                    self.balanceViewController?.refreshControl?.endRefreshing()
+                    self.hud.dismiss()
+                    print(error)
+                }
                 break
             }
         }
@@ -177,8 +179,10 @@ class WalletTabViewController: TabmanViewController {
                 break
                 
             case .failure(_):
-                self.hud.dismiss()
-                self.displayErrorHandler?()
+                DispatchQueue.main.async {
+                    self.hud.dismiss()
+                    self.displayErrorHandler?()
+                }
                 break
             }
         }

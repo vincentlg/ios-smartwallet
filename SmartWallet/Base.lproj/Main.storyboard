@@ -10,8 +10,8 @@
         <!--Whitelist Address View Controller-->
         <scene sceneID="RJt-8R-R4x">
             <objects>
-                <viewController id="c6Q-8H-0dD" customClass="WhitelistAddressViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="b9O-Py-DU2" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController id="c6Q-8H-0dD" customClass="WhitelistAddressViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b9O-Py-DU2" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -21,7 +21,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA7-OV-87h" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA7-OV-87h" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="105" width="374" height="274"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address to whitelist" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Kbq-jh-ReN" customClass="MDCTextField">
@@ -30,7 +30,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTx-Qn-TPp" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTx-Qn-TPp" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
                                         <rect key="frame" x="30" y="194" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="RpD-ny-BUo"/>
@@ -111,8 +111,8 @@
         <!--Settings View Controller-->
         <scene sceneID="XVg-HI-E7R">
             <objects>
-                <viewController id="FdN-Sh-NYG" customClass="SettingsViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LMq-ax-jvR" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController id="FdN-Sh-NYG" customClass="SettingsViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LMq-ax-jvR" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -122,21 +122,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-lg-FHk" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-lg-FHk" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="105" width="374" height="663"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="96" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zk7-xj-69B">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="627"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SettingsViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingsViewCell" id="TTx-ew-RZH" customClass="SettingsViewCell" customModule="Walloo" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SettingsViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingsViewCell" id="TTx-ew-RZH" customClass="SettingsViewCell" customModule="Moonkey" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="374" height="96"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TokenViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TTx-ew-RZH" id="QGK-zl-npE">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="96"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wz1-4b-XBf" customClass="ListItemView" customModule="Walloo" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wz1-4b-XBf" customClass="ListItemView" customModule="Moonkey" customModuleProvider="target">
                                                             <rect key="frame" x="20" y="15" width="334" height="81"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Recovery" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQF-aj-bKP">
@@ -222,8 +222,8 @@
         <!--Wallet View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="WalletViewController" id="BYZ-38-t0r" customClass="WalletViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController storyboardIdentifier="WalletViewController" id="BYZ-38-t0r" customClass="WalletViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -330,7 +330,7 @@
                                     <constraint firstItem="4b0-jG-EMh" firstAttribute="top" secondItem="8h2-94-2rn" secondAttribute="bottom" constant="5" id="wOS-iS-3Lj"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHD-Ko-xJ9" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHD-Ko-xJ9" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="280" width="414" height="636"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -362,12 +362,12 @@
         <!--Receive View Controller-->
         <scene sceneID="7Wh-uJ-q7L">
             <objects>
-                <viewController id="ukE-wL-kas" customClass="ReceiveViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Dsi-aZ-CE4" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController id="ukE-wL-kas" customClass="ReceiveViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dsi-aZ-CE4" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Z-fi-vGY" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Z-fi-vGY" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="374" height="431.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XPj-tt-sFc">
@@ -383,7 +383,7 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q89-o1-NFH" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q89-o1-NFH" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
                                         <rect key="frame" x="30" y="351.5" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Jgi-4x-NxL"/>
@@ -446,8 +446,8 @@
         <!--Send View Controller-->
         <scene sceneID="U7y-PD-vw7">
             <objects>
-                <viewController id="4Ov-db-tfA" customClass="SendViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nIn-rE-H7r" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController id="4Ov-db-tfA" customClass="SendViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nIn-rE-H7r" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -457,7 +457,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nX-Hz-KzG" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nX-Hz-KzG" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="374" height="274"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Destination address" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="mUX-kQ-vrI" customClass="MDCTextField">
@@ -475,7 +475,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSs-4z-0kx" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSs-4z-0kx" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
                                         <rect key="frame" x="30" y="194" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="tM5-kp-y4C"/>
@@ -580,18 +580,12 @@
         <!--Without Wallet View Controller-->
         <scene sceneID="eyJ-aS-HBc">
             <objects>
-                <viewController storyboardIdentifier="WithoutWalletViewController" id="cZb-6B-ApA" customClass="WithoutWalletViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="v0J-iS-AqD" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController storyboardIdentifier="WithoutWalletViewController" id="cZb-6B-ApA" customClass="WithoutWalletViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v0J-iS-AqD" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy wallet, easy money" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JW-Tj-xNX">
-                                <rect key="frame" x="62" y="431" width="290.5" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-jS-TIm" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-jS-TIm" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="724" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fYk-84-g0h"/>
@@ -602,7 +596,7 @@
                                     <action selector="createWalletAction:" destination="cZb-6B-ApA" eventType="touchUpInside" id="Qdh-5E-e5F"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvQ-8d-03b" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvQ-8d-03b" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="782" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="vc0-U3-acj"/>
@@ -613,25 +607,32 @@
                                     <segue destination="CI7-Bq-WEo" kind="show" id="Bu6-l3-lK0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walloo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyY-Kl-vBd">
-                                <rect key="frame" x="20" y="335" width="374" height="91"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="76"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="astronaut" translatesAutoresizingMaskIntoConstraints="NO" id="X8b-QQ-Bgk">
+                                <rect key="frame" x="57" y="214" width="300" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="8Zo-Sv-OhE"/>
+                                    <constraint firstAttribute="height" constant="220" id="sUq-ZK-nPi"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MOONKEY" translatesAutoresizingMaskIntoConstraints="NO" id="frM-f8-rif">
+                                <rect key="frame" x="57" y="454" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5fy-Bk-1yf"/>
+                                    <constraint firstAttribute="width" constant="300" id="GlL-V4-xlU"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="1JW-Tj-xNX" firstAttribute="centerY" secondItem="v0J-iS-AqD" secondAttribute="centerY" id="FWx-GV-PJK"/>
+                            <constraint firstItem="frM-f8-rif" firstAttribute="centerX" secondItem="v0J-iS-AqD" secondAttribute="centerX" id="Ce2-tW-oXP"/>
+                            <constraint firstItem="X8b-QQ-Bgk" firstAttribute="top" secondItem="4Ze-uB-Lgx" secondAttribute="top" constant="170" id="JIO-tW-5rI"/>
                             <constraint firstItem="qvQ-8d-03b" firstAttribute="top" secondItem="V6O-jS-TIm" secondAttribute="bottom" constant="8" id="Mjk-um-VrV"/>
                             <constraint firstItem="qvQ-8d-03b" firstAttribute="leading" secondItem="4Ze-uB-Lgx" secondAttribute="leading" constant="20" id="Q2t-8k-vUh"/>
-                            <constraint firstItem="1JW-Tj-xNX" firstAttribute="centerX" secondItem="v0J-iS-AqD" secondAttribute="centerX" id="Usa-xk-v9x"/>
                             <constraint firstItem="V6O-jS-TIm" firstAttribute="leading" secondItem="4Ze-uB-Lgx" secondAttribute="leading" constant="20" id="V1l-By-N2z"/>
                             <constraint firstItem="4Ze-uB-Lgx" firstAttribute="trailing" secondItem="qvQ-8d-03b" secondAttribute="trailing" constant="20" id="WAX-le-k0g"/>
+                            <constraint firstItem="frM-f8-rif" firstAttribute="top" secondItem="X8b-QQ-Bgk" secondAttribute="bottom" constant="20" id="cSb-JO-IaE"/>
                             <constraint firstItem="4Ze-uB-Lgx" firstAttribute="bottom" secondItem="qvQ-8d-03b" secondAttribute="bottom" constant="30" id="eVr-3S-d6f"/>
-                            <constraint firstItem="HyY-Kl-vBd" firstAttribute="leading" secondItem="4Ze-uB-Lgx" secondAttribute="leading" constant="20" id="p8d-Ul-YPH"/>
-                            <constraint firstItem="4Ze-uB-Lgx" firstAttribute="trailing" secondItem="HyY-Kl-vBd" secondAttribute="trailing" constant="20" id="sf7-7f-Agh"/>
-                            <constraint firstItem="1JW-Tj-xNX" firstAttribute="top" secondItem="HyY-Kl-vBd" secondAttribute="bottom" constant="5" id="yd5-Bb-0qr"/>
+                            <constraint firstItem="X8b-QQ-Bgk" firstAttribute="centerX" secondItem="v0J-iS-AqD" secondAttribute="centerX" id="rZA-Oe-BSK"/>
                             <constraint firstItem="4Ze-uB-Lgx" firstAttribute="trailing" secondItem="V6O-jS-TIm" secondAttribute="trailing" constant="20" id="zbG-Jo-C1z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Ze-uB-Lgx"/>
@@ -640,13 +641,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sa-be-vaD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2845" y="-1079"/>
+            <point key="canvasLocation" x="-2846.376811594203" y="-1079.4642857142856"/>
         </scene>
         <!--Recovery View Controller-->
         <scene sceneID="3Uq-xg-Cd7">
             <objects>
-                <viewController id="q4a-iN-KJg" customClass="RecoveryViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hzV-M6-Afv" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController id="q4a-iN-KJg" customClass="RecoveryViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hzV-M6-Afv" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -656,7 +657,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hg-28-ISi" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hg-28-ISi" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="374" height="520"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ya-Gb-N4K">
@@ -668,7 +669,7 @@ The order of the words is important.</string>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mrj-Cd-Z47" customClass="CardView" customModule="Walloo">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mrj-Cd-Z47" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                         <rect key="frame" x="30" y="136" width="314" height="56"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toto tata titi rominet robinet cacahuette haricot haribot vie grand petit bonbon" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Zdq-jm-kxf">
@@ -709,7 +710,7 @@ The order of the words is important.</string>
                                             <constraint firstAttribute="height" constant="20" id="lAQ-ig-ZWG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="Copy address"/>
+                                        <state key="normal" title="Copy address and recovery phrase"/>
                                         <connections>
                                             <action selector="CopyAddressAction:" destination="q4a-iN-KJg" eventType="touchUpInside" id="LW2-kD-0Ye"/>
                                         </connections>
@@ -720,7 +721,7 @@ The order of the words is important.</string>
                                         <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBD-O3-ySf" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBD-O3-ySf" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
                                         <rect key="frame" x="30" y="440" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="HBH-xb-MGF"/>
@@ -730,7 +731,7 @@ The order of the words is important.</string>
                                             <action selector="closeAction:" destination="q4a-iN-KJg" eventType="touchUpInside" id="mUB-IB-tZd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ju2-Di-znc" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ju2-Di-znc" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
                                         <rect key="frame" x="30" y="385" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="dmv-rO-sTw"/>
@@ -740,7 +741,7 @@ The order of the words is important.</string>
                                             <action selector="backupByEmailAction:" destination="q4a-iN-KJg" eventType="touchUpInside" id="iV6-8K-DY4"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RyX-95-Ldu" customClass="CardView" customModule="Walloo">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RyX-95-Ldu" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                         <rect key="frame" x="30" y="282" width="314" height="52"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x7a6afc2d27cFE5940d6f4388e93B232d22F857b2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="uxD-Nw-4T2">
@@ -817,7 +818,7 @@ The order of the words is important.</string>
         <!--Wallet Navigation View Controller-->
         <scene sceneID="mgt-wf-YvK">
             <objects>
-                <navigationController navigationBarHidden="YES" id="gCH-c2-CdX" customClass="WalletNavigationViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="gCH-c2-CdX" customClass="WalletNavigationViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uMp-Ed-WmN">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -829,20 +830,20 @@ The order of the words is important.</string>
         <!--Balance View Contrller-->
         <scene sceneID="DMm-2I-qLH">
             <objects>
-                <tableViewController storyboardIdentifier="BalanceViewController" id="KRQ-a2-DAB" customClass="BalanceViewContrller" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BalanceViewController" id="KRQ-a2-DAB" customClass="BalanceViewContrller" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="93" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="L8h-q9-GS8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BalanceViewCell" id="ZZf-52-HXC" customClass="BalanceViewCell" customModule="Walloo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BalanceViewCell" id="ZZf-52-HXC" customClass="BalanceViewCell" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TokenViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZZf-52-HXC" id="lsz-Kt-cGG">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0YV-3x-ZFD" customClass="ListItemView" customModule="Walloo" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0YV-3x-ZFD" customClass="ListItemView" customModule="Moonkey" customModuleProvider="target">
                                             <rect key="frame" x="20" y="15" width="374" height="78"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="IPY-dg-jet">
@@ -917,20 +918,20 @@ The order of the words is important.</string>
         <!--Transaction View Contrller-->
         <scene sceneID="34X-fD-OBB">
             <objects>
-                <tableViewController storyboardIdentifier="TransactionViewController" id="2h1-xm-1pJ" customClass="TransactionViewContrller" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TransactionViewController" id="2h1-xm-1pJ" customClass="TransactionViewContrller" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="93" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WHC-8c-3XG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionViewCell" id="VKm-ab-gMX" customClass="TransactionViewCell" customModule="Walloo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionViewCell" id="VKm-ab-gMX" customClass="TransactionViewCell" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VKm-ab-gMX" id="jL3-A9-Dtk">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEH-Ca-aFt" customClass="ListItemView" customModule="Walloo" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEH-Ca-aFt" customClass="ListItemView" customModule="Moonkey" customModuleProvider="target">
                                             <rect key="frame" x="20" y="15" width="374" height="78"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="purple_circle" translatesAutoresizingMaskIntoConstraints="NO" id="993-63-AON">
@@ -1023,22 +1024,22 @@ The order of the words is important.</string>
         <!--Exchange View Controller-->
         <scene sceneID="ayr-Sg-KAk">
             <objects>
-                <viewController id="tZB-LC-HMu" customClass="ExchangeViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZE2-mI-PLx" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController id="tZB-LC-HMu" customClass="ExchangeViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZE2-mI-PLx" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vx-Cx-Odj" customClass="CardView" customModule="Walloo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="115" width="374" height="320"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vx-Cx-Odj" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
+                                <rect key="frame" x="20" y="115" width="374" height="330"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="oF8-QJ-OKl">
-                                        <rect key="frame" x="30" y="56" width="56.5" height="36"/>
+                                        <rect key="frame" x="30" y="81" width="56.5" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1j-R3-ZyO">
-                                        <rect key="frame" x="89.5" y="59" width="30" height="30"/>
+                                        <rect key="frame" x="89.5" y="84" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="LET-EY-zhd"/>
                                             <constraint firstAttribute="height" constant="30" id="nZP-fQ-Fkz"/>
@@ -1050,7 +1051,7 @@ The order of the words is important.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KC-3v-358">
-                                        <rect key="frame" x="80" y="164.5" width="30" height="30"/>
+                                        <rect key="frame" x="80" y="189.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Wsg-Tx-g0W"/>
                                             <constraint firstAttribute="width" constant="30" id="tH8-Uc-EdD"/>
@@ -1062,13 +1063,13 @@ The order of the words is important.</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="gvr-8M-ymI">
-                                        <rect key="frame" x="30" y="161.5" width="47" height="36"/>
+                                        <rect key="frame" x="30" y="186.5" width="47" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y1T-Bf-7sP" customClass="MDCTextField">
-                                        <rect key="frame" x="194" y="57" width="150" height="34"/>
+                                        <rect key="frame" x="194" y="82" width="150" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="U7F-Je-zrv"/>
                                         </constraints>
@@ -1079,19 +1080,31 @@ The order of the words is important.</string>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTp-F3-zz5">
-                                        <rect key="frame" x="30" y="135.5" width="314" height="18"/>
+                                        <rect key="frame" x="30" y="160.5" width="314" height="18"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNg-lX-zTB">
-                                        <rect key="frame" x="120" y="161.5" width="224" height="36"/>
+                                        <rect key="frame" x="120" y="186.5" width="224" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXg-Od-8sk" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="240" width="314" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max: 10.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnI-nD-aKK">
+                                        <rect key="frame" x="30" y="117" width="314" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRM-KE-0Zn">
+                                        <rect key="frame" x="30" y="55" width="314" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXg-Od-8sk" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="250" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2ah-RH-vzc"/>
                                         </constraints>
@@ -1100,18 +1113,13 @@ The order of the words is important.</string>
                                             <action selector="buyAction:" destination="tZB-LC-HMu" eventType="touchUpInside" id="ywu-eT-cix"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max: 10.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnI-nD-aKK">
-                                        <rect key="frame" x="30" y="92" width="314" height="13.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRM-KE-0Zn">
-                                        <rect key="frame" x="30" y="30" width="314" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paraswap" translatesAutoresizingMaskIntoConstraints="NO" id="1B5-uI-PeK">
+                                        <rect key="frame" x="95" y="10" width="184" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="184" id="Sh3-e2-Hr6"/>
+                                            <constraint firstAttribute="height" constant="30" id="wPS-LB-T3N"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -1119,13 +1127,13 @@ The order of the words is important.</string>
                                     <constraint firstItem="gvr-8M-ymI" firstAttribute="top" secondItem="MTp-F3-zz5" secondAttribute="bottom" constant="8" id="3hZ-sc-L9g"/>
                                     <constraint firstItem="oF8-QJ-OKl" firstAttribute="top" secondItem="bRM-KE-0Zn" secondAttribute="bottom" constant="8" id="4ZI-58-crx"/>
                                     <constraint firstAttribute="trailing" secondItem="bRM-KE-0Zn" secondAttribute="trailing" constant="30" id="5O3-PX-g9Y"/>
-                                    <constraint firstItem="bRM-KE-0Zn" firstAttribute="top" secondItem="3vx-Cx-Odj" secondAttribute="top" constant="30" id="6L4-cl-nFS"/>
+                                    <constraint firstItem="bRM-KE-0Zn" firstAttribute="top" secondItem="3vx-Cx-Odj" secondAttribute="top" constant="55" id="6L4-cl-nFS"/>
                                     <constraint firstItem="Y1T-Bf-7sP" firstAttribute="centerY" secondItem="oF8-QJ-OKl" secondAttribute="centerY" id="74c-jk-Qpk"/>
                                     <constraint firstItem="M1j-R3-ZyO" firstAttribute="leading" secondItem="oF8-QJ-OKl" secondAttribute="trailing" constant="3" id="8wA-Zv-FIZ"/>
                                     <constraint firstAttribute="trailing" secondItem="OXg-Od-8sk" secondAttribute="trailing" constant="30" id="Bc3-aA-HGa"/>
                                     <constraint firstItem="M1j-R3-ZyO" firstAttribute="centerY" secondItem="oF8-QJ-OKl" secondAttribute="centerY" id="Euf-rX-7q5"/>
                                     <constraint firstAttribute="trailing" secondItem="tNg-lX-zTB" secondAttribute="trailing" constant="30" id="GDD-Ki-noD"/>
-                                    <constraint firstAttribute="bottom" secondItem="OXg-Od-8sk" secondAttribute="bottom" constant="30" id="Ngr-98-RSb"/>
+                                    <constraint firstAttribute="bottom" secondItem="OXg-Od-8sk" secondAttribute="bottom" constant="30" id="KY5-sG-6ue"/>
                                     <constraint firstItem="OXg-Od-8sk" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="PRq-vl-k2T"/>
                                     <constraint firstItem="MTp-F3-zz5" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="QrZ-NJ-wbd"/>
                                     <constraint firstItem="bRM-KE-0Zn" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="R7P-T6-i9F"/>
@@ -1134,13 +1142,15 @@ The order of the words is important.</string>
                                     <constraint firstAttribute="trailing" secondItem="Y1T-Bf-7sP" secondAttribute="trailing" constant="30" id="cCc-tg-m60"/>
                                     <constraint firstItem="6KC-3v-358" firstAttribute="centerY" secondItem="gvr-8M-ymI" secondAttribute="centerY" id="cba-cO-z1g"/>
                                     <constraint firstItem="NnI-nD-aKK" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="eiE-i0-ers"/>
-                                    <constraint firstAttribute="height" constant="320" id="fPY-xu-KM2"/>
+                                    <constraint firstAttribute="height" constant="330" id="fPY-xu-KM2"/>
                                     <constraint firstItem="NnI-nD-aKK" firstAttribute="top" secondItem="oF8-QJ-OKl" secondAttribute="bottom" id="fR9-EQ-Ksw"/>
                                     <constraint firstItem="tNg-lX-zTB" firstAttribute="leading" secondItem="6KC-3v-358" secondAttribute="trailing" constant="10" id="jNY-VJ-bPe"/>
                                     <constraint firstAttribute="trailing" secondItem="MTp-F3-zz5" secondAttribute="trailing" constant="30" id="kOg-Nl-bnB"/>
                                     <constraint firstItem="tNg-lX-zTB" firstAttribute="centerY" secondItem="gvr-8M-ymI" secondAttribute="centerY" id="slO-5g-J6H"/>
                                     <constraint firstItem="MTp-F3-zz5" firstAttribute="top" secondItem="NnI-nD-aKK" secondAttribute="bottom" constant="30" id="tbN-Xq-SBx"/>
+                                    <constraint firstItem="1B5-uI-PeK" firstAttribute="top" secondItem="3vx-Cx-Odj" secondAttribute="top" constant="10" id="wvq-mW-2tA"/>
                                     <constraint firstItem="oF8-QJ-OKl" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="zIx-21-awS"/>
+                                    <constraint firstItem="1B5-uI-PeK" firstAttribute="centerX" secondItem="3vx-Cx-Odj" secondAttribute="centerX" id="zVh-0Z-UdW"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exchange" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-sE-HuZ">
@@ -1171,13 +1181,13 @@ The order of the words is important.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DcI-c3-zRX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512" y="708"/>
+            <point key="canvasLocation" x="1511.5942028985507" y="707.8125"/>
         </scene>
         <!--Restore View Controller-->
         <scene sceneID="ykV-9J-djG">
             <objects>
-                <viewController id="CI7-Bq-WEo" customClass="RestoreViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UiT-d8-SNM" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController id="CI7-Bq-WEo" customClass="RestoreViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UiT-d8-SNM" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1187,7 +1197,7 @@ The order of the words is important.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jcU-XF-Wig" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jcU-XF-Wig" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="95" width="374" height="350"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxq-ft-k9k">
@@ -1207,7 +1217,7 @@ The order of the words is important.</string>
                                         <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwo-hg-azj" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwo-hg-azj" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
                                         <rect key="frame" x="30" y="270" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="FbF-Wu-gSL"/>
@@ -1268,8 +1278,8 @@ The order of the words is important.</string>
         <!--Tokens Selection View Controller-->
         <scene sceneID="um3-dx-0ml">
             <objects>
-                <viewController id="NmP-A0-eh6" customClass="TokensSelectionViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ylt-4e-YGb" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController id="NmP-A0-eh6" customClass="TokensSelectionViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ylt-4e-YGb" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1279,7 +1289,7 @@ The order of the words is important.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCa-SS-MpB" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCa-SS-MpB" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="105" width="374" height="673"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEV-ec-mN8">
@@ -1292,14 +1302,14 @@ The order of the words is important.</string>
                                         <rect key="frame" x="0.0" y="68" width="374" height="585"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BalanceViewCell" id="7VS-Ei-c1M" customClass="BalanceViewCell" customModule="Walloo" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BalanceViewCell" id="7VS-Ei-c1M" customClass="BalanceViewCell" customModule="Moonkey" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="374" height="96"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TokenViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7VS-Ei-c1M" id="WPm-8x-6Gm">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="96"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjl-Mi-R5V" customClass="ListItemView" customModule="Walloo" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjl-Mi-R5V" customClass="ListItemView" customModule="Moonkey" customModuleProvider="target">
                                                             <rect key="frame" x="20" y="15" width="334" height="81"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="CWc-0B-kvF">
@@ -1396,8 +1406,8 @@ The order of the words is important.</string>
         <!--Tokens Table View Controller-->
         <scene sceneID="Tee-kA-J77">
             <objects>
-                <viewController id="QlI-qJ-quZ" customClass="TokensTableViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vxk-f6-TbN" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController id="QlI-qJ-quZ" customClass="TokensTableViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vxk-f6-TbN" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1407,7 +1417,7 @@ The order of the words is important.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVI-Iy-Rb3" customClass="CardView" customModule="Walloo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVI-Iy-Rb3" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="374" height="697"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUp-a3-cNu">
@@ -1420,14 +1430,14 @@ The order of the words is important.</string>
                                         <rect key="frame" x="0.0" y="68" width="374" height="609"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TokenViewCell" id="FGc-dQ-olo" customClass="TokenTableViewCell" customModule="Walloo" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TokenViewCell" id="FGc-dQ-olo" customClass="TokenTableViewCell" customModule="Moonkey" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="374" height="96"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TokenViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FGc-dQ-olo" id="vaq-oX-Q62">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="96"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYk-yn-7eK" customClass="ListItemView" customModule="Walloo" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYk-yn-7eK" customClass="ListItemView" customModule="Moonkey" customModuleProvider="target">
                                                             <rect key="frame" x="20" y="15" width="334" height="81"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="OVA-av-Hvn">
@@ -1514,7 +1524,7 @@ The order of the words is important.</string>
         <!--Scanner View Controller-->
         <scene sceneID="rWf-7r-Uq4">
             <objects>
-                <viewController id="76r-iW-V58" customClass="ScannerViewController" customModule="Walloo" sceneMemberID="viewController">
+                <viewController id="76r-iW-V58" customClass="ScannerViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kAt-YM-evm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1529,18 +1539,12 @@ The order of the words is important.</string>
         <!--Connect View Controller-->
         <scene sceneID="dEb-3V-K7o">
             <objects>
-                <viewController storyboardIdentifier="ConnectViewController" id="7jd-9O-yh4" customClass="ConnectViewController" customModule="Walloo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="atf-24-DLX" customClass="GradientView" customModule="Walloo" customModuleProvider="target">
+                <viewController storyboardIdentifier="ConnectViewController" id="7jd-9O-yh4" customClass="ConnectViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="atf-24-DLX" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy wallet, easy money" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOJ-Am-yqt">
-                                <rect key="frame" x="62" y="431" width="290.5" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRe-Zy-wF2" customClass="WalletButton" customModule="Walloo" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRe-Zy-wF2" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="782" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fSm-G8-10j"/>
@@ -1551,23 +1555,30 @@ The order of the words is important.</string>
                                     <action selector="connectAction:" destination="7jd-9O-yh4" eventType="touchUpInside" id="qwC-JK-F2y"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walloo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQ9-Uh-MJW">
-                                <rect key="frame" x="20" y="335" width="374" height="91"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="76"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="astronaut" translatesAutoresizingMaskIntoConstraints="NO" id="mNI-ca-1wR">
+                                <rect key="frame" x="57" y="214" width="300" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="fgp-o0-4yc"/>
+                                    <constraint firstAttribute="height" constant="220" id="hjK-LN-TU8"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MOONKEY" translatesAutoresizingMaskIntoConstraints="NO" id="gZI-pc-bzM">
+                                <rect key="frame" x="57" y="454" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="KQx-2B-WyL"/>
+                                    <constraint firstAttribute="width" constant="300" id="zwd-48-JM5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="GQ9-Uh-MJW" firstAttribute="leading" secondItem="2x7-tk-coz" secondAttribute="leading" constant="20" id="2Jd-va-5aa"/>
-                            <constraint firstItem="rOJ-Am-yqt" firstAttribute="centerX" secondItem="atf-24-DLX" secondAttribute="centerX" id="CdA-X3-njX"/>
-                            <constraint firstItem="2x7-tk-coz" firstAttribute="trailing" secondItem="GQ9-Uh-MJW" secondAttribute="trailing" constant="20" id="Cx5-Ty-3Gy"/>
+                            <constraint firstItem="mNI-ca-1wR" firstAttribute="top" secondItem="2x7-tk-coz" secondAttribute="top" constant="170" id="3sf-Bn-Cg8"/>
+                            <constraint firstItem="gZI-pc-bzM" firstAttribute="centerX" secondItem="atf-24-DLX" secondAttribute="centerX" id="BoK-r5-gkB"/>
+                            <constraint firstItem="mNI-ca-1wR" firstAttribute="centerX" secondItem="atf-24-DLX" secondAttribute="centerX" id="DOb-xp-rWF"/>
                             <constraint firstItem="2x7-tk-coz" firstAttribute="trailing" secondItem="ZRe-Zy-wF2" secondAttribute="trailing" constant="20" id="Dcc-8v-a8Q"/>
-                            <constraint firstItem="rOJ-Am-yqt" firstAttribute="centerY" secondItem="atf-24-DLX" secondAttribute="centerY" id="T3z-GE-s8W"/>
+                            <constraint firstItem="gZI-pc-bzM" firstAttribute="top" secondItem="mNI-ca-1wR" secondAttribute="bottom" constant="20" id="DxY-WE-3h5"/>
                             <constraint firstItem="2x7-tk-coz" firstAttribute="bottom" secondItem="ZRe-Zy-wF2" secondAttribute="bottom" constant="30" id="oGN-JQ-rcS"/>
                             <constraint firstItem="ZRe-Zy-wF2" firstAttribute="leading" secondItem="2x7-tk-coz" secondAttribute="leading" constant="20" id="pO2-CL-LPS"/>
-                            <constraint firstItem="rOJ-Am-yqt" firstAttribute="top" secondItem="GQ9-Uh-MJW" secondAttribute="bottom" constant="5" id="qgK-Sg-EKs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2x7-tk-coz"/>
                     </view>
@@ -1575,7 +1586,7 @@ The order of the words is important.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRZ-CT-d9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2846" y="-1864"/>
+            <point key="canvasLocation" x="-2846.376811594203" y="-1864.2857142857142"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -1584,10 +1595,13 @@ The order of the words is important.</string>
         <segue reference="Eqw-uf-ziv"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="MOONKEY" width="476" height="79"/>
+        <image name="astronaut" width="458" height="477"/>
         <image name="down-arrow" width="14" height="8"/>
         <image name="exchange" width="55" height="55"/>
         <image name="eye_look" width="24" height="18"/>
         <image name="green_circle" width="43" height="43"/>
+        <image name="paraswap" width="600" height="117.5"/>
         <image name="purple_circle" width="43" height="43"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <image name="round" width="43" height="43"/>

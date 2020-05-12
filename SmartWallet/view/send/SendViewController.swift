@@ -85,6 +85,7 @@ class SendViewController: UIViewController {
             return
         }
             
+        self.view.endEditing(true)
         if (self.fromToken?.symbol == "ETH") {
             self.sendEth(amount: amount.description)
         } else {
@@ -97,7 +98,7 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         
-        self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount, gasPrice: .normal) { (result) in
+        self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount, gasPrice: .ultrafast) { (result) in
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {
@@ -124,7 +125,7 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
               
-        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount, gasPrice: .normal ) { (result) in
+        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount, gasPrice: .ultrafast ) { (result) in
             switch result {
             case .success(let txHash):
                 DispatchQueue.main.async {

@@ -35,6 +35,7 @@ class WalletNavigationViewController: UINavigationController {
     }
     
     func displayConnectView() {
+        self.dismiss(animated: false, completion: nil)
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConnectViewController") as! ConnectViewController
         self.setViewControllers([vc], animated: false)
     }
