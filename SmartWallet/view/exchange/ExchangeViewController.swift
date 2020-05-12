@@ -78,9 +78,9 @@ class ExchangeViewController: UIViewController {
         
         self.view.endEditing(true)
         if (sourceToken?.symbol == "ETH") {
-            self.getParaSwapTx()
+            self.executeParaswapExchange()
         } else {
-            self.upadateAllowForParaswap()
+            self.erc20ApproveAndExecuteParaswap()
         }
     }
     
@@ -160,7 +160,7 @@ class ExchangeViewController: UIViewController {
     
     
     
-    private func upadateAllowForParaswap(){
+    private func erc20ApproveAndExecuteParaswap(){
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Allowing Paraswap"
         hud.show(in: self.view)
@@ -179,7 +179,7 @@ class ExchangeViewController: UIViewController {
                                         NSLog("Success")
                                         DispatchQueue.main.async {
                                             hud.dismiss()
-                                            self.getParaSwapTx()
+                                            self.executeParaswapExchange()
                                         }
                                         break
                                         
@@ -217,7 +217,7 @@ class ExchangeViewController: UIViewController {
     }
     
     
-    private func getParaSwapTx(){
+    private func executeParaswapExchange(){
         
         let body = GetTxRequest(priceRoute: self.priceRoute!,
                                 srcToken: getSourceTokenAddress(),
