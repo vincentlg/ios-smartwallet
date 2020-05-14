@@ -10,11 +10,10 @@ import UIKit
 
 class WalletNavigationViewController: UINavigationController {
     
+    let walletViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //TODO DEBUG
-        //try? self.rockside.clearIdentity()
       
         if (try? self.rockside.retrieveIdentity()) != nil {
             self.displayWalletView()
@@ -24,9 +23,8 @@ class WalletNavigationViewController: UINavigationController {
     }
     
     func displayWalletView(animated: Bool = false, newWallet: Bool = false) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
-        vc.isNewWallet = newWallet
-        self.setViewControllers([vc], animated: animated)
+        walletViewController.isNewWallet = newWallet
+        self.setViewControllers([walletViewController], animated: animated)
     }
     
     func displayNoWalletView(animated: Bool = false) {

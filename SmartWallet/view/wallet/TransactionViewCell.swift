@@ -22,8 +22,15 @@ class TransactionViewCell: UITableViewCell {
     
     public func display(transaction: Transaction){
         self.transaction = transaction
-        self.typeLabel?.text = transaction.type
         self.dateLabel?.text = transaction.formattedDate
+        
+        
+        if transaction.isInError() {
+            self.typeLabel?.text = "Fail - "+transaction.type
+        } else {
+            self.typeLabel?.text = transaction.type
+        }
+       
         
         self.inError?.isHidden = !transaction.isInError()
         
@@ -53,7 +60,6 @@ class TransactionViewCell: UITableViewCell {
     @IBAction func viewTxAction(_ sender: Any) {
         
         if let tx = self.transaction {
-            
             UIApplication.shared.open(URL(string: "https://etherscan.io/tx/"+tx.hash)!, options: [:], completionHandler: nil)
         }
         

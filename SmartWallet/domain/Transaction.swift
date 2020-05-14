@@ -82,8 +82,7 @@ extension Transaction {
         return stringValue+" "+symbol
         
     }
-    
-    
+
     var symbol: String {
         if let symbole = self.tokenSymbol {
             return symbole

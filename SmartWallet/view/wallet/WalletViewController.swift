@@ -24,7 +24,16 @@ class WalletViewController: UIViewController {
     
     public var isNewWallet = false
     
+    var snackBarMessage: MDCSnackbarMessage?
+    
     let walletTabViewController = WalletTabViewController()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let snack = self.snackBarMessage {
+            MDCSnackbarManager.show(snack)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,32 +69,39 @@ class WalletViewController: UIViewController {
     }
 
     
-    private func displayWaitingForTx() {
-        let snackBarMessage = MDCSnackbarMessage()
-        snackBarMessage.automaticallyDismisses = false
-        snackBarMessage.text = "Your transaction is being validating"
+    private func displayWaitingForTx(txHash: String) {
+        self.snackBarMessage = MDCSnackbarMessage()
+        self.snackBarMessage!.automaticallyDismisses = false
+        self.snackBarMessage!.text = "Your transaction is being validating"
         
         let action = MDCSnackbarMessageAction()
-        action.title = "OK"
-        snackBarMessage.action = action
-        MDCSnackbarManager.show(snackBarMessage)
+        action.title = "See TX"
+        
+        let actionHandler = {() in
+          UIApplication.shared.open(URL(string: "https://etherscan.io/tx/"+txHash)!, options: [:], completionHandler: nil)
+        }
+        action.handler = actionHandler
+        
+        self.snackBarMessage!.action = action
+        MDCSnackbarManager.show(self.snackBarMessage)
     }
     
     public func displayErrorOccured() {
-        let snackBarMessage = MDCSnackbarMessage()
-        snackBarMessage.text = "An error occured"
-        MDCSnackbarManager.show(snackBarMessage)
+        self.snackBarMessage = MDCSnackbarMessage()
+        self.snackBarMessage!.text = "An error occured"
+        MDCSnackbarManager.show(self.snackBarMessage)
     }
     
     public func watchTx(txHash: String) {
         
-        self.displayWaitingForTx()
+        self.displayWaitingForTx(txHash: txHash)
         
         _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
             switch result {
             case .success(_):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+                    self.snackBarMessage = nil
                     self.walletTabViewController.retriveAllTransactions()
                 }
                 break
@@ -93,6 +109,7 @@ class WalletViewController: UIViewController {
                 print(error)
                 DispatchQueue.main.async {
                     MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+                    self.snackBarMessage = nil
                 }
                 break
             }
