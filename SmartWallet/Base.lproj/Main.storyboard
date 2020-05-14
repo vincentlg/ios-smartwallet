@@ -946,14 +946,14 @@ The order of the words is important.</string>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43V-IC-iL4">
-                                                    <rect key="frame" x="74" y="40" width="246" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43V-IC-iL4">
+                                                    <rect key="frame" x="74" y="40" width="229" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2m-7n-GXp">
-                                                    <rect key="frame" x="112.5" y="22" width="207.5" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2m-7n-GXp">
+                                                    <rect key="frame" x="112.5" y="22" width="190.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -972,22 +972,28 @@ The order of the words is important.</string>
                                                         <constraint firstAttribute="height" constant="23" id="fx3-NY-fVF"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamationmark.octagon" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="b8H-OK-fLn">
+                                                    <rect key="frame" x="306" y="29.5" width="21" height="18.5"/>
+                                                    <color key="tintColor" red="0.8416363441780822" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="993-63-AON" firstAttribute="top" secondItem="eEH-Ca-aFt" secondAttribute="top" constant="14" id="9fe-8r-K3j"/>
-                                                <constraint firstItem="82h-ER-0Bz" firstAttribute="leading" secondItem="43V-IC-iL4" secondAttribute="trailing" constant="10" id="FMb-jh-cge"/>
+                                                <constraint firstItem="b8H-OK-fLn" firstAttribute="leading" secondItem="S2m-7n-GXp" secondAttribute="trailing" constant="3" id="DqP-Rk-Him"/>
                                                 <constraint firstAttribute="bottom" secondItem="993-63-AON" secondAttribute="bottom" constant="14" id="H97-a0-S59"/>
+                                                <constraint firstItem="b8H-OK-fLn" firstAttribute="centerY" secondItem="eEH-Ca-aFt" secondAttribute="centerY" id="Huf-3v-q3b"/>
+                                                <constraint firstItem="82h-ER-0Bz" firstAttribute="leading" secondItem="b8H-OK-fLn" secondAttribute="trailing" constant="3" id="Ks3-lJ-oOo"/>
                                                 <constraint firstAttribute="trailing" secondItem="82h-ER-0Bz" secondAttribute="trailing" constant="20" id="MrZ-8M-gIE"/>
                                                 <constraint firstItem="DWX-h0-9Is" firstAttribute="leading" secondItem="993-63-AON" secondAttribute="trailing" constant="16" id="Opg-yN-7aO"/>
                                                 <constraint firstItem="S2m-7n-GXp" firstAttribute="leading" secondItem="DWX-h0-9Is" secondAttribute="trailing" constant="5" id="Qfh-VO-QZk"/>
                                                 <constraint firstItem="S2m-7n-GXp" firstAttribute="centerY" secondItem="DWX-h0-9Is" secondAttribute="centerY" id="dJE-gW-5wW"/>
                                                 <constraint firstItem="1wG-JA-2AA" firstAttribute="centerX" secondItem="993-63-AON" secondAttribute="centerX" id="dea-6R-6uK"/>
-                                                <constraint firstItem="82h-ER-0Bz" firstAttribute="leading" secondItem="S2m-7n-GXp" secondAttribute="trailing" constant="10" id="gsQ-xs-GkE"/>
                                                 <constraint firstItem="1wG-JA-2AA" firstAttribute="centerY" secondItem="993-63-AON" secondAttribute="centerY" id="oQh-jD-dzQ"/>
                                                 <constraint firstItem="43V-IC-iL4" firstAttribute="top" secondItem="DWX-h0-9Is" secondAttribute="bottom" id="ofd-Ob-xRM"/>
                                                 <constraint firstAttribute="bottom" secondItem="43V-IC-iL4" secondAttribute="bottom" constant="20" id="qJc-6x-dBv"/>
                                                 <constraint firstItem="43V-IC-iL4" firstAttribute="leading" secondItem="993-63-AON" secondAttribute="trailing" constant="16" id="qJn-xx-x4f"/>
+                                                <constraint firstItem="b8H-OK-fLn" firstAttribute="leading" secondItem="43V-IC-iL4" secondAttribute="trailing" constant="3" id="sCg-3L-e2U"/>
                                                 <constraint firstItem="993-63-AON" firstAttribute="leading" secondItem="eEH-Ca-aFt" secondAttribute="leading" constant="8" id="vKp-zR-vuI"/>
                                                 <constraint firstItem="82h-ER-0Bz" firstAttribute="centerY" secondItem="eEH-Ca-aFt" secondAttribute="centerY" id="yhb-YB-eHu"/>
                                             </constraints>
@@ -1004,6 +1010,7 @@ The order of the words is important.</string>
                                     <outlet property="amountLabel" destination="S2m-7n-GXp" id="0Dr-kW-2v0"/>
                                     <outlet property="circleImageView" destination="993-63-AON" id="noZ-Yh-585"/>
                                     <outlet property="dateLabel" destination="43V-IC-iL4" id="DHr-n7-edO"/>
+                                    <outlet property="inError" destination="b8H-OK-fLn" id="EhT-Xz-FBJ"/>
                                     <outlet property="txTypeIcon" destination="1wG-JA-2AA" id="lvR-kU-TkJ"/>
                                     <outlet property="typeLabel" destination="DWX-h0-9Is" id="twd-42-b15"/>
                                 </connections>
@@ -1610,6 +1617,7 @@ The order of the words is important.</string>
         <image name="astronaut" width="458" height="477"/>
         <image name="down-arrow" width="14" height="8"/>
         <image name="exchange" width="55" height="55"/>
+        <image name="exclamationmark.octagon" catalog="system" width="128" height="112"/>
         <image name="eye_look" width="24" height="18"/>
         <image name="green_circle" width="43" height="43"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>

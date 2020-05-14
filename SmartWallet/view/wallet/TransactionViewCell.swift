@@ -12,10 +12,10 @@ class TransactionViewCell: UITableViewCell {
     
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var circleImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var txTypeIcon: UIImageView!
+    @IBOutlet weak var inError: UIImageView!
     
     var transaction: Transaction?
 
@@ -24,6 +24,9 @@ class TransactionViewCell: UITableViewCell {
         self.transaction = transaction
         self.typeLabel?.text = transaction.type
         self.dateLabel?.text = transaction.formattedDate
+        
+        self.inError?.isHidden = !transaction.isInError()
+        
         
         if (transaction.value != "0") {
             self.circleImageView.isHidden = false

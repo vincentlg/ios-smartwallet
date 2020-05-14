@@ -23,6 +23,7 @@ struct Transaction: Codable {
     var tokenSymbol: String?
     var tokenName: String?
     var timeStamp: String?
+    var isError: String?
  
     var block: Int {
         return Int(blockNumber)!
@@ -41,6 +42,10 @@ extension Transaction {
     
     func isReceive() -> Bool {
         return to == walletaddress.lowercased() && value != "0"
+    }
+    
+    func isInError() -> Bool {
+        return isError == "1"
     }
     
     var type: String {
@@ -105,6 +110,8 @@ extension Transaction {
         }
         return nil
     }
+    
+    
 }
 
 extension Transaction {

@@ -115,8 +115,10 @@ class WalletTabViewController: TabmanViewController {
                     }
                 }
             } else {
-                self.transactionViewController?.refreshControl?.endRefreshing()
-                self.displayErrorHandler?()
+                DispatchQueue.main.async {
+                    self.transactionViewController?.refreshControl?.endRefreshing()
+                    self.displayErrorHandler?()
+                }
             }
         }
         

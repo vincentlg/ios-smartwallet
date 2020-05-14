@@ -83,7 +83,7 @@ class ExchangeViewController: UIViewController {
         if (sourceToken?.symbol == "ETH") {
             self.executeParaswapExchange()
         } else {
-            self.erc20ApproveAndExecuteParaswap()
+            self.getGasPriceAndDoExchanege()
         }
     }
     
@@ -161,18 +161,39 @@ class ExchangeViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    private func getGasPriceAndDoExchanege() {
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+        
+        self.rockside.getGasPrice{ (result) in
+        switch result {
+        case .success(let gasPrice):
+             DispatchQueue.main.async {
+                hud.dismiss()
+                self.erc20ApproveAndExecuteParaswap(gasPrice: gasPrice.averageWei)
+             }
+            break
+        case .failure(let error):
+                print(error)
+                DispatchQueue.main.async {
+                    hud.dismiss()
+                    self.dispayErrorAlert(message: "Cannot retrieve GasPrice")
+                }
+                break
+            }
+        }
+    }
     
-    
-    private func erc20ApproveAndExecuteParaswap(){
+    private func erc20ApproveAndExecuteParaswap(gasPrice: String){
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Allowing Paraswap"
         hud.show(in: self.view)
-        
+    
         self.paraswapService.getParaswapSenderAddress() { (result) in
             switch result {
             case .success(let result):
                 DispatchQueue.main.async {
-                    self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description, gasPrice: .ultrafast) { (result) in
+                    self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description, gasPrice: gasPrice) { (result) in
                         switch result {
                         case .success(let txHash):
                             DispatchQueue.main.async {

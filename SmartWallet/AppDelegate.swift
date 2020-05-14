@@ -8,7 +8,7 @@
 
 import UIKit
 import RocksideWalletSdk
-
+import Firebase
 
 
 @UIApplicationMain
@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-       // FirebaseApp.configure()
+        FirebaseApp.configure()
         self.rockside = Rockside(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnaW4iOiJpby5yb2Nrc2lkZS5tb29ua2V5IiwiY3VzdG9tZXJfaWQiOiIxIiwiZW5kX3VzZXJfaWQiOiJ3YWxsZXQiLCJjb250cmFjdHMiOlsiMHhGOTJDMWFkNzUwMDVFNjQzNkI0RUU4NGU4OGNCMjNFZDhBMjkwOTg4Il19.mj_QxtbxAAnFbc2A5URF1qKirBGs6szYzNoR3LeduIw", chain:.mainnet)
               
 
