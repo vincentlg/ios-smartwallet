@@ -195,9 +195,9 @@ class ExchangeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description, gasPrice: gasPrice) { (result) in
                         switch result {
-                        case .success(let txHash):
+                        case .success(let txResponse):
                             DispatchQueue.main.async {
-                                _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
+                                _ = self.rockside.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
                                     switch result {
                                     case .success(_):
                                         NSLog("Success")
@@ -267,11 +267,11 @@ class ExchangeViewController: UIViewController {
                                                              value: weiAmount.hexValueNoLeadingZero,
                                                              data: response.data!, gas: response.gas!) { (result) in
                                                                 switch result {
-                                                                case .success(let txHash):
+                                                                case .success(let txResponse):
                                                                     DispatchQueue.main.async {
                                                                         hud.dismiss()
                                                                         self.dismiss(animated: true, completion: {
-                                                                            self.watchTxHandler?(txHash)
+                                                                            self.watchTxHandler?(txResponse)
                                                                         })
                                                                     }
                                                                     break

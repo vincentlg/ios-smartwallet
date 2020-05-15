@@ -41,9 +41,9 @@ class WhitelistAddressViewController:UIViewController {
         
         self.rockside.identity!.updateWhiteList(eoa: addressTextField.text!, value: true) { (result) in
             switch result {
-            case .success(let txHash):
+            case .success(let txResponse):
                 DispatchQueue.main.async {
-                    _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
+                    _ = self.rockside.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
                         switch result {
                         case .success(_):
                             DispatchQueue.main.async {

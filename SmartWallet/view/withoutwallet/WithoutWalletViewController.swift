@@ -22,11 +22,11 @@ class WithoutWalletViewController: UIViewController {
         
         self.rockside.createIdentity() { (result) in
             switch result {
-            case .success(let txHash):
+            case .success(let deployIdentityResponse):
                 DispatchQueue.main.async {
                    
                     
-                    _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
+                    _ = self.rockside.waitTxToBeMined(trackingID: deployIdentityResponse.tracking_id) { (result) in
                         switch result {
                         case .success(_):
                             DispatchQueue.main.async {

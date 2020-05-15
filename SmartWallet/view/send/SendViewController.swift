@@ -126,11 +126,11 @@ class SendViewController: UIViewController {
         
         self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount, gasPrice: gasPrice) { (result) in
             switch result {
-            case .success(let txHash):
+            case .success(let txResponse):
                 DispatchQueue.main.async {
                     hud.dismiss()
                     self.dismiss(animated: true, completion: {
-                        self.watchTxHandler?(txHash)
+                        self.watchTxHandler?(txResponse)
                     })
                 }
                 break
@@ -153,11 +153,11 @@ class SendViewController: UIViewController {
               
         self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount, gasPrice: gasPrice) { (result) in
             switch result {
-            case .success(let txHash):
+            case .success(let txResponse):
                 DispatchQueue.main.async {
                     hud.dismiss()
                     self.dismiss(animated: true, completion: {
-                        self.watchTxHandler?(txHash)
+                        self.watchTxHandler?(txResponse)
                     })
                 }
                 break

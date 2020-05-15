@@ -13,7 +13,7 @@ import MaterialComponents.MaterialSnackbar
 
 
 
-typealias WatchTxHandler = (_: String) -> Void
+typealias WatchTxHandler = (_: RelayResponse) -> Void
 typealias DisplayErrorHandler = () -> Void
 
 class WalletViewController: UIViewController {
@@ -72,7 +72,7 @@ class WalletViewController: UIViewController {
     private func displayWaitingForTx(txHash: String) {
         self.snackBarMessage = MDCSnackbarMessage()
         self.snackBarMessage!.automaticallyDismisses = false
-        self.snackBarMessage!.text = "Your transaction is being validating"
+        self.snackBarMessage!.text = "Your transaction is being validated"
         
         let action = MDCSnackbarMessageAction()
         action.title = "See TX"
@@ -92,11 +92,11 @@ class WalletViewController: UIViewController {
         MDCSnackbarManager.show(self.snackBarMessage)
     }
     
-    public func watchTx(txHash: String) {
+    public func watchTx(relayResponse: RelayResponse) {
         
-        self.displayWaitingForTx(txHash: txHash)
+        self.displayWaitingForTx(txHash: relayResponse.transaction_hash)
         
-        _ = self.rockside.rpc.waitTxToBeMined(txHash: txHash) { (result) in
+        _ = self.rockside.waitTxToBeMined(trackingID: relayResponse.tracking_id) { (result) in
             switch result {
             case .success(_):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
