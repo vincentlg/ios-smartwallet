@@ -83,7 +83,7 @@ class ExchangeViewController: UIViewController {
         if (sourceToken?.symbol == "ETH") {
             self.executeParaswapExchange()
         } else {
-            self.getGasPriceAndDoExchanege()
+             self.erc20ApproveAndExecuteParaswap()
         }
     }
     
@@ -161,30 +161,9 @@ class ExchangeViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    private func getGasPriceAndDoExchanege() {
-        let hud = JGProgressHUD(style: .dark)
-        hud.show(in: self.view)
-        
-        self.rockside.getGasPrice{ (result) in
-        switch result {
-        case .success(let gasPrice):
-             DispatchQueue.main.async {
-                hud.dismiss()
-                self.erc20ApproveAndExecuteParaswap(gasPrice: gasPrice.averageWei)
-             }
-            break
-        case .failure(let error):
-                print(error)
-                DispatchQueue.main.async {
-                    hud.dismiss()
-                    self.dispayErrorAlert(message: "Cannot retrieve GasPrice")
-                }
-                break
-            }
-        }
-    }
+
     
-    private func erc20ApproveAndExecuteParaswap(gasPrice: String){
+    private func erc20ApproveAndExecuteParaswap(){
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Allowing Paraswap"
         hud.show(in: self.view)
@@ -193,7 +172,7 @@ class ExchangeViewController: UIViewController {
             switch result {
             case .success(let result):
                 DispatchQueue.main.async {
-                    self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description, gasPrice: gasPrice) { (result) in
+                    self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description) { (result) in
                         switch result {
                         case .success(let txResponse):
                             DispatchQueue.main.async {
@@ -265,7 +244,7 @@ class ExchangeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.rockside.identity!.relayTransaction(to: response.to!,
                                                              value: weiAmount.hexValueNoLeadingZero,
-                                                             data: response.data!, gas: response.gas!) { (result) in
+                                                             data: response.data!) { (result) in
                                                                 switch result {
                                                                 case .success(let txResponse):
                                                                     DispatchQueue.main.async {

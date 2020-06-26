@@ -87,44 +87,18 @@ class SendViewController: UIViewController {
             
         self.view.endEditing(true)
         if (self.fromToken?.symbol == "ETH") {
-            self.getGasPriceAndSend(amount: amount.description,  sendFunc: self.sendEth)
+            self.sendEth(amount: amount.description)
         } else {
-            self.getGasPriceAndSend(amount: amount.description,  sendFunc: self.sendERC20)
+            self.sendERC20(amount: amount.description)
         }
     }
     
-    private func getGasPriceAndSend(amount: String, sendFunc: @escaping(String, String)-> Void) {
-     
-        let hud = JGProgressHUD(style: .dark)
-        hud.show(in: self.view)
-        
-        self.rockside.getGasPrice{ (result) in
-        switch result {
-        case .success(let gasPrice):
-             DispatchQueue.main.async {
-                hud.dismiss()
-                sendFunc(amount, gasPrice.averageWei)
-             }
-            break
-        case .failure(let error):
-                print(error)
-                DispatchQueue.main.async {
-                   self.dismiss(animated: true, completion: {
-                        hud.dismiss()
-                        self.displayErrorHandler?()
-                    })
-                }
-                break
-            }
-        }
-    }
-    
-    func sendERC20(amount: String, gasPrice: String) {
+    func sendERC20(amount: String) {
         
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         
-        self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount, gasPrice: gasPrice) { (result) in
+        self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount) { (result) in
             switch result {
             case .success(let txResponse):
                 DispatchQueue.main.async {
@@ -147,11 +121,11 @@ class SendViewController: UIViewController {
         }
     }
     
-    func sendEth(amount: String, gasPrice: String) {
+    func sendEth(amount: String) {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
               
-        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount, gasPrice: gasPrice) { (result) in
+        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount) { (result) in
             switch result {
             case .success(let txResponse):
                 DispatchQueue.main.async {

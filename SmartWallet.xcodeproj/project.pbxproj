@@ -51,6 +51,7 @@
 		DCD8CE48243DDD400078BB1D /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE47243DDD400078BB1D /* SettingsViewCell.swift */; };
 		DCD8CE4A243E0BCF0078BB1D /* WhitelistAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE49243E0BCF0078BB1D /* WhitelistAddressViewController.swift */; };
 		DCFFBE4E246AB12800AB0C4B /* UIImageView+tintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFBE4D246AB12800AB0C4B /* UIImageView+tintColor.swift */; };
+		DCFFBE522472BFBD00AB0C4B /* EtherscanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFBE512472BFBD00AB0C4B /* EtherscanService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		DCD8CE47243DDD400078BB1D /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		DCD8CE49243E0BCF0078BB1D /* WhitelistAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistAddressViewController.swift; sourceTree = "<group>"; };
 		DCFFBE4D246AB12800AB0C4B /* UIImageView+tintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+tintColor.swift"; sourceTree = "<group>"; };
+		DCFFBE512472BFBD00AB0C4B /* EtherscanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		DC40D7AD2412AC1B00C792EB /* application */ = {
 			isa = PBXGroup;
 			children = (
+				DCFFBE532472C78000AB0C4B /* service */,
 				DCBA5D01242928CE00EE8CA9 /* UIColor+hex.swift */,
 				DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */,
 				DC40D7AE2412AC2F00C792EB /* UIViewController+Rockside.swift */,
@@ -273,7 +276,6 @@
 				DC4ADCA924193FC4008C23C7 /* ExchangeViewController.swift */,
 				DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */,
 				DC607135242E5F8600CED3BF /* TokenTableViewCell.swift */,
-				DC6071372431E5B100CED3BF /* ParaswapService.swift */,
 			);
 			path = exchange;
 			sourceTree = "<group>";
@@ -285,6 +287,15 @@
 				DCD8CE47243DDD400078BB1D /* SettingsViewCell.swift */,
 			);
 			path = settings;
+			sourceTree = "<group>";
+		};
+		DCFFBE532472C78000AB0C4B /* service */ = {
+			isa = PBXGroup;
+			children = (
+				DCFFBE512472BFBD00AB0C4B /* EtherscanService.swift */,
+				DC6071372431E5B100CED3BF /* ParaswapService.swift */,
+			);
+			path = service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,6 +458,7 @@
 				DC4ADCAC241940F5008C23C7 /* Token.swift in Sources */,
 				DC4ECCEC241795CC0062425E /* SendViewController.swift in Sources */,
 				DCD8CE46243DD7CB0078BB1D /* SettingsViewController.swift in Sources */,
+				DCFFBE522472BFBD00AB0C4B /* EtherscanService.swift in Sources */,
 				DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */,
 				DCD8CE4A243E0BCF0078BB1D /* WhitelistAddressViewController.swift in Sources */,
 				DCFFBE4E246AB12800AB0C4B /* UIImageView+tintColor.swift in Sources */,

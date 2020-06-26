@@ -13,17 +13,6 @@ import RocksideWalletSdk
 import BigInt
 import JGProgressHUD
 
-struct EtherscanTransactionResponse: Codable{
-    var status: String
-    var message: String
-    var result: [Transaction]
-}
-
-struct EtherscanTokenBalanceResponse: Codable{
-    var status: String
-    var message: String
-    var result: String
-}
 
 typealias BalanceUpdatedHandler = () -> Void
 typealias RefreshHandler = () -> Void
@@ -31,8 +20,7 @@ typealias RefreshHandler = () -> Void
 class WalletTabViewController: TabmanViewController {
     
     private var viewControllers: [UIViewController]?
-    private var etherscanApiKey = "HCYC8QMVAN8M5RSMKWT7FFGG2KTU1N3IVG"
-
+   
     private var balanceViewController: BalanceViewContrller?
     private var transactionViewController: TransactionViewContrller?
     
@@ -44,6 +32,8 @@ class WalletTabViewController: TabmanViewController {
     var transactions: [Transaction] = []
     var transactionsBuffer: [Transaction] = []
     var transactionCallRetrieved:Int = 0
+    
+    let etherscanService = EtherscanService()
     
     let hud = JGProgressHUD(style: .light)
     
@@ -74,35 +64,30 @@ class WalletTabViewController: TabmanViewController {
         
         self.transactionsBuffer = []
         self.transactionCallRetrieved = 0
-        retrieveTransaction(action: "txlist")
-        retrieveTransaction(action: "txlistinternal")
-        retrieveTransaction(action: "tokentx")
+        retrieveTransaction(action: .txlist)
+        retrieveTransaction(action: .txlistinternal)
+        retrieveTransaction(action: .tokentx)
         
     }
     
-    private func retrieveTransaction(action: String) {
-        
-        let url  = URL(string: "\(self.rockside.chain.etherscanAPIUrl)?module=account&action=\(action)&address=\(self.rockside.identity!.ethereumAddress)&startblock=0&endblock=99999999&sort=desc&apikey=\(etherscanApiKey)")!
-        
-        var request = URLRequest(url:url ,timeoutInterval: Double.infinity)
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            self.transactionCallRetrieved += 1
-            
-            guard let data = data else {
-                print(String(describing: error))
-                self.displayErrorHandler?()
-                return
-            }
+    
 
-            let decoder = JSONDecoder()
-            if let response = try? decoder.decode(EtherscanTransactionResponse.self, from: data) {
+        private func retrieveTransaction(action: TxAction) {
+        self.transactionCallRetrieved += 1
+        
+        self.etherscanService.retrieveTransaction(action: action) { (result) in
+            switch result {
+            case .success(let response):
+                
+
                 DispatchQueue.main.async {
-                    self.transactionsBuffer.append(contentsOf: response.result)
+                    if action == .txlistinternal {
+                        self.transactionsBuffer = self.mergeValueOfInternalSendTX(txList: response.result)
+                    } else {
+                        self.transactionsBuffer.append(contentsOf: response.result)
+                    }
                     
-                    self.transactionsBuffer = self.transactionsBuffer.filter{ $0.type != "Relay" }
-                    
+                    self.transactionsBuffer = self.transactionsBuffer.filter{ $0.type != .Relay && $0.type != .ContractCall}
                     self.transactionsBuffer.sort {
                         $0.block > $1.block
                     }
@@ -114,16 +99,36 @@ class WalletTabViewController: TabmanViewController {
                         self.updateBalance()
                     }
                 }
-            } else {
+                return
+                
+            case .failure(_):
                 DispatchQueue.main.async {
                     self.transactionViewController?.refreshControl?.endRefreshing()
                     self.displayErrorHandler?()
                 }
+                return
             }
         }
-        
-        task.resume()
     }
+    
+    private func mergeValueOfInternalSendTX(txList: [Transaction]) -> [Transaction]{
+        var mergedResult = [Transaction]()
+        
+        for transaction in txList {
+            //If an internal tx is arealdy present for a hash and new and present one are send tx, we make the sum of there value
+            if  let index = mergedResult.firstIndex(where: { $0.hash == transaction.hash}), mergedResult[index].isSend(), transaction.isSend()  {
+                var transactionToRaiseUp = mergedResult[index]
+                transactionToRaiseUp.value = String(Int(transactionToRaiseUp.value)! + Int(transaction.value)!)
+                mergedResult[index] = transactionToRaiseUp
+               
+            } else {
+                mergedResult.append(transaction)
+            }
+        }
+            
+        return mergedResult
+    }
+
     
     public func tokenBalanceArray() -> [TokenBalance] {
         var tokenBalances = Array<TokenBalance>(self.tokenBalances.values)

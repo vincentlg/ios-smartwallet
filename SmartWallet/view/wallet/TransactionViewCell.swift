@@ -26,9 +26,9 @@ class TransactionViewCell: UITableViewCell {
         
         
         if transaction.isInError() {
-            self.typeLabel?.text = "Fail - "+transaction.type
+            self.typeLabel?.text = "Fail - "+transaction.type.rawValue
         } else {
-            self.typeLabel?.text = transaction.type
+            self.typeLabel?.text = transaction.type.rawValue
         }
        
         

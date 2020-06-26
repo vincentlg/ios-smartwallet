@@ -30,6 +30,10 @@ struct Transaction: Codable {
     }
 }
 
+enum TransactionType: String {
+    case Send = "Send", Receive = "Receive", WalletCreation = "Wallet creation", ContractCall = "Contract call", Relay = "Relay", Unknown = "Unknonw"
+}
+
 extension Transaction {
     
     func isContractCreation() -> Bool {
@@ -48,28 +52,28 @@ extension Transaction {
         return isError == "1"
     }
     
-    var type: String {
+    var type: TransactionType {
         if  isSend() {
-            return "Send"
+            return .Send
         }
         
         if isReceive() {
-            return "Receive"
+            return .Receive
         }
         
         if isContractCreation() {
-            return "Wallet creation"
+            return .WalletCreation
         }
         
         if from == walletaddress.lowercased() && value == "0" {
-            return "Contract call"
+            return .ContractCall
         }
         
         if to == walletaddress.lowercased() && value == "0" {
-            return "Relay"
+            return .Relay
         }
         
-        return "Unknown"
+        return .Unknown
     }
     
     var formattedAmount: String {
