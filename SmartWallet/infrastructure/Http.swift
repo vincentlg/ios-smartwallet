@@ -44,17 +44,17 @@ public class Http {
                 
                 let error = NSError(domain: errorResponse.error, code:  httpResponse.statusCode, userInfo: nil)
                 completion(.failure(error))
-                
                 return
             }
             
-            guard let result = try? JSONDecoder().decode(T.self, from: data) else {
-                let error = NSError(domain: "error invalide response format", code: 0, userInfo: nil)
+            do {
+                let result = try JSONDecoder().decode(T.self, from: data)
+                completion(.success((result)))
+                return
+            } catch let error {
                 completion(.failure(error))
                 return
             }
-            
-            completion(.success((result)))
         }
     }
     

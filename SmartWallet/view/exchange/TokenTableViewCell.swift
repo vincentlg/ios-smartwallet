@@ -14,7 +14,7 @@ class TokenTableViewCell: UITableViewCell {
     @IBOutlet weak var symbolLabel: UILabel!
     
     public func display(token:Token){
-        self.nameLabel?.text = token.name
+        self.nameLabel?.text = token.symbol
         self.symbolLabel?.text = token.symbol
     }
 }

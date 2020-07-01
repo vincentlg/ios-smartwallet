@@ -11,15 +11,11 @@ import Foundation
 struct Token: Codable {
     
     var symbol: String
-    var description:String?
+    var decimals:Int?
     var address: String
+    var img: String?
     
-    var name: String {
-        if let _name = description {
-            return _name
-        }
-        
-        return symbol
-    }
+    
+  
     
 }

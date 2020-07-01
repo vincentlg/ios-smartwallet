@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        self.rockside = Rockside(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnaW4iOiJpby5yb2Nrc2lkZS5tb29ua2V5IiwiY3VzdG9tZXJfaWQiOiI0IiwiZW5kX3VzZXJfaWQiOiJ3YWxsZXQiLCJjb250cmFjdHMiOltdfQ.dCFQt1hFK-q_hHYrJ7AKvdCoNpPxNMfY3L_wzLRmOWw", chain:.mainnet, forwarder: "0x4CAF1B35903B775Fc0c330A7060f1c1b63dfcd2F" )
+        self.rockside = Rockside(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnaW4iOiJpby5yb2Nrc2lkZS5tb29ua2V5IiwiY3VzdG9tZXJfaWQiOiI0IiwiZW5kX3VzZXJfaWQiOiJ3YWxsZXQiLCJjb250cmFjdHMiOlsiMHg4Njk2OWQyOUY1ZmQzMjdFMTAwOWJBNjYwNzJCRTIyREI2MDE3Y0M2Il19.t4qrbmZCfS0y4yR3AdegURBtBaZ4CSiyjSFpVftvJZk", chain:.mainnet, forwarder: "0x4caf1b35903b775fc0c330a7060f1c1b63dfcd2f" )
               
 
         return true

@@ -19,12 +19,11 @@ struct GetRateResponse: Codable {
 
 class PriceRoute: Codable {
     var amount: String
-    var multiPath: Bool
     var fromUSD: String
     var toUSD: String
     var details: PriceRouteDetails?
-    var bestRoute: [Route]
-    var others: [Route]?
+    var bestRoute: [BestRoute]
+    var others: [OtherRoute]?
     
     
     func updateDestAmount(newAmount: String) {
@@ -42,19 +41,46 @@ struct PriceRouteDetails: Codable {
     var srcAmount: String
 }
 
-class Route: Codable {
-    var exchange: String?
-    var amount: String?
-    var srcAmount: String?
-    var percent: String?
-    var rate: String?
-    var unit: String?
+class BestRoute: Codable {
+    var exchange: String
+    var amount: String
+    var srcAmount: String
+    var percent: Int
     var data: RouteData?
+}
+
+class OtherRoute: Codable {
+    var exchange: String
+    var unit: String
+    var rate: String
 }
 
 struct RouteData: Codable {
     var tokenFrom: String
     var tokenTo: String
+    var orders: [Order]?
+}
+
+struct Order: Codable {
+    var chainId: Int
+    var exchangeAddress: String
+    var makerAddress: String?
+    var makerAssetData: String?
+    var makerFeeAssetData: String?
+    var makerAssetAmount: String?
+    var makerFee: String?
+    var takerAddress: String?
+    var takerAssetData: String?
+    var takerFeeAssetData: String?
+    var takerAssetAmount: String?
+    var takerFee: String?
+    var senderAddres: String?
+    var feeRecipientAddress: String?
+    var expirationTimeSeconds: String?
+    var salt: String?
+    var signature: String?
+    var fillableTakerAssetAmount: String?
+    var price: String?
 }
 
 struct GetTxRequest: Codable {
@@ -64,6 +90,7 @@ struct GetTxRequest: Codable {
     var srcAmount: String
     var destAmount: String
     var userAddress: String
+    var referrer: String = "moonkey"
 }
 
 struct GetTxResponse:Codable {
@@ -95,11 +122,11 @@ struct GetTxResponse:Codable {
 
 class ParaswapService {
     
-    let url = "https://paraswap.io/api/v1/"
-    let paraswapContract = "0xF92C1ad75005E6436B4EE84e88cB23Ed8A290988"
+    let url = "https://api.paraswap.io/v2/"
+    let paraswapContract = "0x86969d29f5fd327e1009ba66072be22db6017cc6"
     
     public func getTokens(completion: @escaping (Result<[Token], Error>) -> Void) -> Void {
-        var request = URLRequest(url: URL(string: url+"tokens/1")!)
+        var request = URLRequest(url: URL(string: url+"tokens")!)
         request.httpMethod = "GET"
         
         Http.execute(with: request, receive: GetTokenResponse.self)  { (result) in
@@ -117,7 +144,7 @@ class ParaswapService {
     
     public func getRate(sourceTokenAddress: String, destTokenAddress: String, amount: String, completion: @escaping (Result<PriceRoute, Error>) -> Void) -> Void {
         
-        var request = URLRequest(url: URL(string:  url+"prices/1/"+sourceTokenAddress+"/"+destTokenAddress+"/"+amount)!)
+        var request = URLRequest(url: URL(string:  url+"prices/?from="+sourceTokenAddress+"&to="+destTokenAddress+"&amount="+amount)!)
         request.httpMethod = "GET"
         
         Http.execute(with: request, receive: GetRateResponse.self) { (result) in
@@ -139,7 +166,7 @@ class ParaswapService {
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()
         
-        
+
         Http.execute(with: request, receive: GetTxResponse.self, completion: completion).resume()
     }
     
