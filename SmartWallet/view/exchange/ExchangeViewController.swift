@@ -239,7 +239,6 @@ class ExchangeViewController: UIViewController {
             case .success(let response):
                 let amount = BigInt(response.value!)
                 let weiAmount = amount!.magnitude.serialize()
-                NSLog("#### : "+response.gas!)
 
                 DispatchQueue.main.async {
                     self.rockside.identity!.relayTransaction(to: response.to!,

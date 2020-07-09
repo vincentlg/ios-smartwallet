@@ -12,9 +12,18 @@ class TokenTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var TokenImage: UIImageView!
     
     public func display(token:Token){
         self.nameLabel?.text = token.symbol
-        self.symbolLabel?.text = token.symbol
+       
+        
+        if let img = token.img {
+            self.TokenImage.imageFromUrl(urlString: img)
+             self.symbolLabel?.text = ""
+        } else {
+            self.TokenImage.image = UIImage(named: "green_circle")
+            self.symbolLabel?.text = token.symbol
+        }
     }
 }

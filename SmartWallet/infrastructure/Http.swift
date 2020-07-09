@@ -52,6 +52,7 @@ public class Http {
                 completion(.success((result)))
                 return
             } catch let error {
+                NSLog(String(data: data, encoding: .utf8)!)
                 completion(.failure(error))
                 return
             }

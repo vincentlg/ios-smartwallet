@@ -14,6 +14,7 @@ struct TokenBalance {
     
     var name: String
     var symbol: String
+    var img: String?
     var address: String?     
     var balance: BigInt?
     

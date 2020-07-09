@@ -13,10 +13,20 @@ class BalanceViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var tokenImage: UIImageView!
     
     public func display(balance:TokenBalance){
         self.nameLabel?.text = balance.name
         self.balanceLabel?.text = balance.formattedAmout
-        self.symbolLabel?.text = balance.symbol
+        
+        if let img = balance.img {
+            tokenImage.imageFromUrl(urlString: img)
+            self.symbolLabel?.text = ""
+        } else {
+            tokenImage.image = UIImage(named: "round")
+            self.symbolLabel?.text = balance.symbol
+        }
+        
+        
     }
 }

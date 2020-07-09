@@ -20,12 +20,14 @@ typealias RefreshHandler = () -> Void
 class WalletTabViewController: TabmanViewController {
     
     private var viewControllers: [UIViewController]?
-   
+    
     private var balanceViewController: BalanceViewContrller?
     private var transactionViewController: TransactionViewContrller?
     
     var balanceUpdatedHandler: BalanceUpdatedHandler?
     var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(name: "Ethereum", symbol: "ETH")]
+    
+    var tokensDictionary: [String: Token] = [String: Token]()
     
     var displayErrorHandler: DisplayErrorHandler?
     
@@ -34,6 +36,7 @@ class WalletTabViewController: TabmanViewController {
     var transactionCallRetrieved:Int = 0
     
     let etherscanService = EtherscanService()
+    let paraswapService = ParaswapService()
     
     let hud = JGProgressHUD(style: .light)
     
@@ -52,6 +55,26 @@ class WalletTabViewController: TabmanViewController {
         
         self.dataSource = self
         self.retriveAllTransactions()
+        
+        self.retrieveTokensInfos()
+    }
+    
+    
+    public func retrieveTokensInfos() {
+        self.paraswapService.getTokens() { (result) in
+            switch result {
+            case .success(let response):
+                
+                for token in response {
+                    self.tokensDictionary[token.symbol] = token
+                }
+                
+                break
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
     }
     
     public func retriveAllTransactions() {
@@ -68,18 +91,18 @@ class WalletTabViewController: TabmanViewController {
         retrieveTransaction(action: .txlistinternal)
         retrieveTransaction(action: .tokentx)
         
+        
+        
     }
     
-    
-
-        private func retrieveTransaction(action: TxAction) {
+    private func retrieveTransaction(action: TxAction) {
         self.transactionCallRetrieved += 1
         
         self.etherscanService.retrieveTransaction(action: action) { (result) in
             switch result {
             case .success(let response):
                 
-
+                
                 DispatchQueue.main.async {
                     if action == .txlistinternal {
                         self.transactionsBuffer = self.mergeValueOfInternalSendTX(txList: response.result)
@@ -120,15 +143,15 @@ class WalletTabViewController: TabmanViewController {
                 var transactionToRaiseUp = mergedResult[index]
                 transactionToRaiseUp.value = String(Int(transactionToRaiseUp.value)! + Int(transaction.value)!)
                 mergedResult[index] = transactionToRaiseUp
-               
+                
             } else {
                 mergedResult.append(transaction)
             }
         }
-            
+        
         return mergedResult
     }
-
+    
     
     public func tokenBalanceArray() -> [TokenBalance] {
         var tokenBalances = Array<TokenBalance>(self.tokenBalances.values)
@@ -156,6 +179,7 @@ class WalletTabViewController: TabmanViewController {
                 DispatchQueue.main.async {
                     self.hud.dismiss()
                     self.tokenBalances["ETH"]?.balance = balance
+                    self.tokenBalances["ETH"]?.img = self.tokensDictionary["ETH"]?.img
                     self.balanceViewController?.display(balances: self.tokenBalanceArray())
                     self.balanceViewController?.refreshControl?.endRefreshing()
                     self.balanceUpdatedHandler?()
@@ -181,6 +205,7 @@ class WalletTabViewController: TabmanViewController {
                 DispatchQueue.main.async {
                     self.hud.dismiss()
                     self.tokenBalances[tokenBalance.symbol]?.balance = balance
+                     self.tokenBalances[tokenBalance.symbol]?.img = self.tokensDictionary[tokenBalance.symbol]?.img
                     self.balanceViewController?.display(balances:self.tokenBalanceArray())
                 }
                 break
@@ -200,7 +225,7 @@ class WalletTabViewController: TabmanViewController {
         self.transactions.forEach {
             if $0.isERC {
                 if (self.tokenBalances[$0.tokenSymbol!] == nil) {
-                     self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(name: $0.tokenName!, symbol: $0.tokenSymbol!, address: $0.contractAddress)
+                    self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(name: $0.tokenName!, symbol: $0.tokenSymbol!, address: $0.contractAddress)
                 }
             }
         }

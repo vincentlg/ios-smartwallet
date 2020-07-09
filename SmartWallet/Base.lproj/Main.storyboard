@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gCH-c2-CdX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gCH-c2-CdX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -901,6 +901,7 @@ The order of the words is important.</string>
                                     <outlet property="balanceLabel" destination="ZTl-tT-hIZ" id="oFL-JR-hqE"/>
                                     <outlet property="nameLabel" destination="IdI-zM-OWu" id="Ki7-Q2-3ng"/>
                                     <outlet property="symbolLabel" destination="IPY-dg-jet" id="3JU-nY-pgT"/>
+                                    <outlet property="tokenImage" destination="Yo6-FN-9T2" id="hj3-Uw-OdQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1385,6 +1386,7 @@ The order of the words is important.</string>
                                                     <outlet property="balanceLabel" destination="DjR-fU-COZ" id="3Uc-1E-N1X"/>
                                                     <outlet property="nameLabel" destination="Fch-wu-PAf" id="C9l-oh-2OU"/>
                                                     <outlet property="symbolLabel" destination="CWc-0B-kvF" id="7Pd-nd-gL2"/>
+                                                    <outlet property="tokenImage" destination="Id9-he-NSY" id="VaI-tU-OxV"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -1501,6 +1503,7 @@ The order of the words is important.</string>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="TokenImage" destination="Tx1-2a-eS2" id="fYl-mY-udi"/>
                                                     <outlet property="nameLabel" destination="fNY-hM-nTA" id="kGr-yD-Bc0"/>
                                                     <outlet property="symbolLabel" destination="OVA-av-Hvn" id="0lf-Ea-Jt9"/>
                                                 </connections>

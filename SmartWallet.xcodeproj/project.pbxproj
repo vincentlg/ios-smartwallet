@@ -50,7 +50,7 @@
 		DCD8CE46243DD7CB0078BB1D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE45243DD7CB0078BB1D /* SettingsViewController.swift */; };
 		DCD8CE48243DDD400078BB1D /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE47243DDD400078BB1D /* SettingsViewCell.swift */; };
 		DCD8CE4A243E0BCF0078BB1D /* WhitelistAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE49243E0BCF0078BB1D /* WhitelistAddressViewController.swift */; };
-		DCFFBE4E246AB12800AB0C4B /* UIImageView+tintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFBE4D246AB12800AB0C4B /* UIImageView+tintColor.swift */; };
+		DCFFBE4E246AB12800AB0C4B /* UIImageView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFBE4D246AB12800AB0C4B /* UIImageView+extension.swift */; };
 		DCFFBE522472BFBD00AB0C4B /* EtherscanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFBE512472BFBD00AB0C4B /* EtherscanService.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,7 +104,7 @@
 		DCD8CE45243DD7CB0078BB1D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DCD8CE47243DDD400078BB1D /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		DCD8CE49243E0BCF0078BB1D /* WhitelistAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistAddressViewController.swift; sourceTree = "<group>"; };
-		DCFFBE4D246AB12800AB0C4B /* UIImageView+tintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+tintColor.swift"; sourceTree = "<group>"; };
+		DCFFBE4D246AB12800AB0C4B /* UIImageView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extension.swift"; sourceTree = "<group>"; };
 		DCFFBE512472BFBD00AB0C4B /* EtherscanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,7 +161,7 @@
 				DCBA5D07242A20A900EE8CA9 /* WalletButton.swift */,
 				DC3E7182242A324100C40194 /* WalletTabLayout.swift */,
 				DC3E7186242A440A00C40194 /* ListItemView.swift */,
-				DCFFBE4D246AB12800AB0C4B /* UIImageView+tintColor.swift */,
+				DCFFBE4D246AB12800AB0C4B /* UIImageView+extension.swift */,
 			);
 			path = application;
 			sourceTree = "<group>";
@@ -461,7 +461,7 @@
 				DCFFBE522472BFBD00AB0C4B /* EtherscanService.swift in Sources */,
 				DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */,
 				DCD8CE4A243E0BCF0078BB1D /* WhitelistAddressViewController.swift in Sources */,
-				DCFFBE4E246AB12800AB0C4B /* UIImageView+tintColor.swift in Sources */,
+				DCFFBE4E246AB12800AB0C4B /* UIImageView+extension.swift in Sources */,
 				DC4ADCA82419332F008C23C7 /* Chain+Etherscan.swift in Sources */,
 				DC4ADC9B2418F523008C23C7 /* BalanceViewController.swift in Sources */,
 				DCD11D09241B9C050046ECD0 /* TokensTableViewController.swift in Sources */,
