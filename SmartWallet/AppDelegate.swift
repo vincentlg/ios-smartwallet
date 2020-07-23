@@ -7,20 +7,17 @@
 //
 
 import UIKit
-import RocksideWalletSdk
-import Firebase
+
+import FirebaseCrashlytics
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var rockside: Rockside?
-
+   
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        FirebaseApp.configure()
-        self.rockside = Rockside(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnaW4iOiJpby5yb2Nrc2lkZS5tb29ua2V5IiwiY3VzdG9tZXJfaWQiOiI0IiwiZW5kX3VzZXJfaWQiOiJ3YWxsZXQiLCJjb250cmFjdHMiOm51bGx9.gqXPjY3Dct7dmjbMzpILhoKOgbLrinipPgmyXIRF0EY", chain:.mainnet, forwarder: "0x4caf1b35903b775fc0c330a7060f1c1b63dfcd2f" )
-              
+       // Firebase.configure()
 
         return true
     }

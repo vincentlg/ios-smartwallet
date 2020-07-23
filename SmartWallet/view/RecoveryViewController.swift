@@ -9,6 +9,7 @@
 import UIKit
 import MessageUI
 import MaterialComponents.MaterialSnackbar
+import RocksideWalletSdk
 
 class RecoveryViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
@@ -24,7 +25,7 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     @IBAction func CopyAddressAction(_ sender: Any) {
-        UIPasteboard.general.string = self.rockside.identity!.ethereumAddress+"\n"+self.rockside.identity!.hdwallet.mnemonic
+        UIPasteboard.general.string = Identity.current!.ethereumAddress+"\n"+Identity.current!.hdwallet.mnemonic
         let snackBarMessage = MDCSnackbarMessage()
         snackBarMessage.text = "Address and recovery phrase copied to clipboard."
         snackBarMessage.duration = 1
@@ -32,8 +33,8 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     override func viewDidLoad() {
-        self.walletAddressLabel.text = self.rockside.identity?.ethereumAddress
-        self.mnemonicLabel.text = self.rockside.identity?.hdwallet.mnemonic
+        self.walletAddressLabel.text = Identity.current!.ethereumAddress
+        self.mnemonicLabel.text = Identity.current!.hdwallet.mnemonic
     }
     
     
@@ -42,7 +43,7 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setSubject("Wallet Backup")
-            mail.setMessageBody("Hi,<br /> <p>Your wallet address: "+self.rockside.identity!.ethereumAddress+"</p><p>Your mnemonic : "+self.rockside.identity!.hdwallet.mnemonic+"</p>", isHTML: true)
+            mail.setMessageBody("Hi,<br /> <p>Your wallet address: "+Identity.current!.ethereumAddress+"</p><p>Your mnemonic : "+Identity.current!.hdwallet.mnemonic+"</p>", isHTML: true)
             
             self.present(mail, animated: true)
         } else {

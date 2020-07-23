@@ -9,9 +9,12 @@
 import UIKit
 import JGProgressHUD
 import MaterialComponents.MaterialSnackbar
+import RocksideWalletSdk
 
 class WithoutWalletViewController: UIViewController {
     
+    
+    var moonKeyService: MoonkeyService = MoonkeyService()
     
     @IBAction func createWalletAction(_ sender: Any) {
         
@@ -20,18 +23,17 @@ class WithoutWalletViewController: UIViewController {
         hud.show(in: self.view)
         
         
-        self.rockside.createIdentity() { (result) in
+        self.moonKeyService.deploySmartwallet(){ (result) in
             switch result {
-            case .success(let deployIdentityResponse):
+            case .success(let response):
                 DispatchQueue.main.async {
                    
-                    
-                    _ = self.rockside.waitTxToBeMined(trackingID: deployIdentityResponse.tracking_id) { (result) in
+                    _ = self.moonKeyService.waitTxToBeMined(trackingID: response.tracking_id) { (result) in
                         switch result {
                         case .success(_):
                             DispatchQueue.main.async {
                                 hud.dismiss()
-                                try? self.rockside.storeIdentity()
+                                try? Identity.storeIdentity()
                                 self.navigationController?.displayWalletView(animated: true, newWallet: true)
                             }
                             break

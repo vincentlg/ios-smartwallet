@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RocksideWalletSdk
 
 class WalletNavigationViewController: UINavigationController {
     
@@ -15,7 +16,7 @@ class WalletNavigationViewController: UINavigationController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
       
-        if (try? self.rockside.retrieveIdentity()) != nil {
+        if (try? Identity.retrieveIdentity()) != nil {
             self.displayWalletView()
         } else {
             self.displayNoWalletView()

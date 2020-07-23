@@ -22,6 +22,8 @@ class WalletViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tabHeaderView: UIView!
     
+    var moonkeyService = MoonkeyService()
+    
     public var isNewWallet = false
     
     var snackBarMessage: MDCSnackbarMessage?
@@ -96,7 +98,8 @@ class WalletViewController: UIViewController {
         
         self.displayWaitingForTx(txHash: relayResponse.transaction_hash)
         
-        _ = self.rockside.waitTxToBeMined(trackingID: relayResponse.tracking_id) { (result) in
+    
+        _ = self.moonkeyService.waitTxToBeMined(trackingID: relayResponse.tracking_id) { (result) in
             switch result {
             case .success(_):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {

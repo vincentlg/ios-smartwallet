@@ -120,7 +120,7 @@ extension Transaction {
 extension Transaction {
     
     var walletaddress: String {
-        return (UIApplication.shared.delegate as! AppDelegate).rockside!.identity!.ethereumAddress
+        return  Identity.current!.ethereumAddress
     }
     
 }

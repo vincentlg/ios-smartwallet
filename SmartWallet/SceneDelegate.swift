@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RocksideWalletSdk
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -38,12 +39,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         
-        if (UIApplication.shared.delegate as! AppDelegate).rockside?.identity != nil {
+        if Identity.current != nil {
             if let navigationController = self.window?.rootViewController as? WalletNavigationViewController {
                 navigationController.displayConnectView()
             }
         }
-        
         
         
     }

@@ -11,10 +11,6 @@ import RocksideWalletSdk
 
 extension UIViewController {
     
-    var rockside : Rockside {
-        return (UIApplication.shared.delegate as! AppDelegate).rockside!
-    }
-    
     var navigationController: WalletNavigationViewController? {
         return UIApplication.shared.keyWindow?.rootViewController as? WalletNavigationViewController 
     }

@@ -1,90 +1,90 @@
 PODS:
   - BigInt (5.0.0)
-  - Firebase/CoreOnly (6.21.0):
-    - FirebaseCore (= 6.6.5)
-  - Firebase/Crashlytics (6.21.0):
+  - Firebase/CoreOnly (6.28.1):
+    - FirebaseCore (= 6.9.1)
+  - Firebase/Crashlytics (6.28.1):
     - Firebase/CoreOnly
-    - FirebaseCrashlytics (~> 4.0.0-beta.6)
-  - FirebaseAnalyticsInterop (1.5.0)
-  - FirebaseCore (6.6.5):
-    - FirebaseCoreDiagnostics (~> 1.2)
-    - FirebaseCoreDiagnosticsInterop (~> 1.2)
-    - GoogleUtilities/Environment (~> 6.5)
-    - GoogleUtilities/Logger (~> 6.5)
-  - FirebaseCoreDiagnostics (1.2.2):
-    - FirebaseCoreDiagnosticsInterop (~> 1.2)
-    - GoogleDataTransportCCTSupport (~> 2.0)
-    - GoogleUtilities/Environment (~> 6.5)
-    - GoogleUtilities/Logger (~> 6.5)
-    - nanopb (~> 0.3.901)
-  - FirebaseCoreDiagnosticsInterop (1.2.0)
-  - FirebaseCrashlytics (4.0.0-beta.6):
-    - FirebaseAnalyticsInterop (~> 1.2)
-    - FirebaseCore (~> 6.6)
+    - FirebaseCrashlytics (~> 4.3.0)
+  - FirebaseCore (6.9.1):
+    - FirebaseCoreDiagnostics (~> 1.3)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Logger (~> 6.7)
+  - FirebaseCoreDiagnostics (1.5.0):
+    - GoogleDataTransport (~> 7.0)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Logger (~> 6.7)
+    - nanopb (~> 1.30905.0)
+  - FirebaseCrashlytics (4.3.0):
+    - FirebaseCore (~> 6.8)
     - FirebaseInstallations (~> 1.1)
-    - GoogleDataTransport (~> 5.1)
-    - GoogleDataTransportCCTSupport (>= 2.0.1, ~> 2.0)
-    - nanopb (~> 0.3.901)
+    - GoogleDataTransport (~> 7.0)
+    - nanopb (~> 1.30905.0)
     - PromisesObjC (~> 1.2)
-  - FirebaseInstallations (1.1.1):
-    - FirebaseCore (~> 6.6)
-    - GoogleUtilities/UserDefaults (~> 6.5)
+  - FirebaseInstallations (1.5.0):
+    - FirebaseCore (~> 6.8)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
-  - GoogleDataTransport (5.1.0)
-  - GoogleDataTransportCCTSupport (2.0.1):
-    - GoogleDataTransport (~> 5.1)
-    - nanopb (~> 0.3.901)
-  - GoogleUtilities/Environment (6.5.2)
-  - GoogleUtilities/Logger (6.5.2):
+  - GenericJSON (2.0.1)
+  - GoogleDataTransport (7.0.0):
+    - nanopb (~> 1.30905.0)
+  - GoogleUtilities/Environment (6.7.1):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (6.7.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/UserDefaults (6.5.2):
+  - GoogleUtilities/UserDefaults (6.7.1):
     - GoogleUtilities/Logger
   - JGProgressHUD (2.1)
   - KeychainAccess (4.1.0)
-  - MaterialComponents/AnimationTiming (107.2.0)
-  - MaterialComponents/Availability (107.2.0)
-  - MaterialComponents/Buttons (107.2.0):
+  - MaterialComponents/AnimationTiming (111.0.0)
+  - MaterialComponents/Availability (111.0.0)
+  - MaterialComponents/Buttons (111.0.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/Ripple
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
+    - MaterialComponents/ShapeLibrary
     - MaterialComponents/Shapes
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - MaterialComponents/Elevation (107.2.0):
+  - MaterialComponents/Elevation (111.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Ink (107.2.0):
+  - MaterialComponents/Ink (111.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/OverlayWindow (107.2.0):
+  - MaterialComponents/OverlayWindow (111.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Application
-  - MaterialComponents/Palettes (107.2.0)
-  - MaterialComponents/private/Application (107.2.0)
-  - MaterialComponents/private/Color (107.2.0):
+  - MaterialComponents/Palettes (111.0.0)
+  - MaterialComponents/private/Application (111.0.0)
+  - MaterialComponents/private/Color (111.0.0):
     - MaterialComponents/Availability
-  - MaterialComponents/private/KeyboardWatcher (107.2.0):
+  - MaterialComponents/private/KeyboardWatcher (111.0.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/private/Math (107.2.0)
-  - MaterialComponents/private/Overlay (107.2.0)
-  - MaterialComponents/Ripple (107.2.0):
+  - MaterialComponents/private/Math (111.0.0)
+  - MaterialComponents/private/Overlay (111.0.0)
+  - MaterialComponents/Ripple (111.0.0):
     - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (107.2.0)
-  - MaterialComponents/ShadowLayer (107.2.0):
+  - MaterialComponents/ShadowElevations (111.0.0)
+  - MaterialComponents/ShadowLayer (111.0.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Shapes (107.2.0):
+  - MaterialComponents/ShapeLibrary (111.0.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/Shapes
+  - MaterialComponents/Shapes (111.0.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
-  - MaterialComponents/Snackbar (107.2.0):
+  - MaterialComponents/Snackbar (111.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Availability
     - MaterialComponents/Buttons
@@ -97,7 +97,7 @@ PODS:
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
-  - MaterialComponents/TextFields (107.2.0):
+  - MaterialComponents/TextFields (111.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Buttons
     - MaterialComponents/Elevation
@@ -105,26 +105,33 @@ PODS:
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Typography (107.2.0):
+  - MaterialComponents/Typography (111.0.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
+    - MDFTextAccessibility
   - MDFInternationalization (2.0.0)
   - MDFTextAccessibility (2.0.0)
-  - nanopb (0.3.9011):
-    - nanopb/decode (= 0.3.9011)
-    - nanopb/encode (= 0.3.9011)
-  - nanopb/decode (0.3.9011)
-  - nanopb/encode (0.3.9011)
-  - Pageboy (3.5.0)
-  - PromisesObjC (1.2.8)
+  - nanopb (1.30905.0):
+    - nanopb/decode (= 1.30905.0)
+    - nanopb/encode (= 1.30905.0)
+  - nanopb/decode (1.30905.0)
+  - nanopb/encode (1.30905.0)
+  - Pageboy (3.6.1)
+  - PromisesObjC (1.2.9)
   - RocksideWalletSdk (0.2.0):
     - BigInt
     - KeychainAccess (~> 4.1.0)
     - TrezorCrypto (~> 0.0.8)
-  - Starscream (4.0.0)
-  - Tabman (2.8.0):
-    - Pageboy (~> 3.5.0)
+    - web3.swift (~> 0.4.1)
+  - secp256k1.swift (0.1.4)
+  - Starscream (4.0.3)
+  - Tabman (2.9.1):
+    - Pageboy (~> 3.6.0)
   - TrezorCrypto (0.0.9)
+  - web3.swift (0.4.1):
+    - BigInt (~> 5.0.0)
+    - GenericJSON (~> 2.0)
+    - secp256k1.swift (~> 0.1)
 
 DEPENDENCIES:
   - Firebase/Crashlytics
@@ -139,14 +146,12 @@ SPEC REPOS:
   trunk:
     - BigInt
     - Firebase
-    - FirebaseAnalyticsInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
-    - FirebaseCoreDiagnosticsInterop
     - FirebaseCrashlytics
     - FirebaseInstallations
+    - GenericJSON
     - GoogleDataTransport
-    - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - JGProgressHUD
     - KeychainAccess
@@ -156,9 +161,11 @@ SPEC REPOS:
     - nanopb
     - Pageboy
     - PromisesObjC
+    - secp256k1.swift
     - Starscream
     - Tabman
     - TrezorCrypto
+    - web3.swift
 
 EXTERNAL SOURCES:
   RocksideWalletSdk:
@@ -166,28 +173,28 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BigInt: 74b4d88367b0e819d9f77393549226d36faeb0d8
-  Firebase: f378c80340dd41c0ad0914af740c021eb282a04b
-  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
-  FirebaseCore: 9f495d3afacb7b558711e6218ebb14b1c51b5802
-  FirebaseCoreDiagnostics: e9b4cd8ba60dee0f2d13347332e4b7898cca5b61
-  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
-  FirebaseCrashlytics: b9e729da8b80d9c45f234f791a73b5fe647d4c31
-  FirebaseInstallations: acb3216eb9784d3b1d2d2d635ff74fa892cc0c44
-  GoogleDataTransport: b29a21d813e906014ca16c00897827e40e4a24ab
-  GoogleDataTransportCCTSupport: 6f15a89b0ca35d6fa523e1f752ef818588885988
-  GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
+  Firebase: ed042590caa0029392257529a8003c25ee82bc18
+  FirebaseCore: 687b8e6a0a4337b898a6326d68254c2f80c143af
+  FirebaseCoreDiagnostics: 7535fe695737f8c5b350584292a70b7f8ff0357b
+  FirebaseCrashlytics: f6ae039fdaf07980425f2ae9f49131fc94009c58
+  FirebaseInstallations: 3c520c951305cbf9ca54eb891ff9e6d1fd384881
+  GenericJSON: a6e74e2c457f8693caab08e0eafde7d97e6666de
+  GoogleDataTransport: 8a40cb194ad242b6f6dfe72c14fe40fc67c4dcd7
+  GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
-  MaterialComponents: 4dd1927cd2257e564983018906e152d18cda0c03
+  MaterialComponents: 533042da998b97ad13a6f544268f8026e8161cc5
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
-  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
-  Pageboy: 3794c578aae5fcce06e90b3ed4a0ad6b807d75bb
-  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
-  RocksideWalletSdk: 5a151366f4fe38ab312357828ef0e9f5dafdbb0d
-  Starscream: 04b26f02727e10a002e6b5d21b188ba0d049910b
-  Tabman: f62ad94ee54a7d96e3fbab34f677d9ea4d38ece6
+  nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  Pageboy: 29a2d474ad99404b4d77f325e0ab6d705930a4fb
+  PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  RocksideWalletSdk: 468b8e5829ec5e03736047a8f5ad6a5620e6c025
+  secp256k1.swift: a7e7a214f6db6ce5db32cc6b2b45e5c4dd633634
+  Starscream: ef06f0961fff0880bca0604416d61141e4faca67
+  Tabman: 085d89c65be9e883629bdaf5b1453a6397e57846
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
+  web3.swift: 415948e22c2f4daa24b7b9e1ca143f20dcba3e06
 
 PODFILE CHECKSUM: 80ea0383f3f6c323a05d8af09354e71a1e37f829
 

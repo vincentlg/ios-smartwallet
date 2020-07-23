@@ -24,7 +24,7 @@ class ExchangeViewController: UIViewController {
     @IBOutlet weak var destAmountLabel: UILabel!
     
     @IBAction func showParaswapInfo(_ sender: UIButton) {
-         UIApplication.shared.open(URL(string: "https://paraswap.io")!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(URL(string: "https://paraswap.io")!, options: [:], completionHandler: nil)
     }
     var tokens: [Token]?
     var tokensBalance: [TokenBalance]?
@@ -37,6 +37,7 @@ class ExchangeViewController: UIViewController {
     var priceRoute: PriceRoute?
     
     var paraswapService = ParaswapService()
+    var moonkeyService = MoonkeyService()
     
     var watchTxHandler: WatchTxHandler?
     var displayErrorHandler: DisplayErrorHandler?
@@ -83,7 +84,7 @@ class ExchangeViewController: UIViewController {
         if (sourceToken?.symbol == "ETH") {
             self.executeParaswapExchange()
         } else {
-             self.erc20ApproveAndExecuteParaswap()
+            self.erc20ApproveAndExecuteParaswap()
         }
     }
     
@@ -161,54 +162,55 @@ class ExchangeViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-
+    
     
     private func erc20ApproveAndExecuteParaswap(){
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Allowing Paraswap"
         hud.show(in: self.view)
-    
+        
         self.paraswapService.getParaswapSenderAddress() { (result) in
             switch result {
             case .success(let result):
                 DispatchQueue.main.async {
-                    self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description) { (result) in
-                        switch result {
-                        case .success(let txResponse):
-                            DispatchQueue.main.async {
-                                _ = self.rockside.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
-                                    switch result {
-                                    case .success(_):
-                                        NSLog("Success")
-                                        DispatchQueue.main.async {
-                                            hud.dismiss()
-                                            self.executeParaswapExchange()
-                                        }
-                                        break
-                                        
-                                    case .failure(let error):
-                                        print(error)
-                                        DispatchQueue.main.async {
-                                            hud.dismiss()
-                                            self.dispayErrorAlert(message: error.localizedDescription)
-                                        }
-                                        break
-                                    }
-                                }
-                            }
-                            
-                            break
-                            
-                        case .failure(let error):
-                            print(error)
-                            DispatchQueue.main.async {
-                                hud.dismiss()
-                                self.dispayErrorAlert(message: error.localizedDescription)
-                            }
-                            break
-                        }
-                        
-                    }
+                    /*self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description) { (result) in
+                     switch result {
+                     case .success(let txResponse):
+                     DispatchQueue.main.async {
+                     //TODO
+                     /*_ = self.rockside.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
+                     switch result {
+                     case .success(_):
+                     NSLog("Success")
+                     DispatchQueue.main.async {
+                     hud.dismiss()
+                     self.executeParaswapExchange()
+                     }
+                     break
+                     
+                     case .failure(let error):
+                     print(error)
+                     DispatchQueue.main.async {
+                     hud.dismiss()
+                     self.dispayErrorAlert(message: error.localizedDescription)
+                     }
+                     break
+                     }
+                     }*/
+                     }
+                     
+                     break
+                     
+                     case .failure(let error):
+                     print(error)
+                     DispatchQueue.main.async {
+                     hud.dismiss()
+                     self.dispayErrorAlert(message: error.localizedDescription)
+                     }
+                     break
+                     }
+                     
+                     }*/
                 }
                 break
             case .failure(let error):
@@ -227,42 +229,43 @@ class ExchangeViewController: UIViewController {
                                 destToken: self.destToken!.address,
                                 srcAmount: self.amountWei!.description,
                                 destAmount: self.destAmountWei!.description,
-                                userAddress: self.rockside.identity!.ethereumAddress)
+                                userAddress: Identity.current!.ethereumAddress)
         
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Executing transfer"
         hud.show(in: self.view)
         
-        
         self.paraswapService.getParaswapTx(body: body) { (result) in
             switch result {
             case .success(let response):
-                let amount = BigInt(response.value!)
-                let weiAmount = amount!.magnitude.serialize()
+                
+               
+                let messageData = Identity.current!.encodeExecute(to:  self.paraswapService.paraswapContract, value: BigUInt(response.value!)!, data: Data(hexString: response.data!)!)
 
                 DispatchQueue.main.async {
-                    self.rockside.identity!.relayTransaction(to: response.to!,
-                                                             value: weiAmount.hexValueNoLeadingZero,  data: response.data!, gas:response.gas!) { (result) in
-                                                                switch result {
-                                                                case .success(let txResponse):
-                                                                    DispatchQueue.main.async {
-                                                                        hud.dismiss()
-                                                                        self.dismiss(animated: true, completion: {
-                                                                            self.watchTxHandler?(txResponse)
-                                                                        })
-                                                                    }
-                                                                    break
-                                                                    
-                                                                case .failure(let error):
-                                                                    print(error)
-                                                                    DispatchQueue.main.async {
-                                                                        hud.dismiss()
-                                                                        self.dismiss(animated: true, completion: {
-                                                                            self.displayErrorHandler?()
-                                                                        })
-                                                                    }
-                                                                    break
-                                                                }
+                    print(response.gas!)
+                    //TODO ADD value to gas for Rockside
+                    self.moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas: "460363") { (result) in
+                        switch result {
+                        case .success(let txResponse):
+                            DispatchQueue.main.async {
+                                hud.dismiss()
+                                self.dismiss(animated: true, completion: {
+                                    self.watchTxHandler?(txResponse)
+                                })
+                            }
+                            break
+                            
+                        case .failure(let error):
+                            print(error)
+                            DispatchQueue.main.async {
+                                hud.dismiss()
+                                self.dismiss(animated: true, completion: {
+                                    self.displayErrorHandler?()
+                                })
+                            }
+                            break
+                        }
                     }
                 }
                 
@@ -271,6 +274,7 @@ class ExchangeViewController: UIViewController {
             case .failure(let error):
                 DispatchQueue.main.async {
                     hud.dismiss()
+                    NSLog("PARASWAP ERROR")
                     self.dispayErrorAlert(message: error.localizedDescription)
                 }
                 return
@@ -295,8 +299,7 @@ class ExchangeViewController: UIViewController {
                         self.destAmountWei = desAmountWithMargin
                         
                         //Update priceRoute object with marged amount
-                        self.priceRoute?.updateDestAmount(newAmount: self.destAmountWei!.description)
-                        
+                        self.priceRoute?.amount = self.destAmountWei!.description
                         
                         DispatchQueue.main.async {
                             let amountString = formatter.string(from:desAmountWithMargin)

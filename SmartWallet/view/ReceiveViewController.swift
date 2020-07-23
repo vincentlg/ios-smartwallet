@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RocksideWalletSdk
 
 class ReceiveViewController: UIViewController {
 
@@ -16,13 +17,13 @@ class ReceiveViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     
     override func viewDidLoad() {
-        self.qrcodeImageView.image = self.generateQRCode(from:self.rockside.identity!.ethereumAddress)
+        self.qrcodeImageView.image = self.generateQRCode(from:Identity.current!.ethereumAddress)
         
-        self.addressLabel.text = self.rockside.identity?.ethereumAddress
+        self.addressLabel.text = Identity.current!.ethereumAddress
     }
     
     @IBAction func copyAddressAction(_ sender: Any) {
-         UIPasteboard.general.string = self.rockside.identity?.ethereumAddress
+         UIPasteboard.general.string = Identity.current!.ethereumAddress
     }
     
     func generateQRCode(from string: String) -> UIImage? {

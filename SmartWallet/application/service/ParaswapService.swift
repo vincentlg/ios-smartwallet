@@ -17,6 +17,8 @@ struct GetRateResponse: Codable {
     var priceRoute: PriceRoute
 }
 
+
+
 class PriceRoute: Codable {
     var amount: String
     var fromUSD: String
@@ -24,15 +26,7 @@ class PriceRoute: Codable {
     var details: PriceRouteDetails?
     var bestRoute: [BestRoute]
     var others: [OtherRoute]?
-    
-    
-    func updateDestAmount(newAmount: String) {
-        self.amount = newAmount
-        
-        for route in self.bestRoute {
-            route.amount = newAmount
-        }
-    }
+
 }
 
 struct PriceRouteDetails: Codable {
@@ -74,7 +68,7 @@ struct Order: Codable {
     var takerFeeAssetData: String?
     var takerAssetAmount: String?
     var takerFee: String?
-    var senderAddres: String?
+    var senderAddress: String?
     var feeRecipientAddress: String?
     var expirationTimeSeconds: String?
     var salt: String?
@@ -123,7 +117,9 @@ struct GetTxResponse:Codable {
 class ParaswapService {
     
     let url = "https://api.paraswap.io/v2/"
+    //let url = "https://api-ropsten.paraswap.io/api/v2/"
     let paraswapContract = "0x86969d29f5fd327e1009ba66072be22db6017cc6"
+    let rpc = RpcClient()
     
     public func getTokens(completion: @escaping (Result<[Token], Error>) -> Void) -> Void {
         var request = URLRequest(url: URL(string: url+"tokens")!)
@@ -147,6 +143,8 @@ class ParaswapService {
         var request = URLRequest(url: URL(string:  url+"prices/?from="+sourceTokenAddress+"&to="+destTokenAddress+"&amount="+amount)!)
         request.httpMethod = "GET"
         
+        print(request.url?.absoluteString)
+        
         Http.execute(with: request, receive: GetRateResponse.self) { (result) in
             switch result {
             case .success(let response):
@@ -166,7 +164,9 @@ class ParaswapService {
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()
         
-
+        print("### REQUEST paraswap TX")
+        print(String(data: request.httpBody!, encoding: .utf8)!)
+        
         Http.execute(with: request, receive: GetTxResponse.self, completion: completion).resume()
     }
     
@@ -178,7 +178,7 @@ class ParaswapService {
         
         let body = JSONRPCRequest(jsonrpc: "2.0", method: "eth_call", params: [["to":paraswapContract, "data":encoder.data.hexValue ]], id: 1)
         
-        self.rockside.rpc.executeJSONRpc(with:body, receive: JSONRPCResult<String>.self) { (result) in
+        self.rpc.executeJSONRpc(with:body, receive: JSONRPCResult<String>.self) { (result) in
             switch result {
             case .success(let response):
                 let strippedResult = response.result.replacingOccurrences(of: "0x000000000000000000000000", with: "0x")
@@ -191,9 +191,5 @@ class ParaswapService {
             }
         }.resume()
     }
-    
-    var rockside: Rockside {
-        return (UIApplication.shared.delegate as! AppDelegate).rockside!
-    }
-    
+
 }

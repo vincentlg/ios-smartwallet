@@ -16,7 +16,7 @@ struct TokenBalance {
     var symbol: String
     var img: String?
     var address: String?     
-    var balance: BigInt?
+    var balance: BigUInt?
     
     
     var formattedAmout: String {
@@ -31,7 +31,7 @@ struct TokenBalance {
         }
         
         let etherFormatter = EtherNumberFormatter()
-        return etherFormatter.string(from: balanceValue)
+        return etherFormatter.string(from: BigInt(balanceValue))
     }
     
 }

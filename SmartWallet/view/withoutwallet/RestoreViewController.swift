@@ -41,9 +41,9 @@ class RestoreViewController: UIViewController {
         }
         
         if let mnemonic = self.twelvesWordsView.text?.trimmingCharacters(in: .whitespacesAndNewlines), mnemonic != "" {
-            self.rockside.restoreIdentity(mnemonic: self.twelvesWordsView.text!, address: walletAddressTextField.text!)
+            Identity.restoreIdentity(mnemonic: self.twelvesWordsView.text!, address: walletAddressTextField.text!)
            
-            self.rockside.identity!.isEOAWhiteListed(eoa: self.rockside.identity!.eoa.ethereumAddress){ (result) in
+            Identity.current!.isEOAWhiteListed(eoa: Identity.current!.eoa.ethereumAddress){ (result) in
                 switch result {
                 case .success(let result):
                     DispatchQueue.main.async {
@@ -51,7 +51,7 @@ class RestoreViewController: UIViewController {
                         if (result) {
                              DispatchQueue.main.async {
                                 do {
-                                    try self.rockside.storeIdentity()
+                                    try Identity.storeIdentity()
                                 } catch (let error) {
                                     print("ERROR "+error.localizedDescription)
                                 }

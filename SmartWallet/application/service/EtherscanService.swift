@@ -26,7 +26,8 @@ class EtherscanService {
 
     public func retrieveTransaction(action: TxAction, completion: @escaping (Result<EtherscanTransactionResponse, Error>) -> Void) -> Void {
         
-        let url  = URL(string: "\(self.rockside.chain.etherscanAPIUrl)?module=account&action=\(action)&address=\(self.rockside.identity!.ethereumAddress)&startblock=0&endblock=99999999&sort=desc&apikey=\(etherscanApiKey)")!
+        //TODO Etherscan URL from Chain ID
+        let url  = URL(string: "https://api.etherscan.io/api?module=account&action=\(action)&address=\(Identity.current!.ethereumAddress)&startblock=0&endblock=99999999&sort=desc&apikey=\(etherscanApiKey)")!
         
         var request = URLRequest(url:url ,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
@@ -44,7 +45,5 @@ class EtherscanService {
                }.resume()
     }
     
-    var rockside: Rockside {
-        return (UIApplication.shared.delegate as! AppDelegate).rockside!
-    }
+
 }

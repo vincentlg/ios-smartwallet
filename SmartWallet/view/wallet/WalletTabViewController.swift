@@ -173,7 +173,7 @@ class WalletTabViewController: TabmanViewController {
     }
     
     private func getEthBalance() {
-        self.rockside.identity!.getBalance() { (result) in
+        Identity.current!.getBalance() { (result) in
             switch result {
             case .success(let balance):
                 DispatchQueue.main.async {
@@ -199,7 +199,7 @@ class WalletTabViewController: TabmanViewController {
     
     private func get(tokenBalance: TokenBalance) {
         
-        self.rockside.identity!.getErc20Balance(ercAddress: tokenBalance.address!) { (result) in
+        Identity.current!.getErc20Balance(ercAddress: tokenBalance.address!) { (result) in
             switch result {
             case .success(let balance):
                 DispatchQueue.main.async {

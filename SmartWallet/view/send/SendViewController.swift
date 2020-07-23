@@ -29,6 +29,8 @@ class SendViewController: UIViewController {
     var displayErrorHandler: DisplayErrorHandler?
     
     
+    var moonkeyService: MoonkeyService = MoonkeyService()
+    
     @IBOutlet weak var tokenLabel: UILabel!
     
     @IBAction func selectTokenAction(_ sender: Any) {
@@ -84,68 +86,74 @@ class SendViewController: UIViewController {
             self.destinationTextFieldController?.setErrorText("Invalid address", errorAccessibilityValue: "Invalid addresss")
             return
         }
-            
         self.view.endEditing(true)
+        
         if (self.fromToken?.symbol == "ETH") {
-            self.sendEth(amount: amount.description)
+            self.sendEth(amount: BigUInt(amount))
         } else {
-            self.sendERC20(amount: amount.description)
+            self.sendERC20(amount: BigUInt(amount))
         }
     }
     
-    func sendERC20(amount: String) {
+    func sendERC20(amount: BigUInt) {
         
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
+        let ercTransferData = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: destinationTextField.text!)!, tokens: amount).hexValue
+        let messageData = Identity.current!.encodeExecute(to: fromToken!.address!, value:"0", data: Data(hexString:ercTransferData)!)
         
-        self.rockside.identity!.erc20Transfer(ercAddress: fromToken!.address!, to: destinationTextField.text!, value: amount) { (result) in
-            switch result {
-            case .success(let txResponse):
-                DispatchQueue.main.async {
-                    hud.dismiss()
-                    self.dismiss(animated: true, completion: {
-                        self.watchTxHandler?(txResponse)
-                    })
-                }
-                break
-                
-            case .failure(_):
-                DispatchQueue.main.async {
-                    hud.dismiss()
-                    self.dismiss(animated: true, completion: {
-                        self.displayErrorHandler?()
-                    })
-                }
-                break
-            }
-        }
+        moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas:"150000") { (result) in
+           switch result {
+                      case .success(let txResponse):
+                          DispatchQueue.main.async {
+                              hud.dismiss()
+                              self.dismiss(animated: true, completion: {
+                                  self.watchTxHandler?(txResponse)
+                              })
+                          }
+                          break
+                          
+                      case .failure(let error):
+                          NSLog(error.localizedDescription)
+                          DispatchQueue.main.async {
+                              hud.dismiss()
+                              self.dismiss(animated: true, completion: {
+                                  self.displayErrorHandler?()
+                              })
+                          }
+                          break
+                      }
+           
+       }
     }
     
-    func sendEth(amount: String) {
+    func sendEth(amount: BigUInt) {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
               
-        self.rockside.identity!.relayTransaction(to: destinationTextField.text!, value: amount) { (result) in
+        let messageData = Identity.current!.encodeExecute(to: destinationTextField.text!, value:amount, data: Data())
+        moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas: "100000") { (result) in
             switch result {
-            case .success(let txResponse):
-                DispatchQueue.main.async {
-                    hud.dismiss()
-                    self.dismiss(animated: true, completion: {
-                        self.watchTxHandler?(txResponse)
-                    })
-                }
-                break
-                
-            case .failure(let error):
-                NSLog(error.localizedDescription)
-                DispatchQueue.main.async {
-                    hud.dismiss()
-                    self.dismiss(animated: true, completion: {
-                        self.displayErrorHandler?()
-                    })
-                }
-                break
-            }
+                       case .success(let txResponse):
+                           DispatchQueue.main.async {
+                               hud.dismiss()
+                               self.dismiss(animated: true, completion: {
+                                   self.watchTxHandler?(txResponse)
+                               })
+                           }
+                           break
+                           
+                       case .failure(let error):
+                           NSLog(error.localizedDescription)
+                           DispatchQueue.main.async {
+                               hud.dismiss()
+                               self.dismiss(animated: true, completion: {
+                                   self.displayErrorHandler?()
+                               })
+                           }
+                           break
+                       }
+            
         }
     }
     

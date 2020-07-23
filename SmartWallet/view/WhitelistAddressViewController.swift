@@ -17,7 +17,7 @@ class WhitelistAddressViewController:UIViewController {
     @IBOutlet weak var addressTextField: MDCTextField!
     var addressTextFieldController: MDCTextInputControllerUnderline?
     
-    
+    var moonkeyService = MoonkeyService()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,11 +39,14 @@ class WhitelistAddressViewController:UIViewController {
         hud.textLabel.text = "Your address is being added.\nPlease wait (around 1 min)"
         hud.show(in: self.view)
         
-        self.rockside.identity!.updateWhiteList(eoa: addressTextField.text!, value: true) { (result) in
+        
+        let messageData = Identity.current!.encodeUpdateWhiteList(eoa:  addressTextField.text!, value: true)
+        moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas:"120000") { (result) in
             switch result {
+                
             case .success(let txResponse):
                 DispatchQueue.main.async {
-                    _ = self.rockside.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
+                    _ = self.moonkeyService.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
                         switch result {
                         case .success(_):
                             DispatchQueue.main.async {
@@ -61,6 +64,7 @@ class WhitelistAddressViewController:UIViewController {
                             break
                         }
                     }
+                    
                 }
                 break
                 
