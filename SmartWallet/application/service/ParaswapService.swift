@@ -53,6 +53,7 @@ struct RouteData: Codable {
     var tokenFrom: String
     var tokenTo: String
     var orders: [Order]?
+    var path: [String]?
 }
 
 struct Order: Codable {

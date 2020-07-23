@@ -172,45 +172,50 @@ class ExchangeViewController: UIViewController {
         self.paraswapService.getParaswapSenderAddress() { (result) in
             switch result {
             case .success(let result):
+                print(result)
                 DispatchQueue.main.async {
-                    /*self.rockside.identity!.erc20Approve(ercAddress: self.getSourceTokenAddress(), spender: result, value: self.amountWei!.description) { (result) in
-                     switch result {
-                     case .success(let txResponse):
-                     DispatchQueue.main.async {
-                     //TODO
-                     /*_ = self.rockside.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
-                     switch result {
-                     case .success(_):
-                     NSLog("Success")
-                     DispatchQueue.main.async {
-                     hud.dismiss()
-                     self.executeParaswapExchange()
-                     }
-                     break
-                     
-                     case .failure(let error):
-                     print(error)
-                     DispatchQueue.main.async {
-                     hud.dismiss()
-                     self.dispayErrorAlert(message: error.localizedDescription)
-                     }
-                     break
-                     }
-                     }*/
-                     }
-                     
-                     break
-                     
-                     case .failure(let error):
-                     print(error)
-                     DispatchQueue.main.async {
-                     hud.dismiss()
-                     self.dispayErrorAlert(message: error.localizedDescription)
-                     }
-                     break
-                     }
-                     
-                     }*/
+                    
+                    let erc20ApproveData = ERC20Encoder.encodeApprove(spender: EthereumAddress(string:result)!, tokens:  BigUInt(self.amountWei!)).hexValue
+                    let messageData = Identity.current!.encodeExecute(to: self.getSourceTokenAddress(), value:"0", data: Data(hexString:erc20ApproveData)!)
+                    
+                    self.moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas:"150000") { (result) in
+                        switch result {
+                        case .success(let txResponse):
+                            DispatchQueue.main.async {
+                                _ = self.moonkeyService.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
+                                    
+                                    switch result {
+                                    case .success(_):
+                                        NSLog("Success")
+                                        DispatchQueue.main.async {
+                                            hud.dismiss()
+                                            self.executeParaswapExchange()
+                                        }
+                                        break
+                                        
+                                    case .failure(let error):
+                                        print(error)
+                                        DispatchQueue.main.async {
+                                            hud.dismiss()
+                                            self.dispayErrorAlert(message: error.localizedDescription)
+                                        }
+                                        break
+                                    }
+                                }
+                            }
+                            
+                            break
+                            
+                        case .failure(let error):
+                            print(error)
+                            DispatchQueue.main.async {
+                                hud.dismiss()
+                                self.dispayErrorAlert(message: error.localizedDescription)
+                            }
+                            break
+                        }
+                        
+                    }
                 }
                 break
             case .failure(let error):
@@ -239,13 +244,13 @@ class ExchangeViewController: UIViewController {
             switch result {
             case .success(let response):
                 
-               
+                
                 let messageData = Identity.current!.encodeExecute(to:  self.paraswapService.paraswapContract, value: BigUInt(response.value!)!, data: Data(hexString: response.data!)!)
-
+                
                 DispatchQueue.main.async {
                     print(response.gas!)
                     //TODO ADD value to gas for Rockside
-                    self.moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas: "460363") { (result) in
+                    self.moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData) { (result) in
                         switch result {
                         case .success(let txResponse):
                             DispatchQueue.main.async {
