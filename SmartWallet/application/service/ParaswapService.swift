@@ -144,8 +144,6 @@ class ParaswapService {
         var request = URLRequest(url: URL(string:  url+"prices/?from="+sourceTokenAddress+"&to="+destTokenAddress+"&amount="+amount)!)
         request.httpMethod = "GET"
         
-        print(request.url?.absoluteString)
-        
         Http.execute(with: request, receive: GetRateResponse.self) { (result) in
             switch result {
             case .success(let response):
@@ -164,10 +162,6 @@ class ParaswapService {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()
-        
-        print("### REQUEST paraswap TX")
-        print(String(data: request.httpBody!, encoding: .utf8)!)
-        
         Http.execute(with: request, receive: GetTxResponse.self, completion: completion).resume()
     }
     

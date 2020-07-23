@@ -172,7 +172,6 @@ class ExchangeViewController: UIViewController {
         self.paraswapService.getParaswapSenderAddress() { (result) in
             switch result {
             case .success(let result):
-                print(result)
                 DispatchQueue.main.async {
                     
                     let erc20ApproveData = ERC20Encoder.encodeApprove(spender: EthereumAddress(string:result)!, tokens:  BigUInt(self.amountWei!)).hexValue
@@ -194,7 +193,6 @@ class ExchangeViewController: UIViewController {
                                         break
                                         
                                     case .failure(let error):
-                                        print(error)
                                         DispatchQueue.main.async {
                                             hud.dismiss()
                                             self.dispayErrorAlert(message: error.localizedDescription)
@@ -207,7 +205,6 @@ class ExchangeViewController: UIViewController {
                             break
                             
                         case .failure(let error):
-                            print(error)
                             DispatchQueue.main.async {
                                 hud.dismiss()
                                 self.dispayErrorAlert(message: error.localizedDescription)
@@ -219,7 +216,8 @@ class ExchangeViewController: UIViewController {
                 }
                 break
             case .failure(let error):
-                print(error)
+                hud.dismiss()
+                self.dispayErrorAlert(message: error.localizedDescription)
                 break
             }
         }
@@ -249,7 +247,7 @@ class ExchangeViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     print(response.gas!)
-                    //TODO ADD value to gas for Rockside
+
                     self.moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData) { (result) in
                         switch result {
                         case .success(let txResponse):
@@ -262,7 +260,6 @@ class ExchangeViewController: UIViewController {
                             break
                             
                         case .failure(let error):
-                            print(error)
                             DispatchQueue.main.async {
                                 hud.dismiss()
                                 self.dismiss(animated: true, completion: {

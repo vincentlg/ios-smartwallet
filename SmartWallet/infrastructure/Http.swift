@@ -49,10 +49,6 @@ public class Http {
             
             do {
                 let result = try JSONDecoder().decode(T.self, from: data)
-                print("### Response")
-                
-                print(String(data: data, encoding: .utf8)!)
-                
                 completion(.success((result)))
                 return
             } catch let error {

@@ -109,7 +109,6 @@ class WalletViewController: UIViewController {
                 }
                 break
             case .failure(let error):
-                print(error)
                 DispatchQueue.main.async {
                     MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
                     self.snackBarMessage = nil

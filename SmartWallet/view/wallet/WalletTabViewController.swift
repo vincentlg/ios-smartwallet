@@ -90,9 +90,6 @@ class WalletTabViewController: TabmanViewController {
         retrieveTransaction(action: .txlist)
         retrieveTransaction(action: .txlistinternal)
         retrieveTransaction(action: .tokentx)
-        
-        
-        
     }
     
     private func retrieveTransaction(action: TxAction) {
@@ -190,7 +187,6 @@ class WalletTabViewController: TabmanViewController {
                 DispatchQueue.main.async {
                     self.balanceViewController?.refreshControl?.endRefreshing()
                     self.hud.dismiss()
-                    print(error)
                 }
                 break
             }

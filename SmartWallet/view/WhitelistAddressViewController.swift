@@ -56,7 +56,6 @@ class WhitelistAddressViewController:UIViewController {
                             break
                             
                         case .failure(let error):
-                            print(error)
                             DispatchQueue.main.async {
                                 hud.dismiss()
                                 self.displayErrorOccured()
@@ -69,7 +68,6 @@ class WhitelistAddressViewController:UIViewController {
                 break
                 
             case .failure(let error):
-                print(error)
                 hud.dismiss()
                 self.displayErrorOccured()
                 break
