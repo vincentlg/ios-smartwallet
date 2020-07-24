@@ -16,7 +16,7 @@ class BalanceViewCell: UITableViewCell {
     @IBOutlet weak var tokenImage: UIImageView!
     
     public func display(balance:TokenBalance){
-        self.nameLabel?.text = balance.name
+        self.nameLabel?.text = balance.symbol
         self.balanceLabel?.text = balance.formattedAmout
         
         if let img = balance.img {

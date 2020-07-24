@@ -74,11 +74,10 @@ class ExchangeViewController: UIViewController {
             return
         }
         
-        if self.tokensBalance![0].balance! < BigInt(1000000000000000)  {
-            self.amountTextFieldController?.setErrorText("Need more ETH for gas", errorAccessibilityValue: "Need more ETH for gas")
+        if self.sourceToken?.symbol == destToken?.symbol {
+            self.amountTextFieldController?.setErrorText("Change dest token", errorAccessibilityValue: "Change dest token")
             return
         }
-        
         
         self.view.endEditing(true)
         if (sourceToken?.symbol == "ETH") {
@@ -97,19 +96,9 @@ class ExchangeViewController: UIViewController {
         self.sourceLabel.text = self.sourceToken?.symbol
         self.maxAmountLabel.text = "Max: "+self.sourceToken!.formattedAmout
         self.destLabel.text = self.destToken?.symbol
-        
+        self.destAmountWei = BigInt(0)
+        self.destAmountLabel.text = "0"
         self.getRate()
-    }
-    
-    private func getSourceTokenAddress() -> String {
-        let sourceAddress: String
-        if let address = self.sourceToken?.address {
-            sourceAddress = address
-        } else {
-            sourceAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
-        }
-        
-        return sourceAddress
     }
     
     private func getTokens() {
@@ -175,7 +164,7 @@ class ExchangeViewController: UIViewController {
                 DispatchQueue.main.async {
                     
                     let erc20ApproveData = ERC20Encoder.encodeApprove(spender: EthereumAddress(string:result)!, tokens:  BigUInt(self.amountWei!)).hexValue
-                    let messageData = Identity.current!.encodeExecute(to: self.getSourceTokenAddress(), value:"0", data: Data(hexString:erc20ApproveData)!)
+                    let messageData = Identity.current!.encodeExecute(to: self.sourceToken!.address, value:"0", data: Data(hexString:erc20ApproveData)!)
                     
                     self.moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas:"150000") { (result) in
                         switch result {
@@ -228,7 +217,7 @@ class ExchangeViewController: UIViewController {
     private func executeParaswapExchange(){
         
         let body = GetTxRequest(priceRoute: self.priceRoute!,
-                                srcToken: getSourceTokenAddress(),
+                                srcToken: self.sourceToken!.address,
                                 destToken: self.destToken!.address,
                                 srcAmount: self.amountWei!.description,
                                 destAmount: self.destAmountWei!.description,
@@ -241,13 +230,9 @@ class ExchangeViewController: UIViewController {
         self.paraswapService.getParaswapTx(body: body) { (result) in
             switch result {
             case .success(let response):
-                
-                
                 let messageData = Identity.current!.encodeExecute(to:  self.paraswapService.paraswapContract, value: BigUInt(response.value!)!, data: Data(hexString: response.data!)!)
                 
                 DispatchQueue.main.async {
-                    print(response.gas!)
-
                     self.moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData) { (result) in
                         switch result {
                         case .success(let txResponse):
@@ -286,25 +271,26 @@ class ExchangeViewController: UIViewController {
     }
     
     private func getRate() {
-        let formatter = EtherNumberFormatter()
-        if let amountText = amountTextField.text, let amountWeiBigInt = formatter.number(from:amountText) {
+    
+        if let amountText = amountTextField.text, let amountWeiBigInt = sourceToken?.token?.amountFrom(value: amountText){
             self.amountWei = amountWeiBigInt
             if (amountWei?.description != "0") {
-                self.paraswapService.getRate(sourceTokenAddress: getSourceTokenAddress(), destTokenAddress: destToken!.address, amount: amountWei!.description) { (result) in
+                self.paraswapService.getRate(sourceTokenAddress: self.sourceToken!.address, destTokenAddress: destToken!.address, amount: amountWei!.description) { (result) in
                     switch result {
                     case .success(let response):
                         self.priceRoute = response
                         
                         // We take a marge of 5% to avoid market change
                         let destAmountBigInt =  BigInt(response.amount)!
-                        let desAmountWithMargin = destAmountBigInt * BigInt(95) / BigInt(100)
+                        let desAmountWithMargin = destAmountBigInt * BigInt(97) / BigInt(100)
                         self.destAmountWei = desAmountWithMargin
                         
                         //Update priceRoute object with marged amount
                         self.priceRoute?.amount = self.destAmountWei!.description
                         
                         DispatchQueue.main.async {
-                            let amountString = formatter.string(from:desAmountWithMargin)
+                            //TODO encapsulate this
+                            let amountString = self.destToken!.formatAmount(amount: desAmountWithMargin)
                             let shortAmountString = String(format: "%.3f", (amountString.replacingOccurrences(of: ",", with: ".") as NSString).floatValue)
                             self.destAmountLabel.text = shortAmountString
                         }

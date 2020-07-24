@@ -18,24 +18,59 @@ struct GetRateResponse: Codable {
 }
 
 
+/*export type OnChainOptimalRates = {
+  amount: PriceString,
+  bestRoute: Rate[],
+  others?: OthersRate[]
+};
+
+export type OptimalRates = {
+  amount: PriceString,
+  bestRoute: Rate[],
+  multiRoute?: Rate[][],
+  others: OthersRate[],
+  fromUSD?: string,
+  toUSD?: string,
+  details?:
+    {
+      tokenFrom: Address,
+      tokenTo: Address,
+      srcAmount: PriceString
+    }
+};*/
 
 class PriceRoute: Codable {
     var amount: String
     var fromUSD: String
     var toUSD: String
     var details: PriceRouteDetails?
-    var bestRoute: [BestRoute]
+    var multiRoute: [[Route]]?
+    var bestRoute: [Route]
     var others: [OtherRoute]?
-
 }
+
+
+
+/*{
+  tokenFrom: Address,
+  tokenTo: Address,
+  srcAmount: PriceString
+}*/
 
 struct PriceRouteDetails: Codable {
-    var tokenFrom: String
-    var tokenTo: String
-    var srcAmount: String
+    var tokenFrom: String?
+    var tokenTo: String?
+    var srcAmount: String?
+    var routes: [String]?
 }
 
-class BestRoute: Codable {
+/*amount: PriceString
+exchange: string
+percent: NumberAsString
+srcAmount: PriceString,
+data?: any,*/
+
+class Route: Codable {
     var exchange: String
     var amount: String
     var srcAmount: String
@@ -43,6 +78,9 @@ class BestRoute: Codable {
     var data: RouteData?
 }
 
+/*exchange: string
+rate: NumberAsString
+unit: NumberAsString*/
 class OtherRoute: Codable {
     var exchange: String
     var unit: String
@@ -52,9 +90,41 @@ class OtherRoute: Codable {
 struct RouteData: Codable {
     var tokenFrom: String
     var tokenTo: String
+    var exchange: String?
     var orders: [Order]?
     var path: [String]?
+    var signatures: [String]?
+    var networkFee: Int?
+    var otc: String?
+    var weth: String?
+    var factory: String?
+    var cToken: String?
+    var aToken: String?
+    var idleToken: String?
+    var iToken: String?
+    var i: Int?
+    var j: Int?
+    var deadline: Int?
+    var underlyingSwap: Bool?
 }
+
+
+/*
+ 'makerAddress': 'address',           // Address that created the order.
+ 'takerAddress': 'address',           // Address that is allowed to fill the order. If set to 0, any address is allowed to fill the order.
+ 'feeRecipientAddress': 'address',   // Address that will recieve fees when order is filled.
+ 'senderAddress': 'address',          // Address that is allowed to call Exchange contract methods that affect this order. If set to 0, any address is allowed to call these methods.
+ 'makerAssetAmount': 'uint256',      // Amount of makerAsset being offered by maker. Must be greater than 0.
+ 'takerAssetAmount': 'uint256',       // Amount of takerAsset being bid on by maker. Must be greater than 0.
+ 'makerFee': 'uint256',               // Fee paid to feeRecipient by maker when order is filled.
+ 'takerFee': 'uint256',               // Fee paid to feeRecipient by taker when order is filled.
+ 'expirationTimeSeconds': 'uint256',  // Timestamp in seconds at which order expires.
+ 'salt': 'uint256',                   // Arbitrary number to facilitate uniqueness of the order's hash.
+ 'makerAssetData': 'bytes',           // Encoded data that can be decoded by a specified proxy contract when transferring makerAsset. The leading bytes4 references the id of the asset proxy.
+ 'takerAssetData': 'bytes',           // Encoded data that can be decoded by a specified proxy contract when transferring takerAsset. The leading bytes4 references the id of the asset proxy.
+ 'makerFeeAssetData': 'bytes',        // Encoded data that can be decoded by a specified proxy contract when transferring makerFeeAsset. The leading bytes4 references the id of the asset proxy.
+ 'takerFeeAssetData': 'bytes'
+ */
 
 struct Order: Codable {
     var chainId: Int
@@ -118,7 +188,6 @@ struct GetTxResponse:Codable {
 class ParaswapService {
     
     let url = "https://api.paraswap.io/v2/"
-    //let url = "https://api-ropsten.paraswap.io/api/v2/"
     let paraswapContract = "0x86969d29f5fd327e1009ba66072be22db6017cc6"
     let rpc = RpcClient()
     
@@ -141,7 +210,7 @@ class ParaswapService {
     
     public func getRate(sourceTokenAddress: String, destTokenAddress: String, amount: String, completion: @escaping (Result<PriceRoute, Error>) -> Void) -> Void {
         
-        var request = URLRequest(url: URL(string:  url+"prices/?from="+sourceTokenAddress+"&to="+destTokenAddress+"&amount="+amount)!)
+        var request = URLRequest(url: URL(string:  url+"prices/?from="+sourceTokenAddress+"&to="+destTokenAddress+"&amount="+amount+"&excludeDEXS=0x")!)
         request.httpMethod = "GET"
         
         Http.execute(with: request, receive: GetRateResponse.self) { (result) in
@@ -151,6 +220,7 @@ class ParaswapService {
                 return
                 
             case .failure(let error):
+                print("##### error rate")
                 completion(.failure(error))
                 return
             }
@@ -162,6 +232,8 @@ class ParaswapService {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()
+        
+        print(String(data:request.httpBody!, encoding: .utf8)!)
         Http.execute(with: request, receive: GetTxResponse.self, completion: completion).resume()
     }
     

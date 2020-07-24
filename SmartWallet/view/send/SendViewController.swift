@@ -63,23 +63,18 @@ class SendViewController: UIViewController {
         self.destinationTextFieldController?.setErrorText(nil, errorAccessibilityValue:nil)
         
         guard let amountText = self.amountTextField.text, let amount = formatter.number(from: amountText) else {
-            self.amountTextFieldController?.setErrorText("Amount invaid", errorAccessibilityValue: "Amount invaid")
+            self.amountTextFieldController?.setErrorText("Amount invalid", errorAccessibilityValue: "Amount invalid")
             return
         }
         
         if amount.description.description == "0" {
-            self.amountTextFieldController?.setErrorText("Amount invaid", errorAccessibilityValue: "Amount invaid")
+            self.amountTextFieldController?.setErrorText("Amount invalid", errorAccessibilityValue: "Amount invalid")
             return
         }
         
         if amount > fromToken!.balance! {
             self.amountTextFieldController?.setErrorText("Insuffisant balance", errorAccessibilityValue: "Insuffisant balance")
             return
-        }
-        
-        if self.tokens![0].balance! < BigInt(700000000000000)  {
-            self.amountTextFieldController?.setErrorText("Need more ETH for gas", errorAccessibilityValue: "Need more ETH for gas")
-                 return
         }
         
         if  !EthereumAddress.isValid(string: destinationTextField.text!) {
@@ -100,7 +95,7 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         let ercTransferData = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: destinationTextField.text!)!, tokens: amount).hexValue
-        let messageData = Identity.current!.encodeExecute(to: fromToken!.address!, value:"0", data: Data(hexString:ercTransferData)!)
+        let messageData = Identity.current!.encodeExecute(to: fromToken!.address, value:"0", data: Data(hexString:ercTransferData)!)
         
         moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas:"150000") { (result) in
            switch result {

@@ -25,7 +25,7 @@ class WalletTabViewController: TabmanViewController {
     private var transactionViewController: TransactionViewContrller?
     
     var balanceUpdatedHandler: BalanceUpdatedHandler?
-    var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(name: "Ethereum", symbol: "ETH")]
+    var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(symbol: "ETH", address: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE")]
     
     var tokensDictionary: [String: Token] = [String: Token]()
     
@@ -176,7 +176,7 @@ class WalletTabViewController: TabmanViewController {
                 DispatchQueue.main.async {
                     self.hud.dismiss()
                     self.tokenBalances["ETH"]?.balance = balance
-                    self.tokenBalances["ETH"]?.img = self.tokensDictionary["ETH"]?.img
+                    self.tokenBalances["ETH"]?.token = self.tokensDictionary["ETH"]
                     self.balanceViewController?.display(balances: self.tokenBalanceArray())
                     self.balanceViewController?.refreshControl?.endRefreshing()
                     self.balanceUpdatedHandler?()
@@ -195,14 +195,17 @@ class WalletTabViewController: TabmanViewController {
     
     private func get(tokenBalance: TokenBalance) {
         
-        Identity.current!.getErc20Balance(ercAddress: tokenBalance.address!) { (result) in
+        Identity.current!.getErc20Balance(ercAddress: tokenBalance.address) { (result) in
             switch result {
             case .success(let balance):
                 DispatchQueue.main.async {
                     self.hud.dismiss()
-                    self.tokenBalances[tokenBalance.symbol]?.balance = balance
-                     self.tokenBalances[tokenBalance.symbol]?.img = self.tokensDictionary[tokenBalance.symbol]?.img
-                    self.balanceViewController?.display(balances:self.tokenBalanceArray())
+                    if let token = self.tokensDictionary[tokenBalance.symbol] {
+                        self.tokenBalances[tokenBalance.symbol]?.balance = balance
+                        self.tokenBalances[tokenBalance.symbol]?.token = token
+                        self.balanceViewController?.display(balances:self.tokenBalanceArray())
+                    }
+                   
                 }
                 break
                 
@@ -221,7 +224,8 @@ class WalletTabViewController: TabmanViewController {
         self.transactions.forEach {
             if $0.isERC {
                 if (self.tokenBalances[$0.tokenSymbol!] == nil) {
-                    self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(name: $0.tokenName!, symbol: $0.tokenSymbol!, address: $0.contractAddress)
+                    
+                    self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(symbol: $0.tokenSymbol!, address: $0.contractAddress)
                 }
             }
         }
