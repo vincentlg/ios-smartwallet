@@ -23,7 +23,6 @@
 		DC4ADCA22419140A008C23C7 /* BalanceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA12419140A008C23C7 /* BalanceViewCell.swift */; };
 		DC4ADCA424191AAA008C23C7 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA324191AAA008C23C7 /* Transaction.swift */; };
 		DC4ADCA6241928EC008C23C7 /* TransactionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA5241928EC008C23C7 /* TransactionViewCell.swift */; };
-		DC4ADCA82419332F008C23C7 /* Chain+Etherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA72419332F008C23C7 /* Chain+Etherscan.swift */; };
 		DC4ADCAA24193FC4008C23C7 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCA924193FC4008C23C7 /* ExchangeViewController.swift */; };
 		DC4ADCAC241940F5008C23C7 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADCAB241940F5008C23C7 /* Token.swift */; };
 		DC4ECCEC241795CC0062425E /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ECCEB241795CC0062425E /* SendViewController.swift */; };
@@ -74,7 +73,6 @@
 		DC4ADCA12419140A008C23C7 /* BalanceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewCell.swift; sourceTree = "<group>"; };
 		DC4ADCA324191AAA008C23C7 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		DC4ADCA5241928EC008C23C7 /* TransactionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewCell.swift; sourceTree = "<group>"; };
-		DC4ADCA72419332F008C23C7 /* Chain+Etherscan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chain+Etherscan.swift"; sourceTree = "<group>"; };
 		DC4ADCA924193FC4008C23C7 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		DC4ADCAB241940F5008C23C7 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		DC4ECCEB241795CC0062425E /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				DC4ADCAB241940F5008C23C7 /* Token.swift */,
 				DC4ADC9F24190E61008C23C7 /* TokenBalance.swift */,
 				DC4ADCA324191AAA008C23C7 /* Transaction.swift */,
-				DC4ADCA72419332F008C23C7 /* Chain+Etherscan.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -468,7 +465,6 @@
 				DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */,
 				DCD8CE4A243E0BCF0078BB1D /* WhitelistAddressViewController.swift in Sources */,
 				DCFFBE4E246AB12800AB0C4B /* UIImageView+extension.swift in Sources */,
-				DC4ADCA82419332F008C23C7 /* Chain+Etherscan.swift in Sources */,
 				DC4ADC9B2418F523008C23C7 /* BalanceViewController.swift in Sources */,
 				DCD11D09241B9C050046ECD0 /* TokensTableViewController.swift in Sources */,
 				DC3E7183242A324100C40194 /* WalletTabLayout.swift in Sources */,

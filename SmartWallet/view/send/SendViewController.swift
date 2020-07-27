@@ -139,7 +139,6 @@ class SendViewController: UIViewController {
                            break
                            
                        case .failure(let error):
-                           NSLog(error.localizedDescription)
                            DispatchQueue.main.async {
                                hud.dismiss()
                                self.dismiss(animated: true, completion: {

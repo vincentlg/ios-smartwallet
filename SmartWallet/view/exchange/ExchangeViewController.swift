@@ -174,7 +174,6 @@ class ExchangeViewController: UIViewController {
                                     
                                     switch result {
                                     case .success(_):
-                                        NSLog("Success")
                                         DispatchQueue.main.async {
                                             hud.dismiss()
                                             self.executeParaswapExchange()
@@ -261,7 +260,6 @@ class ExchangeViewController: UIViewController {
             case .failure(let error):
                 DispatchQueue.main.async {
                     hud.dismiss()
-                    NSLog("PARASWAP ERROR")
                     self.dispayErrorAlert(message: error.localizedDescription)
                 }
                 return

@@ -230,7 +230,6 @@ class ParaswapService {
                 return
                 
             case .failure(let error):
-                print("##### error rate")
                 completion(.failure(error))
                 return
             }

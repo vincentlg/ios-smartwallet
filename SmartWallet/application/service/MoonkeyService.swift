@@ -44,6 +44,16 @@ public struct RelayResponse: Codable {
 
 class MoonkeyService {
     
+    
+        var network:String {
+            
+            if (Identity.chainID ==  1) {
+                return "mainnet"
+            }
+            
+            return "ropsten"
+        }
+    
         public func deploySmartwallet(completion: @escaping (Result<DeploySmartwalletResponse, Error>) -> Void)  -> Void {
             let mnemonic = Crypto.generateMnemonic(strength: 128)
             let wallet = HDWallet(mnemonic: mnemonic)
@@ -51,7 +61,7 @@ class MoonkeyService {
             
             let body = DeploySmartwalletRequest(account: eoa.ethereumAddress)
             
-            var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-deploy-smartwallet")!)
+            var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-deploy-smartwallet?network="+self.network)!)
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"
             request.httpBody = body.toJSONData()
@@ -85,7 +95,7 @@ class MoonkeyService {
     
     public func transactionStatus(trackingID: String, completion: @escaping (Result<TransactionDetails, Error>) -> Void)  -> Void {
     
-        var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-tx-infos/"+trackingID)!)
+        var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-tx-infos/"+trackingID+"?network="+self.network)!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
         Http.execute(with: request, receive: TransactionDetails.self){ (result) in
@@ -132,7 +142,7 @@ class MoonkeyService {
                 let signature = identity.signTx(data: messageData, nonce: Int(nonce.description)!)
                 let body = RelayRequest(signer: identity.eoa.ethereumAddress, to: identity.ethereumAddress, data: messageData, nonce: nonce.description, signature: signature, gas: gas)
                 
-                var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-tx-relay")!)
+                var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-tx-relay?network="+self.network)!)
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.httpMethod = "POST"
                 request.httpBody = body.toJSONData()
