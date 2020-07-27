@@ -187,12 +187,22 @@ struct GetTxResponse:Codable {
 
 class ParaswapService {
     
-    let url = "https://api.paraswap.io/v2/"
+ 
     let paraswapContract = "0x86969d29f5fd327e1009ba66072be22db6017cc6"
     let rpc = RpcClient()
     
+    
+    var url: String {
+        
+        if Identity.chainID == 1 {
+            return "https://api.paraswap.io/v2/"
+        }
+        
+        return "https://api-ropsten.paraswap.io/api/v2/"
+    }
+    
     public func getTokens(completion: @escaping (Result<[Token], Error>) -> Void) -> Void {
-        var request = URLRequest(url: URL(string: url+"tokens")!)
+        var request = URLRequest(url: URL(string: url+"tokens/"+String(Identity.chainID))!)
         request.httpMethod = "GET"
         
         Http.execute(with: request, receive: GetTokenResponse.self)  { (result) in
@@ -210,7 +220,7 @@ class ParaswapService {
     
     public func getRate(sourceTokenAddress: String, destTokenAddress: String, amount: String, completion: @escaping (Result<PriceRoute, Error>) -> Void) -> Void {
         
-        var request = URLRequest(url: URL(string:  url+"prices/?from="+sourceTokenAddress+"&to="+destTokenAddress+"&amount="+amount+"&excludeDEXS=0x")!)
+        var request = URLRequest(url: URL(string:  url+"prices/?from="+sourceTokenAddress+"&to="+destTokenAddress+"&amount="+amount+"&excludeDEXS=0x&network="+String(Identity.chainID))!)
         request.httpMethod = "GET"
         
         Http.execute(with: request, receive: GetRateResponse.self) { (result) in
@@ -228,7 +238,7 @@ class ParaswapService {
     }
     
     public func getParaswapTx(body: GetTxRequest, completion: @escaping (Result<GetTxResponse, Error>) -> Void) -> Void {
-        var request = URLRequest(url: URL(string: url+"transactions/1")!)
+        var request = URLRequest(url: URL(string: url+"transactions/"+String(Identity.chainID))!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()

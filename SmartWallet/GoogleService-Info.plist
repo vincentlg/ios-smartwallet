@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:83680851823:ios:d80f169c1fd9f802a95a9a</string>
+	<string>1:83680851823:ios:9e4f32af4e1bc9f9a95a9a</string>
 	<key>DATABASE_URL</key>
 	<string>https://smartwallet-b677c.firebaseio.com</string>
 </dict>

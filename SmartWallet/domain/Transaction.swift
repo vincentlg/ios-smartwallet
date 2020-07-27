@@ -22,6 +22,7 @@ struct Transaction: Codable {
     var contractAddress: String
     var tokenSymbol: String?
     var tokenName: String?
+    var tokenDecimal: String?
     var timeStamp: String?
     var isError: String?
  
@@ -78,7 +79,14 @@ extension Transaction {
     
     var formattedAmount: String {
         let fullFormatter = EtherNumberFormatter()
-        let ethValue = fullFormatter.string(from: BigInt(value)!)
+        
+        var ethValue:String
+        if let decimal = self.tokenDecimal, let intDecimal = Int(decimal) {
+            ethValue = fullFormatter.string(from: BigInt(value)!, decimals: intDecimal)
+        } else {
+            ethValue = fullFormatter.string(from: BigInt(value)!)
+        }
+       
         
         let floatValue = (ethValue.replacingOccurrences(of: ",", with: ".")  as NSString).floatValue
         let stringValue = String(format: "%.3f", floatValue)

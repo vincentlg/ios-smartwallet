@@ -155,7 +155,7 @@ class ExchangeViewController: UIViewController {
     
     private func erc20ApproveAndExecuteParaswap(){
         let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Allowing Paraswap"
+        hud.textLabel.text = "Allowing Paraswap\nto use "+self.amountTextField.text!+" "+self.sourceToken!.symbol
         hud.show(in: self.view)
         
         self.paraswapService.getParaswapSenderAddress() { (result) in

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		66AF6F1480713AC43621E657 /* Pods_SmartWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */; };
 		DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */; };
+		DC33BA0424CED30100303610 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC33BA0324CED30100303610 /* GoogleService-Info.plist */; };
 		DC352DB6243CCDDA00654C5E /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC352DB5243CCDDA00654C5E /* ConnectViewController.swift */; };
 		DC3E7183242A324100C40194 /* WalletTabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3E7182242A324100C40194 /* WalletTabLayout.swift */; };
 		DC3E7187242A440A00C40194 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3E7186242A440A00C40194 /* ListItemView.swift */; };
@@ -30,7 +31,6 @@
 		DC6071382431E5B100CED3BF /* ParaswapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6071372431E5B100CED3BF /* ParaswapService.swift */; };
 		DC60713B2431F9FF00CED3BF /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60713A2431F9FF00CED3BF /* Http.swift */; };
 		DC60713D2432520A00CED3BF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC60713C2432520A00CED3BF /* MessageUI.framework */; };
-		DC60713F24336BB200CED3BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC60713E24336BB200CED3BF /* GoogleService-Info.plist */; };
 		DC607143243399ED00CED3BF /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC607142243399ED00CED3BF /* ScannerViewController.swift */; };
 		DC7AC3A323EC647000CC1C0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */; };
 		DC7AC3A523EC647000CC1C0D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7AC3A423EC647000CC1C0D /* SceneDelegate.swift */; };
@@ -60,6 +60,7 @@
 		B15DEB8371F308910BBC9556 /* Pods-SmartWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.debug.xcconfig"; path = "Target Support Files/Pods-SmartWallet/Pods-SmartWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		CB43F175874C92802541C5AD /* Pods-SmartWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.release.xcconfig"; path = "Target Support Files/Pods-SmartWallet/Pods-SmartWallet.release.xcconfig"; sourceTree = "<group>"; };
 		DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
+		DC33BA0324CED30100303610 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC352DB5243CCDDA00654C5E /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		DC3E7182242A324100C40194 /* WalletTabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTabLayout.swift; sourceTree = "<group>"; };
 		DC3E7186242A440A00C40194 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
@@ -81,7 +82,6 @@
 		DC6071372431E5B100CED3BF /* ParaswapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParaswapService.swift; sourceTree = "<group>"; };
 		DC60713A2431F9FF00CED3BF /* Http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
 		DC60713C2432520A00CED3BF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		DC60713E24336BB200CED3BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC607142243399ED00CED3BF /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		DC7AC39F23EC647000CC1C0D /* Moonkey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moonkey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC7AC3A223EC647000CC1C0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -203,7 +203,6 @@
 		DC7AC39623EC647000CC1C0D = {
 			isa = PBXGroup;
 			children = (
-				DC60713E24336BB200CED3BF /* GoogleService-Info.plist */,
 				DC7AC3A123EC647000CC1C0D /* SmartWallet */,
 				DC8DA74123FAD66C0080C0D7 /* SmartWalletTests */,
 				DC7AC3A023EC647000CC1C0D /* Products */,
@@ -232,6 +231,7 @@
 				DC7AC3A823EC647000CC1C0D /* Main.storyboard */,
 				DC7AC3AB23EC647200CC1C0D /* Assets.xcassets */,
 				DC7AC3AD23EC647200CC1C0D /* LaunchScreen.storyboard */,
+				DC33BA0324CED30100303610 /* GoogleService-Info.plist */,
 				DC7AC3B023EC647200CC1C0D /* Info.plist */,
 			);
 			path = SmartWallet;
@@ -364,7 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC7AC3AF23EC647200CC1C0D /* LaunchScreen.storyboard in Resources */,
-				DC60713F24336BB200CED3BF /* GoogleService-Info.plist in Resources */,
+				DC33BA0424CED30100303610 /* GoogleService-Info.plist in Resources */,
 				DC7AC3AC23EC647200CC1C0D /* Assets.xcassets in Resources */,
 				DC7AC3AA23EC647000CC1C0D /* Main.storyboard in Resources */,
 			);
@@ -420,6 +420,8 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
 			);
 			outputFileListPaths = (
 			);

@@ -11,6 +11,7 @@ target 'SmartWallet' do
   pod 'Starscream', '~> 4.0.0'
   pod 'JGProgressHUD'
   pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
   pod 'MaterialComponents/Snackbar'
   pod 'MaterialComponents/TextFields'
   
