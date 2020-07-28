@@ -53,7 +53,7 @@ class SendViewController: UIViewController {
 
     func refreshView() {
         self.tokenLabel.text = self.fromToken?.symbol
-        self.maxAmountLabel.text = "Max: "+self.fromToken!.formattedAmout
+        self.maxAmountLabel.text = "Max: "+self.fromToken!.formattedBalance
     }
     
     @IBAction func sendAction(_ sender: Any) {

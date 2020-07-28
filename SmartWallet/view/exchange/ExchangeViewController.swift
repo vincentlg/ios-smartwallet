@@ -17,6 +17,7 @@ class ExchangeViewController: UIViewController {
     @IBOutlet weak var maxAmountLabel: UILabel!
     @IBOutlet weak var destLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
+    @IBOutlet weak var slippageLabel: UILabel!
     
     @IBOutlet weak var amountTextField: MDCTextField!
     var amountTextFieldController: MDCTextInputControllerUnderline?
@@ -26,6 +27,10 @@ class ExchangeViewController: UIViewController {
     @IBAction func showParaswapInfo(_ sender: UIButton) {
         UIApplication.shared.open(URL(string: "https://paraswap.io")!, options: [:], completionHandler: nil)
     }
+    
+    
+    let slippage = 3
+    
     var tokens: [Token]?
     var tokensBalance: [TokenBalance]?
     
@@ -94,10 +99,9 @@ class ExchangeViewController: UIViewController {
     
     private func refreshView(){
         self.sourceLabel.text = self.sourceToken?.symbol
-        self.maxAmountLabel.text = "Max: "+self.sourceToken!.formattedAmout
+        self.maxAmountLabel.text = "Max: "+self.sourceToken!.formattedBalance
         self.destLabel.text = self.destToken?.symbol
-        self.destAmountWei = BigInt(0)
-        self.destAmountLabel.text = "0"
+        self.cleanDestAmount()
         self.getRate()
     }
     
@@ -278,19 +282,21 @@ class ExchangeViewController: UIViewController {
                     case .success(let response):
                         self.priceRoute = response
                         
-                        // We take a marge of 5% to avoid market change
                         let destAmountBigInt =  BigInt(response.amount)!
-                        let desAmountWithMargin = destAmountBigInt * BigInt(97) / BigInt(100)
+                        
+                        let formattedMaxAmount = self.destToken!.shortAmount(amount: destAmountBigInt)
+                        
+                        
+                        // Slippafe: We take a marge of x% to avoid market change :
+                        let desAmountWithMargin = destAmountBigInt * BigInt(100 - self.slippage) / BigInt(100)
                         self.destAmountWei = desAmountWithMargin
                         
                         //Update priceRoute object with marged amount
                         self.priceRoute?.amount = self.destAmountWei!.description
                         
                         DispatchQueue.main.async {
-                            //TODO encapsulate this
-                            let amountString = self.destToken!.formatAmount(amount: desAmountWithMargin)
-                            let shortAmountString = String(format: "%.3f", (amountString.replacingOccurrences(of: ",", with: ".") as NSString).floatValue)
-                            self.destAmountLabel.text = shortAmountString
+                            self.destAmountLabel.text = self.destToken!.shortAmount(amount: desAmountWithMargin)
+                            self.slippageLabel.text = "Max: \(formattedMaxAmount) (\(self.slippage)% slippage)"
                         }
                         
                         return
@@ -303,11 +309,17 @@ class ExchangeViewController: UIViewController {
                     }
                 }
             } else {
-                self.destAmountLabel.text = "0"
+                self.cleanDestAmount()
             }
         } else {
-            self.destAmountLabel.text = "0"
+             self.cleanDestAmount()
         }
+    }
+    
+    func cleanDestAmount() {        
+        self.destAmountWei = BigInt(0)
+        self.slippageLabel.text = ""
+        self.destAmountLabel.text = "0"
     }
     
     func selectDestToken(token: Token) -> Void {

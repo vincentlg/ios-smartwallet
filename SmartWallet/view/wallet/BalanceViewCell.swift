@@ -17,7 +17,7 @@ class BalanceViewCell: UITableViewCell {
     
     public func display(balance:TokenBalance){
         self.nameLabel?.text = balance.symbol
-        self.balanceLabel?.text = balance.formattedAmout
+        self.balanceLabel?.text = balance.formattedBalance
         
         if let img = balance.img {
             tokenImage.imageFromUrl(urlString: img)

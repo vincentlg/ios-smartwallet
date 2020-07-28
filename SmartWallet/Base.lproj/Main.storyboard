@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gCH-c2-CdX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gCH-c2-CdX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -1137,6 +1137,12 @@ The order of the words is important.</string>
                                             <action selector="showParaswapInfo:" destination="tZB-LC-HMu" eventType="touchUpInside" id="2ZH-bz-3Uh"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max 150 DAI (slippage 5%)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHQ-zs-KRu">
+                                        <rect key="frame" x="30" y="223.5" width="314" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -1152,17 +1158,20 @@ The order of the words is important.</string>
                                     <constraint firstItem="M1j-R3-ZyO" firstAttribute="centerY" secondItem="oF8-QJ-OKl" secondAttribute="centerY" id="Euf-rX-7q5"/>
                                     <constraint firstAttribute="trailing" secondItem="tNg-lX-zTB" secondAttribute="trailing" constant="30" id="GDD-Ki-noD"/>
                                     <constraint firstAttribute="bottom" secondItem="OXg-Od-8sk" secondAttribute="bottom" constant="30" id="KY5-sG-6ue"/>
+                                    <constraint firstItem="UHQ-zs-KRu" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="Osp-j0-Qlz"/>
                                     <constraint firstItem="MMb-qo-fed" firstAttribute="centerY" secondItem="1B5-uI-PeK" secondAttribute="centerY" id="OvG-LO-HyK"/>
                                     <constraint firstItem="OXg-Od-8sk" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="PRq-vl-k2T"/>
                                     <constraint firstItem="MTp-F3-zz5" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="QrZ-NJ-wbd"/>
                                     <constraint firstItem="bRM-KE-0Zn" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="R7P-T6-i9F"/>
                                     <constraint firstItem="6KC-3v-358" firstAttribute="leading" secondItem="gvr-8M-ymI" secondAttribute="trailing" constant="3" id="SIT-Zs-EhQ"/>
+                                    <constraint firstItem="UHQ-zs-KRu" firstAttribute="top" secondItem="gvr-8M-ymI" secondAttribute="bottom" constant="1" id="W2U-SN-rS9"/>
                                     <constraint firstAttribute="trailing" secondItem="NnI-nD-aKK" secondAttribute="trailing" constant="30" id="bEr-Dy-jPg"/>
                                     <constraint firstAttribute="trailing" secondItem="Y1T-Bf-7sP" secondAttribute="trailing" constant="30" id="cCc-tg-m60"/>
                                     <constraint firstItem="6KC-3v-358" firstAttribute="centerY" secondItem="gvr-8M-ymI" secondAttribute="centerY" id="cba-cO-z1g"/>
                                     <constraint firstItem="NnI-nD-aKK" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="eiE-i0-ers"/>
                                     <constraint firstAttribute="height" constant="330" id="fPY-xu-KM2"/>
                                     <constraint firstItem="NnI-nD-aKK" firstAttribute="top" secondItem="oF8-QJ-OKl" secondAttribute="bottom" id="fR9-EQ-Ksw"/>
+                                    <constraint firstAttribute="trailing" secondItem="UHQ-zs-KRu" secondAttribute="trailing" constant="30" id="goI-Ga-a2h"/>
                                     <constraint firstItem="tNg-lX-zTB" firstAttribute="leading" secondItem="6KC-3v-358" secondAttribute="trailing" constant="10" id="jNY-VJ-bPe"/>
                                     <constraint firstAttribute="trailing" secondItem="MTp-F3-zz5" secondAttribute="trailing" constant="30" id="kOg-Nl-bnB"/>
                                     <constraint firstItem="tNg-lX-zTB" firstAttribute="centerY" secondItem="gvr-8M-ymI" secondAttribute="centerY" id="slO-5g-J6H"/>
@@ -1195,6 +1204,7 @@ The order of the words is important.</string>
                         <outlet property="destAmountLabel" destination="tNg-lX-zTB" id="qKn-wU-b0v"/>
                         <outlet property="destLabel" destination="gvr-8M-ymI" id="rUc-Vs-CcN"/>
                         <outlet property="maxAmountLabel" destination="NnI-nD-aKK" id="mVe-Jm-ryt"/>
+                        <outlet property="slippageLabel" destination="UHQ-zs-KRu" id="W7t-iT-EIM"/>
                         <outlet property="sourceLabel" destination="oF8-QJ-OKl" id="bbK-kS-i5Q"/>
                     </connections>
                 </viewController>
@@ -1612,7 +1622,7 @@ The order of the words is important.</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="MZs-3v-s8X"/>
-        <segue reference="yog-dw-0Rd"/>
+        <segue reference="dek-VQ-0nm"/>
         <segue reference="Eqw-uf-ziv"/>
     </inferredMetricsTieBreakers>
     <resources>

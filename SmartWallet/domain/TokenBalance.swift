@@ -18,16 +18,12 @@ struct TokenBalance:Codable {
     var balance: BigUInt?
     var address: String
     
-    var formattedAmout: String {
-        let value = (self.balaceString.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
-        return String(format: "%.3f", value)+" "+self.symbol
-    }
     
     var img: String? {
         self.token?.img
     }
     
-    var  balaceString: String {
+    var  formattedBalance: String {
         
         guard let balanceValue = self.balance else {
             return "0"
@@ -37,7 +33,7 @@ struct TokenBalance:Codable {
             return "error"
         }
         
-        return tok.formatAmount(amount: BigInt(balanceValue))
+        return tok.shortAmount(amount: BigInt(balanceValue))+" "+self.symbol
        
     }
     

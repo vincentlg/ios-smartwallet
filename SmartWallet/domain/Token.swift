@@ -23,6 +23,11 @@ struct Token: Codable {
         return etherFormatter.string(from: amount, decimals: self.decimals)
     }
     
+    func shortAmount(amount: BigInt) -> String {
+        let amount = formatAmount(amount: amount)
+        return  String(format: "%.3f", (amount.replacingOccurrences(of: ",", with: ".") as NSString).floatValue)
+    }
+    
     func amountFrom(value: String) -> BigInt? {
         let etherFormatter = EtherNumberFormatter()
         return etherFormatter.number(from: value, decimals: self.decimals)
