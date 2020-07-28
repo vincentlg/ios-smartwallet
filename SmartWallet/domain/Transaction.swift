@@ -37,6 +37,15 @@ enum TransactionType: String {
 
 extension Transaction {
     
+    static func sort(first: Transaction, second: Transaction) -> Bool {
+        if first.block ==  second.block {
+            return second.type == .Send
+        }
+        
+        return first.block > second.block
+        
+    }
+    
     func isContractCreation() -> Bool {
        return to != walletaddress.lowercased() && from != walletaddress.lowercased()
     }

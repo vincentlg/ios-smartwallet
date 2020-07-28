@@ -51,6 +51,7 @@ class ExchangeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.amountTextFieldController = MDCTextInputControllerUnderline(textInput: amountTextField)
+        self.amountTextField.clearButtonMode = .never
         self.amountTextField.becomeFirstResponder()
         self.getTokens()
         self.sourceToken = self.tokensBalance![0]
@@ -227,7 +228,7 @@ class ExchangeViewController: UIViewController {
                                 userAddress: Identity.current!.ethereumAddress)
         
         let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Executing transfer"
+        hud.textLabel.text = "Preparing transaction"
         hud.show(in: self.view)
         
         self.paraswapService.getParaswapTx(body: body) { (result) in

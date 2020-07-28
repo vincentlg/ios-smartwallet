@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RocksideWalletSdk
 
 
 struct ItemSettings{
@@ -25,7 +26,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         
-        self.securityItems = [ItemSettings(label: "Recovery kit", iconName: "shield", action:self.showRecovery), ItemSettings(label: "Whitelist address", iconName: "award", action: self.showWhitelist)]
+        self.securityItems = [ItemSettings(label: "Recovery kit", iconName: "shield", action:self.showRecovery), ItemSettings(label: "Whitelist address", iconName: "award", action: self.showWhitelist), ItemSettings(label: "Reset wallet", iconName: "alert-circle", action: self.resetWalletWarning)]
         self.contactItems = [ItemSettings(label: "Rockside", iconName: "twitter", action: self.showRocksideTwitter), ItemSettings(label: "Paraswap", iconName: "twitter", action: showParaswapTwitter)]
         
         
@@ -107,6 +108,36 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func showParaswapTwitter() {
         UIApplication.shared.open(URL(string: "https://twitter.com/paraswap")!, options: [:], completionHandler: nil)
+    }
+    
+    func resetWalletWarning() {
+        let ac = UIAlertController(title: "Warning", message: "You are going to reset your Wallet.\n\n If you did not backed up you wallet address and your recovery phrase, you will loose all your assets !", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        ac.addAction(UIAlertAction(title: "Reset", style: .default) { _ in self.reallySure() })
+        self.present(ac, animated: true)
+       }
+    
+    func reallySure() {
+        let ac = UIAlertController(title: "Warning", message: "Are you really sure you want to reset your wallet", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        ac.addAction(UIAlertAction(title: "Reset", style: .default){ _ in  self.resetWallet()})
+        self.present(ac, animated: true)
+    }
+    
+    func resetWallet() {
+         do {
+            try Identity.clearIdentity();
+            if let navController = self.navigationController {
+                self.dismiss(animated: true, completion: nil)
+                navController.displayNoWalletView()
+            }
+        } catch {
+            let ac = UIAlertController(title: "Error", message: "Unable to reset your wallet.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(ac, animated: true)
+            return
+        }
+        
     }
     
     

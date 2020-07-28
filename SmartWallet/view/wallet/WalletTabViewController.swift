@@ -108,8 +108,10 @@ class WalletTabViewController: TabmanViewController {
                     }
                     
                     self.transactionsBuffer = self.transactionsBuffer.filter{ $0.type != .Relay && $0.type != .ContractCall}
+                    
+                   
                     self.transactionsBuffer.sort {
-                        $0.block > $1.block
+                        Transaction.sort(first: $0, second: $1)
                     }
                     
                     if (self.transactionCallRetrieved == 3){

@@ -16,10 +16,6 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var walletAddressLabel: UILabel!
     @IBOutlet weak var mnemonicLabel: UILabel!
     
-    @IBAction func backupByEmailAction(_ sender: Any) {
-        self.sendEmail()
-    }
-    
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -35,28 +31,6 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
     override func viewDidLoad() {
         self.walletAddressLabel.text = Identity.current!.ethereumAddress
         self.mnemonicLabel.text = Identity.current!.hdwallet.mnemonic
-    }
-    
-    
-    func sendEmail() {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setSubject("Wallet Backup")
-            mail.setMessageBody("Hi,<br /> <p>Your wallet address: "+Identity.current!.ethereumAddress+"</p><p>Your mnemonic : "+Identity.current!.hdwallet.mnemonic+"</p>", isHTML: true)
-            
-            self.present(mail, animated: true)
-        } else {
-            let alertController = UIAlertController(title: "Configure email account", message:
-                "You need to configure an email account on your iPhone, in oder to send your wallet backup.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
     }
     
     

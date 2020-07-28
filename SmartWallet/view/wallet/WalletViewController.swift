@@ -24,11 +24,13 @@ class WalletViewController: UIViewController {
     
     var moonkeyService = MoonkeyService()
     
-    public var isNewWallet = false
+    var transactionInProgress: Bool = false
     
     var snackBarMessage: MDCSnackbarMessage?
     
     let walletTabViewController = WalletTabViewController()
+    
+    public var isNewWallet = false
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -66,6 +68,31 @@ class WalletViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func sendTouched(_ sender: Any) {
+        
+        if !self.transactionInProgress {
+            self.performSegue(withIdentifier: "send-token-segue", sender: self)
+        } else {
+            self.displayTransactionInProgressAlert()
+        }
+    }
+    
+    @IBAction func exchangeTouched(_ sender: Any) {
+        if !self.transactionInProgress {
+            self.performSegue(withIdentifier: "exchange-segue", sender: self)
+        } else {
+            self.displayTransactionInProgressAlert()
+        }
+    }
+    
+    private func displayTransactionInProgressAlert() {
+        let ac = UIAlertController(title: "Transaction in progress", message: "Wait until your transaction is mined before making a new transfer.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(ac, animated: true)
+    }
+    
+    
     private func updateBalance() {
         self.amountLabel.text = self.walletTabViewController.tokenBalances["ETH"]!.formattedBalance
     }
@@ -96,19 +123,22 @@ class WalletViewController: UIViewController {
     
     public func watchTx(relayResponse: RelayResponse) {
         
+        self.transactionInProgress = true
         self.displayWaitingForTx(txHash: relayResponse.transaction_hash)
         
     
         _ = self.moonkeyService.waitTxToBeMined(trackingID: relayResponse.tracking_id) { (result) in
             switch result {
             case .success(_):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                self.transactionInProgress = false
+                DispatchQueue.main.async {
                     MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
                     self.snackBarMessage = nil
                     self.walletTabViewController.retriveAllTransactions()
                 }
                 break
             case .failure(let error):
+                self.transactionInProgress = false
                 DispatchQueue.main.async {
                     MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
                     self.snackBarMessage = nil

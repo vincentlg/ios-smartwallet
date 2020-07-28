@@ -44,6 +44,7 @@ class SendViewController: UIViewController {
         super.viewWillAppear(animated)
 
         self.amountTextFieldController = MDCTextInputControllerUnderline(textInput: amountTextField)
+        self.amountTextField.clearButtonMode = .never
         self.destinationTextFieldController = MDCTextInputControllerUnderline(textInput: destinationTextField)
         self.amountTextField.becomeFirstResponder()
         
