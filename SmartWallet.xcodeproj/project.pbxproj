@@ -187,8 +187,6 @@
 		DC7AC3AB23EC647200CC1C0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC7AC3AE23EC647200CC1C0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC7AC3B023EC647200CC1C0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC8DA74223FAD66C0080C0D7 /* SmartWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWalletTests.swift; sourceTree = "<group>"; };
-		DC8DA74423FAD66C0080C0D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC996BE32418E20300248748 /* WalletTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTabViewController.swift; sourceTree = "<group>"; };
 		DCA3CCEE2423885000FC135C /* TokenBalanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBalanceTableViewController.swift; sourceTree = "<group>"; };
 		DCA3F397241FCA9B007E72D2 /* RestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreViewController.swift; sourceTree = "<group>"; };
@@ -411,7 +409,6 @@
 			isa = PBXGroup;
 			children = (
 				DC7AC3A123EC647000CC1C0D /* SmartWallet */,
-				DC8DA74123FAD66C0080C0D7 /* SmartWalletTests */,
 				DC7AC3A023EC647000CC1C0D /* Products */,
 				A1D6C8C335769497ACD99F76 /* Pods */,
 				BD5C74D5907F4EAFBB5E6AD4 /* Frameworks */,
@@ -444,15 +441,6 @@
 				DC7AC3B023EC647200CC1C0D /* Info.plist */,
 			);
 			path = SmartWallet;
-			sourceTree = "<group>";
-		};
-		DC8DA74123FAD66C0080C0D7 /* SmartWalletTests */ = {
-			isa = PBXGroup;
-			children = (
-				DC8DA74223FAD66C0080C0D7 /* SmartWalletTests.swift */,
-				DC8DA74423FAD66C0080C0D7 /* Info.plist */,
-			);
-			path = SmartWalletTests;
 			sourceTree = "<group>";
 		};
 		DC996BE22418DBBE00248748 /* view */ = {
