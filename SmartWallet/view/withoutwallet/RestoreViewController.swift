@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RocksideWalletSdk
+
 import MaterialComponents.MaterialTextFields
 
 

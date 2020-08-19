@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RocksideWalletSdk
+
 import BigInt
 
 struct Token: Codable {

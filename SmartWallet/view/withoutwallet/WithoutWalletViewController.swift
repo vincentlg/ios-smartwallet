@@ -9,7 +9,6 @@
 import UIKit
 import JGProgressHUD
 import MaterialComponents.MaterialSnackbar
-import RocksideWalletSdk
 
 class WithoutWalletViewController: UIViewController {
     

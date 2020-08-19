@@ -6,7 +6,6 @@ target 'SmartWallet' do
   use_frameworks!
 
   # Pods for SmartWallet
-  pod 'RocksideWalletSdk', :path => '/Users/fredericdematos/Documents/projets/bcs/rockside-wallet-sdk-ios'
   pod 'Tabman', '~> 2.6'
   pod 'Starscream', '~> 4.0.0'
   pod 'JGProgressHUD'
@@ -14,5 +13,7 @@ target 'SmartWallet' do
   pod 'Firebase/Analytics'
   pod 'MaterialComponents/Snackbar'
   pod 'MaterialComponents/TextFields'
-  
+  pod 'TrezorCrypto', '~> 0.0.9', inhibit_warnings: true
+  pod 'KeychainAccess', '~> 4.1.0'
+  pod 'web3.swift', '~> 0.4.1'
 end

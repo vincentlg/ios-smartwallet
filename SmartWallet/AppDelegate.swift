@@ -10,7 +10,6 @@ import UIKit
 
 import FirebaseCrashlytics
 import FirebaseCore
-import RocksideWalletSdk
 
 
 @UIApplicationMain
@@ -21,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        //Identity.forwarder = "0x9595f61f39Eb8F816754C2b36a7C2b49A80BE309"
-        //Identity.chainID = 3
+        Identity.forwarder = "0x9595f61f39Eb8F816754C2b36a7C2b49A80BE309"
+        Identity.chainID = 3
         
         return true
     }

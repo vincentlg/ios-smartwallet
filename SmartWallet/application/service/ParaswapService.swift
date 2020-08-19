@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RocksideWalletSdk
 
 struct GetTokenResponse: Codable {
     var tokens: [Token]

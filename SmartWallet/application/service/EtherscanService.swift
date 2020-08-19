@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RocksideWalletSdk
+
 
 struct EtherscanTransactionResponse: Codable{
     var status: String

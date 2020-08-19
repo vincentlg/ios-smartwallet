@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RocksideWalletSdk
+
 import Tabman
 import MaterialComponents.MaterialSnackbar
 

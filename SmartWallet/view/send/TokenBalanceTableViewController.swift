@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RocksideWalletSdk
 
 typealias TokenBalanceSelectionHandler = (_: TokenBalance) -> Void
 

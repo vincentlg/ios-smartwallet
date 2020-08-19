@@ -9,7 +9,7 @@
 import UIKit
 import Tabman
 import Pageboy
-import RocksideWalletSdk
+
 import BigInt
 import JGProgressHUD
 

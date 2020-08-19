@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RocksideWalletSdk
+
 
 class ReceiveViewController: UIViewController {
 

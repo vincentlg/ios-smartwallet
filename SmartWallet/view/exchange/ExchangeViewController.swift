@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RocksideWalletSdk
 import BigInt
 import MaterialComponents.MaterialTextFields
 import JGProgressHUD

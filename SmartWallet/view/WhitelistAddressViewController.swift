@@ -10,7 +10,6 @@ import UIKit
 import MaterialComponents.MaterialTextFields
 import MaterialComponents.MaterialSnackbar
 import JGProgressHUD
-import RocksideWalletSdk
 
 class WhitelistAddressViewController:UIViewController {
     

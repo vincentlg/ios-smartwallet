@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RocksideWalletSdk
+
 
 extension UIViewController {
     

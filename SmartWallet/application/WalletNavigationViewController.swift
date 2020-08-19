@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RocksideWalletSdk
+
 
 class WalletNavigationViewController: UINavigationController {
     

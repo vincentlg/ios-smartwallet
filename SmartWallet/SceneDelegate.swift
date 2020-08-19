@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RocksideWalletSdk
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

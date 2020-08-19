@@ -9,7 +9,6 @@
 import UIKit
 import MessageUI
 import MaterialComponents.MaterialSnackbar
-import RocksideWalletSdk
 
 class RecoveryViewController: UIViewController, MFMailComposeViewControllerDelegate {
     

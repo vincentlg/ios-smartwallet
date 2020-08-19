@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RocksideWalletSdk
 import BigInt
 
 struct DeploySmartwalletRequest: Codable {
