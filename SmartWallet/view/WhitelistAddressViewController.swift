@@ -39,8 +39,8 @@ class WhitelistAddressViewController:UIViewController {
         hud.show(in: self.view)
         
         
-        let messageData = Identity.current!.encodeUpdateWhiteList(eoa:  addressTextField.text!, value: true)
-        moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas:"120000") { (result) in
+        let messageData = ApplicationContext.smartwallet!.encodeUpdateWhiteList(eoa:  addressTextField.text!, value: true)
+        moonkeyService.relayTransaction(identity: ApplicationContext.smartwallet!, messageData: messageData, gas:"120000") { (result) in
             switch result {
                 
             case .success(let txResponse):

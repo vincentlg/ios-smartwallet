@@ -46,19 +46,19 @@ class MoonkeyService {
     
         var network:String {
             
-            if (Identity.chainID ==  1) {
+            if (ApplicationContext.network == .mainnet) {
                 return "mainnet"
             }
             
             return "ropsten"
         }
     
-        public func deploySmartwallet(completion: @escaping (Result<DeploySmartwalletResponse, Error>) -> Void)  -> Void {
-            let mnemonic = Crypto.generateMnemonic(strength: 128)
-            let wallet = HDWallet(mnemonic: mnemonic)
-            let eoa = wallet.getKey(at: Ethereum().derivationPath(at: 0))
+    let rpc = RpcClient()
+    
+    public func deploySmartwallet(account: String, completion: @escaping (Result<DeploySmartwalletResponse, Error>) -> Void)  -> Void {
             
-            let body = DeploySmartwalletRequest(account: eoa.ethereumAddress)
+            print("##### deploy for "+account+" "+self.network)
+            let body = DeploySmartwalletRequest(account: account)
             
             var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-deploy-smartwallet?network="+self.network)!)
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -68,20 +68,7 @@ class MoonkeyService {
             Http.execute(with: request, receive: DeploySmartwalletResponse.self){ (result) in
                 switch result {
                 case .success(let response):
-                    
-                    //TODO Test / Mainthread
-                    DispatchQueue.main.async {
-                        guard let address = EthereumAddress(string: response.address) else {
-                            let error = NSError(domain: "invalid ethereum address", code: 0, userInfo: nil)
-                            
-                            completion(.failure(error))
-                            return
-                        }
-                        
-                        let identity = Identity(mnemonic: mnemonic, address: address)
-                        Identity.current = identity
-                        completion(.success(response))
-                    }
+                    completion(.success(response))
                     return
                     
                 case .failure(let error):
@@ -133,13 +120,21 @@ class MoonkeyService {
     
     
     public func relayTransaction(identity: Identity, messageData: String, gas: String = "", completion: @escaping (Result<RelayResponse, Error>) -> Void)  -> Void {
-        identity.getNonce() { (result) in
+        
+        let account = ApplicationContext.account!.first
+        
+        let getNonceData = identity.encodeGetNonce(account: account.ethereumAddress)
+        
+        self.rpc.call(to:Identity.forwarder,data: getNonceData, receive: JSONRPCResult<String>.self) { (result) in
             switch result {
-            case .success(let nonce):
+            case .success(let response):
                 
-                //TODO
-                let signature = identity.signTx(data: messageData, nonce: Int(nonce.description)!)
-                let body = RelayRequest(signer: identity.eoa.ethereumAddress, to: identity.ethereumAddress, data: messageData, nonce: nonce.description, signature: signature, gas: gas)
+                let nonce = BigInt(hex: response.result)!
+                let hash = identity.hashTx(signer: account.ethereumAddress, data: messageData, nonce: Int(nonce.description)!, chainID: ApplicationContext.network.ID)
+                
+                let signature = account.sign(hash: Data(hex:hash)!).hexValue
+                
+                let body = RelayRequest(signer: account.ethereumAddress, to: identity.ethereumAddress, data: messageData, nonce: nonce.description, signature: signature, gas: gas)
                 
                 var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-tx-relay?network="+self.network)!)
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")

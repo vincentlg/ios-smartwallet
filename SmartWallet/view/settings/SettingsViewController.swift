@@ -18,6 +18,8 @@ struct ItemSettings{
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let walletStorage: WalletStorage = WalletStorage()
+        
     let sections = ["Security", "Contact"]
     var securityItems: [ItemSettings] = []
     var contactItems: [ItemSettings] = []
@@ -28,7 +30,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.securityItems = [ItemSettings(label: "Recovery kit", iconName: "shield", action:self.showRecovery), ItemSettings(label: "Whitelist address", iconName: "award", action: self.showWhitelist), ItemSettings(label: "Reset wallet", iconName: "alert-circle", action: self.resetWalletWarning)]
         self.contactItems = [ItemSettings(label: "Rockside", iconName: "twitter", action: self.showRocksideTwitter), ItemSettings(label: "Paraswap", iconName: "twitter", action: showParaswapTwitter)]
-        
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -126,7 +127,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func resetWallet() {
          do {
-            try Identity.clearIdentity();
+            try self.walletStorage.clear();
             if let navController = self.navigationController {
                 self.dismiss(animated: true, completion: nil)
                 navController.displayNoWalletView()

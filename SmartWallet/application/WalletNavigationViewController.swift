@@ -11,16 +11,23 @@ import UIKit
 
 class WalletNavigationViewController: UINavigationController {
     
+    let walletStorage: WalletStorage = WalletStorage()
+    
     let walletViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
       
-        if (try? Identity.retrieveIdentity()) != nil {
-            self.displayWalletView()
-        } else {
+        
+        guard let walletId = try? self.walletStorage.retrieve() else {
             self.displayNoWalletView()
+            return
         }
+      
+        ApplicationContext.restore(walletId: walletId)
+        
+        self.displayWalletView()
+        
     }
     
     func displayWalletView(animated: Bool = false, newWallet: Bool = false) {

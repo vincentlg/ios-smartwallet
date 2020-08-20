@@ -38,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         
-        if Identity.current != nil {
+        if ApplicationContext.smartwallet != nil {
             if let navigationController = self.window?.rootViewController as? WalletNavigationViewController {
                 navigationController.displayConnectView()
             }

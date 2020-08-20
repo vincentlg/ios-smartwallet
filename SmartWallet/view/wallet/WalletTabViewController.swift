@@ -24,6 +24,9 @@ class WalletTabViewController: TabmanViewController {
     private var balanceViewController: BalanceViewContrller?
     private var transactionViewController: TransactionViewContrller?
     
+    
+    private let rpc = RpcClient()
+    
     var balanceUpdatedHandler: BalanceUpdatedHandler?
     var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(symbol: "ETH", address: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE")]
     
@@ -172,7 +175,7 @@ class WalletTabViewController: TabmanViewController {
     }
     
     private func getEthBalance() {
-        Identity.current!.getBalance() { (result) in
+        self.rpc.getBalance(account: ApplicationContext.smartwallet!.address.description) { (result) in
             switch result {
             case .success(let balance):
                 DispatchQueue.main.async {
@@ -197,7 +200,7 @@ class WalletTabViewController: TabmanViewController {
     
     private func get(tokenBalance: TokenBalance) {
         
-        Identity.current!.getErc20Balance(ercAddress: tokenBalance.address) { (result) in
+        self.rpc.getErc20Balance(ercAddress: tokenBalance.address, account: ApplicationContext.smartwallet!.address.description ) { (result) in
             switch result {
             case .success(let balance):
                 DispatchQueue.main.async {

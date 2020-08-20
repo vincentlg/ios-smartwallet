@@ -96,9 +96,9 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         let ercTransferData = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: destinationTextField.text!)!, tokens: amount).hexValue
-        let messageData = Identity.current!.encodeExecute(to: fromToken!.address, value:"0", data: Data(hexString:ercTransferData)!)
+        let messageData = ApplicationContext.smartwallet!.encodeExecute(to: fromToken!.address, value:"0", data: Data(hexString:ercTransferData)!)
         
-        moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas:"150000") { (result) in
+        moonkeyService.relayTransaction(identity: ApplicationContext.smartwallet!, messageData: messageData, gas:"150000") { (result) in
            switch result {
                       case .success(let txResponse):
                           DispatchQueue.main.async {
@@ -127,8 +127,8 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
               
-        let messageData = Identity.current!.encodeExecute(to: destinationTextField.text!, value:amount, data: Data())
-        moonkeyService.relayTransaction(identity: Identity.current!, messageData: messageData, gas: "100000") { (result) in
+        let messageData = ApplicationContext.smartwallet!.encodeExecute(to: destinationTextField.text!, value:amount, data: Data())
+        moonkeyService.relayTransaction(identity: ApplicationContext.smartwallet!, messageData: messageData, gas: "100000") { (result) in
             switch result {
                        case .success(let txResponse):
                            DispatchQueue.main.async {

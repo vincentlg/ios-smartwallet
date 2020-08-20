@@ -13,6 +13,10 @@ import MaterialComponents.MaterialTextFields
 
 class RestoreViewController: UIViewController {
     
+    let walletStorage: WalletStorage = WalletStorage()
+    
+    let rpc: RpcClient = RpcClient()
+    
     @IBOutlet weak var walletAddressTextField: MDCTextField!
     var walletAddressTextFieldController: MDCTextInputControllerUnderline?
     
@@ -41,29 +45,36 @@ class RestoreViewController: UIViewController {
         }
         
         if let mnemonic = self.twelvesWordsView.text?.trimmingCharacters(in: .whitespacesAndNewlines), mnemonic != "" {
-            Identity.restoreIdentity(mnemonic: self.twelvesWordsView.text!, address: walletAddressTextField.text!)
+            
+             let walletId = WalletID(address:  self.walletAddressTextField.text!, mnemonic: self.twelvesWordsView.text!)
+            
+            ApplicationContext.restore(walletId: walletId)
            
-            Identity.current!.isEOAWhiteListed(eoa: Identity.current!.eoa.ethereumAddress){ (result) in
+            let isWhitelistedData = ApplicationContext.smartwallet!.encodeIsEoaWhitelisted(eoa: ApplicationContext.account!.first.ethereumAddress)
+            
+            self.rpc.call(to:self.walletAddressTextField.text!, data:isWhitelistedData, receive: JSONRPCResult<String>.self) { (result) in
                 switch result {
-                case .success(let result):
+                case .success(let response):
                     DispatchQueue.main.async {
                        
-                        if (result) {
+                        if (response.result == "0x0000000000000000000000000000000000000000000000000000000000000001") {
                              DispatchQueue.main.async {
                                 do {
-                                    try Identity.storeIdentity()
+                                    try self.walletStorage.store(walletID: walletId)
                                 } catch (let error) {
                                     print("ERROR "+error.localizedDescription)
                                 }
                             }
                             self.navigationController?.displayWalletView(animated: true)
                         } else {
+                            ApplicationContext.clear()
                             self.twelvesWordsViewController?.setErrorText("Mnemonic is not valid", errorAccessibilityValue: "Mnemonic is not valid")
                         }
                     }
                     break
                     
                 case .failure(_):
+                    ApplicationContext.clear()
                     DispatchQueue.main.async {
                      self.twelvesWordsViewController?.setErrorText("An error occured please try again", errorAccessibilityValue: "An error occured please try again")
                     }

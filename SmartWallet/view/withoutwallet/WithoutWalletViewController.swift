@@ -13,7 +13,8 @@ import MaterialComponents.MaterialSnackbar
 class WithoutWalletViewController: UIViewController {
     
     
-    var moonKeyService: MoonkeyService = MoonkeyService()
+    let walletStorage: WalletStorage = WalletStorage()
+    let moonKeyService: MoonkeyService = MoonkeyService()
     
     @IBAction func createWalletAction(_ sender: Any) {
         
@@ -21,18 +22,24 @@ class WithoutWalletViewController: UIViewController {
         hud.textLabel.text = "Your wallet is being created.\nPlease wait (around 1 min)"
         hud.show(in: self.view)
         
-        
-        self.moonKeyService.deploySmartwallet(){ (result) in
+        let hdAccount = HDEthereumAccount()
+        self.moonKeyService.deploySmartwallet(account: hdAccount.first.ethereumAddress){ (result) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
                    
                     _ = self.moonKeyService.waitTxToBeMined(trackingID: response.tracking_id) { (result) in
                         switch result {
-                        case .success(_):
+                        case .success(let receipt):
                             DispatchQueue.main.async {
                                 hud.dismiss()
-                                try? Identity.storeIdentity()
+                                
+                                let walletID = WalletID(address: receipt.logs[0].dataAsAddress(), mnemonic: hdAccount.mnemonic)
+                                
+                                ApplicationContext.restore(walletId: walletID)
+                                
+                                try? self.walletStorage.store(walletID: walletID)
+                                
                                 self.navigationController?.displayWalletView(animated: true, newWallet: true)
                             }
                             break

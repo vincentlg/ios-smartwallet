@@ -193,7 +193,7 @@ class ParaswapService {
     
     var url: String {
         
-        if Identity.chainID == 1 {
+        if ApplicationContext.network == .mainnet {
             return "https://api.paraswap.io/v2/"
         }
         
@@ -201,7 +201,7 @@ class ParaswapService {
     }
     
     public func getTokens(completion: @escaping (Result<[Token], Error>) -> Void) -> Void {
-        var request = URLRequest(url: URL(string: url+"tokens/"+String(Identity.chainID))!)
+        var request = URLRequest(url: URL(string: url+"tokens/"+String(ApplicationContext.network.ID))!)
         request.httpMethod = "GET"
         
         Http.execute(with: request, receive: GetTokenResponse.self)  { (result) in
@@ -219,7 +219,7 @@ class ParaswapService {
     
     public func getRate(sourceTokenAddress: String, destTokenAddress: String, amount: String, completion: @escaping (Result<PriceRoute, Error>) -> Void) -> Void {
         
-        var request = URLRequest(url: URL(string:  url+"prices/?from="+sourceTokenAddress+"&to="+destTokenAddress+"&amount="+amount+"&excludeDEXS=0x&network="+String(Identity.chainID))!)
+        var request = URLRequest(url: URL(string:  url+"prices/?from="+sourceTokenAddress+"&to="+destTokenAddress+"&amount="+amount+"&excludeDEXS=0x&network="+String(ApplicationContext.network.ID))!)
         request.httpMethod = "GET"
         
         Http.execute(with: request, receive: GetRateResponse.self) { (result) in
@@ -236,7 +236,7 @@ class ParaswapService {
     }
     
     public func getParaswapTx(body: GetTxRequest, completion: @escaping (Result<GetTxResponse, Error>) -> Void) -> Void {
-        var request = URLRequest(url: URL(string: url+"transactions/"+String(Identity.chainID))!)
+        var request = URLRequest(url: URL(string: url+"transactions/"+String(ApplicationContext.network.ID))!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()

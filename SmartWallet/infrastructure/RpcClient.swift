@@ -36,7 +36,7 @@ public struct RpcClient {
     public init() {}
     
     var url: String {
-        if Identity.chainID == 1 {
+        if ApplicationContext.network == .mainnet {
             return "https://eth-mainnet.alchemyapi.io/v2/yKy-FkvOSlIgp9W8_mCxhW-HEdISZ7-Y"
         }
         
@@ -52,12 +52,16 @@ public struct RpcClient {
         return self.execute(with: request, receive: receive, completion: completion)
     }
     
+    public func  call<T:Decodable>(to: String, data: String, receive:T.Type, completion: @escaping (Result<(T), Error>) -> Void)  -> Void {
+        let body = JSONRPCRequest(jsonrpc: "2.0", method: "eth_call", params: [["to":to, "data":data ]], id: 1)
+        self.executeJSONRpc(with:body, receive: T.self, completion: completion).resume()
+    }
+    
     public func  getErc20Balance(ercAddress: String, account: String, completion: @escaping (Result<BigUInt, Error>) -> Void)  -> Void {
         
         let data = ERC20Encoder.encodeBalanceOf(address:  EthereumAddress(string: account)!).hexValue
-        let body = JSONRPCRequest(jsonrpc: "2.0", method: "eth_call", params: [["to":ercAddress, "data":data ]], id: 1)
         
-        self.executeJSONRpc(with:body, receive: JSONRPCResult<String>.self) { (result) in
+        self.call(to:ercAddress, data:data, receive: JSONRPCResult<String>.self) { (result) in
             switch result {
             case .success(let response):
                 
@@ -74,7 +78,7 @@ public struct RpcClient {
                 completion(.failure(error))
                 break
             }
-        }.resume()
+        }
     }
     
     public func getBalance(account: String, completion: @escaping (Result<BigUInt, Error>) -> Void)  -> Void {
@@ -100,79 +104,41 @@ public struct RpcClient {
         }.resume()
     }
     
-    public func isEOAWhitelistedOn(identityAddress: String, eoa: String, completion: @escaping (Result<Bool, Error>) -> Void)  -> Void {
-        let function = Function(name: "owners", parameters: [.address])
-        let encoder = ABIEncoder()
-        try! encoder.encode(function: function, arguments: [EthereumAddress(string: eoa)!])
-        
-        let body = JSONRPCRequest(jsonrpc: "2.0", method: "eth_call", params: [["to": identityAddress, "data":encoder.data.hexValue ]], id: 1)
-        
-        return self.executeJSONRpc(with:body, receive: JSONRPCResult<String>.self) { (result) in
-            switch result {
-            case .success(let response):
-                completion(.success(response.result == "0x0000000000000000000000000000000000000000000000000000000000000001"))
-                break
-            case .failure(let error):
+    internal func execute<T:Decodable>(with request: URLRequest, receive: T.Type, completion: @escaping (Result<(T), Error>) -> Void) -> URLSessionDataTask {
+        return URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
                 completion(.failure(error))
-                break
+                return
             }
-        }.resume()
-    }
-    
-    public func getNonce(forwarderAddress: String, eoa: String, completion: @escaping (Result<BigInt, Error>) -> Void)  -> Void {
-        let function = Function(name: "getNonce", parameters: [.address, .uint(bits: 128)])
-        let encoder = ABIEncoder()
-        try! encoder.encode(function: function, arguments: [EthereumAddress(string: eoa)!, 0])
-        
-        let body = JSONRPCRequest(jsonrpc: "2.0", method: "eth_call", params: [["to": forwarderAddress, "data":encoder.data.hexValue ]], id: 1)
-        return self.executeJSONRpc(with:body, receive: JSONRPCResult<String>.self) { (result) in
-            switch result {
-            case .success(let response):
-                completion(.success(BigInt(hex: response.result)!))
-                break
-            case .failure(let error):
+            
+            guard let response = response, let data = data else {
+                let error = NSError(domain: "error empty response", code: 0, userInfo: nil)
+                
                 completion(.failure(error))
-                break
+                return
             }
-        }.resume()
-    }
-    
-
-        internal func execute<T:Decodable>(with request: URLRequest, receive: T.Type, completion: @escaping (Result<(T), Error>) -> Void) -> URLSessionDataTask {
-            return URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let response = response, let data = data else {
-                    let error = NSError(domain: "error empty response", code: 0, userInfo: nil)
-                    
-                    completion(.failure(error))
-                    return
-                }
-
-                guard let httpResponse = response as? HTTPURLResponse  else {
-                    let error = NSError(domain: "error not http response", code: 0, userInfo: nil)
-                    completion(.failure(error))
-                    return
-                }
-                
-                if  httpResponse.statusCode > 201  {
-                    let error = NSError(domain: "error http :\(httpResponse.statusCode) ", code:  httpResponse.statusCode, userInfo: nil)
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let result = try? JSONDecoder().decode(T.self, from: data) else {
-                   
-                    let error = NSError(domain: "error invalide response format", code: 0, userInfo: nil)
-                    completion(.failure(error))
-                    return
-                }
-             
-                completion(.success((result)))
+            
+            guard let httpResponse = response as? HTTPURLResponse  else {
+                let error = NSError(domain: "error not http response", code: 0, userInfo: nil)
+                completion(.failure(error))
+                return
             }
+            
+            if  httpResponse.statusCode > 201  {
+                let error = NSError(domain: "error http :\(httpResponse.statusCode) ", code:  httpResponse.statusCode, userInfo: nil)
+                completion(.failure(error))
+                return
+            }
+            
+            guard let result = try? JSONDecoder().decode(T.self, from: data) else {
+                
+                let error = NSError(domain: "error invalide response format", code: 0, userInfo: nil)
+                completion(.failure(error))
+                return
+            }
+            
+            completion(.success((result)))
         }
+    }
 }
 
