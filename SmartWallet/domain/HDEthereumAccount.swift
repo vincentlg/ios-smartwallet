@@ -23,5 +23,4 @@ public class HDEthereumAccount: HDWallet {
     public var first: PrivateKey {
         self.get(index: 0)
     }
-    
 }

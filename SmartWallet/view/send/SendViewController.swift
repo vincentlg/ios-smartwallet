@@ -11,6 +11,7 @@ import UIKit
 import MaterialComponents.MaterialTextFields
 import JGProgressHUD
 import BigInt
+import web3
 
 class SendViewController: UIViewController {
     
@@ -21,7 +22,7 @@ class SendViewController: UIViewController {
     
     @IBOutlet weak var destinationTextField: MDCTextField!
     var destinationTextFieldController: MDCTextInputControllerUnderline?
-      
+    
     var tokens: [TokenBalance]?
     var fromToken: TokenBalance?
     
@@ -42,7 +43,7 @@ class SendViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         self.amountTextFieldController = MDCTextInputControllerUnderline(textInput: amountTextField)
         self.amountTextField.clearButtonMode = .never
         self.destinationTextFieldController = MDCTextInputControllerUnderline(textInput: destinationTextField)
@@ -51,7 +52,7 @@ class SendViewController: UIViewController {
         self.refreshView()
         
     }
-
+    
     func refreshView() {
         self.tokenLabel.text = self.fromToken?.symbol
         self.maxAmountLabel.text = "Max: "+self.fromToken!.formattedBalance
@@ -96,60 +97,78 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         let ercTransferData = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: destinationTextField.text!)!, tokens: amount).hexValue
-        let messageData = ApplicationContext.smartwallet!.encodeExecute(to: fromToken!.address, value:"0", data: Data(hexString:ercTransferData)!)
+        //TODO
+        let messageData = "" // ApplicationContext.smartwallet!.encodeExecute(to: fromToken!.address, value:"0", data: Data(hexString:ercTransferData)!)
         
-        moonkeyService.relayTransaction(identity: ApplicationContext.smartwallet!, messageData: messageData, gas:"150000") { (result) in
-           switch result {
-                      case .success(let txResponse):
-                          DispatchQueue.main.async {
-                              hud.dismiss()
-                              self.dismiss(animated: true, completion: {
-                                  self.watchTxHandler?(txResponse)
-                              })
-                          }
-                          break
-                          
-                      case .failure(let error):
-                          NSLog(error.localizedDescription)
-                          DispatchQueue.main.async {
-                              hud.dismiss()
-                              self.dismiss(animated: true, completion: {
-                                  self.displayErrorHandler?()
-                              })
-                          }
-                          break
-                      }
-           
-       }
+        moonkeyService.relayTransaction(smartWallet: ApplicationContext.smartwallet!, messageData: messageData, gas:"150000") { (result) in
+            switch result {
+            case .success(let txResponse):
+                DispatchQueue.main.async {
+                    hud.dismiss()
+                    self.dismiss(animated: true, completion: {
+                        self.watchTxHandler?(txResponse)
+                    })
+                }
+                break
+                
+            case .failure(let error):
+                NSLog(error.localizedDescription)
+                DispatchQueue.main.async {
+                    hud.dismiss()
+                    self.dismiss(animated: true, completion: {
+                        self.displayErrorHandler?()
+                    })
+                }
+                break
+            }
+            
+        }
     }
     
     func sendEth(amount: BigUInt) {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
-              
-        let messageData = ApplicationContext.smartwallet!.encodeExecute(to: destinationTextField.text!, value:amount, data: Data())
-        moonkeyService.relayTransaction(identity: ApplicationContext.smartwallet!, messageData: messageData, gas: "100000") { (result) in
+        
+        let to = web3.EthereumAddress(self.destinationTextField.text!)
+        ApplicationContext.encodeExecute(to: to, value: amount, data: Data()) { (result) in
             switch result {
-                       case .success(let txResponse):
-                           DispatchQueue.main.async {
-                               hud.dismiss()
-                               self.dismiss(animated: true, completion: {
-                                   self.watchTxHandler?(txResponse)
-                               })
-                           }
-                           break
-                           
-                       case .failure(let error):
-                           DispatchQueue.main.async {
-                               hud.dismiss()
-                               self.dismiss(animated: true, completion: {
-                                   self.displayErrorHandler?()
-                               })
-                           }
-                           break
-                       }
-            
+            case .success(let executeData):
+                self.moonkeyService.relayTransaction(smartWallet: ApplicationContext.smartwallet!, messageData: executeData, gas: "100000") { (result) in
+                    switch result {
+                    case .success(let txResponse):
+                        DispatchQueue.main.async {
+                            hud.dismiss()
+                            self.dismiss(animated: true, completion: {
+                                self.watchTxHandler?(txResponse)
+                            })
+                        }
+                        break
+                        
+                    case .failure(_):
+                        DispatchQueue.main.async {
+                            hud.dismiss()
+                            self.dismiss(animated: true, completion: {
+                                self.displayErrorHandler?()
+                            })
+                        }
+                        break
+                    }
+                }
+                
+                
+                
+            case .failure(_):
+                DispatchQueue.main.async {
+                    hud.dismiss()
+                    self.dismiss(animated: true, completion: {
+                        self.displayErrorHandler?()
+                    })
+                }
+                break
+            }
         }
+        
+        
     }
     
     public func selectToken(token: TokenBalance) {

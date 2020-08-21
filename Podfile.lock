@@ -156,7 +156,7 @@ PODS:
   - Tabman (2.9.1):
     - Pageboy (~> 3.6.0)
   - TrezorCrypto (0.0.9)
-  - web3.swift (0.4.1):
+  - web3.swift (0.5.0):
     - BigInt (~> 5.0.0)
     - GenericJSON (~> 2.0)
     - secp256k1.swift (~> 0.1)
@@ -171,7 +171,7 @@ DEPENDENCIES:
   - Starscream (~> 4.0.0)
   - Tabman (~> 2.6)
   - TrezorCrypto (~> 0.0.9)
-  - web3.swift (~> 0.4.1)
+  - web3.swift (~> 0.5.0)
 
 SPEC REPOS:
   trunk:
@@ -224,8 +224,8 @@ SPEC CHECKSUMS:
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   Tabman: 085d89c65be9e883629bdaf5b1453a6397e57846
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
-  web3.swift: 415948e22c2f4daa24b7b9e1ca143f20dcba3e06
+  web3.swift: 8d26e319070e19f0e3ca692caafb0b28ff60e867
 
-PODFILE CHECKSUM: eb426bd015aae5cc4c43afe148654d3ce1563499
+PODFILE CHECKSUM: 75ac59b1c7553fab1c79a6c5a37d837d1f2614ec
 
 COCOAPODS: 1.9.3

@@ -50,7 +50,8 @@ class RestoreViewController: UIViewController {
             
             ApplicationContext.restore(walletId: walletId)
            
-            let isWhitelistedData = ApplicationContext.smartwallet!.encodeIsEoaWhitelisted(eoa: ApplicationContext.account!.first.ethereumAddress)
+            //TODO
+            let isWhitelistedData = "" //= ApplicationContext.smartwallet!.encodeIsEoaWhitelisted(eoa: ApplicationContext.account!.first.ethereumAddress)
             
             self.rpc.call(to:self.walletAddressTextField.text!, data:isWhitelistedData, receive: JSONRPCResult<String>.self) { (result) in
                 switch result {

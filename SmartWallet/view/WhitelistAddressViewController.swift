@@ -38,9 +38,9 @@ class WhitelistAddressViewController:UIViewController {
         hud.textLabel.text = "Your address is being added.\nPlease wait (around 1 min)"
         hud.show(in: self.view)
         
-        
-        let messageData = ApplicationContext.smartwallet!.encodeUpdateWhiteList(eoa:  addressTextField.text!, value: true)
-        moonkeyService.relayTransaction(identity: ApplicationContext.smartwallet!, messageData: messageData, gas:"120000") { (result) in
+        //TODO
+        let messageData = ""//ApplicationContext.smartwallet!.encodeUpdateWhiteList(eoa:  addressTextField.text!, value: true)
+        moonkeyService.relayTransaction(smartWallet: ApplicationContext.smartwallet!, messageData: messageData, gas:"120000") { (result) in
             switch result {
                 
             case .success(let txResponse):

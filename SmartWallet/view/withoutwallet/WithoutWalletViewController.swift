@@ -23,7 +23,7 @@ class WithoutWalletViewController: UIViewController {
         hud.show(in: self.view)
         
         let hdAccount = HDEthereumAccount()
-        self.moonKeyService.deploySmartwallet(account: hdAccount.first.ethereumAddress){ (result) in
+        self.moonKeyService.deployGnosisSafe(account: hdAccount.first.ethereumAddress){ (result) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
@@ -44,7 +44,7 @@ class WithoutWalletViewController: UIViewController {
                             }
                             break
                             
-                        case .failure(let error):
+                        case .failure(_):
                             DispatchQueue.main.async {
                                 hud.dismiss()
                                 self.displayErrorOccured()
@@ -58,8 +58,12 @@ class WithoutWalletViewController: UIViewController {
                 
                 break
             case .failure(let error):
-                hud.dismiss()
-                self.displayErrorOccured()
+                DispatchQueue.main.async {
+                    print("######")
+                    print(error)
+                    hud.dismiss()
+                    self.displayErrorOccured()
+                }
                 break
             }
         }

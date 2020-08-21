@@ -10,38 +10,68 @@ import Foundation
 import BigInt
 import web3
 
-public struct RelayParamsRequest: Codable {
-    public let account: String
-    public let channel_id: String
-}
-
-public struct RelayParamsResponse: Codable {
-    public let nonce: String
-    public let gas_prices: GasPrices
-}
-
-public struct GasPrices:Codable {
-    let fastest: String
-    let fast: String
-    let standard: String
-    let safelow: String
+public struct IdentityTxMessage: Message {
+    let signer: String
+    let to: String
+    let data: String
+    let nonce: Int
     
+    public init(signer: String, to: String, data: String, nonce: Int) {
+        self.signer = signer
+        self.to = to
+        self.data = data
+        self.nonce = nonce
+    }
+    
+    
+    public func hash(chainID: Int, verifyingContract: String) -> String {
+        let jsonString = """
+        {
+          "types": {
+              "EIP712Domain": [
+                  {"name": "verifyingContract", "type": "address"},
+                  {"name": "chainId", "type": "uint256"},
+              ],
+              "TxMessage": [
+                  {"name": "signer", "type": "address"},
+                  {"name": "to", "type": "address"},
+                  {"name": "data", "type": "bytes"},
+                  {"name": "nonce", "type": "uint256"}
+              ]
+          },
+          "primaryType": "TxMessage",
+          "domain": {
+              "chainId": \(chainID),
+              "verifyingContract": "\(verifyingContract)"
+          },
+          "message": {
+              "signer": "\(signer)",
+              "to": "\(to)",
+              "data": "\(data)",
+              "nonce": \(nonce)
+            }
+        }
+        """
+        let typedData = try! JSONDecoder().decode(TypedData.self, from: jsonString.data(using: .utf8)!)
+        return try! typedData.signableHash().web3.hexString
+    }
 }
+
+
 
 public struct Identity {
+    
     public let address: EthereumAddress
     
     //TODO
     public static var forwarder:String = "0x641d5315d213EA8eb03563f992c7fFfdd677D0cC"
-    
-    let rpc = RpcClient()
     
     public init(address: EthereumAddress){
         self.address = address
     }
     
     public func hashTx(signer: String, data: String, nonce: Int, chainID: Int) -> String{
-        let txMessage = TxMessage(signer: signer, to: self.ethereumAddress, data: data, nonce: nonce)
+        let txMessage = IdentityTxMessage(signer: signer, to: self.ethereumAddress, data: data, nonce: nonce)
         return txMessage.hash(chainID: chainID, verifyingContract:Identity.forwarder)
     }
     

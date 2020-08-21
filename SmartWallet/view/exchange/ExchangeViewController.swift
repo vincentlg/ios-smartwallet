@@ -168,9 +168,10 @@ class ExchangeViewController: UIViewController {
                 DispatchQueue.main.async {
                     
                     let erc20ApproveData = ERC20Encoder.encodeApprove(spender: EthereumAddress(string:result)!, tokens:  BigUInt(self.amountWei!)).hexValue
-                    let messageData = ApplicationContext.smartwallet!.encodeExecute(to: self.sourceToken!.address, value:"0", data: Data(hexString:erc20ApproveData)!)
+                    //TODO
+                    let messageData = ""//ApplicationContext.smartwallet!.encodeExecute(to: self.sourceToken!.address, value:"0", data: Data(hexString:erc20ApproveData)!)
                     
-                    self.moonkeyService.relayTransaction(identity: ApplicationContext.smartwallet!, messageData: messageData, gas:"150000") { (result) in
+                    self.moonkeyService.relayTransaction(smartWallet: ApplicationContext.smartwallet!, messageData: messageData, gas:"150000") { (result) in
                         switch result {
                         case .success(let txResponse):
                             DispatchQueue.main.async {
@@ -233,10 +234,12 @@ class ExchangeViewController: UIViewController {
         self.paraswapService.getParaswapTx(body: body) { (result) in
             switch result {
             case .success(let response):
-                let messageData = ApplicationContext.smartwallet!.encodeExecute(to:  self.paraswapService.paraswapContract, value: BigUInt(response.value!)!, data: Data(hexString: response.data!)!)
+                
+                //TODO
+                let messageData = ""//ApplicationContext.smartwallet!.encodeExecute(to:  self.paraswapService.paraswapContract, value: BigUInt(response.value!)!, data: Data(hexString: response.data!)!)
                 
                 DispatchQueue.main.async {
-                    self.moonkeyService.relayTransaction(identity: ApplicationContext.smartwallet!, messageData: messageData) { (result) in
+                    self.moonkeyService.relayTransaction(smartWallet: ApplicationContext.smartwallet!, messageData: messageData) { (result) in
                         switch result {
                         case .success(let txResponse):
                             DispatchQueue.main.async {

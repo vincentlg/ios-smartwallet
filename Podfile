@@ -15,13 +15,13 @@ target 'SmartWallet' do
   pod 'MaterialComponents/TextFields'
   pod 'TrezorCrypto', '~> 0.0.9', inhibit_warnings: true
   pod 'KeychainAccess', '~> 4.1.0'
-  pod 'web3.swift', '~> 0.4.1'
+  pod 'web3.swift', '~> 0.5.0'
 
   target 'SmartWalletTests' do
     # Pods for testing
     pod 'TrezorCrypto', '~> 0.0.9', inhibit_warnings: true
     pod 'KeychainAccess', '~> 4.1.0'
-    pod 'web3.swift', '~> 0.4.1'
+    pod 'web3.swift', '~> 0.5.0'
     inherit! :search_paths
   end
 end

@@ -11,7 +11,7 @@
 		66AF6F1480713AC43621E657 /* Pods_SmartWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */; };
 		B61766F424EE65C2009B7C5B /* GnosisSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61766F324EE65C2009B7C5B /* GnosisSafe.swift */; };
 		B63B470B24ED69F7000EFF59 /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470724ED69F6000EFF59 /* Identity.swift */; };
-		B63B470C24ED69F7000EFF59 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470824ED69F6000EFF59 /* Message.swift */; };
+		B63B470C24ED69F7000EFF59 /* SmartWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470824ED69F6000EFF59 /* SmartWallet.swift */; };
 		B63B470D24ED69F7000EFF59 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470924ED69F6000EFF59 /* Chain.swift */; };
 		B63B470E24ED69F7000EFF59 /* TransactionReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470A24ED69F7000EFF59 /* TransactionReceipt.swift */; };
 		B63B471224ED6A21000EFF59 /* Encodable+toJSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470F24ED6A20000EFF59 /* Encodable+toJSONData.swift */; };
@@ -58,6 +58,7 @@
 		B63B477024ED6BF5000EFF59 /* TransactionSigning.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B474A24ED6BF5000EFF59 /* TransactionSigning.swift */; };
 		B63B477124ED6BF5000EFF59 /* EthereumChecksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B474B24ED6BF5000EFF59 /* EthereumChecksum.swift */; };
 		B63B477224ED6BF5000EFF59 /* EthereumTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B474C24ED6BF5000EFF59 /* EthereumTransaction.swift */; };
+		B66A8F5B24F01EFD00BBD14B /* PrivateKey+v27.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A8F5A24F01EFD00BBD14B /* PrivateKey+v27.swift */; };
 		B6A6435024EE9D16009D1750 /* HDEthereumAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A6434F24EE9D16009D1750 /* HDEthereumAccount.swift */; };
 		B6A6435624EEA48D009D1750 /* ApplicationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A6435524EEA48D009D1750 /* ApplicationContext.swift */; };
 		B6E1E9E424ED7A1D0081CF82 /* SmartWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9A524ED77310081CF82 /* SmartWalletTests.swift */; };
@@ -152,7 +153,7 @@
 		B15DEB8371F308910BBC9556 /* Pods-SmartWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.debug.xcconfig"; path = "Target Support Files/Pods-SmartWallet/Pods-SmartWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		B61766F324EE65C2009B7C5B /* GnosisSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnosisSafe.swift; sourceTree = "<group>"; };
 		B63B470724ED69F6000EFF59 /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
-		B63B470824ED69F6000EFF59 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B63B470824ED69F6000EFF59 /* SmartWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartWallet.swift; sourceTree = "<group>"; };
 		B63B470924ED69F6000EFF59 /* Chain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 		B63B470A24ED69F7000EFF59 /* TransactionReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionReceipt.swift; sourceTree = "<group>"; };
 		B63B470F24ED6A20000EFF59 /* Encodable+toJSONData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+toJSONData.swift"; sourceTree = "<group>"; };
@@ -201,6 +202,7 @@
 		B63B474A24ED6BF5000EFF59 /* TransactionSigning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionSigning.swift; sourceTree = "<group>"; };
 		B63B474B24ED6BF5000EFF59 /* EthereumChecksum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthereumChecksum.swift; sourceTree = "<group>"; };
 		B63B474C24ED6BF5000EFF59 /* EthereumTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthereumTransaction.swift; sourceTree = "<group>"; };
+		B66A8F5A24F01EFD00BBD14B /* PrivateKey+v27.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivateKey+v27.swift"; sourceTree = "<group>"; };
 		B6A6434F24EE9D16009D1750 /* HDEthereumAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDEthereumAccount.swift; sourceTree = "<group>"; };
 		B6A6435524EEA48D009D1750 /* ApplicationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationContext.swift; sourceTree = "<group>"; };
 		B6E1E9A324ED77310081CF82 /* SmartWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -416,6 +418,16 @@
 			path = EIP712;
 			sourceTree = "<group>";
 		};
+		B64BDC6F24EFAA4400618BEE /* smartwallet */ = {
+			isa = PBXGroup;
+			children = (
+				B63B470824ED69F6000EFF59 /* SmartWallet.swift */,
+				B63B470724ED69F6000EFF59 /* Identity.swift */,
+				B61766F324EE65C2009B7C5B /* GnosisSafe.swift */,
+			);
+			path = smartwallet;
+			sourceTree = "<group>";
+		};
 		B6A6435124EEA37F009D1750 /* token */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +454,7 @@
 				B63B471124ED6A21000EFF59 /* BigInt+Hex.swift */,
 				B63B470F24ED6A20000EFF59 /* Encodable+toJSONData.swift */,
 				B63B471024ED6A21000EFF59 /* PrivateKey+EthereumAddress.swift */,
+				B66A8F5A24F01EFD00BBD14B /* PrivateKey+v27.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -589,13 +602,11 @@
 		DC4ADC9E24190E0B008C23C7 /* domain */ = {
 			isa = PBXGroup;
 			children = (
+				B64BDC6F24EFAA4400618BEE /* smartwallet */,
 				B6A6435224EEA393009D1750 /* transaction */,
 				B6A6435124EEA37F009D1750 /* token */,
 				B6A6434F24EE9D16009D1750 /* HDEthereumAccount.swift */,
 				B63B470924ED69F6000EFF59 /* Chain.swift */,
-				B63B470724ED69F6000EFF59 /* Identity.swift */,
-				B63B470824ED69F6000EFF59 /* Message.swift */,
-				B61766F324EE65C2009B7C5B /* GnosisSafe.swift */,
 				B63B471624ED6A41000EFF59 /* EthereumFormatter.swift */,
 			);
 			path = domain;
@@ -991,7 +1002,7 @@
 				B63B475D24ED6BF5000EFF59 /* PrivateKey.swift in Sources */,
 				DC352DB6243CCDDA00654C5E /* ConnectViewController.swift in Sources */,
 				B63B475B24ED6BF5000EFF59 /* HDWallet.swift in Sources */,
-				B63B470C24ED69F7000EFF59 /* Message.swift in Sources */,
+				B63B470C24ED69F7000EFF59 /* SmartWallet.swift in Sources */,
 				B63B475724ED6BF5000EFF59 /* SLIP.swift in Sources */,
 				DC40D7AF2412AC2F00C792EB /* UIViewController+NavController.swift in Sources */,
 				B63B477224ED6BF5000EFF59 /* EthereumTransaction.swift in Sources */,
@@ -1029,6 +1040,7 @@
 				B63B475124ED6BF5000EFF59 /* WanchainAddress.swift in Sources */,
 				B61766F424EE65C2009B7C5B /* GnosisSafe.swift in Sources */,
 				DC7AC3A323EC647000CC1C0D /* AppDelegate.swift in Sources */,
+				B66A8F5B24F01EFD00BBD14B /* PrivateKey+v27.swift in Sources */,
 				DC3E7187242A440A00C40194 /* ListItemView.swift in Sources */,
 				DC4ADC9D2418F7D5008C23C7 /* TransactionViewContrller.swift in Sources */,
 				DCBA5D06242A128500EE8CA9 /* TabButtonBar.swift in Sources */,
