@@ -28,7 +28,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         
-        self.securityItems = [ItemSettings(label: "Recovery kit", iconName: "shield", action:self.showRecovery), ItemSettings(label: "Whitelist address", iconName: "award", action: self.showWhitelist), ItemSettings(label: "Reset wallet", iconName: "alert-circle", action: self.resetWalletWarning)]
+        self.securityItems = [ItemSettings(label: "Recovery kit", iconName: "shield", action:self.showRecovery), ItemSettings(label: "Wallet owners", iconName: "award", action: self.showOwners), ItemSettings(label: "Reset wallet", iconName: "alert-circle", action: self.resetWalletWarning)]
         self.contactItems = [ItemSettings(label: "Rockside", iconName: "twitter", action: self.showRocksideTwitter), ItemSettings(label: "Paraswap", iconName: "twitter", action: showParaswapTwitter)]
         
         self.tableView.delegate = self
@@ -99,8 +99,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.performSegue(withIdentifier: "show_recovery_segue", sender: self)
     }
     
-    func showWhitelist() {
-        self.performSegue(withIdentifier: "add_whitelist_segue", sender: self)
+    func showOwners() {
+        self.performSegue(withIdentifier: "show_owners", sender: self)
     }
     
     func showRocksideTwitter() {

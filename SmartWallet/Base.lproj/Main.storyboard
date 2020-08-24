@@ -7,15 +7,126 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Whitelist Address View Controller-->
+        <!--Owners View Controller-->
+        <scene sceneID="KBL-FG-pyT">
+            <objects>
+                <viewController id="EJ9-S8-VoS" customClass="OwnersViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VEG-iV-ClW" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet owners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc1-9a-pRh">
+                                <rect key="frame" x="20" y="30" width="374" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqv-H5-m5g" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
+                                <rect key="frame" x="20" y="115" width="374" height="663"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Addresses registered as owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Feh-aR-EMa">
+                                        <rect key="frame" x="30" y="30" width="217" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2M1-BA-lcX">
+                                        <rect key="frame" x="0.0" y="68" width="374" height="505"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="OwnerViewCell" id="vVo-AM-4iw" customClass="OwnerTableViewCell" customModule="Moonkey" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="374" height="60"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TokenViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vVo-AM-4iw" id="x0l-z9-sqI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLF-1o-gWe" customClass="ListItemView" customModule="Moonkey" customModuleProvider="target">
+                                                            <rect key="frame" x="20" y="10" width="334" height="50"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0x000" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="JgS-18-MD2">
+                                                                    <rect key="frame" x="10" y="16" width="314" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="JgS-18-MD2" firstAttribute="leading" secondItem="wLF-1o-gWe" secondAttribute="leading" constant="10" id="9uD-bn-Y5V"/>
+                                                                <constraint firstAttribute="trailing" secondItem="JgS-18-MD2" secondAttribute="trailing" constant="10" id="ica-LW-ccI"/>
+                                                                <constraint firstItem="JgS-18-MD2" firstAttribute="centerY" secondItem="wLF-1o-gWe" secondAttribute="centerY" id="mfi-zI-pk3"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="wLF-1o-gWe" firstAttribute="leading" secondItem="x0l-z9-sqI" secondAttribute="leading" constant="20" id="OZs-Sh-r97"/>
+                                                        <constraint firstAttribute="bottom" secondItem="wLF-1o-gWe" secondAttribute="bottom" id="TFZ-KF-awa"/>
+                                                        <constraint firstItem="wLF-1o-gWe" firstAttribute="top" secondItem="x0l-z9-sqI" secondAttribute="top" constant="10" id="WBv-Ul-A2P"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wLF-1o-gWe" secondAttribute="trailing" constant="20" id="sXF-sh-pW3"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="addressLabel" destination="JgS-18-MD2" id="7ea-2V-HfV"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ6-n4-UEG" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="593" width="334" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RL4-ed-uQI"/>
+                                        </constraints>
+                                        <state key="normal" title="Add new owner"/>
+                                        <connections>
+                                            <action selector="copyAddressAction:" destination="ukE-wL-kas" eventType="touchUpInside" id="M32-EW-Xal"/>
+                                            <segue destination="c6Q-8H-0dD" kind="presentation" identifier="addowner_segue" id="xv7-bq-kE4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="QJ6-n4-UEG" firstAttribute="top" secondItem="2M1-BA-lcX" secondAttribute="bottom" constant="20" id="70f-aV-ztI"/>
+                                    <constraint firstItem="QJ6-n4-UEG" firstAttribute="leading" secondItem="Iqv-H5-m5g" secondAttribute="leading" constant="20" id="Abv-6A-WEH"/>
+                                    <constraint firstItem="Feh-aR-EMa" firstAttribute="top" secondItem="Iqv-H5-m5g" secondAttribute="top" constant="30" id="L3A-kO-83g"/>
+                                    <constraint firstItem="Feh-aR-EMa" firstAttribute="leading" secondItem="Iqv-H5-m5g" secondAttribute="leading" constant="30" id="b9j-GX-cVi"/>
+                                    <constraint firstAttribute="bottom" secondItem="QJ6-n4-UEG" secondAttribute="bottom" constant="20" id="bSq-1o-i5S"/>
+                                    <constraint firstItem="2M1-BA-lcX" firstAttribute="top" secondItem="Feh-aR-EMa" secondAttribute="bottom" constant="20" id="end-AK-yQJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="QJ6-n4-UEG" secondAttribute="trailing" constant="20" id="lag-dL-v7E"/>
+                                    <constraint firstItem="2M1-BA-lcX" firstAttribute="leading" secondItem="Iqv-H5-m5g" secondAttribute="leading" id="q2d-3W-sXG"/>
+                                    <constraint firstAttribute="trailing" secondItem="2M1-BA-lcX" secondAttribute="trailing" id="sk3-pj-XCv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cc1-9a-pRh" firstAttribute="leading" secondItem="yJR-hW-B0x" secondAttribute="leading" constant="20" id="BlB-3r-q3i"/>
+                            <constraint firstItem="yJR-hW-B0x" firstAttribute="trailing" secondItem="Iqv-H5-m5g" secondAttribute="trailing" constant="20" id="C3u-Qk-ZfS"/>
+                            <constraint firstItem="yJR-hW-B0x" firstAttribute="trailing" secondItem="cc1-9a-pRh" secondAttribute="trailing" constant="20" id="Eq6-ed-a2Z"/>
+                            <constraint firstItem="yJR-hW-B0x" firstAttribute="bottom" secondItem="Iqv-H5-m5g" secondAttribute="bottom" constant="30" id="FJi-ei-cIN"/>
+                            <constraint firstItem="Iqv-H5-m5g" firstAttribute="top" secondItem="cc1-9a-pRh" secondAttribute="bottom" constant="50" id="QQz-Nw-Uzp"/>
+                            <constraint firstItem="Iqv-H5-m5g" firstAttribute="leading" secondItem="yJR-hW-B0x" secondAttribute="leading" constant="20" id="fcH-YS-npZ"/>
+                            <constraint firstItem="cc1-9a-pRh" firstAttribute="top" secondItem="yJR-hW-B0x" secondAttribute="top" constant="30" id="pl3-Et-Cnf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yJR-hW-B0x"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="2M1-BA-lcX" id="UBT-1h-Yqi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wJU-Lx-7XJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-788.40579710144937" y="-1598.4375"/>
+        </scene>
+        <!--Add Owner View Controller-->
         <scene sceneID="RJt-8R-R4x">
             <objects>
-                <viewController id="c6Q-8H-0dD" customClass="WhitelistAddressViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="c6Q-8H-0dD" customClass="AddOwnerViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b9O-Py-DU2" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whitelist address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0u-MF-Kxl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0u-MF-Kxl">
                                 <rect key="frame" x="20" y="20" width="374" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -24,7 +135,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA7-OV-87h" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
                                 <rect key="frame" x="20" y="105" width="374" height="274"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address to whitelist" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Kbq-jh-ReN" customClass="MDCTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="owner address" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Kbq-jh-ReN" customClass="MDCTextField">
                                         <rect key="frame" x="30" y="114" width="266" height="34"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -212,7 +323,7 @@
                     <connections>
                         <outlet property="tableView" destination="Zk7-xj-69B" id="xwY-LL-fae"/>
                         <segue destination="q4a-iN-KJg" kind="presentation" identifier="show_recovery_segue" id="Eqw-uf-ziv"/>
-                        <segue destination="c6Q-8H-0dD" kind="presentation" identifier="add_whitelist_segue" id="WXE-SM-Bb2"/>
+                        <segue destination="EJ9-S8-VoS" kind="presentation" identifier="show_owners" id="mji-rv-lZu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0L8-cH-EWi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1609,9 +1720,9 @@ The order of the words is important.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MZs-3v-s8X"/>
+        <segue reference="RCM-oJ-AnQ"/>
         <segue reference="yog-dw-0Rd"/>
-        <segue reference="hba-Qg-qt2"/>
+        <segue reference="Eqw-uf-ziv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="MOONKEY" width="476" height="79"/>

@@ -13,12 +13,16 @@ import JGProgressHUD
 import web3
 import BigInt
 
-class WhitelistAddressViewController:UIViewController {
+typealias SuccessHandler = () -> Void
+
+class AddOwnerViewController:UIViewController {
     
     @IBOutlet weak var addressTextField: MDCTextField!
     var addressTextFieldController: MDCTextInputControllerUnderline?
     
     var moonkeyService = MoonkeyService()
+    
+    var successHandler: SuccessHandler?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,11 +58,14 @@ class WhitelistAddressViewController:UIViewController {
                         case .success(_):
                             DispatchQueue.main.async {
                                 hud.dismiss()
-                                self.dismiss(animated: true, completion: nil)
+                                
+                                self.dismiss(animated: true) {
+                                    self.successHandler?()
+                                }
                             }
                             break
                             
-                        case .failure(let error):
+                        case .failure(_):
                             DispatchQueue.main.async {
                                 hud.dismiss()
                                 self.displayErrorOccured()
@@ -70,7 +77,7 @@ class WhitelistAddressViewController:UIViewController {
                 }
                 break
                 
-            case .failure(let error):
+            case .failure(_):
                 DispatchQueue.main.async {
                     hud.dismiss()
                     self.displayErrorOccured()

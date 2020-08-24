@@ -22,19 +22,6 @@ public class Application {
     static func restore(walletId: WalletID){
         self.smartwallet = GnosisSafe(address: walletId.address, rpc: RpcClient())
         self.account = HDEthereumAccount(mnemonic: walletId.mnemonic)
-
-        print(self.account!.first.ethereumAddress)
-        self.smartwallet!.getOwners()  { (result) in
-                   switch result {
-                   case .success(let result):
-                       print(result)
-                       return
-                   case .failure(let error):
-                    print(error.localizedDescription)
-                       return
-                   }
-            
-        }
     }
     
     static func clear(){

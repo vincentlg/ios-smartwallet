@@ -10,6 +10,8 @@
 		5A27351AE8E0254EB6FF9296 /* Pods_SmartWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C421E4F5F6D8B3DFD94CD0 /* Pods_SmartWalletTests.framework */; };
 		66AF6F1480713AC43621E657 /* Pods_SmartWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */; };
 		B61766F424EE65C2009B7C5B /* GnosisSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61766F324EE65C2009B7C5B /* GnosisSafe.swift */; };
+		B621AB1B24F4030C009535E2 /* OwnersViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B621AB1A24F4030C009535E2 /* OwnersViewControllers.swift */; };
+		B621AB1D24F4034C009535E2 /* OwnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B621AB1C24F4034C009535E2 /* OwnerTableViewCell.swift */; };
 		B63B470B24ED69F7000EFF59 /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470724ED69F6000EFF59 /* Identity.swift */; };
 		B63B470C24ED69F7000EFF59 /* SmartWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470824ED69F6000EFF59 /* SmartWallet.swift */; };
 		B63B470D24ED69F7000EFF59 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470924ED69F6000EFF59 /* Chain.swift */; };
@@ -130,7 +132,7 @@
 		DCD11D09241B9C050046ECD0 /* TokensTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */; };
 		DCD8CE46243DD7CB0078BB1D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE45243DD7CB0078BB1D /* SettingsViewController.swift */; };
 		DCD8CE48243DDD400078BB1D /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE47243DDD400078BB1D /* SettingsViewCell.swift */; };
-		DCD8CE4A243E0BCF0078BB1D /* WhitelistAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE49243E0BCF0078BB1D /* WhitelistAddressViewController.swift */; };
+		DCD8CE4A243E0BCF0078BB1D /* AddOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8CE49243E0BCF0078BB1D /* AddOwnerViewController.swift */; };
 		DCFFBE4E246AB12800AB0C4B /* UIImageView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFBE4D246AB12800AB0C4B /* UIImageView+extension.swift */; };
 		DCFFBE522472BFBD00AB0C4B /* EtherscanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFBE512472BFBD00AB0C4B /* EtherscanService.swift */; };
 /* End PBXBuildFile section */
@@ -152,6 +154,8 @@
 		491B7E101A6BDA4B4F34F33E /* Pods_SmartWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15DEB8371F308910BBC9556 /* Pods-SmartWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.debug.xcconfig"; path = "Target Support Files/Pods-SmartWallet/Pods-SmartWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		B61766F324EE65C2009B7C5B /* GnosisSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnosisSafe.swift; sourceTree = "<group>"; };
+		B621AB1A24F4030C009535E2 /* OwnersViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersViewControllers.swift; sourceTree = "<group>"; };
+		B621AB1C24F4034C009535E2 /* OwnerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerTableViewCell.swift; sourceTree = "<group>"; };
 		B63B470724ED69F6000EFF59 /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		B63B470824ED69F6000EFF59 /* SmartWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartWallet.swift; sourceTree = "<group>"; };
 		B63B470924ED69F6000EFF59 /* Chain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
@@ -279,7 +283,7 @@
 		DCD11D08241B9C050046ECD0 /* TokensTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokensTableViewController.swift; sourceTree = "<group>"; };
 		DCD8CE45243DD7CB0078BB1D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DCD8CE47243DDD400078BB1D /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
-		DCD8CE49243E0BCF0078BB1D /* WhitelistAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistAddressViewController.swift; sourceTree = "<group>"; };
+		DCD8CE49243E0BCF0078BB1D /* AddOwnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOwnerViewController.swift; sourceTree = "<group>"; };
 		DCFFBE4D246AB12800AB0C4B /* UIImageView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extension.swift"; sourceTree = "<group>"; };
 		DCFFBE512472BFBD00AB0C4B /* EtherscanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -314,6 +318,16 @@
 				46116CEE5F5563BC28BC2A33 /* Pods-SmartWalletTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B621AB1924F402C9009535E2 /* owners */ = {
+			isa = PBXGroup;
+			children = (
+				DCD8CE49243E0BCF0078BB1D /* AddOwnerViewController.swift */,
+				B621AB1A24F4030C009535E2 /* OwnersViewControllers.swift */,
+				B621AB1C24F4034C009535E2 /* OwnerTableViewCell.swift */,
+			);
+			path = owners;
 			sourceTree = "<group>";
 		};
 		B63B471E24ED6BE8000EFF59 /* lib */ = {
@@ -666,6 +680,7 @@
 		DC996BE22418DBBE00248748 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				B621AB1924F402C9009535E2 /* owners */,
 				B6A6435424EEA43F009D1750 /* components */,
 				DCD8CE44243DD7AF0078BB1D /* settings */,
 				DCD11D07241B9BE40046ECD0 /* exchange */,
@@ -676,7 +691,6 @@
 				DC40D7B02412B1C300C792EB /* RecoveryViewController.swift */,
 				DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */,
 				DC607142243399ED00CED3BF /* ScannerViewController.swift */,
-				DCD8CE49243E0BCF0078BB1D /* WhitelistAddressViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -992,6 +1006,7 @@
 				DC6071382431E5B100CED3BF /* ParaswapService.swift in Sources */,
 				B63B475924ED6BF5000EFF59 /* DerivationPath.swift in Sources */,
 				DCBA5CFE24290D6600EE8CA9 /* WalletNavigationViewController.swift in Sources */,
+				B621AB1B24F4030C009535E2 /* OwnersViewControllers.swift in Sources */,
 				B63B476A24ED6BF5000EFF59 /* Function.swift in Sources */,
 				B63B475824ED6BF5000EFF59 /* String+Clear.swift in Sources */,
 				B6A6435024EE9D16009D1750 /* HDEthereumAccount.swift in Sources */,
@@ -1014,6 +1029,7 @@
 				DC4ADCAC241940F5008C23C7 /* Token.swift in Sources */,
 				DC4ECCEC241795CC0062425E /* SendViewController.swift in Sources */,
 				DCD8CE46243DD7CB0078BB1D /* SettingsViewController.swift in Sources */,
+				B621AB1D24F4034C009535E2 /* OwnerTableViewCell.swift in Sources */,
 				DCFFBE522472BFBD00AB0C4B /* EtherscanService.swift in Sources */,
 				DC49E0D024B74C3B001B1F39 /* MoonkeyService.swift in Sources */,
 				B63B470B24ED69F7000EFF59 /* Identity.swift in Sources */,
@@ -1024,7 +1040,7 @@
 				DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */,
 				B63B476224ED6BF5000EFF59 /* SignatureSigner.swift in Sources */,
 				B63B475E24ED6BF5000EFF59 /* Blockchain.swift in Sources */,
-				DCD8CE4A243E0BCF0078BB1D /* WhitelistAddressViewController.swift in Sources */,
+				DCD8CE4A243E0BCF0078BB1D /* AddOwnerViewController.swift in Sources */,
 				B63B471924ED6A42000EFF59 /* EthereumFormatter.swift in Sources */,
 				B63B477024ED6BF5000EFF59 /* TransactionSigning.swift in Sources */,
 				B63B476624ED6BF5000EFF59 /* ABIValue.swift in Sources */,
