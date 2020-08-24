@@ -136,7 +136,7 @@ extension Transaction {
 extension Transaction {
     
     var walletaddress: String {
-        return  ApplicationContext.smartwallet!.ethereumAddress
+        return  Application.smartwallet!.ethereumAddress
     }
     
 }

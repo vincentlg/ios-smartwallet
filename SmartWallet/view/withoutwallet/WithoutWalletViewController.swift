@@ -36,7 +36,7 @@ class WithoutWalletViewController: UIViewController {
                                 
                                 let walletID = WalletID(address: receipt.logs[0].dataAsAddress(), mnemonic: hdAccount.mnemonic)
                                 
-                                ApplicationContext.restore(walletId: walletID)
+                                Application.restore(walletId: walletID)
                                 
                                 try? self.walletStorage.store(walletID: walletID)
                                 

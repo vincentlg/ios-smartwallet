@@ -25,7 +25,7 @@ class EtherscanService {
 
     
     var url:String {
-        if ApplicationContext.network == .mainnet {
+        if Application.network == .mainnet {
             return "https://api.etherscan.io/api"
         }
         
@@ -35,7 +35,7 @@ class EtherscanService {
     public func retrieveTransaction(action: TxAction, completion: @escaping (Result<EtherscanTransactionResponse, Error>) -> Void) -> Void {
         
         //TODO Etherscan URL from Chain ID
-        let url  = URL(string: self.url+"?module=account&action=\(action)&address=\(ApplicationContext.smartwallet!.ethereumAddress)&startblock=0&endblock=99999999&sort=desc&apikey=\(etherscanApiKey)")!
+        let url  = URL(string: self.url+"?module=account&action=\(action)&address=\(Application.smartwallet!.ethereumAddress)&startblock=0&endblock=99999999&sort=desc&apikey=\(etherscanApiKey)")!
         
         var request = URLRequest(url:url ,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"

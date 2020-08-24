@@ -40,7 +40,7 @@ class WhitelistAddressViewController:UIViewController {
         
         //TODO
         let messageData = ""//ApplicationContext.smartwallet!.encodeUpdateWhiteList(eoa:  addressTextField.text!, value: true)
-        moonkeyService.relayTransaction(smartWallet: ApplicationContext.smartwallet!, messageData: messageData, gas:"120000") { (result) in
+        moonkeyService.relayTransaction(smartWallet: Application.smartwallet!, messageData: messageData, gas:"120000") { (result) in
             switch result {
                 
             case .success(let txResponse):

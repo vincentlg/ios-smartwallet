@@ -36,7 +36,7 @@ public struct RpcClient {
     public init() {}
     
     var url: String {
-        if ApplicationContext.network == .mainnet {
+        if Application.network == .mainnet {
             return "https://eth-mainnet.alchemyapi.io/v2/yKy-FkvOSlIgp9W8_mCxhW-HEdISZ7-Y"
         }
         

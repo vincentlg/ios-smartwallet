@@ -24,7 +24,7 @@ class WalletNavigationViewController: UINavigationController {
             return
         }
       
-        ApplicationContext.restore(walletId: walletId)
+        Application.restore(walletId: walletId)
         
         self.displayWalletView()
         

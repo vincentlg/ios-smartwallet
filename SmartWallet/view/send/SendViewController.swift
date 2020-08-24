@@ -100,7 +100,7 @@ class SendViewController: UIViewController {
         //TODO
         let messageData = "" // ApplicationContext.smartwallet!.encodeExecute(to: fromToken!.address, value:"0", data: Data(hexString:ercTransferData)!)
         
-        moonkeyService.relayTransaction(smartWallet: ApplicationContext.smartwallet!, messageData: messageData, gas:"150000") { (result) in
+        moonkeyService.relayTransaction(smartWallet: Application.smartwallet!, messageData: messageData, gas:"150000") { (result) in
             switch result {
             case .success(let txResponse):
                 DispatchQueue.main.async {
@@ -130,10 +130,10 @@ class SendViewController: UIViewController {
         hud.show(in: self.view)
         
         let to = web3.EthereumAddress(self.destinationTextField.text!)
-        ApplicationContext.encodeExecute(to: to, value: amount, data: Data()) { (result) in
+        Application.encodeExecute(to: to, value: amount, data: Data()) { (result) in
             switch result {
             case .success(let executeData):
-                self.moonkeyService.relayTransaction(smartWallet: ApplicationContext.smartwallet!, messageData: executeData, gas: "100000") { (result) in
+                self.moonkeyService.relayTransaction(smartWallet: Application.smartwallet!, messageData: executeData, gas: "100000") { (result) in
                     switch result {
                     case .success(let txResponse):
                         DispatchQueue.main.async {

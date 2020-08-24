@@ -20,7 +20,7 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     @IBAction func CopyAddressAction(_ sender: Any) {
-        UIPasteboard.general.string = ApplicationContext.smartwallet!.ethereumAddress+"\n"+ApplicationContext.account!.mnemonic
+        UIPasteboard.general.string = Application.smartwallet!.ethereumAddress+"\n"+Application.account!.mnemonic
         let snackBarMessage = MDCSnackbarMessage()
         snackBarMessage.text = "Address and recovery phrase copied to clipboard."
         snackBarMessage.duration = 1
@@ -28,8 +28,8 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     override func viewDidLoad() {
-        self.walletAddressLabel.text = ApplicationContext.smartwallet!.ethereumAddress
-        self.mnemonicLabel.text = ApplicationContext.account!.mnemonic
+        self.walletAddressLabel.text = Application.smartwallet!.ethereumAddress
+        self.mnemonicLabel.text = Application.account!.mnemonic
     }
     
     

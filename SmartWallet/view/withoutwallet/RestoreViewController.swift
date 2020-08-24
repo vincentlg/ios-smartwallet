@@ -48,7 +48,7 @@ class RestoreViewController: UIViewController {
             
              let walletId = WalletID(address:  self.walletAddressTextField.text!, mnemonic: self.twelvesWordsView.text!)
             
-            ApplicationContext.restore(walletId: walletId)
+            Application.restore(walletId: walletId)
            
             //TODO
             let isWhitelistedData = "" //= ApplicationContext.smartwallet!.encodeIsEoaWhitelisted(eoa: ApplicationContext.account!.first.ethereumAddress)
@@ -68,14 +68,14 @@ class RestoreViewController: UIViewController {
                             }
                             self.navigationController?.displayWalletView(animated: true)
                         } else {
-                            ApplicationContext.clear()
+                            Application.clear()
                             self.twelvesWordsViewController?.setErrorText("Mnemonic is not valid", errorAccessibilityValue: "Mnemonic is not valid")
                         }
                     }
                     break
                     
                 case .failure(_):
-                    ApplicationContext.clear()
+                    Application.clear()
                     DispatchQueue.main.async {
                      self.twelvesWordsViewController?.setErrorText("An error occured please try again", errorAccessibilityValue: "An error occured please try again")
                     }

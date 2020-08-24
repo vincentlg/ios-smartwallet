@@ -11,7 +11,7 @@ import web3
 import BigInt
 
 
-public class ApplicationContext {
+public class Application {
     
     static public var smartwallet: SmartWallet?
     static public var account: HDEthereumAccount?

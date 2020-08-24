@@ -17,13 +17,13 @@ class ReceiveViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     
     override func viewDidLoad() {
-        self.qrcodeImageView.image = self.generateQRCode(from:ApplicationContext.smartwallet!.ethereumAddress)
+        self.qrcodeImageView.image = self.generateQRCode(from:Application.smartwallet!.ethereumAddress)
         
-        self.addressLabel.text = ApplicationContext.smartwallet!.ethereumAddress
+        self.addressLabel.text = Application.smartwallet!.ethereumAddress
     }
     
     @IBAction func copyAddressAction(_ sender: Any) {
-         UIPasteboard.general.string = ApplicationContext.smartwallet!.ethereumAddress
+         UIPasteboard.general.string = Application.smartwallet!.ethereumAddress
     }
     
     func generateQRCode(from string: String) -> UIImage? {

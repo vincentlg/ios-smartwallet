@@ -41,7 +41,7 @@ class MoonkeyService {
     
     var network:String {
         
-        if (ApplicationContext.network == .mainnet) {
+        if (Application.network == .mainnet) {
             return "mainnet"
         }
         

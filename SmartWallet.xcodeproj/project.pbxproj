@@ -60,7 +60,7 @@
 		B63B477224ED6BF5000EFF59 /* EthereumTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B474C24ED6BF5000EFF59 /* EthereumTransaction.swift */; };
 		B66A8F5B24F01EFD00BBD14B /* PrivateKey+v27.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A8F5A24F01EFD00BBD14B /* PrivateKey+v27.swift */; };
 		B6A6435024EE9D16009D1750 /* HDEthereumAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A6434F24EE9D16009D1750 /* HDEthereumAccount.swift */; };
-		B6A6435624EEA48D009D1750 /* ApplicationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A6435524EEA48D009D1750 /* ApplicationContext.swift */; };
+		B6A6435624EEA48D009D1750 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A6435524EEA48D009D1750 /* Application.swift */; };
 		B6E1E9E424ED7A1D0081CF82 /* SmartWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9A524ED77310081CF82 /* SmartWalletTests.swift */; };
 		B6E1E9E524ED7A1D0081CF82 /* EthereumAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9B024ED77C00081CF82 /* EthereumAccountTests.swift */; };
 		B6E1E9E624ED7A1D0081CF82 /* EtherNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9AE24ED77C00081CF82 /* EtherNumberFormatterTests.swift */; };
@@ -204,7 +204,7 @@
 		B63B474C24ED6BF5000EFF59 /* EthereumTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthereumTransaction.swift; sourceTree = "<group>"; };
 		B66A8F5A24F01EFD00BBD14B /* PrivateKey+v27.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivateKey+v27.swift"; sourceTree = "<group>"; };
 		B6A6434F24EE9D16009D1750 /* HDEthereumAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDEthereumAccount.swift; sourceTree = "<group>"; };
-		B6A6435524EEA48D009D1750 /* ApplicationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationContext.swift; sourceTree = "<group>"; };
+		B6A6435524EEA48D009D1750 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		B6E1E9A324ED77310081CF82 /* SmartWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E1E9A524ED77310081CF82 /* SmartWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWalletTests.swift; sourceTree = "<group>"; };
 		B6E1E9A724ED77310081CF82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -581,7 +581,7 @@
 				DCFFBE532472C78000AB0C4B /* service */,
 				DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */,
 				DC40D7AE2412AC2F00C792EB /* UIViewController+NavController.swift */,
-				B6A6435524EEA48D009D1750 /* ApplicationContext.swift */,
+				B6A6435524EEA48D009D1750 /* Application.swift */,
 			);
 			path = application;
 			sourceTree = "<group>";
@@ -978,7 +978,7 @@
 				DC60713B2431F9FF00CED3BF /* Http.swift in Sources */,
 				B63B474E24ED6BF5000EFF59 /* PublicKey.swift in Sources */,
 				DC4ADCA6241928EC008C23C7 /* TransactionViewCell.swift in Sources */,
-				B6A6435624EEA48D009D1750 /* ApplicationContext.swift in Sources */,
+				B6A6435624EEA48D009D1750 /* Application.swift in Sources */,
 				DC40D7AC2412A35C00C792EB /* WithoutWalletViewController.swift in Sources */,
 				B63B470D24ED69F7000EFF59 /* Chain.swift in Sources */,
 				B63B471824ED6A42000EFF59 /* WalletStorage.swift in Sources */,
