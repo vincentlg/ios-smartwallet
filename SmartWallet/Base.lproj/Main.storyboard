@@ -25,13 +25,13 @@
                                 <rect key="frame" x="20" y="115" width="374" height="663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Addresses registered as owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Feh-aR-EMa">
-                                        <rect key="frame" x="30" y="30" width="217" height="18"/>
+                                        <rect key="frame" x="20" y="30" width="217" height="18"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2M1-BA-lcX">
-                                        <rect key="frame" x="0.0" y="68" width="374" height="505"/>
+                                        <rect key="frame" x="0.0" y="108" width="374" height="465"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="OwnerViewCell" id="vVo-AM-4iw" customClass="OwnerTableViewCell" customModule="Moonkey" customModuleProvider="target">
@@ -83,15 +83,27 @@
                                             <segue destination="c6Q-8H-0dD" kind="presentation" identifier="addowner_segue" id="xv7-bq-kE4"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These addresses are authorized to sign a message to execute transactions with your smartwallet" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="hpc-gz-bDh">
+                                        <rect key="frame" x="20" y="58" width="334" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="t6n-2X-yj5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="QJ6-n4-UEG" firstAttribute="top" secondItem="2M1-BA-lcX" secondAttribute="bottom" constant="20" id="70f-aV-ztI"/>
                                     <constraint firstItem="QJ6-n4-UEG" firstAttribute="leading" secondItem="Iqv-H5-m5g" secondAttribute="leading" constant="20" id="Abv-6A-WEH"/>
                                     <constraint firstItem="Feh-aR-EMa" firstAttribute="top" secondItem="Iqv-H5-m5g" secondAttribute="top" constant="30" id="L3A-kO-83g"/>
-                                    <constraint firstItem="Feh-aR-EMa" firstAttribute="leading" secondItem="Iqv-H5-m5g" secondAttribute="leading" constant="30" id="b9j-GX-cVi"/>
+                                    <constraint firstItem="hpc-gz-bDh" firstAttribute="leading" secondItem="Iqv-H5-m5g" secondAttribute="leading" constant="20" id="LB2-SI-MzB"/>
+                                    <constraint firstItem="hpc-gz-bDh" firstAttribute="top" secondItem="Feh-aR-EMa" secondAttribute="bottom" constant="10" id="TDQ-5n-m6D"/>
+                                    <constraint firstAttribute="trailing" secondItem="hpc-gz-bDh" secondAttribute="trailing" constant="20" id="W47-Sw-jhN"/>
+                                    <constraint firstItem="2M1-BA-lcX" firstAttribute="top" secondItem="hpc-gz-bDh" secondAttribute="bottom" constant="10" id="Xy9-HE-ctf"/>
+                                    <constraint firstItem="Feh-aR-EMa" firstAttribute="leading" secondItem="Iqv-H5-m5g" secondAttribute="leading" constant="20" id="b9j-GX-cVi"/>
                                     <constraint firstAttribute="bottom" secondItem="QJ6-n4-UEG" secondAttribute="bottom" constant="20" id="bSq-1o-i5S"/>
-                                    <constraint firstItem="2M1-BA-lcX" firstAttribute="top" secondItem="Feh-aR-EMa" secondAttribute="bottom" constant="20" id="end-AK-yQJ"/>
                                     <constraint firstAttribute="trailing" secondItem="QJ6-n4-UEG" secondAttribute="trailing" constant="20" id="lag-dL-v7E"/>
                                     <constraint firstItem="2M1-BA-lcX" firstAttribute="leading" secondItem="Iqv-H5-m5g" secondAttribute="leading" id="q2d-3W-sXG"/>
                                     <constraint firstAttribute="trailing" secondItem="2M1-BA-lcX" secondAttribute="trailing" id="sk3-pj-XCv"/>
@@ -170,7 +182,7 @@
                                             <segue destination="76r-iW-V58" kind="presentation" identifier="show_scanner_segue" id="RCM-oJ-AnQ"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you loose access to your phone, you will still have control of your wallet with this address." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="kuG-9r-g7b">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add owner to be able to manage to your smartwallet if you lose access to your phone" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="kuG-9r-g7b">
                                         <rect key="frame" x="30" y="56" width="314" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="BcY-DI-Nbs"/>
