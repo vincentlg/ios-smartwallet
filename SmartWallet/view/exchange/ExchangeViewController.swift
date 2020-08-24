@@ -10,6 +10,7 @@ import UIKit
 import BigInt
 import MaterialComponents.MaterialTextFields
 import JGProgressHUD
+import web3
 
 class ExchangeViewController: UIViewController {
     
@@ -167,11 +168,9 @@ class ExchangeViewController: UIViewController {
             case .success(let result):
                 DispatchQueue.main.async {
                     
-                    let erc20ApproveData = ERC20Encoder.encodeApprove(spender: EthereumAddress(string:result)!, tokens:  BigUInt(self.amountWei!)).hexValue
-                    //TODO
-                    let messageData = ""//ApplicationContext.smartwallet!.encodeExecute(to: self.sourceToken!.address, value:"0", data: Data(hexString:erc20ApproveData)!)
+                    let erc20ApproveData = ERC20Encoder.encodeApprove(spender: EthereumAddress(string:result)!, tokens:  BigUInt(self.amountWei!))
                     
-                    self.moonkeyService.relayTransaction(smartWallet: Application.smartwallet!, messageData: messageData, gas:"150000") { (result) in
+                    Application.relay(to: web3.EthereumAddress(self.sourceToken!.address), value: BigUInt(0), data: erc20ApproveData, gas: "150000" ) { (result) in
                         switch result {
                         case .success(let txResponse):
                             DispatchQueue.main.async {
@@ -225,7 +224,7 @@ class ExchangeViewController: UIViewController {
                                 destToken: self.destToken!.address,
                                 srcAmount: self.amountWei!.description,
                                 destAmount: self.destAmountWei!.description,
-                                userAddress: Application.smartwallet!.ethereumAddress)
+                                userAddress: Application.smartwallet!.address.value)
         
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Preparing transaction"
@@ -234,12 +233,9 @@ class ExchangeViewController: UIViewController {
         self.paraswapService.getParaswapTx(body: body) { (result) in
             switch result {
             case .success(let response):
-                
-                //TODO
-                let messageData = ""//ApplicationContext.smartwallet!.encodeExecute(to:  self.paraswapService.paraswapContract, value: BigUInt(response.value!)!, data: Data(hexString: response.data!)!)
-                
+                                
                 DispatchQueue.main.async {
-                    self.moonkeyService.relayTransaction(smartWallet: Application.smartwallet!, messageData: messageData) { (result) in
+                    Application.relay(to: web3.EthereumAddress(self.paraswapService.paraswapContract), value: BigUInt(response.value!)!, data: Data(hexString: response.data!)!) { (result) in
                         switch result {
                         case .success(let txResponse):
                             DispatchQueue.main.async {
@@ -250,7 +246,7 @@ class ExchangeViewController: UIViewController {
                             }
                             break
                             
-                        case .failure(let error):
+                        case .failure(_):
                             DispatchQueue.main.async {
                                 hud.dismiss()
                                 self.dismiss(animated: true, completion: {

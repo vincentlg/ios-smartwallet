@@ -85,77 +85,31 @@ class SendViewController: UIViewController {
         }
         self.view.endEditing(true)
         
-        if (self.fromToken?.symbol == "ETH") {
-            self.sendEth(amount: BigUInt(amount))
-        } else {
-            self.sendERC20(amount: BigUInt(amount))
+        let to = web3.EthereumAddress(self.destinationTextField.text!)
+        var gas =  "100000"
+        var data = Data()
+        var value = BigUInt(amount)
+        
+        if (self.fromToken?.symbol != "ETH") {
+            gas = "150000"
+            value = BigUInt(0)
+            data = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: destinationTextField.text!)!, tokens: value)
         }
-    }
-    
-    func sendERC20(amount: BigUInt) {
         
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
-        let ercTransferData = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: destinationTextField.text!)!, tokens: amount).hexValue
-        //TODO
-        let messageData = "" // ApplicationContext.smartwallet!.encodeExecute(to: fromToken!.address, value:"0", data: Data(hexString:ercTransferData)!)
         
-        moonkeyService.relayTransaction(smartWallet: Application.smartwallet!, messageData: messageData, gas:"150000") { (result) in
+        Application.relay(to: to, value: value, data: data, gas: gas) { (result) in
             switch result {
             case .success(let txResponse):
+                
                 DispatchQueue.main.async {
                     hud.dismiss()
                     self.dismiss(animated: true, completion: {
                         self.watchTxHandler?(txResponse)
                     })
                 }
-                break
-                
-            case .failure(let error):
-                NSLog(error.localizedDescription)
-                DispatchQueue.main.async {
-                    hud.dismiss()
-                    self.dismiss(animated: true, completion: {
-                        self.displayErrorHandler?()
-                    })
-                }
-                break
-            }
-            
-        }
-    }
-    
-    func sendEth(amount: BigUInt) {
-        let hud = JGProgressHUD(style: .dark)
-        hud.show(in: self.view)
-        
-        let to = web3.EthereumAddress(self.destinationTextField.text!)
-        Application.encodeExecute(to: to, value: amount, data: Data()) { (result) in
-            switch result {
-            case .success(let executeData):
-                self.moonkeyService.relayTransaction(smartWallet: Application.smartwallet!, messageData: executeData, gas: "100000") { (result) in
-                    switch result {
-                    case .success(let txResponse):
-                        DispatchQueue.main.async {
-                            hud.dismiss()
-                            self.dismiss(animated: true, completion: {
-                                self.watchTxHandler?(txResponse)
-                            })
-                        }
-                        break
-                        
-                    case .failure(_):
-                        DispatchQueue.main.async {
-                            hud.dismiss()
-                            self.dismiss(animated: true, completion: {
-                                self.displayErrorHandler?()
-                            })
-                        }
-                        break
-                    }
-                }
-                
-                
+                break;
                 
             case .failure(_):
                 DispatchQueue.main.async {
@@ -167,7 +121,6 @@ class SendViewController: UIViewController {
                 break
             }
         }
-        
         
     }
     

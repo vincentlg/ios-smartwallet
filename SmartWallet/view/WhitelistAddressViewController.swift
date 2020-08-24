@@ -10,6 +10,8 @@ import UIKit
 import MaterialComponents.MaterialTextFields
 import MaterialComponents.MaterialSnackbar
 import JGProgressHUD
+import web3
+import BigInt
 
 class WhitelistAddressViewController:UIViewController {
     
@@ -37,10 +39,12 @@ class WhitelistAddressViewController:UIViewController {
         let hud = JGProgressHUD(style: .extraLight)
         hud.textLabel.text = "Your address is being added.\nPlease wait (around 1 min)"
         hud.show(in: self.view)
+       
         
-        //TODO
-        let messageData = ""//ApplicationContext.smartwallet!.encodeUpdateWhiteList(eoa:  addressTextField.text!, value: true)
-        moonkeyService.relayTransaction(smartWallet: Application.smartwallet!, messageData: messageData, gas:"120000") { (result) in
+        let data = Application.smartwallet!.encodeAddOwnerWithThreshold(owner:  web3.EthereumAddress(self.addressTextField.text!),
+                                                                        threshold: BigUInt(1))
+
+        Application.relay(to: Application.smartwallet!.address, value: BigUInt(0), data: Data(hexString: data)!) { (result) in
             switch result {
                 
             case .success(let txResponse):
@@ -67,8 +71,10 @@ class WhitelistAddressViewController:UIViewController {
                 break
                 
             case .failure(let error):
-                hud.dismiss()
-                self.displayErrorOccured()
+                DispatchQueue.main.async {
+                    hud.dismiss()
+                    self.displayErrorOccured()
+                }
                 break
             }
         }

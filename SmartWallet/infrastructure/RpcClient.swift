@@ -129,7 +129,6 @@ public struct RpcClient {
                 completion(.failure(error))
                 return
             }
-            
             guard let result = try? JSONDecoder().decode(T.self, from: data) else {
                 
                 let error = NSError(domain: "error invalide response format", code: 0, userInfo: nil)

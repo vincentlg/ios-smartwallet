@@ -139,7 +139,7 @@ class MoonkeyService {
     
     public func relayTransaction(smartWallet: SmartWallet, messageData: String, gas: String = "", completion: @escaping (Result<RelayResponse, Error>) -> Void)  -> Void {
         
-        let body = RelayRequest(to: smartWallet.ethereumAddress, data: messageData, gas: gas)
+        let body = RelayRequest(to: smartWallet.address.value, data: messageData, gas: gas)
         
         var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-tx-relay-message-data?network="+self.network)!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

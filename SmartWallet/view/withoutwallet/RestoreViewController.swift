@@ -21,11 +21,11 @@ class RestoreViewController: UIViewController {
     var walletAddressTextFieldController: MDCTextInputControllerUnderline?
     
     @IBOutlet weak var twelvesWordsView: MDCTextField!
-     var twelvesWordsViewController: MDCTextInputControllerUnderline?
+    var twelvesWordsViewController: MDCTextInputControllerUnderline?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         self.walletAddressTextFieldController = MDCTextInputControllerUnderline(textInput: self.walletAddressTextField)
         self.twelvesWordsViewController = MDCTextInputControllerUnderline(textInput: self.twelvesWordsView)
         
@@ -46,20 +46,16 @@ class RestoreViewController: UIViewController {
         
         if let mnemonic = self.twelvesWordsView.text?.trimmingCharacters(in: .whitespacesAndNewlines), mnemonic != "" {
             
-             let walletId = WalletID(address:  self.walletAddressTextField.text!, mnemonic: self.twelvesWordsView.text!)
+            let walletId = WalletID(address:  self.walletAddressTextField.text!, mnemonic: self.twelvesWordsView.text!)
             
             Application.restore(walletId: walletId)
-           
-            //TODO
-            let isWhitelistedData = "" //= ApplicationContext.smartwallet!.encodeIsEoaWhitelisted(eoa: ApplicationContext.account!.first.ethereumAddress)
             
-            self.rpc.call(to:self.walletAddressTextField.text!, data:isWhitelistedData, receive: JSONRPCResult<String>.self) { (result) in
+            Application.isAccountOwner() { (result) in
                 switch result {
-                case .success(let response):
+                case .success(let isOwner):
                     DispatchQueue.main.async {
-                       
-                        if (response.result == "0x0000000000000000000000000000000000000000000000000000000000000001") {
-                             DispatchQueue.main.async {
+                        if (isOwner) {
+                            DispatchQueue.main.async {
                                 do {
                                     try self.walletStorage.store(walletID: walletId)
                                 } catch (let error) {
@@ -77,10 +73,10 @@ class RestoreViewController: UIViewController {
                 case .failure(_):
                     Application.clear()
                     DispatchQueue.main.async {
-                     self.twelvesWordsViewController?.setErrorText("An error occured please try again", errorAccessibilityValue: "An error occured please try again")
+                        self.twelvesWordsViewController?.setErrorText("An error occured please try again", errorAccessibilityValue: "An error occured please try again")
                     }
                     break
-                        
+                    
                 }
             }
             
@@ -93,5 +89,5 @@ class RestoreViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-       
+    
 }
