@@ -15,7 +15,7 @@ public class Application {
     
     static public var smartwallet: SmartWallet?
     static public var account: HDEthereumAccount?
-    static public var network: Chain = .mainnet
+    static public var network: Chain = .ropsten
     
     static private var moonkeyService: MoonkeyService = MoonkeyService()
     

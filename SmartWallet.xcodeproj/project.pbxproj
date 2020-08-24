@@ -12,7 +12,6 @@
 		B61766F424EE65C2009B7C5B /* GnosisSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61766F324EE65C2009B7C5B /* GnosisSafe.swift */; };
 		B621AB1B24F4030C009535E2 /* OwnersViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B621AB1A24F4030C009535E2 /* OwnersViewControllers.swift */; };
 		B621AB1D24F4034C009535E2 /* OwnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B621AB1C24F4034C009535E2 /* OwnerTableViewCell.swift */; };
-		B63B470B24ED69F7000EFF59 /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470724ED69F6000EFF59 /* Identity.swift */; };
 		B63B470C24ED69F7000EFF59 /* SmartWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470824ED69F6000EFF59 /* SmartWallet.swift */; };
 		B63B470D24ED69F7000EFF59 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470924ED69F6000EFF59 /* Chain.swift */; };
 		B63B470E24ED69F7000EFF59 /* TransactionReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B470A24ED69F7000EFF59 /* TransactionReceipt.swift */; };
@@ -156,7 +155,6 @@
 		B61766F324EE65C2009B7C5B /* GnosisSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnosisSafe.swift; sourceTree = "<group>"; };
 		B621AB1A24F4030C009535E2 /* OwnersViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersViewControllers.swift; sourceTree = "<group>"; };
 		B621AB1C24F4034C009535E2 /* OwnerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerTableViewCell.swift; sourceTree = "<group>"; };
-		B63B470724ED69F6000EFF59 /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		B63B470824ED69F6000EFF59 /* SmartWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartWallet.swift; sourceTree = "<group>"; };
 		B63B470924ED69F6000EFF59 /* Chain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 		B63B470A24ED69F7000EFF59 /* TransactionReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionReceipt.swift; sourceTree = "<group>"; };
@@ -436,7 +434,6 @@
 			isa = PBXGroup;
 			children = (
 				B63B470824ED69F6000EFF59 /* SmartWallet.swift */,
-				B63B470724ED69F6000EFF59 /* Identity.swift */,
 				B61766F324EE65C2009B7C5B /* GnosisSafe.swift */,
 			);
 			path = smartwallet;
@@ -1032,7 +1029,6 @@
 				B621AB1D24F4034C009535E2 /* OwnerTableViewCell.swift in Sources */,
 				DCFFBE522472BFBD00AB0C4B /* EtherscanService.swift in Sources */,
 				DC49E0D024B74C3B001B1F39 /* MoonkeyService.swift in Sources */,
-				B63B470B24ED69F7000EFF59 /* Identity.swift in Sources */,
 				B63B476324ED6BF5000EFF59 /* EthereumAddress.swift in Sources */,
 				B63B476B24ED6BF5000EFF59 /* GenericJSON.swift in Sources */,
 				B63B476E24ED6BF5000EFF59 /* PublicKey+Ethereum.swift in Sources */,
