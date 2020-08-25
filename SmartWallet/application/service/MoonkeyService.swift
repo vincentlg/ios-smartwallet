@@ -48,7 +48,6 @@ class MoonkeyService {
         return "ropsten"
     }
     
-    let rpc = RpcClient()
     
     public func deploySmartwallet(account: String, completion: @escaping (Result<DeploySmartwalletResponse, Error>) -> Void)  -> Void {
         

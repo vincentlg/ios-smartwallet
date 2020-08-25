@@ -25,7 +25,6 @@ public protocol SmartWallet {
     func getTransactionHash(to: web3.EthereumAddress, value:BigUInt, data: Data, nonce: BigUInt, completion: @escaping (Result<(String), Error>) -> Void)  -> Void
     func getTransactionHashWithNonce(to: web3.EthereumAddress, value:BigUInt, data: Data, completion: @escaping (Result<(String), Error>) -> Void)  -> Void
     func getOwners(completion: @escaping (Result<([String]), Error>) -> Void)  -> Void
-    //func encodeUpdateWhiteList(eoa: String, value:Bool) -> String
 }
 
 
