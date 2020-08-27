@@ -52,7 +52,18 @@ class SendViewController: UIViewController {
         self.destinationTextFieldController = MDCTextInputControllerUnderline(textInput: destinationTextField)
         self.amountTextField.becomeFirstResponder()
         
-        self.refreshView()
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+        Application.updateEthPrice() { (result) in
+            switch result {
+            case .failure(_), .success(_):
+                DispatchQueue.main.async {
+                    hud.dismiss()
+                    self.refreshView()
+                }
+                break
+            }
+        }
         
     }
     
@@ -60,19 +71,12 @@ class SendViewController: UIViewController {
         self.tokenLabel.text = self.fromToken?.symbol
         self.maxAmountLabel.text = "Max: "+self.fromToken!.formattedBalance
         
-        var value = BigUInt("10000")
-        var data = Data()
-        var to = Application.account!.first.ethereumAddress
         var safeTxGas =  BigUInt(10000)
-        
         if fromToken?.symbol != "ETH" {
-            value = BigUInt("0")
-            to = web3.EthereumAddress(fromToken!.address)
-            data = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: Application.account!.first.ethereumAddress.value)!, tokens: value)
             safeTxGas =  BigUInt(20000)
         }
         
-        Application.calculateGasFees(to: to, value: value, data: data, safeGas: safeTxGas) { (result) in
+        Application.calculateGasFees(safeGas: safeTxGas) { (result) in
             switch result {
             case .success(let fees):
                 DispatchQueue.main.async {

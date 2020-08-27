@@ -17,6 +17,8 @@ public class Application {
     static public var account: HDEthereumAccount?
     static public var network: Chain = .mainnet
     static public var baseGas: BigUInt = BigUInt(70000)
+    static public var ethPrice: Double?
+    
     
     //TODO should be returned from services
     static public var forwarderAddress: web3.EthereumAddress = web3.EthereumAddress("0x641d5315d213EA8eb03563f992c7fFfdd677D0cC")
@@ -26,7 +28,7 @@ public class Application {
     
     static private var moonkeyService: MoonkeyService = MoonkeyService()
     
-     static let ethereumClient: EthereumClient = EthereumClient(url: URL(string: "https://eth-mainnet.alchemyapi.io/v2/yKy-FkvOSlIgp9W8_mCxhW-HEdISZ7-Y")!)
+    static let ethereumClient: EthereumClient = EthereumClient(url: URL(string: "https://eth-mainnet.alchemyapi.io/v2/yKy-FkvOSlIgp9W8_mCxhW-HEdISZ7-Y")!)
     
     static let erc20: ERC20 = ERC20(client: ethereumClient)
     
@@ -83,40 +85,48 @@ public class Application {
         }
     }
     
-    static func calculateGasFees(to: web3.EthereumAddress, value: BigUInt, data:Data,  safeGas: BigUInt, completion: @escaping (Result<(Double), Error>) -> Void)  -> Void {
-        
+    static func updateEthPrice(completion: @escaping (Result<(Double), Error>) -> Void)  -> Void {
         self.etherscanService.ethPrice(){ (result) in
             switch result {
             case .success(let ethPrice):
-                self.moonkeyService.getGasPrice() { (result) in
-                    switch result {
-                    case .success(let gasPriceResponse):
-                        let gasPrice = BigUInt(gasPriceResponse.gas_prices.fast)!
-                        
-                        let totalGas = safeGas + Application.baseGas
-                        let totalEth = totalGas * gasPrice
-                        
-                        let formatter = EtherNumberFormatter()
-                        let ethNumber = formatter.string(from:BigInt(totalEth))
-                        let ethDouble = Double(ethNumber)!
-                        let price = Double(ethPrice.ethusd)!
-                        
-                        let fees = ethDouble * price
-                        completion(.success(fees))
-                        return
-                        
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
-                }
+                self.ethPrice = Double(ethPrice.ethusd)
+                completion(.success(self.ethPrice!))
                 return
+            case .failure(let error):
+                self.ethPrice = nil
+                completion(.failure(error))
+                return
+            }
+        }
+    }
+    
+    static func calculateGasFees(safeGas: BigUInt, completion: @escaping (Result<(Double), Error>) -> Void)  -> Void {
+        guard let price = self.ethPrice else {
+            completion(.failure(NSError(domain: "Error nill EthPrice", code: 0, userInfo: nil)))
+            return
+        }
+        NSLog("START get gasPrice")
+        self.moonkeyService.getGasPrice() { (result) in
+            switch result {
+            case .success(let gasPriceResponse):
+                let gasPrice = BigUInt(gasPriceResponse.gas_prices.fast)!
+                
+                let totalGas = safeGas + Application.baseGas
+                let totalEth = totalGas * gasPrice
+                
+                let formatter = EtherNumberFormatter()
+                let ethNumber = formatter.string(from:BigInt(totalEth))
+                let ethDouble = Double(ethNumber)!
+                
+                let fees = ethDouble * price
+                NSLog("STOP get gasPrice")
+                completion(.success(fees))
+                return
+                
             case .failure(let error):
                 completion(.failure(error))
                 return
             }
-            
-            
         }
         
         

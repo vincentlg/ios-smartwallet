@@ -196,7 +196,6 @@ class ParaswapService {
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()
         
-        print(String(data:request.httpBody!, encoding: .utf8)!)
         Http.execute(with: request, receive: GetTxResponse.self, completion: completion).resume()
     }
     

@@ -592,7 +592,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas fees: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csc-Ri-Atd">
-                                        <rect key="frame" x="30" y="197" width="309" height="14"/>
+                                        <rect key="frame" x="30" y="197" width="294.5" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -658,8 +658,8 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6X-fG-iII">
-                                        <rect key="frame" x="344" y="211" width="0.0" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="$0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6X-fG-iII">
+                                        <rect key="frame" x="329.5" y="197.5" width="14.5" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1165,7 +1165,7 @@ The order of the words is important.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vx-Cx-Odj" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
-                                <rect key="frame" x="20" y="95" width="374" height="330"/>
+                                <rect key="frame" x="20" y="95" width="374" height="340"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="oF8-QJ-OKl">
                                         <rect key="frame" x="30" y="81" width="56.5" height="36"/>
@@ -1237,7 +1237,7 @@ The order of the words is important.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXg-Od-8sk" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="250" width="314" height="50"/>
+                                        <rect key="frame" x="30" y="260" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2ah-RH-vzc"/>
                                         </constraints>
@@ -1270,6 +1270,18 @@ The order of the words is important.</string>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4W-f8-0Pk">
+                                        <rect key="frame" x="344" y="257" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Gas fees: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r66-X4-i5A">
+                                        <rect key="frame" x="30" y="243" width="311" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -1281,22 +1293,27 @@ The order of the words is important.</string>
                                     <constraint firstItem="Y1T-Bf-7sP" firstAttribute="centerY" secondItem="oF8-QJ-OKl" secondAttribute="centerY" id="74c-jk-Qpk"/>
                                     <constraint firstItem="M1j-R3-ZyO" firstAttribute="leading" secondItem="oF8-QJ-OKl" secondAttribute="trailing" constant="3" id="8wA-Zv-FIZ"/>
                                     <constraint firstItem="MMb-qo-fed" firstAttribute="leading" secondItem="1B5-uI-PeK" secondAttribute="trailing" constant="3" id="9bo-7Q-XEG"/>
+                                    <constraint firstItem="OXg-Od-8sk" firstAttribute="top" secondItem="r4W-f8-0Pk" secondAttribute="bottom" constant="3" id="9y8-kF-LG1"/>
                                     <constraint firstAttribute="trailing" secondItem="OXg-Od-8sk" secondAttribute="trailing" constant="30" id="Bc3-aA-HGa"/>
                                     <constraint firstItem="M1j-R3-ZyO" firstAttribute="centerY" secondItem="oF8-QJ-OKl" secondAttribute="centerY" id="Euf-rX-7q5"/>
                                     <constraint firstAttribute="trailing" secondItem="tNg-lX-zTB" secondAttribute="trailing" constant="30" id="GDD-Ki-noD"/>
+                                    <constraint firstAttribute="trailing" secondItem="r4W-f8-0Pk" secondAttribute="trailing" constant="30" id="GKT-mf-eWc"/>
+                                    <constraint firstItem="r4W-f8-0Pk" firstAttribute="leading" secondItem="r66-X4-i5A" secondAttribute="trailing" constant="3" id="JOd-8b-jOr"/>
                                     <constraint firstAttribute="bottom" secondItem="OXg-Od-8sk" secondAttribute="bottom" constant="30" id="KY5-sG-6ue"/>
                                     <constraint firstItem="UHQ-zs-KRu" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="Osp-j0-Qlz"/>
                                     <constraint firstItem="MMb-qo-fed" firstAttribute="centerY" secondItem="1B5-uI-PeK" secondAttribute="centerY" id="OvG-LO-HyK"/>
                                     <constraint firstItem="OXg-Od-8sk" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="PRq-vl-k2T"/>
                                     <constraint firstItem="MTp-F3-zz5" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="QrZ-NJ-wbd"/>
+                                    <constraint firstItem="OXg-Od-8sk" firstAttribute="top" secondItem="r66-X4-i5A" secondAttribute="bottom" constant="3" id="QzA-5u-7Z0"/>
                                     <constraint firstItem="bRM-KE-0Zn" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="R7P-T6-i9F"/>
                                     <constraint firstItem="6KC-3v-358" firstAttribute="leading" secondItem="gvr-8M-ymI" secondAttribute="trailing" constant="3" id="SIT-Zs-EhQ"/>
                                     <constraint firstItem="UHQ-zs-KRu" firstAttribute="top" secondItem="gvr-8M-ymI" secondAttribute="bottom" constant="1" id="W2U-SN-rS9"/>
+                                    <constraint firstItem="r66-X4-i5A" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="YTy-tv-IwM"/>
                                     <constraint firstAttribute="trailing" secondItem="NnI-nD-aKK" secondAttribute="trailing" constant="30" id="bEr-Dy-jPg"/>
                                     <constraint firstAttribute="trailing" secondItem="Y1T-Bf-7sP" secondAttribute="trailing" constant="30" id="cCc-tg-m60"/>
                                     <constraint firstItem="6KC-3v-358" firstAttribute="centerY" secondItem="gvr-8M-ymI" secondAttribute="centerY" id="cba-cO-z1g"/>
                                     <constraint firstItem="NnI-nD-aKK" firstAttribute="leading" secondItem="3vx-Cx-Odj" secondAttribute="leading" constant="30" id="eiE-i0-ers"/>
-                                    <constraint firstAttribute="height" constant="330" id="fPY-xu-KM2"/>
+                                    <constraint firstAttribute="height" constant="340" id="fPY-xu-KM2"/>
                                     <constraint firstItem="NnI-nD-aKK" firstAttribute="top" secondItem="oF8-QJ-OKl" secondAttribute="bottom" id="fR9-EQ-Ksw"/>
                                     <constraint firstAttribute="trailing" secondItem="UHQ-zs-KRu" secondAttribute="trailing" constant="30" id="goI-Ga-a2h"/>
                                     <constraint firstItem="tNg-lX-zTB" firstAttribute="leading" secondItem="6KC-3v-358" secondAttribute="trailing" constant="10" id="jNY-VJ-bPe"/>
@@ -1308,6 +1325,13 @@ The order of the words is important.</string>
                                     <constraint firstItem="1B5-uI-PeK" firstAttribute="centerX" secondItem="3vx-Cx-Odj" secondAttribute="centerX" id="zVh-0Z-UdW"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FZ-YD-pV2">
+                                <rect key="frame" x="207" y="421" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exchange" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-sE-HuZ">
                                 <rect key="frame" x="20" y="30" width="374" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
@@ -1331,9 +1355,12 @@ The order of the words is important.</string>
                         <outlet property="buyButton" destination="OXg-Od-8sk" id="n55-dy-98N"/>
                         <outlet property="destAmountLabel" destination="tNg-lX-zTB" id="qKn-wU-b0v"/>
                         <outlet property="destLabel" destination="gvr-8M-ymI" id="rUc-Vs-CcN"/>
+                        <outlet property="gasFeesLabel" destination="r4W-f8-0Pk" id="die-dM-1zq"/>
+                        <outlet property="gasFeesTitleLabel" destination="r66-X4-i5A" id="d9B-aU-2Kb"/>
                         <outlet property="maxAmountLabel" destination="NnI-nD-aKK" id="mVe-Jm-ryt"/>
                         <outlet property="slippageLabel" destination="UHQ-zs-KRu" id="W7t-iT-EIM"/>
                         <outlet property="sourceLabel" destination="oF8-QJ-OKl" id="bbK-kS-i5Q"/>
+                        <segue destination="zYS-Cn-7y6" kind="presentation" identifier="approve_segue" id="HPd-ev-7Yw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DcI-c3-zRX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1747,10 +1774,116 @@ The order of the words is important.</string>
             </objects>
             <point key="canvasLocation" x="-2846.376811594203" y="-1864.2857142857142"/>
         </scene>
+        <!--Approve View Controller-->
+        <scene sceneID="A67-qN-5Ph">
+            <objects>
+                <viewController id="zYS-Cn-7y6" customClass="ApproveViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vkS-Nv-Ks9" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approve" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc7-TO-GOx">
+                                <rect key="frame" x="20" y="30" width="374" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4F-A5-BPd" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
+                                <rect key="frame" x="20" y="95" width="374" height="295"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="amount to approve" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Ghw-EN-8cK" customClass="MDCTextField">
+                                        <rect key="frame" x="30" y="116" width="314" height="34"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mdd-jc-VXd" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="215" width="314" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="tTP-Ad-f4p"/>
+                                        </constraints>
+                                        <state key="normal" title="Approve"/>
+                                        <connections>
+                                            <action selector="addAction:" destination="c6Q-8H-0dD" eventType="touchUpInside" id="fFQ-25-ewm"/>
+                                            <action selector="approveTouched:" destination="zYS-Cn-7y6" eventType="touchUpInside" id="ZPO-VL-pbd"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allows Paraswap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pw3-dT-rbT">
+                                        <rect key="frame" x="30" y="30" width="314" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to swap ERC20 token you need to allow paraswap." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="dyc-v6-ihZ">
+                                        <rect key="frame" x="30" y="56" width="314" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="eWl-SH-b4y"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas fees: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2E-Yn-Xs1">
+                                        <rect key="frame" x="30" y="198" width="295" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="$0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPG-6V-Urg">
+                                        <rect key="frame" x="329.5" y="198.5" width="14.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Mdd-jc-VXd" firstAttribute="leading" secondItem="E4F-A5-BPd" secondAttribute="leading" constant="30" id="0aO-ge-0mN"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mdd-jc-VXd" secondAttribute="bottom" constant="30" id="0x6-oD-vsC"/>
+                                    <constraint firstItem="f2E-Yn-Xs1" firstAttribute="leading" secondItem="E4F-A5-BPd" secondAttribute="leading" constant="30" id="7vc-sn-39J"/>
+                                    <constraint firstItem="cPG-6V-Urg" firstAttribute="leading" secondItem="f2E-Yn-Xs1" secondAttribute="trailing" constant="5" id="Dl1-L8-LpB"/>
+                                    <constraint firstItem="Pw3-dT-rbT" firstAttribute="top" secondItem="E4F-A5-BPd" secondAttribute="top" constant="30" id="FC4-JJ-rLQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pw3-dT-rbT" secondAttribute="trailing" constant="30" id="Vja-wo-gU9"/>
+                                    <constraint firstItem="Mdd-jc-VXd" firstAttribute="top" secondItem="cPG-6V-Urg" secondAttribute="bottom" constant="3" id="daz-Zf-foC"/>
+                                    <constraint firstAttribute="height" constant="295" id="dbj-XJ-Hfg"/>
+                                    <constraint firstAttribute="trailing" secondItem="dyc-v6-ihZ" secondAttribute="trailing" constant="30" id="gOW-Rw-SAR"/>
+                                    <constraint firstItem="Pw3-dT-rbT" firstAttribute="left" secondItem="E4F-A5-BPd" secondAttribute="left" constant="30" id="gQB-ax-yOc"/>
+                                    <constraint firstItem="dyc-v6-ihZ" firstAttribute="leading" secondItem="E4F-A5-BPd" secondAttribute="leading" constant="30" id="iSb-5e-7bd"/>
+                                    <constraint firstItem="Mdd-jc-VXd" firstAttribute="top" secondItem="f2E-Yn-Xs1" secondAttribute="bottom" constant="3" id="iZF-M2-xtf"/>
+                                    <constraint firstItem="Ghw-EN-8cK" firstAttribute="left" secondItem="E4F-A5-BPd" secondAttribute="left" constant="30" id="jwK-wm-IdJ"/>
+                                    <constraint firstAttribute="right" secondItem="Mdd-jc-VXd" secondAttribute="right" constant="30" id="oVm-zJ-Vek"/>
+                                    <constraint firstItem="Ghw-EN-8cK" firstAttribute="top" secondItem="dyc-v6-ihZ" secondAttribute="bottom" constant="20" id="rJO-Vv-jw2"/>
+                                    <constraint firstItem="cPG-6V-Urg" firstAttribute="leading" secondItem="f2E-Yn-Xs1" secondAttribute="trailing" constant="4.5" id="rM9-eQ-acH"/>
+                                    <constraint firstAttribute="trailing" secondItem="cPG-6V-Urg" secondAttribute="trailing" constant="30" id="xzK-wY-K7g"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ghw-EN-8cK" secondAttribute="trailing" constant="30" id="ybQ-Cy-2zG"/>
+                                    <constraint firstItem="dyc-v6-ihZ" firstAttribute="top" secondItem="Pw3-dT-rbT" secondAttribute="bottom" constant="8" id="zY2-W8-KyU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5HM-Qu-a2E" firstAttribute="trailing" secondItem="E4F-A5-BPd" secondAttribute="trailing" constant="20" id="KKI-V5-36V"/>
+                            <constraint firstItem="E4F-A5-BPd" firstAttribute="leading" secondItem="5HM-Qu-a2E" secondAttribute="leading" constant="20" id="QQR-61-nvV"/>
+                            <constraint firstItem="Zc7-TO-GOx" firstAttribute="leading" secondItem="5HM-Qu-a2E" secondAttribute="leading" constant="20" id="i86-3j-Fwm"/>
+                            <constraint firstItem="E4F-A5-BPd" firstAttribute="top" secondItem="Zc7-TO-GOx" secondAttribute="bottom" constant="30" id="pu0-YY-yiL"/>
+                            <constraint firstItem="Zc7-TO-GOx" firstAttribute="top" secondItem="5HM-Qu-a2E" secondAttribute="top" constant="30" id="vhl-Qq-hGb"/>
+                            <constraint firstItem="5HM-Qu-a2E" firstAttribute="trailing" secondItem="Zc7-TO-GOx" secondAttribute="trailing" constant="20" id="zom-sA-4p9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5HM-Qu-a2E"/>
+                    </view>
+                    <connections>
+                        <outlet property="GasFeesLabel" destination="cPG-6V-Urg" id="e7g-YQ-awU"/>
+                        <outlet property="approveAmount" destination="Ghw-EN-8cK" id="JqF-rV-HNF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2tE-OC-d6M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="741" y="708"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="MZs-3v-s8X"/>
-        <segue reference="dek-VQ-0nm"/>
+        <segue reference="yog-dw-0Rd"/>
         <segue reference="Eqw-uf-ziv"/>
     </inferredMetricsTieBreakers>
     <resources>

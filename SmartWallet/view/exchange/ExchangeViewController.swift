@@ -22,6 +22,8 @@ class ExchangeViewController: UIViewController {
     @IBOutlet weak var buyButton: WalletButton!
     @IBOutlet weak var amountTextField: MDCTextField!
     
+    @IBOutlet weak var gasFeesTitleLabel: UILabel!
+    @IBOutlet weak var gasFeesLabel: UILabel!
     var amountTextFieldController: MDCTextInputControllerUnderline?
     
     @IBOutlet weak var destAmountLabel: UILabel!
@@ -55,7 +57,32 @@ class ExchangeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getParaswapAddressForAllowanxe()
+        
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+        Application.updateEthPrice() { (result) in
+            switch result {
+            case .failure(_), .success(_):
+                self.paraswapService.getParaswapSenderAddress() { (result) in
+                    switch result {
+                    case .success(let address):
+                        DispatchQueue.main.async {
+                            hud.dismiss()
+                            self.paraswapAllowanceAddress = address
+                        }
+                        return
+                    case .failure(_):
+                        DispatchQueue.main.async {
+                            self.dispayErrorAlert(message: "Error when loading exchange, please try again later") { (_) in
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                        }
+                        return
+                    }
+                }
+                break
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +101,12 @@ class ExchangeViewController: UIViewController {
     
     
     @IBAction func buyAction(_ sender: Any) {
+        
+        if (self.isApproveRequired()){
+            self.performSegue(withIdentifier: "approve_segue", sender: self)
+            return
+        }
+        
         self.amountTextFieldController?.setErrorText(nil, errorAccessibilityValue:nil)
         
         if self.destAmountLabel.text == "0" {
@@ -92,11 +125,7 @@ class ExchangeViewController: UIViewController {
         }
         
         self.view.endEditing(true)
-        if (sourceToken?.symbol == "ETH") {
-            self.executeParaswapExchange()
-        } else {
-            self.erc20ApproveAndExecuteParaswap()
-        }
+        self.executeParaswapExchange()
     }
     
     public func selectSourceToken(token: TokenBalance) {
@@ -105,6 +134,7 @@ class ExchangeViewController: UIViewController {
     }
     
     private func refreshView(){
+        
         self.buyButton.setTitle("Buy", for: .normal)
         self.sourceLabel.text = self.sourceToken?.symbol
         self.maxAmountLabel.text = "Max: "+self.sourceToken!.formattedBalance
@@ -125,14 +155,25 @@ class ExchangeViewController: UIViewController {
                                                     }
                                                 }
                                                 self.allowanceAmount = allowance!
-                                                if let requiredAmount = self.amountWei, requiredAmount > self.allowanceAmount! {
-                                                    self.buyButton.setTitle("Approve and buy", for: .normal)
+                                                if self.isApproveRequired() {
+                                                    self.buyButton.setTitle("Approve", for: .normal)
                                                 }
                                             }
             }
             
             
         }
+    }
+    
+    private func isApproveRequired() -> Bool {
+        print(self.sourceToken!.symbol)
+        print(self.allowanceAmount)
+        print(self.self.amountWei)
+        
+        if let requiredAmount = self.amountWei, let allowance = self.allowanceAmount, self.sourceToken!.symbol != "ETH" && requiredAmount > allowance {
+            return true
+        }
+        return false
     }
     
     private func getTokens() {
@@ -185,79 +226,8 @@ class ExchangeViewController: UIViewController {
         self.present(alertController, animated: true)
     }
     
-    private func getParaswapAddressForAllowanxe() {
-        let hud = JGProgressHUD(style: .dark)
-        hud.show(in: self.view)
-        self.paraswapService.getParaswapSenderAddress() { (result) in
-            switch result {
-            case .success(let address):
-                DispatchQueue.main.async {
-                    hud.dismiss()
-                    self.paraswapAllowanceAddress = address
-                }
-                return
-            case .failure(_):
-                DispatchQueue.main.async {
-                    self.dispayErrorAlert(message: "Error when loading exchange, please try again later") { (_) in
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                }
-                return
-            }
-        }
-    }
     
-    
-    private func erc20ApproveAndExecuteParaswap(){
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Allowing Paraswap\nto use "+self.amountTextField.text!+" "+self.sourceToken!.symbol
-        hud.show(in: self.view)
-        
-        let erc20ApproveData = ERC20Encoder.encodeApprove(spender: EthereumAddress(string:self.paraswapAllowanceAddress!.value)!, tokens:  BigUInt(self.amountWei!))
-        
-        Application.relay(to: web3.EthereumAddress(self.sourceToken!.address), value: BigUInt(0), data: erc20ApproveData, safeTxGas: BigUInt("50000")) { (result) in
-            switch result {
-            case .success(let txResponse):
-                DispatchQueue.main.async {
-                    _ = self.moonkeyService.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
-                        
-                        switch result {
-                        case .success(_):
-                            DispatchQueue.main.async {
-                                hud.dismiss()
-                                self.executeParaswapExchange()
-                            }
-                            break
-                            
-                        case .failure(let error):
-                            DispatchQueue.main.async {
-                                hud.dismiss()
-                                self.dispayErrorAlert(message: error.localizedDescription)
-                            }
-                            break
-                        }
-                    }
-                }
-                
-                break
-                
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    hud.dismiss()
-                    self.dispayErrorAlert(message: error.localizedDescription)
-                }
-                break
-            }
-            
-        }
-        
-        
-        
-    }
-    
-    
-    private func executeParaswapExchange(){
-        
+    private func getParaswapTx(completion: @escaping (Result<GetTxResponse, Error>) -> Void) -> Void {
         let body = GetTxRequest(priceRoute: self.priceRoute!,
                                 srcToken: self.sourceToken!.address,
                                 destToken: self.destToken!.address,
@@ -265,14 +235,19 @@ class ExchangeViewController: UIViewController {
                                 destAmount: self.destAmountWei!.description,
                                 userAddress: Application.smartwallet!.address.value)
         
+        
+        self.paraswapService.getParaswapTx(body: body, completion: completion)
+    }
+    
+    private func executeParaswapExchange(){
+        
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Preparing transaction"
         hud.show(in: self.view)
         
-        self.paraswapService.getParaswapTx(body: body) { (result) in
+        self.getParaswapTx() { (result) in
             switch result {
             case .success(let response):
-                
                 DispatchQueue.main.async {
                     let gas = BigUInt(response.gas!)!
                     Application.relay(to: web3.EthereumAddress(self.paraswapService.paraswapContract), value: BigUInt(response.value!)!, data: Data(hexString: response.data!)!, safeTxGas: gas) { (result) in
@@ -316,6 +291,8 @@ class ExchangeViewController: UIViewController {
         if let amountText = amountTextField.text, let amountWeiBigInt = sourceToken?.token?.amountFrom(value: amountText){
             self.amountWei = BigUInt(amountWeiBigInt)
             if (amountWei?.description != "0") {
+                self.gasFeesTitleLabel.isHidden = true
+                self.gasFeesLabel.text = ""
                 self.paraswapService.getRate(sourceTokenAddress: self.sourceToken!.address, destTokenAddress: destToken!.address, amount: amountWei!.description) { (result) in
                     switch result {
                     case .success(let response):
@@ -336,6 +313,33 @@ class ExchangeViewController: UIViewController {
                         DispatchQueue.main.async {
                             self.destAmountLabel.text = self.destToken!.shortAmount(amount: BigInt(desAmountWithMargin))
                             self.slippageLabel.text = "Max: \(formattedMaxAmount) (\(self.slippage)% slippage)"
+                        }
+                        
+                        
+                        self.getParaswapTx() { (result) in
+                            switch result{
+                            case .success(let response):
+                                Application.calculateGasFees(safeGas: BigUInt(response.gas!)!) { (result) in
+                                    switch result{
+                                    case .success(let fees):
+                                        DispatchQueue.main.async {
+                                            self.gasFeesTitleLabel.isHidden = false
+                                            self.gasFeesLabel.text = "$ "+String(fees)
+                                        }
+                                        break
+                                    case .failure(_):
+                                        DispatchQueue.main.async {
+                                            self.gasFeesTitleLabel.isHidden = false
+                                            self.gasFeesLabel.text = "error"
+                                        }
+                                        break
+                                    }
+                                }
+                                break
+                            case .failure(let error):
+                                print(error)
+                                break
+                            }
                         }
                         
                         return
@@ -381,5 +385,15 @@ class ExchangeViewController: UIViewController {
                 destinationVC.selectionHandler = self.selectDestToken
             }
         }
+        
+        if segue.identifier == "approve_segue" {
+            if let destinationVC = segue.destination as? ApproveViewController {
+                destinationVC.sourceToken = self.sourceToken
+                destinationVC.paraswapAllowanceAddress = self.paraswapAllowanceAddress
+                destinationVC.approveSuccessHandler = self.refreshView
+                destinationVC.baseAmount  = self.amountWei
+            }
+        }
     }
+    
 }
