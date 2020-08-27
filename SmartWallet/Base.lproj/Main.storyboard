@@ -583,7 +583,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nX-Hz-KzG" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
-                                <rect key="frame" x="20" y="115" width="374" height="274"/>
+                                <rect key="frame" x="20" y="115" width="374" height="294"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Destination address" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="mUX-kQ-vrI" customClass="MDCTextField">
                                         <rect key="frame" x="30" y="124.5" width="266" height="34"/>
@@ -591,6 +591,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas fees: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csc-Ri-Atd">
+                                        <rect key="frame" x="30" y="197" width="309" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="8y0-zo-hZZ" customClass="MDCTextField">
                                         <rect key="frame" x="194" y="57" width="150" height="34"/>
                                         <constraints>
@@ -601,7 +607,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSs-4z-0kx" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="194" width="314" height="50"/>
+                                        <rect key="frame" x="30" y="214" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="tM5-kp-y4C"/>
                                         </constraints>
@@ -652,15 +658,24 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6X-fG-iII">
+                                        <rect key="frame" x="344" y="211" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="mUX-kQ-vrI" firstAttribute="top" secondItem="H2w-Cx-1N2" secondAttribute="bottom" constant="20" id="19m-c8-7CI"/>
+                                    <constraint firstItem="KSs-4z-0kx" firstAttribute="top" secondItem="M6X-fG-iII" secondAttribute="bottom" constant="3" id="6Ny-hW-y7r"/>
                                     <constraint firstAttribute="trailing" secondItem="hYp-EE-gs1" secondAttribute="trailing" constant="30" id="6ab-Bc-whD"/>
                                     <constraint firstItem="mUX-kQ-vrI" firstAttribute="left" secondItem="5nX-Hz-KzG" secondAttribute="left" constant="30" id="8wP-X7-L1K"/>
                                     <constraint firstItem="8y0-zo-hZZ" firstAttribute="centerY" secondItem="TpE-dO-AF8" secondAttribute="centerY" id="BMx-kb-TLk"/>
                                     <constraint firstItem="H2w-Cx-1N2" firstAttribute="top" secondItem="TpE-dO-AF8" secondAttribute="bottom" constant="-1" id="F8u-6E-qKA"/>
                                     <constraint firstAttribute="right" secondItem="8y0-zo-hZZ" secondAttribute="right" constant="30" id="Gt8-Ez-LLk"/>
+                                    <constraint firstAttribute="trailing" secondItem="M6X-fG-iII" secondAttribute="trailing" constant="30" id="JaJ-ca-QLa"/>
+                                    <constraint firstItem="csc-Ri-Atd" firstAttribute="leading" secondItem="5nX-Hz-KzG" secondAttribute="leading" constant="30" id="MIl-rP-NR3"/>
                                     <constraint firstItem="TpE-dO-AF8" firstAttribute="top" secondItem="hYp-EE-gs1" secondAttribute="bottom" constant="8" id="Txw-Jv-Cy0"/>
                                     <constraint firstAttribute="bottom" secondItem="KSs-4z-0kx" secondAttribute="bottom" constant="30" id="Zqc-6h-k5o"/>
                                     <constraint firstItem="H2w-Cx-1N2" firstAttribute="left" secondItem="5nX-Hz-KzG" secondAttribute="left" constant="30" id="aQt-6U-cXw"/>
@@ -670,8 +685,10 @@
                                     <constraint firstItem="KSs-4z-0kx" firstAttribute="leading" secondItem="5nX-Hz-KzG" secondAttribute="leading" constant="30" id="hHb-W8-umP"/>
                                     <constraint firstItem="hYp-EE-gs1" firstAttribute="left" secondItem="5nX-Hz-KzG" secondAttribute="left" constant="30" id="jEJ-4c-fHz"/>
                                     <constraint firstAttribute="trailing" secondItem="H2w-Cx-1N2" secondAttribute="trailing" constant="30" id="kHI-qF-7O6"/>
+                                    <constraint firstItem="KSs-4z-0kx" firstAttribute="top" secondItem="csc-Ri-Atd" secondAttribute="bottom" constant="3" id="pQx-nC-Qca"/>
                                     <constraint firstItem="bzh-sz-0fk" firstAttribute="centerY" secondItem="TpE-dO-AF8" secondAttribute="centerY" id="pf2-ST-S6l"/>
-                                    <constraint firstAttribute="height" constant="274" id="tnX-Op-MZa"/>
+                                    <constraint firstItem="M6X-fG-iII" firstAttribute="leading" secondItem="csc-Ri-Atd" secondAttribute="trailing" constant="5" id="pf8-AR-gGz"/>
+                                    <constraint firstAttribute="height" constant="294" id="tnX-Op-MZa"/>
                                     <constraint firstItem="TpE-dO-AF8" firstAttribute="leading" secondItem="5nX-Hz-KzG" secondAttribute="leading" constant="30" id="v0d-gQ-GmC"/>
                                     <constraint firstAttribute="trailing" secondItem="Mu4-jg-w5b" secondAttribute="trailing" constant="30" id="wrs-Sl-bFm"/>
                                     <constraint firstItem="hYp-EE-gs1" firstAttribute="top" secondItem="5nX-Hz-KzG" secondAttribute="top" constant="30" id="xI1-17-Ktj"/>
@@ -693,6 +710,7 @@
                     <connections>
                         <outlet property="amountTextField" destination="8y0-zo-hZZ" id="RuO-gM-9aj"/>
                         <outlet property="destinationTextField" destination="mUX-kQ-vrI" id="RkG-dj-gKK"/>
+                        <outlet property="gasFeesLabels" destination="M6X-fG-iII" id="ajG-bg-NBy"/>
                         <outlet property="maxAmountLabel" destination="H2w-Cx-1N2" id="Bbc-zV-qNA"/>
                         <outlet property="tokenLabel" destination="TpE-dO-AF8" id="2GA-Da-rVq"/>
                         <segue destination="NmP-A0-eh6" kind="presentation" identifier="select-token-balance-segue" id="yog-dw-0Rd"/>
@@ -1147,7 +1165,7 @@ The order of the words is important.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vx-Cx-Odj" customClass="CardView" customModule="Moonkey" customModuleProvider="target">
-                                <rect key="frame" x="20" y="115" width="374" height="330"/>
+                                <rect key="frame" x="20" y="95" width="374" height="330"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="oF8-QJ-OKl">
                                         <rect key="frame" x="30" y="81" width="56.5" height="36"/>
@@ -1163,7 +1181,6 @@ The order of the words is important.</string>
                                         </constraints>
                                         <state key="normal" image="down-arrow"/>
                                         <connections>
-                                            <action selector="changeSourceAction:" destination="tZB-LC-HMu" eventType="touchUpInside" id="bPe-xP-Un5"/>
                                             <segue destination="NmP-A0-eh6" kind="presentation" identifier="select-token-balance-segue" id="dek-VQ-0nm"/>
                                         </connections>
                                     </button>
@@ -1175,7 +1192,6 @@ The order of the words is important.</string>
                                         </constraints>
                                         <state key="normal" image="down-arrow"/>
                                         <connections>
-                                            <action selector="changeDestAction:" destination="tZB-LC-HMu" eventType="touchUpInside" id="lMr-hr-gWn"/>
                                             <segue destination="QlI-qJ-quZ" kind="presentation" identifier="select-dest-token-segue" id="dZl-EE-nca"/>
                                         </connections>
                                     </button>
@@ -1225,7 +1241,7 @@ The order of the words is important.</string>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2ah-RH-vzc"/>
                                         </constraints>
-                                        <state key="normal" title="Buy now"/>
+                                        <state key="normal" title="Buy"/>
                                         <connections>
                                             <action selector="buyAction:" destination="tZB-LC-HMu" eventType="touchUpInside" id="ywu-eT-cix"/>
                                         </connections>
@@ -1305,13 +1321,14 @@ The order of the words is important.</string>
                             <constraint firstItem="HX3-8t-eDG" firstAttribute="trailing" secondItem="TG1-sE-HuZ" secondAttribute="trailing" constant="20" id="Ja0-FQ-al0"/>
                             <constraint firstItem="TG1-sE-HuZ" firstAttribute="leading" secondItem="HX3-8t-eDG" secondAttribute="leading" constant="20" id="Yyj-9b-wiI"/>
                             <constraint firstItem="TG1-sE-HuZ" firstAttribute="top" secondItem="HX3-8t-eDG" secondAttribute="top" constant="30" id="b2b-Hq-rfP"/>
-                            <constraint firstItem="3vx-Cx-Odj" firstAttribute="top" secondItem="TG1-sE-HuZ" secondAttribute="bottom" constant="50" id="beR-hV-Jot"/>
+                            <constraint firstItem="3vx-Cx-Odj" firstAttribute="top" secondItem="TG1-sE-HuZ" secondAttribute="bottom" constant="30" id="beR-hV-Jot"/>
                             <constraint firstItem="3vx-Cx-Odj" firstAttribute="leading" secondItem="HX3-8t-eDG" secondAttribute="leading" constant="20" id="vMN-sL-5zQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HX3-8t-eDG"/>
                     </view>
                     <connections>
                         <outlet property="amountTextField" destination="Y1T-Bf-7sP" id="tJg-y9-pbh"/>
+                        <outlet property="buyButton" destination="OXg-Od-8sk" id="n55-dy-98N"/>
                         <outlet property="destAmountLabel" destination="tNg-lX-zTB" id="qKn-wU-b0v"/>
                         <outlet property="destLabel" destination="gvr-8M-ymI" id="rUc-Vs-CcN"/>
                         <outlet property="maxAmountLabel" destination="NnI-nD-aKK" id="mVe-Jm-ryt"/>
@@ -1732,8 +1749,8 @@ The order of the words is important.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RCM-oJ-AnQ"/>
-        <segue reference="yog-dw-0Rd"/>
+        <segue reference="MZs-3v-s8X"/>
+        <segue reference="dek-VQ-0nm"/>
         <segue reference="Eqw-uf-ziv"/>
     </inferredMetricsTieBreakers>
     <resources>

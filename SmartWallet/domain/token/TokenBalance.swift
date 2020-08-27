@@ -8,6 +8,7 @@
 
 import Foundation
 import BigInt
+import web3
 
 
 struct TokenBalance:Codable {
@@ -35,6 +36,10 @@ struct TokenBalance:Codable {
         
         return tok.shortAmount(amount: BigInt(balanceValue))+" "+self.symbol
        
+    }
+    
+    var ethereumAddress: web3.EthereumAddress {
+        return web3.EthereumAddress(self.address)
     }
     
 }

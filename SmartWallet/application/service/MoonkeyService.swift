@@ -32,6 +32,17 @@ struct RelayRequest: Codable {
     let gas: String
 }
 
+struct GaspriceResponse: Codable {
+    public var gas_prices: Gasprice
+}
+
+struct Gasprice: Codable {
+    var fast: String
+    var fastest: String
+    var safelow: String
+    var standard: String
+}
+
 public struct RelayResponse: Codable {
     public let transaction_hash: String
     public let tracking_id: String
@@ -47,30 +58,6 @@ class MoonkeyService {
         
         return "ropsten"
     }
-    
-    
-    public func deploySmartwallet(account: String, completion: @escaping (Result<DeploySmartwalletResponse, Error>) -> Void)  -> Void {
-        
-        let body = DeploySmartwalletRequest(account: account)
-        
-        var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-deploy-smartwallet?network="+self.network)!)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        request.httpBody = body.toJSONData()
-        
-        Http.execute(with: request, receive: DeploySmartwalletResponse.self){ (result) in
-            switch result {
-            case .success(let response):
-                completion(.success(response))
-                return
-                
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }.resume()
-    }
-    
     
     public func deployGnosisSafe(account: String, completion: @escaping (Result<DeploySmartwalletResponse, Error>) -> Void)  -> Void {
         
@@ -148,4 +135,11 @@ class MoonkeyService {
         Http.execute(with: request, receive: RelayResponse.self, completion: completion).resume()
     }
     
+    
+    public func getGasPrice(completion: @escaping (Result<GaspriceResponse, Error>) -> Void)  -> Void {
+        var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-params?network="+self.network)!)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        Http.execute(with: request, receive: GaspriceResponse.self, completion: completion).resume()
+    }
 }

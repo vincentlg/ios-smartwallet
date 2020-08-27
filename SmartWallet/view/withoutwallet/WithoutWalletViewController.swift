@@ -23,7 +23,7 @@ class WithoutWalletViewController: UIViewController {
         hud.show(in: self.view)
         
         let hdAccount = HDEthereumAccount()
-        self.moonKeyService.deployGnosisSafe(account: hdAccount.first.ethereumAddress){ (result) in
+        self.moonKeyService.deployGnosisSafe(account: hdAccount.first.ethereumAddress.value){ (result) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {

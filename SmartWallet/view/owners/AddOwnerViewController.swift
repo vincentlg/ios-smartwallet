@@ -48,7 +48,7 @@ class AddOwnerViewController:UIViewController {
         let data = Application.smartwallet!.encodeAddOwnerWithThreshold(owner:  web3.EthereumAddress(self.addressTextField.text!),
                                                                         threshold: BigUInt(1))
 
-        Application.relay(to: Application.smartwallet!.address, value: BigUInt(0), data: Data(hexString: data)!) { (result) in
+        Application.relay(to: Application.smartwallet!.address, value: BigUInt(0), data: Data(hexString: data)!, safeTxGas: BigUInt("30000")) { (result) in
             switch result {
                 
             case .success(let txResponse):

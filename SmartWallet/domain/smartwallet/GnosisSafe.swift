@@ -15,6 +15,8 @@ import BigInt
 
 public struct GnosisSafe: SmartWallet {
     
+    
+    
     public let address: web3.EthereumAddress
     public let rpc: RpcClient
     
@@ -36,11 +38,15 @@ public struct GnosisSafe: SmartWallet {
         
     }
     
-    public func encodeExecute(to: web3.EthereumAddress, value:BigUInt, data: Data, signature: Data) -> String {
+    public func encodeExecute(to: web3.EthereumAddress, value:BigUInt, data: Data, safeTxGas: BigUInt, baseGas: BigUInt, gasPrice: BigUInt, refundReceiver: web3.EthereumAddress, signature: Data) -> String {
         let function = ExecTransactionFunc(contract: self.address,
+                                           gasPrice: gasPrice,
                                            to: to,
                                            value: value,
                                            data: data,
+                                           safeTxGas: safeTxGas,
+                                           baseGas: baseGas,
+                                           refundReceiver: refundReceiver,
                                            signatures: signature)
         
         let transaction = try? function.transaction()
@@ -52,7 +58,28 @@ public struct GnosisSafe: SmartWallet {
         self.rpc.call(to: self.ethereumAddress, data: self.encodeGetNonce(), receive: JSONRPCResult<String>.self) { (result) in
             switch result {
             case .success(let response):
-                completion(.success(BigUInt(hex: response.result)!))
+                completion(.success(BigUInt(hex: response.result!)!))
+                return
+                
+            case .failure(let error):
+                completion(.failure(error))
+                return
+            }
+        }
+    }
+    
+    public func getRequiredTxGas(to: web3.EthereumAddress, value: BigUInt, data: Data, completion: @escaping (Result<(BigUInt), Error>) -> Void)  -> Void {
+        self.rpc.call(to: self.ethereumAddress, data: self.encodeRequiredTxGas(to: to, value: value, data: data), receive: JSONRPCResult<String>.self) { (result) in
+            switch result {
+            case .success(let response):
+              
+                let data = response.error!.message.data(using: .utf8)!
+                
+                let s = data.subdata(in: 20..<data.count)
+               
+                let decoded = try! web3.ABIDecoder.decodeData(s.hexValue, types: [BigUInt.self])
+                let gas: BigUInt = try! decoded[0].decoded()
+                completion(.success(gas))
                 return
                 
             case .failure(let error):
@@ -67,7 +94,7 @@ public struct GnosisSafe: SmartWallet {
             switch result {
             case .success(let response):
                 do {
-                    let decoded = try web3.ABIDecoder.decodeData(response.result, types: [ABIArray<web3.EthereumAddress>.self])
+                    let decoded = try web3.ABIDecoder.decodeData(response.result!, types: [ABIArray<web3.EthereumAddress>.self])
                     let addresses: [web3.EthereumAddress] = try decoded.first!.decodedArray()
                     completion(.success(addresses.map { $0.value}))
                 } catch (let error) {
@@ -97,12 +124,12 @@ public struct GnosisSafe: SmartWallet {
         }
     }
     
-    public func getTransactionHashWithNonce(to: web3.EthereumAddress, value:BigUInt, data: Data, completion: @escaping (Result<(String), Error>) -> Void)  -> Void {
+    public func getTransactionHashWithNonce(to: web3.EthereumAddress, value:BigUInt, data: Data, safeTxGas: BigUInt, baseGas: BigUInt, gasPrice: BigUInt, refundReceiver: web3.EthereumAddress, completion: @escaping (Result<(String), Error>) -> Void)  -> Void {
         
         self.getNonce() { (result) in
             switch result {
             case .success(let nonce):
-                self.getTransactionHash(to: to, value: value, data: data, nonce: nonce, completion: completion)
+                self.getTransactionHash(to: to, value: value, data: data, safeTxGas: safeTxGas, baseGas: baseGas, gasPrice: gasPrice, refundReceiver: refundReceiver, nonce: nonce, completion: completion)
                 return
                 
             case .failure(let error):
@@ -114,12 +141,12 @@ public struct GnosisSafe: SmartWallet {
         
     }
     
-    public func getTransactionHash(to: web3.EthereumAddress, value:BigUInt, data: Data, nonce: BigUInt, completion: @escaping (Result<(String), Error>) -> Void)  -> Void {
+    public func getTransactionHash(to: web3.EthereumAddress, value:BigUInt, data: Data, safeTxGas: BigUInt = BigUInt(0), baseGas: BigUInt = BigUInt(0), gasPrice: BigUInt = BigUInt(0), refundReceiver: web3.EthereumAddress = .zero, nonce: BigUInt, completion: @escaping (Result<(String), Error>) -> Void)  -> Void {
         
-        self.rpc.call(to: self.ethereumAddress, data: self.encodeGetTransactionHash(to: to, value: value, data: data, nonce: nonce), receive: JSONRPCResult<String>.self) { (result) in
+        self.rpc.call(to: self.ethereumAddress, data: self.encodeGetTransactionHash(to: to, value: value, data: data, safeTxGas: safeTxGas, baseGas: baseGas, gasPrice: gasPrice, refundReceiver: refundReceiver, nonce: nonce), receive: JSONRPCResult<String>.self) { (result) in
             switch result {
             case .success(let response):
-                completion(.success(response.result))
+                completion(.success(response.result!))
                 return
                 
             case .failure(let error):
@@ -130,13 +157,31 @@ public struct GnosisSafe: SmartWallet {
     }
     
     //MARK: Private methods
-    private func encodeGetTransactionHash(to: web3.EthereumAddress, value:BigUInt, data: Data, nonce: BigUInt) -> String {
+    private func encodeGetTransactionHash(to: web3.EthereumAddress, value:BigUInt, data: Data,  safeTxGas: BigUInt = BigUInt(0), baseGas: BigUInt = BigUInt(0), gasPrice: BigUInt = BigUInt(0), refundReceiver: web3.EthereumAddress = .zero, nonce: BigUInt) -> String {
         
         let function = GetTransactionHashFunc(contract: self.address,
+                                              gasPrice: gasPrice,
                                               to: to,
                                               value: value,
                                               data: data,
+                                              safeTxGas: safeTxGas,
+                                              baseGas: baseGas,
+                                              refundReceiver: refundReceiver,
                                               nonce: nonce)
+        
+        let transaction = try? function.transaction()
+        
+        return transaction!.data!.hexValue
+    }
+    
+    
+    private func encodeRequiredTxGas(to: web3.EthereumAddress, value:BigUInt, data: Data) -> String {
+        
+        let function = RequiredTxGasFunc(contract: self.address,
+                                         from: self.address,
+                                         to: to,
+                                         value: value,
+                                         data: data)
         
         let transaction = try? function.transaction()
         
@@ -191,11 +236,14 @@ public struct GetTransactionHashFunc: ABIFunction {
     
     public init(contract: web3.EthereumAddress,
                 from: web3.EthereumAddress? = nil,
-                gasPrice: BigUInt? = nil,
+                gasPrice: BigUInt = BigUInt(0),
                 gasLimit: BigUInt? = nil,
                 to: web3.EthereumAddress,
                 value: BigUInt,
                 data: Data,
+                safeTxGas:BigUInt = BigUInt(0),
+                baseGas: BigUInt = BigUInt(0),
+                refundReceiver: web3.EthereumAddress = .zero,
                 nonce: BigUInt) {
         self.contract = contract
         self.from = from
@@ -206,11 +254,11 @@ public struct GetTransactionHashFunc: ABIFunction {
         self.value = value
         self.data = data
         self.operation = 0
-        self.safeTxGas =  BigUInt(0)
-        self.baseGas = BigUInt(0)
-        self._gasPrice = BigUInt(0)
+        self.safeTxGas =  safeTxGas
+        self.baseGas = baseGas
+        self._gasPrice = gasPrice
         self.gasToken = .zero
-        self.refundReceiver = .zero
+        self.refundReceiver = refundReceiver
         
         self._nonce = nonce
     }
@@ -252,11 +300,14 @@ public struct ExecTransactionFunc: ABIFunction {
     
     public init(contract: web3.EthereumAddress,
                 from: web3.EthereumAddress? = nil,
-                gasPrice: BigUInt? = nil,
+                gasPrice: BigUInt = BigUInt(0),
                 gasLimit: BigUInt? = nil,
                 to: web3.EthereumAddress,
                 value: BigUInt,
                 data: Data,
+                safeTxGas:BigUInt = BigUInt(0),
+                baseGas: BigUInt = BigUInt(0),
+                refundReceiver:web3.EthereumAddress = .zero,
                 signatures: Data) {
         self.contract = contract
         self.from = from
@@ -267,11 +318,11 @@ public struct ExecTransactionFunc: ABIFunction {
         self.value = value
         self.data = data
         self.operation = 0
-        self.safeTxGas =  BigUInt(0)
-        self.baseGas = BigUInt(0)
-        self._gasPrice = BigUInt(0)
+        self.safeTxGas = safeTxGas
+        self.baseGas = baseGas
+        self._gasPrice = gasPrice
         self.gasToken = .zero
-        self.refundReceiver = .zero
+        self.refundReceiver = refundReceiver
         self.signatures = signatures
     }
     
@@ -373,5 +424,48 @@ public struct AddOwnerWithThresholdFunc: ABIFunction {
     public func encode(to encoder: ABIFunctionEncoder) throws {
         try encoder.encode(self.owner)
         try encoder.encode(self.threshold)
+    }
+}
+
+
+
+
+public struct RequiredTxGasFunc: ABIFunction {
+    public static let name = "requiredTxGas"
+    
+    public let gasPrice: BigUInt?
+    public let gasLimit: BigUInt?
+    public var contract: web3.EthereumAddress
+    public let from: web3.EthereumAddress?
+    
+    public let to: web3.EthereumAddress
+    
+    public var value:BigUInt
+    public var data: Data
+    public var operation: UInt8
+    
+    public init(contract: web3.EthereumAddress,
+                from: web3.EthereumAddress,
+                gasPrice: BigUInt = BigUInt(0),
+                gasLimit: BigUInt? = nil,
+                to: web3.EthereumAddress,
+                value: BigUInt,
+                data: Data) {
+        self.contract = contract
+        self.from = from
+        self.gasPrice = gasPrice
+        self.gasLimit = gasLimit
+        self.to = to
+        
+        self.value = value
+        self.data = data
+        self.operation = 0
+    }
+    
+    public func encode(to encoder: ABIFunctionEncoder) throws {
+        try encoder.encode(self.to)
+        try encoder.encode(self.value)
+        try encoder.encode(self.data)
+        try encoder.encode(self.operation)
     }
 }

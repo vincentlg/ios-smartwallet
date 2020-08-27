@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
 import BigInt
+import web3
 
 struct Token: Codable {
     
@@ -31,5 +31,9 @@ struct Token: Codable {
     func amountFrom(value: String) -> BigInt? {
         let etherFormatter = EtherNumberFormatter()
         return etherFormatter.number(from: value, decimals: self.decimals)
+    }
+    
+    var ethereumAddress: web3.EthereumAddress {
+           return web3.EthereumAddress(self.address)
     }
 }

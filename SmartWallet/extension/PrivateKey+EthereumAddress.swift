@@ -7,10 +7,10 @@
 //
 
 import Foundation
-
+import web3
 
 extension PrivateKey {
-    public var ethereumAddress: String {
-        return self.publicKey().ethereumAddress.description
+    public var ethereumAddress: web3.EthereumAddress {
+        return web3.EthereumAddress(self.publicKey().ethereumAddress.description)
     }
 }

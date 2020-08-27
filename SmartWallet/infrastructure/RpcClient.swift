@@ -8,6 +8,7 @@
 
 import Foundation
 import BigInt
+import web3
 
 
 public struct JSONRPCRequest<T: Encodable>: Encodable {
@@ -28,7 +29,14 @@ public struct JSONRPCRequest<T: Encodable>: Encodable {
 public struct JSONRPCResult<T: Decodable>: Decodable {
     public let id: Int
     public let jsonrpc: String
-    public let result: T
+    public let result: T?
+    public let error: JSONRPCError?
+}
+
+public struct  JSONRPCError: Decodable{
+    var code: Int
+    var message: String
+    var data: String
 }
 
 public struct RpcClient {
@@ -53,7 +61,7 @@ public struct RpcClient {
     }
     
     public func  call<T:Decodable>(to: String, data: String, receive:T.Type, completion: @escaping (Result<(T), Error>) -> Void)  -> Void {
-        let body = JSONRPCRequest(jsonrpc: "2.0", method: "eth_call", params: [["to":to, "data":data ]], id: 1)
+        let body = JSONRPCRequest(jsonrpc: "2.0", method: "eth_call", params: [["from": Application.smartwallet!.address.value, "to":to, "data":data ]], id: 1)
         self.executeJSONRpc(with:body, receive: T.self, completion: completion).resume()
     }
     
@@ -65,7 +73,7 @@ public struct RpcClient {
             switch result {
             case .success(let response):
                 
-                guard let balance = BigUInt(hex: response.result) else {
+                guard let balance = BigUInt(hex: response.result!) else {
                     let error = NSError(domain: "invalid result format", code: 0, userInfo: nil)
                     completion(.failure(error))
                     return
@@ -88,13 +96,39 @@ public struct RpcClient {
             switch result {
             case .success(let response):
                 
-                guard let balance = BigUInt(hex: response.result) else {
+                guard let balance = BigUInt(hex: response.result!) else {
                     let error = NSError(domain: "invalid result format", code: 0, userInfo: nil)
                     completion(.failure(error))
                     return
                 }
                 
                 completion(.success(balance))
+                return
+                
+            case .failure(let error):
+                completion(.failure(error))
+                break
+            }
+        }.resume()
+    }
+    
+    public func estimateGas(to: String, value: String, data: Data, completion: @escaping (Result<BigUInt, Error>) -> Void)  -> Void {
+        
+      
+        
+        let body = JSONRPCRequest(jsonrpc: "2.0", method: "eth_estimateGas", params: [["to":to, "data": data.hexValue, "from": Application.smartwallet!.address.value, value: value ]], id: 1)
+        
+        self.executeJSONRpc(with: body, receive: JSONRPCResult<String>.self) { (result) in
+            switch result {
+            case .success(let response):
+               
+                guard let gas = BigUInt(hex: response.result!) else {
+                    let error = NSError(domain: "invalid result format", code: 0, userInfo: nil)
+                    completion(.failure(error))
+                    return
+                }
+                
+                completion(.success(gas))
                 return
                 
             case .failure(let error):
@@ -130,7 +164,7 @@ public struct RpcClient {
                 return
             }
             guard let result = try? JSONDecoder().decode(T.self, from: data) else {
-                
+                NSLog(String(data: data, encoding: .utf8)!)
                 let error = NSError(domain: "error invalide response format", code: 0, userInfo: nil)
                 completion(.failure(error))
                 return

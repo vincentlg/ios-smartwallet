@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import web3
 
 struct GetTokenResponse: Codable {
     var tokens: [Token]
@@ -15,28 +16,6 @@ struct GetTokenResponse: Codable {
 struct GetRateResponse: Codable {
     var priceRoute: PriceRoute
 }
-
-
-/*export type OnChainOptimalRates = {
-  amount: PriceString,
-  bestRoute: Rate[],
-  others?: OthersRate[]
-};
-
-export type OptimalRates = {
-  amount: PriceString,
-  bestRoute: Rate[],
-  multiRoute?: Rate[][],
-  others: OthersRate[],
-  fromUSD?: string,
-  toUSD?: string,
-  details?:
-    {
-      tokenFrom: Address,
-      tokenTo: Address,
-      srcAmount: PriceString
-    }
-};*/
 
 class PriceRoute: Codable {
     var amount: String
@@ -47,14 +26,6 @@ class PriceRoute: Codable {
     var bestRoute: [Route]
     var others: [OtherRoute]?
 }
-
-
-
-/*{
-  tokenFrom: Address,
-  tokenTo: Address,
-  srcAmount: PriceString
-}*/
 
 struct PriceRouteDetails: Codable {
     var tokenFrom: String?
@@ -108,22 +79,6 @@ struct RouteData: Codable {
 }
 
 
-/*
- 'makerAddress': 'address',           // Address that created the order.
- 'takerAddress': 'address',           // Address that is allowed to fill the order. If set to 0, any address is allowed to fill the order.
- 'feeRecipientAddress': 'address',   // Address that will recieve fees when order is filled.
- 'senderAddress': 'address',          // Address that is allowed to call Exchange contract methods that affect this order. If set to 0, any address is allowed to call these methods.
- 'makerAssetAmount': 'uint256',      // Amount of makerAsset being offered by maker. Must be greater than 0.
- 'takerAssetAmount': 'uint256',       // Amount of takerAsset being bid on by maker. Must be greater than 0.
- 'makerFee': 'uint256',               // Fee paid to feeRecipient by maker when order is filled.
- 'takerFee': 'uint256',               // Fee paid to feeRecipient by taker when order is filled.
- 'expirationTimeSeconds': 'uint256',  // Timestamp in seconds at which order expires.
- 'salt': 'uint256',                   // Arbitrary number to facilitate uniqueness of the order's hash.
- 'makerAssetData': 'bytes',           // Encoded data that can be decoded by a specified proxy contract when transferring makerAsset. The leading bytes4 references the id of the asset proxy.
- 'takerAssetData': 'bytes',           // Encoded data that can be decoded by a specified proxy contract when transferring takerAsset. The leading bytes4 references the id of the asset proxy.
- 'makerFeeAssetData': 'bytes',        // Encoded data that can be decoded by a specified proxy contract when transferring makerFeeAsset. The leading bytes4 references the id of the asset proxy.
- 'takerFeeAssetData': 'bytes'
- */
 
 struct Order: Codable {
     var chainId: Int
@@ -245,7 +200,7 @@ class ParaswapService {
         Http.execute(with: request, receive: GetTxResponse.self, completion: completion).resume()
     }
     
-    public func getParaswapSenderAddress(completion: @escaping (Result<String, Error>) -> Void) -> Void {
+    public func getParaswapSenderAddress(completion: @escaping (Result<web3.EthereumAddress, Error>) -> Void) -> Void {
         
         let function = Function(name: "getTokenTransferProxy", parameters: [])
         let encoder = ABIEncoder()
@@ -256,8 +211,8 @@ class ParaswapService {
         self.rpc.executeJSONRpc(with:body, receive: JSONRPCResult<String>.self) { (result) in
             switch result {
             case .success(let response):
-                let strippedResult = response.result.replacingOccurrences(of: "0x000000000000000000000000", with: "0x")
-                completion(.success(strippedResult))
+                let strippedResult = response.result!.replacingOccurrences(of: "0x000000000000000000000000", with: "0x")
+                completion(.success(web3.EthereumAddress(strippedResult)))
                 return
                 
             case .failure(let error):

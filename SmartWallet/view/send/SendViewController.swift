@@ -23,6 +23,9 @@ class SendViewController: UIViewController {
     @IBOutlet weak var destinationTextField: MDCTextField!
     var destinationTextFieldController: MDCTextInputControllerUnderline?
     
+    @IBOutlet weak var gasFeesLabels: UILabel!
+    
+    
     var tokens: [TokenBalance]?
     var fromToken: TokenBalance?
     
@@ -56,6 +59,32 @@ class SendViewController: UIViewController {
     func refreshView() {
         self.tokenLabel.text = self.fromToken?.symbol
         self.maxAmountLabel.text = "Max: "+self.fromToken!.formattedBalance
+        
+        var value = BigUInt("10000")
+        var data = Data()
+        var to = Application.account!.first.ethereumAddress
+        var safeTxGas =  BigUInt(10000)
+        
+        if fromToken?.symbol != "ETH" {
+            value = BigUInt("0")
+            to = web3.EthereumAddress(fromToken!.address)
+            data = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: Application.account!.first.ethereumAddress.value)!, tokens: value)
+            safeTxGas =  BigUInt(20000)
+        }
+        
+        Application.calculateGasFees(to: to, value: value, data: data, safeGas: safeTxGas) { (result) in
+            switch result {
+            case .success(let fees):
+                DispatchQueue.main.async {
+                    self.gasFeesLabels.text = "$ "+String(format: "%.2f", fees)
+                }
+                return
+            case .failure(_):
+                self.gasFeesLabels.text = "error"
+                return
+            }
+            
+        }
     }
     
     @IBAction func sendAction(_ sender: Any) {
@@ -85,21 +114,23 @@ class SendViewController: UIViewController {
         }
         self.view.endEditing(true)
         
-        let to = web3.EthereumAddress(self.destinationTextField.text!)
-        var gas =  "100000"
+        var to = web3.EthereumAddress(self.destinationTextField.text!)
         var data = Data()
         var value = BigUInt(amount)
+        var safeTxGas =  BigUInt(10000)
         
         if (self.fromToken?.symbol != "ETH") {
-            gas = "150000"
             value = BigUInt(0)
-            data = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: destinationTextField.text!)!, tokens: value)
+            to = web3.EthereumAddress(self.fromToken!.address)
+            data = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: destinationTextField.text!)!, tokens: BigUInt(amount))
+            
+            safeTxGas = BigUInt(20000)
         }
         
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         
-        Application.relay(to: to, value: value, data: data, gas: gas) { (result) in
+        Application.relay(to: to, value: value,data: data, safeTxGas: safeTxGas) { (result) in
             switch result {
             case .success(let txResponse):
                 
