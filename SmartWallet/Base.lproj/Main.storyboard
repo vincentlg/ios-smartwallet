@@ -191,6 +191,18 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas fees: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gc9-hm-cES">
+                                        <rect key="frame" x="30" y="177" width="294.5" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="$0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gec-vb-Be6">
+                                        <rect key="frame" x="329.5" y="177.5" width="14.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -199,13 +211,18 @@
                                     <constraint firstItem="Rd6-rI-EQm" firstAttribute="top" secondItem="lA7-OV-87h" secondAttribute="top" constant="30" id="LQ0-dz-TxN"/>
                                     <constraint firstItem="Dw1-I5-gvR" firstAttribute="top" secondItem="kuG-9r-g7b" secondAttribute="bottom" constant="15" id="PHQ-yV-lwR"/>
                                     <constraint firstItem="kuG-9r-g7b" firstAttribute="top" secondItem="Rd6-rI-EQm" secondAttribute="bottom" constant="8" id="b23-VB-bjc"/>
+                                    <constraint firstAttribute="trailing" secondItem="gec-vb-Be6" secondAttribute="trailing" constant="30" id="bPe-z9-B8F"/>
                                     <constraint firstAttribute="trailing" secondItem="kuG-9r-g7b" secondAttribute="trailing" constant="30" id="cnP-eQ-wTE"/>
                                     <constraint firstAttribute="height" constant="274" id="dRG-QN-JtJ"/>
                                     <constraint firstItem="Rd6-rI-EQm" firstAttribute="left" secondItem="lA7-OV-87h" secondAttribute="left" constant="30" id="eAH-SA-RbZ"/>
                                     <constraint firstItem="Dw1-I5-gvR" firstAttribute="leading" secondItem="Kbq-jh-ReN" secondAttribute="trailing" constant="8" id="gRq-ha-yHk"/>
+                                    <constraint firstItem="OTx-Qn-TPp" firstAttribute="top" secondItem="gec-vb-Be6" secondAttribute="bottom" constant="3" id="gjQ-7s-g9S"/>
                                     <constraint firstItem="kuG-9r-g7b" firstAttribute="leading" secondItem="lA7-OV-87h" secondAttribute="leading" constant="30" id="hSe-dn-fqy"/>
                                     <constraint firstItem="OTx-Qn-TPp" firstAttribute="leading" secondItem="lA7-OV-87h" secondAttribute="leading" constant="30" id="hzH-0u-E7u"/>
+                                    <constraint firstItem="gec-vb-Be6" firstAttribute="leading" secondItem="Gc9-hm-cES" secondAttribute="trailing" constant="5" id="iJs-D8-pon"/>
+                                    <constraint firstItem="OTx-Qn-TPp" firstAttribute="top" secondItem="Gc9-hm-cES" secondAttribute="bottom" constant="3" id="iTa-gP-UYA"/>
                                     <constraint firstItem="Dw1-I5-gvR" firstAttribute="centerY" secondItem="Kbq-jh-ReN" secondAttribute="centerY" id="pbS-8a-xLx"/>
+                                    <constraint firstItem="Gc9-hm-cES" firstAttribute="leading" secondItem="lA7-OV-87h" secondAttribute="leading" constant="30" id="pgg-fA-Uub"/>
                                     <constraint firstAttribute="right" secondItem="OTx-Qn-TPp" secondAttribute="right" constant="30" id="s5T-Zp-SCA"/>
                                     <constraint firstAttribute="bottom" secondItem="OTx-Qn-TPp" secondAttribute="bottom" constant="30" id="v1O-lf-X7F"/>
                                     <constraint firstAttribute="trailing" secondItem="Rd6-rI-EQm" secondAttribute="trailing" constant="30" id="y3j-oJ-Kpw"/>
@@ -225,6 +242,7 @@
                     </view>
                     <connections>
                         <outlet property="addressTextField" destination="Kbq-jh-ReN" id="Idn-09-caa"/>
+                        <outlet property="gasFeesLabel" destination="gec-vb-Be6" id="XFk-sJ-01e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acs-ZY-vFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2025,7 +2043,7 @@ The order of the words is important.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MZs-3v-s8X"/>
+        <segue reference="RCM-oJ-AnQ"/>
         <segue reference="dek-VQ-0nm"/>
         <segue reference="Eqw-uf-ziv"/>
     </inferredMetricsTieBreakers>

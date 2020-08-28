@@ -17,7 +17,9 @@ typealias SuccessHandler = () -> Void
 
 class AddOwnerViewController:UIViewController {
     
+    @IBOutlet weak var gasFeesLabel: UILabel!
     @IBOutlet weak var addressTextField: MDCTextField!
+    
     var addressTextFieldController: MDCTextInputControllerUnderline?
     
     var moonkeyService = MoonkeyService()
@@ -29,6 +31,33 @@ class AddOwnerViewController:UIViewController {
         
         self.addressTextFieldController = MDCTextInputControllerUnderline(textInput: addressTextField)
         self.addressTextField.becomeFirstResponder()
+        
+        let hud = JGProgressHUD(style: .dark)
+               hud.show(in: self.view)
+               Application.updateEthPrice() { (result) in
+                   switch result {
+                   case .failure(_), .success(_):
+                       DispatchQueue.main.async {
+                           Application.calculateGasFees(safeGas: BigUInt(50000)) { (result) in
+                               switch result {
+                               case .success(let fees):
+                                   DispatchQueue.main.async {
+                                        hud.dismiss()
+                                       self.gasFeesLabel.text = "$ "+String(format: "%.2f", fees)
+                                   }
+                                   return
+                               case .failure(_):
+                                    hud.dismiss()
+                                   self.gasFeesLabel.text = "error"
+                                   return
+                               }
+                               
+                           }
+                          
+                       }
+                       break
+                   }
+               }
     }
     
     @IBAction func addAction(_ sender: Any) {
@@ -48,7 +77,7 @@ class AddOwnerViewController:UIViewController {
         let data = Application.smartwallet!.encodeAddOwnerWithThreshold(owner:  web3.EthereumAddress(self.addressTextField.text!),
                                                                         threshold: BigUInt(1))
 
-        Application.relay(to: Application.smartwallet!.address, value: BigUInt(0), data: Data(hexString: data)!, safeTxGas: BigUInt("30000")) { (result) in
+        Application.relay(to: Application.smartwallet!.address, value: BigUInt(0), data: Data(hexString: data)!, safeTxGas: BigUInt(50000)) { (result) in
             switch result {
                 
             case .success(let txResponse):
