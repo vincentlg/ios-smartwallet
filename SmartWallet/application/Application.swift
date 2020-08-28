@@ -100,12 +100,12 @@ public class Application {
         }
     }
     
-    static func calculateGasFees(safeGas: BigUInt, completion: @escaping (Result<(Double), Error>) -> Void)  -> Void {
+    static func calculateGasFees(safeGas: BigUInt, completion: @escaping (Result<(String), Error>) -> Void)  -> Void {
         guard let price = self.ethPrice else {
             completion(.failure(NSError(domain: "Error nill EthPrice", code: 0, userInfo: nil)))
             return
         }
-        NSLog("START get gasPrice")
+
         self.moonkeyService.getGasPrice() { (result) in
             switch result {
             case .success(let gasPriceResponse):
@@ -119,8 +119,8 @@ public class Application {
                 let ethDouble = Double(ethNumber)!
                 
                 let fees = ethDouble * price
-                NSLog("STOP get gasPrice")
-                completion(.success(fees))
+       
+                completion(.success("$"+String(format: "%.2f", fees)))
                 return
                 
             case .failure(let error):

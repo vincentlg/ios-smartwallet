@@ -43,7 +43,7 @@ class AddOwnerViewController:UIViewController {
                                case .success(let fees):
                                    DispatchQueue.main.async {
                                         hud.dismiss()
-                                       self.gasFeesLabel.text = "$ "+String(format: "%.2f", fees)
+                                       self.gasFeesLabel.text = fees
                                    }
                                    return
                                case .failure(_):

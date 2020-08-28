@@ -43,7 +43,7 @@ class ValidateTradeViewController: UIViewController {
             switch result {
             case .success(let fees):
                 DispatchQueue.main.async {
-                    self.gasFeesLabel.text = "$ "+String(format: "%.2f", fees)
+                    self.gasFeesLabel.text = fees
                 }
                 return
             case .failure(_):

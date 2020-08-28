@@ -36,7 +36,7 @@ class ApproveViewController: UIViewController {
             switch result {
             case .success(let fees):
                 DispatchQueue.main.async {
-                    self.GasFeesLabel.text = "$ "+String(format: "%.2f", fees)
+                    self.GasFeesLabel.text = fees
                 }
                 return
             case .failure(_):

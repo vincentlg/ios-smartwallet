@@ -80,7 +80,7 @@ class SendViewController: UIViewController {
             switch result {
             case .success(let fees):
                 DispatchQueue.main.async {
-                    self.gasFeesLabels.text = "$ "+String(format: "%.2f", fees)
+                    self.gasFeesLabels.text = fees
                 }
                 return
             case .failure(_):
