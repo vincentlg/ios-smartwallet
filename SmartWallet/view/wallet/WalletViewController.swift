@@ -10,6 +10,7 @@ import UIKit
 
 import Tabman
 import MaterialComponents.MaterialSnackbar
+import BigInt
 
 
 
@@ -21,12 +22,15 @@ class WalletViewController: UIViewController {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tabHeaderView: UIView!
+    @IBOutlet weak var fiatAmountLabel: UILabel!
     
     var moonkeyService = MoonkeyService()
     
     var transactionInProgress: Bool = false
     
     var snackBarMessage: MDCSnackbarMessage?
+    
+    let formatter = EtherNumberFormatter()
     
     let walletTabViewController = WalletTabViewController()
     
@@ -37,6 +41,8 @@ class WalletViewController: UIViewController {
         if let snack = self.snackBarMessage {
             MDCSnackbarManager.show(snack)
         }
+        
+        
     }
     
     override func viewDidLoad() {
@@ -66,6 +72,20 @@ class WalletViewController: UIViewController {
             self.isNewWallet = false
             self.performSegue(withIdentifier: "show-recovery-segue", sender: self)
         }
+        
+        Application.updateEthPrice() { (result) in
+            switch result {
+            case .success(_), .failure(_):
+                 DispatchQueue.main.async {
+                    self.fiatAmountLabel.text = ""
+                 }
+                break
+            }
+        }
+        
+        
+       
+        
     }
     
     
@@ -95,8 +115,17 @@ class WalletViewController: UIViewController {
     
     private func updateBalance() {
         self.amountLabel.text = self.walletTabViewController.tokenBalances["ETH"]!.formattedBalance
+        
+        if let price = Application.ethPrice {
+            let ethNumber = formatter.string(from:BigInt(self.walletTabViewController.tokenBalances["ETH"]!.balance!))
+            let ethDouble = Double(ethNumber)!
+            let funds = ethDouble * price
+            self.fiatAmountLabel.text = "($"+String(format: "%.2f", funds)+")"
+        } else {
+            self.fiatAmountLabel.text = ""
+        }
     }
-
+    
     
     private func displayWaitingForTx(txHash: String) {
         self.snackBarMessage = MDCSnackbarMessage()
@@ -107,7 +136,7 @@ class WalletViewController: UIViewController {
         action.title = "See TX"
         
         let actionHandler = {() in
-          UIApplication.shared.open(URL(string: "https://etherscan.io/tx/"+txHash)!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(URL(string: "https://etherscan.io/tx/"+txHash)!, options: [:], completionHandler: nil)
         }
         action.handler = actionHandler
         
@@ -126,7 +155,7 @@ class WalletViewController: UIViewController {
         self.transactionInProgress = true
         self.displayWaitingForTx(txHash: relayResponse.transaction_hash)
         
-    
+        
         _ = self.moonkeyService.waitTxToBeMined(trackingID: relayResponse.tracking_id) { (result) in
             switch result {
             case .success(_):
@@ -149,27 +178,27 @@ class WalletViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if segue.identifier == "send-token-segue" {
-               if let destinationVC = segue.destination as? SendViewController {
-                  
+        if segue.identifier == "send-token-segue" {
+            if let destinationVC = segue.destination as? SendViewController {
+                
                 destinationVC.watchTxHandler = self.watchTx
                 destinationVC.displayErrorHandler = self.displayErrorOccured
                 
                 destinationVC.tokens = self.walletTabViewController.tokenBalanceArray()
                 destinationVC.fromToken = destinationVC.tokens![0]
-               }
-           }
-        
-            if segue.identifier == "exchange-segue" {
-                if let destinationVC = segue.destination as? ExchangeViewController {
-                    
-                    destinationVC.tokensBalance = self.walletTabViewController.tokenBalanceArray()
-                    
-                    destinationVC.watchTxHandler = self.watchTx
-                    destinationVC.displayErrorHandler = self.displayErrorOccured
-                }
             }
-       }
+        }
+        
+        if segue.identifier == "exchange-segue" {
+            if let destinationVC = segue.destination as? ExchangeViewController {
+                
+                destinationVC.tokensBalance = self.walletTabViewController.tokenBalanceArray()
+                
+                destinationVC.watchTxHandler = self.watchTx
+                destinationVC.displayErrorHandler = self.displayErrorOccured
+            }
+        }
+    }
     
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
