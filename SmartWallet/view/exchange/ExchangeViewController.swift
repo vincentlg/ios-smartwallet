@@ -150,7 +150,7 @@ class ExchangeViewController: UIViewController {
         self.paraswapTxResponse = nil
         self.buyButton.setTitle("Validate", for: .normal)
         self.sourceLabel.text = self.sourceToken?.symbol
-        self.maxAmountLabel.text = "Max: "+self.sourceToken!.formattedBalance
+        self.maxAmountLabel.text = "Max: "+self.sourceToken!.formattedBalance()
         self.destLabel.text = self.destToken?.symbol
         self.cleanDestAmount()
         self.getRate()

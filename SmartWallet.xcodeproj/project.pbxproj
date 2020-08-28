@@ -61,6 +61,7 @@
 		B63B477024ED6BF5000EFF59 /* TransactionSigning.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B474A24ED6BF5000EFF59 /* TransactionSigning.swift */; };
 		B63B477124ED6BF5000EFF59 /* EthereumChecksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B474B24ED6BF5000EFF59 /* EthereumChecksum.swift */; };
 		B63B477224ED6BF5000EFF59 /* EthereumTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B474C24ED6BF5000EFF59 /* EthereumTransaction.swift */; };
+		B64C5D8C24F925EB00F1BB67 /* CoinGeckoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64C5D8B24F925EB00F1BB67 /* CoinGeckoService.swift */; };
 		B66A8F5B24F01EFD00BBD14B /* PrivateKey+v27.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A8F5A24F01EFD00BBD14B /* PrivateKey+v27.swift */; };
 		B6A6435024EE9D16009D1750 /* HDEthereumAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A6434F24EE9D16009D1750 /* HDEthereumAccount.swift */; };
 		B6A6435624EEA48D009D1750 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A6435524EEA48D009D1750 /* Application.swift */; };
@@ -208,6 +209,7 @@
 		B63B474A24ED6BF5000EFF59 /* TransactionSigning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionSigning.swift; sourceTree = "<group>"; };
 		B63B474B24ED6BF5000EFF59 /* EthereumChecksum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthereumChecksum.swift; sourceTree = "<group>"; };
 		B63B474C24ED6BF5000EFF59 /* EthereumTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthereumTransaction.swift; sourceTree = "<group>"; };
+		B64C5D8B24F925EB00F1BB67 /* CoinGeckoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoService.swift; sourceTree = "<group>"; };
 		B66A8F5A24F01EFD00BBD14B /* PrivateKey+v27.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivateKey+v27.swift"; sourceTree = "<group>"; };
 		B6A6434F24EE9D16009D1750 /* HDEthereumAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDEthereumAccount.swift; sourceTree = "<group>"; };
 		B6A6435524EEA48D009D1750 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 				DCFFBE512472BFBD00AB0C4B /* EtherscanService.swift */,
 				DC6071372431E5B100CED3BF /* ParaswapService.swift */,
 				DC49E0CF24B74C3B001B1F39 /* MoonkeyService.swift */,
+				B64C5D8B24F925EB00F1BB67 /* CoinGeckoService.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 				DC4ADCA424191AAA008C23C7 /* Transaction.swift in Sources */,
 				DCBA5D002429264100EE8CA9 /* GradientView.swift in Sources */,
 				DC60713B2431F9FF00CED3BF /* Http.swift in Sources */,
+				B64C5D8C24F925EB00F1BB67 /* CoinGeckoService.swift in Sources */,
 				B63B474E24ED6BF5000EFF59 /* PublicKey.swift in Sources */,
 				DC4ADCA6241928EC008C23C7 /* TransactionViewCell.swift in Sources */,
 				B6A6435624EEA48D009D1750 /* Application.swift in Sources */,

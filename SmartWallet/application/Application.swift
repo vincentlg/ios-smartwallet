@@ -18,15 +18,18 @@ public class Application {
     static public var network: Chain = .mainnet
     static public var baseGas: BigUInt = BigUInt(70000)
     static public var ethPrice: Double?
+    static public var tokenPrices: [String: [String: Double]]?
     
     
     //TODO should be returned from services
     static public var forwarderAddress: web3.EthereumAddress = web3.EthereumAddress("0x641d5315d213EA8eb03563f992c7fFfdd677D0cC")
     
-    static public var etherscanService: EtherscanService = EtherscanService()
+
     static public var rpc:RpcClient = RpcClient()
     
     static private var moonkeyService: MoonkeyService = MoonkeyService()
+    static public var coinGeckoService: CoinGeckoService = CoinGeckoService()
+    static public var etherscanService: EtherscanService = EtherscanService()
     
     static let ethereumClient: EthereumClient = EthereumClient(url: URL(string: "https://eth-mainnet.alchemyapi.io/v2/yKy-FkvOSlIgp9W8_mCxhW-HEdISZ7-Y")!)
     
@@ -82,6 +85,21 @@ public class Application {
                 completion(.failure(error))
                 return
             }
+        }
+    }
+    
+    static func updateTokensPrices(tokens: [TokenBalance], completion: @escaping (Result<(Bool), Error>) -> Void)  -> Void {
+        self.coinGeckoService.getTokenPrices(tokens: tokens) { (result) in
+            switch result {
+            case .success(let tokenPrices):
+                self.tokenPrices = tokenPrices
+                completion(.success(true))
+                break
+            case .failure(let error):
+                completion(.failure(error))
+                break
+            }
+            
         }
     }
     

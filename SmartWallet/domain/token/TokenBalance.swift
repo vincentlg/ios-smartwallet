@@ -11,7 +11,7 @@ import BigInt
 import web3
 
 
-struct TokenBalance:Codable {
+public struct TokenBalance:Codable {
     
     var symbol: String
     var balance: BigUInt?
@@ -23,14 +23,24 @@ struct TokenBalance:Codable {
         return "https://img.paraswap.network/\(self.symbol).png"
     }
     
-    var  formattedBalance: String {
-        
+    func formattedBalance() -> String {
         guard let balanceValue = self.balance else {
             return "0"
         }
         
-        return self.shortAmount(amount: BigInt(balanceValue))+" "+self.symbol
-       
+        let balanceString = self.shortAmount(amount: BigInt(balanceValue))
+        return balanceString+" "+self.symbol
+    }
+    
+    func fiatValue(tokenPrice: Double?) -> Double{
+        
+        guard let balanceValue = self.balance, let price = tokenPrice else {
+            return 0
+        }
+        
+        let balanceString = self.shortAmount(amount: BigInt(balanceValue))
+        let balanceDouble = Double(balanceString)!
+        return price * balanceDouble
     }
     
     func formatAmount(amount: BigInt) -> String {

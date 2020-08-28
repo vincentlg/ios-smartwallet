@@ -69,7 +69,7 @@ class SendViewController: UIViewController {
     
     func refreshView() {
         self.tokenLabel.text = self.fromToken?.symbol
-        self.maxAmountLabel.text = "Max: "+self.fromToken!.formattedBalance
+        self.maxAmountLabel.text = "Max: "+self.fromToken!.formattedBalance()
         
         var safeTxGas =  BigUInt(10000)
         if fromToken?.symbol != "ETH" {

@@ -37,7 +37,6 @@ class WalletTabViewController: TabmanViewController {
     var transactionCallRetrieved:Int = 0
     
     let etherscanService = EtherscanService()
-
     
     let hud = JGProgressHUD(style: .light)
     
@@ -58,7 +57,7 @@ class WalletTabViewController: TabmanViewController {
         self.retriveAllTransactions()
     }
     
-
+    
     public func retriveAllTransactions() {
         
         if (transactions.count == 0) {
@@ -75,13 +74,13 @@ class WalletTabViewController: TabmanViewController {
     }
     
     private func retrieveTransaction(action: TxAction) {
-        self.transactionCallRetrieved += 1
+        
         
         self.etherscanService.retrieveTransaction(action: action) { (result) in
             switch result {
             case .success(let response):
                 
-                
+                self.transactionCallRetrieved += 1
                 DispatchQueue.main.async {
                     if action == .txlistinternal {
                         self.transactionsBuffer = self.mergeValueOfInternalSendTX(txList: response.result)
@@ -91,7 +90,7 @@ class WalletTabViewController: TabmanViewController {
                     
                     self.transactionsBuffer = self.transactionsBuffer.filter{ $0.type != .Relay && $0.type != .ContractCall}
                     
-                   
+                    
                     self.transactionsBuffer.sort {
                         Transaction.sort(first: $0, second: $1)
                     }
@@ -100,12 +99,20 @@ class WalletTabViewController: TabmanViewController {
                         self.transactions = self.transactionsBuffer
                         self.transactionViewController?.display(transactions: self.transactions)
                         self.transactionViewController?.refreshControl?.endRefreshing()
-                        self.updateBalance()
+                        self.constructTokenBalanceFromTx()
+                        Application.updateTokensPrices(tokens: Array<TokenBalance>(self.tokenBalances.values)) { (result) in
+                            switch result{
+                            case .success(_), .failure(_):
+                                self.updateBalance()
+                                break
+                            }
+                        }
                     }
                 }
                 return
                 
             case .failure(_):
+                self.transactionCallRetrieved += 1
                 DispatchQueue.main.async {
                     self.transactionViewController?.refreshControl?.endRefreshing()
                     self.displayErrorHandler?()
@@ -133,6 +140,17 @@ class WalletTabViewController: TabmanViewController {
         return mergedResult
     }
     
+    
+    public func constructTokenBalanceFromTx() {
+        self.transactions.forEach {
+            if $0.isERC {
+                if (self.tokenBalances[$0.tokenSymbol!] == nil) {
+                    
+                    self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(symbol: $0.tokenSymbol!, decimals: Int($0.tokenDecimal!)!, address: $0.contractAddress)
+                }
+            }
+        }
+    }
     
     public func tokenBalanceArray() -> [TokenBalance] {
         var tokenBalances = Array<TokenBalance>(self.tokenBalances.values)
@@ -167,7 +185,7 @@ class WalletTabViewController: TabmanViewController {
                 }
                 
                 break
-            case .failure(let error):
+            case .failure(_):
                 DispatchQueue.main.async {
                     self.balanceViewController?.refreshControl?.endRefreshing()
                     self.hud.dismiss()
@@ -186,6 +204,7 @@ class WalletTabViewController: TabmanViewController {
                     self.hud.dismiss()
                     self.tokenBalances[tokenBalance.symbol]?.balance = balance
                     self.balanceViewController?.display(balances:self.tokenBalanceArray())
+                    self.balanceUpdatedHandler?()
                 }
                 break
                 
@@ -201,16 +220,6 @@ class WalletTabViewController: TabmanViewController {
     }
     
     private func updateBalance() {
-        self.transactions.forEach {
-            if $0.isERC {
-                if (self.tokenBalances[$0.tokenSymbol!] == nil) {
-                    
-                    self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(symbol: $0.tokenSymbol!, decimals: Int($0.tokenDecimal!)!, address: $0.contractAddress)
-                }
-            }
-        }
-        
-        
         for (symbol, balance) in self.tokenBalances {
             
             if (symbol == "ETH") {

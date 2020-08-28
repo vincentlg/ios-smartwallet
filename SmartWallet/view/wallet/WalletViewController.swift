@@ -22,7 +22,7 @@ class WalletViewController: UIViewController {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tabHeaderView: UIView!
-    @IBOutlet weak var fiatAmountLabel: UILabel!
+
     
     var moonkeyService = MoonkeyService()
     
@@ -77,14 +77,11 @@ class WalletViewController: UIViewController {
             switch result {
             case .success(_), .failure(_):
                  DispatchQueue.main.async {
-                    self.fiatAmountLabel.text = ""
+                    self.amountLabel.text = "$0"
                  }
                 break
             }
         }
-        
-        
-       
         
     }
     
@@ -114,16 +111,25 @@ class WalletViewController: UIViewController {
     
     
     private func updateBalance() {
-        self.amountLabel.text = self.walletTabViewController.tokenBalances["ETH"]!.formattedBalance
+        self.amountLabel.text = self.calculateFiatValue()
+    }
+    
+    private func calculateFiatValue() -> String {
+        let balanceList = Array<TokenBalance>(self.walletTabViewController.tokenBalances.values)
         
-        if let price = Application.ethPrice {
-            let ethNumber = formatter.string(from:BigInt(self.walletTabViewController.tokenBalances["ETH"]!.balance!))
-            let ethDouble = Double(ethNumber)!
-            let funds = ethDouble * price
-            self.fiatAmountLabel.text = "($"+String(format: "%.2f", funds)+")"
-        } else {
-            self.fiatAmountLabel.text = ""
+        var value: Double = 0
+        for tokenBalance in balanceList {
+            let price: Double?
+            if tokenBalance.symbol == "ETH"{
+                price = Application.ethPrice
+            } else {
+                price = Application.tokenPrices?[tokenBalance.address]?["usd"]
+            }
+            
+            value += tokenBalance.fiatValue(tokenPrice: price)
         }
+        
+        return "$"+String(format: "%.2f", value)
     }
     
     
