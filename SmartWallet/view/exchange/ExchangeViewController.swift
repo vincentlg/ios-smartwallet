@@ -284,7 +284,7 @@ class ExchangeViewController: UIViewController {
     
     private func getRate() {
         
-        if let amountText = amountTextField.text, let amountWeiBigInt = sourceToken?.token?.amountFrom(value: amountText){
+        if let amountText = amountTextField.text, let amountWeiBigInt = sourceToken?.amountFrom(value: amountText){
             self.amountWei = BigUInt(amountWeiBigInt)
             if (amountWei?.description != "0") {
                  self.loader.isHidden = false

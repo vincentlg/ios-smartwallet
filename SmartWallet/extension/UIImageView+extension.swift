@@ -17,17 +17,18 @@ extension UIImageView {
   }
     
     
-  public func imageFromUrl(urlString: String) {
+    public func imageFromUrl(urlString: String, completionHandler: (()-> Void)? = nil) {
         self.image = nil
         URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
 
             if error != nil {
+                completionHandler?()
                 return
             }
             
             DispatchQueue.main.async(execute: { () -> Void in
-                let image = UIImage(data: data!)
-                self.image = image
+                self.image = UIImage(data: data!)
+                completionHandler?()
             })
 
         }).resume()

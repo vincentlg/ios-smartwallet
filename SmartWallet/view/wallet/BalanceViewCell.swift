@@ -18,15 +18,16 @@ class BalanceViewCell: UITableViewCell {
     public func display(balance:TokenBalance){
         self.nameLabel?.text = balance.symbol
         self.balanceLabel?.text = balance.formattedBalance
+        self.symbolLabel?.text = ""
         
-        if let img = balance.img {
-            tokenImage.imageFromUrl(urlString: img)
-            self.symbolLabel?.text = ""
-        } else {
-            tokenImage.image = UIImage(named: "round")
-            self.symbolLabel?.text = balance.symbol
+        tokenImage.imageFromUrl(urlString: balance.img){ () in
+            if self.tokenImage.image == nil {
+                self.symbolLabel?.text = balance.symbol
+                self.tokenImage.image = UIImage(named: "round")
+            }
         }
         
         
+      
     }
 }

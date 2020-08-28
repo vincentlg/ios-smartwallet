@@ -14,14 +14,13 @@ import web3
 struct TokenBalance:Codable {
     
     var symbol: String
-
-    var token: Token?
     var balance: BigUInt?
+    var decimals:Int
     var address: String
     
     
-    var img: String? {
-        self.token?.img
+    var img: String {
+        return "https://img.paraswap.network/\(self.symbol).png"
     }
     
     var  formattedBalance: String {
@@ -30,12 +29,23 @@ struct TokenBalance:Codable {
             return "0"
         }
         
-        guard let tok = self.token else {
-            return "error"
-        }
-        
-        return tok.shortAmount(amount: BigInt(balanceValue))+" "+self.symbol
+        return self.shortAmount(amount: BigInt(balanceValue))+" "+self.symbol
        
+    }
+    
+    func formatAmount(amount: BigInt) -> String {
+        let etherFormatter = EtherNumberFormatter()
+        return etherFormatter.string(from: amount, decimals: self.decimals)
+    }
+    
+    func shortAmount(amount: BigInt) -> String {
+        let amount = formatAmount(amount: amount)
+        return  String(format: "%.3f", (amount.replacingOccurrences(of: ",", with: ".") as NSString).floatValue)
+    }
+    
+    func amountFrom(value: String) -> BigInt? {
+        let etherFormatter = EtherNumberFormatter()
+        return etherFormatter.number(from: value, decimals: self.decimals)
     }
     
     var ethereumAddress: web3.EthereumAddress {

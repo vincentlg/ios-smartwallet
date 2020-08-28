@@ -16,11 +16,16 @@ class TokenTableViewCell: UITableViewCell {
     
     public func display(token:Token){
         self.nameLabel?.text = token.symbol
-       
+        self.symbolLabel?.text = ""
         
         if let img = token.img {
-            self.TokenImage.imageFromUrl(urlString: img)
-             self.symbolLabel?.text = ""
+            self.TokenImage.imageFromUrl(urlString: img) { () in
+                if self.TokenImage.image == nil {
+                    self.TokenImage.image =  UIImage(named: "green_circle")
+                    self.symbolLabel?.text = token.symbol
+                }
+            }
+            
         } else {
             self.TokenImage.image = UIImage(named: "green_circle")
             self.symbolLabel?.text = token.symbol

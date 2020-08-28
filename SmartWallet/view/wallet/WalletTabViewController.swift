@@ -28,9 +28,7 @@ class WalletTabViewController: TabmanViewController {
     private let rpc = RpcClient()
     
     var balanceUpdatedHandler: BalanceUpdatedHandler?
-    var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(symbol: "ETH", address: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE")]
-    
-    var tokensDictionary: [String: Token] = [String: Token]()
+    var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(symbol: "ETH", decimals: 18, address: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE")]
     
     var displayErrorHandler: DisplayErrorHandler?
     
@@ -39,7 +37,7 @@ class WalletTabViewController: TabmanViewController {
     var transactionCallRetrieved:Int = 0
     
     let etherscanService = EtherscanService()
-    let paraswapService = ParaswapService()
+
     
     let hud = JGProgressHUD(style: .light)
     
@@ -58,28 +56,9 @@ class WalletTabViewController: TabmanViewController {
         
         self.dataSource = self
         self.retriveAllTransactions()
-        
-        self.retrieveTokensInfos()
     }
     
-    
-    public func retrieveTokensInfos() {
-        self.paraswapService.getTokens() { (result) in
-            switch result {
-            case .success(let response):
-                
-                for token in response {
-                    self.tokensDictionary[token.symbol] = token
-                }
-                
-                break
-            case .failure(let error):
-                print(error)
-                break
-            }
-        }
-    }
-    
+
     public func retriveAllTransactions() {
         
         if (transactions.count == 0) {
@@ -181,7 +160,7 @@ class WalletTabViewController: TabmanViewController {
                 DispatchQueue.main.async {
                     self.hud.dismiss()
                     self.tokenBalances["ETH"]?.balance = balance
-                    self.tokenBalances["ETH"]?.token = self.tokensDictionary["ETH"]
+                    self.tokenBalances["ETH"]?.decimals = 18
                     self.balanceViewController?.display(balances: self.tokenBalanceArray())
                     self.balanceViewController?.refreshControl?.endRefreshing()
                     self.balanceUpdatedHandler?()
@@ -205,12 +184,8 @@ class WalletTabViewController: TabmanViewController {
             case .success(let balance):
                 DispatchQueue.main.async {
                     self.hud.dismiss()
-                    if let token = self.tokensDictionary[tokenBalance.symbol] {
-                        self.tokenBalances[tokenBalance.symbol]?.balance = balance
-                        self.tokenBalances[tokenBalance.symbol]?.token = token
-                        self.balanceViewController?.display(balances:self.tokenBalanceArray())
-                    }
-                   
+                    self.tokenBalances[tokenBalance.symbol]?.balance = balance
+                    self.balanceViewController?.display(balances:self.tokenBalanceArray())
                 }
                 break
                 
@@ -230,7 +205,7 @@ class WalletTabViewController: TabmanViewController {
             if $0.isERC {
                 if (self.tokenBalances[$0.tokenSymbol!] == nil) {
                     
-                    self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(symbol: $0.tokenSymbol!, address: $0.contractAddress)
+                    self.tokenBalances[$0.tokenSymbol!] =  TokenBalance(symbol: $0.tokenSymbol!, decimals: Int($0.tokenDecimal!)!, address: $0.contractAddress)
                 }
             }
         }

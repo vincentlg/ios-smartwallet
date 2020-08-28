@@ -30,7 +30,7 @@ class ApproveViewController: UIViewController {
         super.viewWillAppear(animated)
         self.approveAmountTextFieldController = MDCTextInputControllerUnderline(textInput: approveAmount)
         self.approveAmount.becomeFirstResponder()
-        self.approveAmount.text = self.sourceToken?.token?.formatAmount(amount: BigInt(self.baseAmount!))
+        self.approveAmount.text = self.sourceToken?.formatAmount(amount: BigInt(self.baseAmount!))
         
         Application.calculateGasFees(safeGas: BigUInt(15000)) { (result) in
             switch result {
@@ -48,7 +48,7 @@ class ApproveViewController: UIViewController {
     }
     
     @IBAction func approveTouched(_ sender: Any) {
-        if let amountText = approveAmount.text, let amountWeiBigInt = sourceToken?.token?.amountFrom(value: amountText){
+        if let amountText = approveAmount.text, let amountWeiBigInt = sourceToken?.amountFrom(value: amountText){
             
             let amountWei = BigUInt(amountWeiBigInt)
             let hud = JGProgressHUD(style: .dark)
