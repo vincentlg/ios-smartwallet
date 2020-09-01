@@ -30,7 +30,7 @@ class ApproveViewController: UIViewController {
         super.viewWillAppear(animated)
         self.approveAmountTextFieldController = MDCTextInputControllerUnderline(textInput: approveAmount)
         self.approveAmount.becomeFirstResponder()
-        self.approveAmount.text = self.sourceToken?.formatAmount(amount: BigInt(self.baseAmount!))
+        self.approveAmount.text = self.sourceToken?.shortAmount(amount: BigInt(self.baseAmount!))
         
         Application.calculateGasFees(safeGas: BigUInt(15000)) { (result) in
             switch result {

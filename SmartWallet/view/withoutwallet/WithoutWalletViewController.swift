@@ -72,7 +72,7 @@ class WithoutWalletViewController: UIViewController {
     public func displayErrorOccured() {
         let snackBarMessage = MDCSnackbarMessage()
         snackBarMessage.text = "An error occured. Please try again."
-        MDCSnackbarManager.show(snackBarMessage)
+       MDCSnackbarManager.default.show(snackBarMessage)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

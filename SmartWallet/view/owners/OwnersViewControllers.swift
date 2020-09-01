@@ -37,7 +37,7 @@ class OwnersViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 DispatchQueue.main.async {
                    let snackBarMessage = MDCSnackbarMessage()
                    snackBarMessage.text = "An error occured. Please try again."
-                   MDCSnackbarManager.show(snackBarMessage)
+                  MDCSnackbarManager.default.show(snackBarMessage)
                 }
                 return
             }

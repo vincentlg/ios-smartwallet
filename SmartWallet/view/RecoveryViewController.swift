@@ -24,7 +24,7 @@ class RecoveryViewController: UIViewController, MFMailComposeViewControllerDeleg
         let snackBarMessage = MDCSnackbarMessage()
         snackBarMessage.text = "Address and recovery phrase copied to clipboard."
         snackBarMessage.duration = 1
-        MDCSnackbarManager.show(snackBarMessage)
+       MDCSnackbarManager.default.show(snackBarMessage)
     }
     
     override func viewDidLoad() {

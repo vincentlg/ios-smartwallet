@@ -7,7 +7,7 @@ target 'SmartWallet' do
 
   # Pods for SmartWallet
   pod 'Tabman', '~> 2.6'
-  pod 'Starscream', '~> 4.0.0'
+  pod 'Starscream', '~> 3.1.1'
   pod 'JGProgressHUD'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
@@ -16,6 +16,7 @@ target 'SmartWallet' do
   pod 'TrezorCrypto', '~> 0.0.9', inhibit_warnings: true
   pod 'KeychainAccess', '~> 4.1.0'
   pod 'web3.swift', '~> 0.5.0'
+  pod 'WalletConnect', git: 'https://github.com/trustwallet/wallet-connect-swift', branch: 'master' 
 
   target 'SmartWalletTests' do
     # Pods for testing

@@ -165,7 +165,8 @@ class SendViewController: UIViewController {
     }
     
     func qrCodeFound(qrcode: String) {
-        self.destinationTextField.text = qrcode
+        let address = qrcode.replacingOccurrences(of: "ethereum:", with: "")
+        self.destinationTextField.text = address
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

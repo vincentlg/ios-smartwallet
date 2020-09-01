@@ -11,6 +11,7 @@ import UIKit
 import Tabman
 import MaterialComponents.MaterialSnackbar
 import BigInt
+import WalletConnect
 
 
 
@@ -34,14 +35,18 @@ class WalletViewController: UIViewController {
     
     let walletTabViewController = WalletTabViewController()
     
+    var wcPeerParam: WCSessionRequestParam?
+    var wcMessage: String?
+    
     public var isNewWallet = false
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let snack = self.snackBarMessage {
-            MDCSnackbarManager.show(snack)
+           MDCSnackbarManager.default.show(snack)
         }
         
+        WalletConnectManager.createSession(scannedCode: "wc:96ce89d9-1e9e-4993-97b4-e334cf80192e@1?bridge=https%3A%2F%2Fbridge.walletconnect.org&key=883f35b0eca024f0835ce603c467f450e0c64c7e1fc5b425b4875206f263451e", presentFunction: self.displayWCMessage)
         
     }
     
@@ -114,6 +119,10 @@ class WalletViewController: UIViewController {
         self.amountLabel.text = self.calculateFiatValue()
     }
     
+    private func qrCodeHandler(code: String) -> Void{
+        print(code)
+    }
+    
     private func calculateFiatValue() -> String {
         let balanceList = Array<TokenBalance>(self.walletTabViewController.tokenBalances.values)
         
@@ -147,13 +156,13 @@ class WalletViewController: UIViewController {
         action.handler = actionHandler
         
         self.snackBarMessage!.action = action
-        MDCSnackbarManager.show(self.snackBarMessage)
+        MDCSnackbarManager.default.show(self.snackBarMessage)
     }
     
     public func displayErrorOccured() {
         self.snackBarMessage = MDCSnackbarMessage()
         self.snackBarMessage!.text = "An error occured"
-        MDCSnackbarManager.show(self.snackBarMessage)
+        MDCSnackbarManager.default.show(self.snackBarMessage)
     }
     
     public func watchTx(relayResponse: RelayResponse) {
@@ -167,20 +176,26 @@ class WalletViewController: UIViewController {
             case .success(_):
                 self.transactionInProgress = false
                 DispatchQueue.main.async {
-                    MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+                    MDCSnackbarManager.default.dismissAndCallCompletionBlocks(withCategory: nil)
                     self.snackBarMessage = nil
                     self.walletTabViewController.retriveAllTransactions()
                 }
                 break
-            case .failure(let error):
+            case .failure(_):
                 self.transactionInProgress = false
                 DispatchQueue.main.async {
-                    MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+                    MDCSnackbarManager.default.dismissAndCallCompletionBlocks(withCategory: nil)
                     self.snackBarMessage = nil
                 }
                 break
             }
         }
+    }
+    
+    private func displayWCMessage(peerParam: WCSessionRequestParam, message: String){
+        self.wcPeerParam = peerParam
+        self.wcMessage = message
+        self.performSegue(withIdentifier: "wallect_connect_segue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -203,6 +218,18 @@ class WalletViewController: UIViewController {
                 destinationVC.watchTxHandler = self.watchTx
                 destinationVC.displayErrorHandler = self.displayErrorOccured
             }
+        }
+        
+        if segue.identifier == "scanner_segue" {
+            if let destinationVC = segue.destination as? ScannerViewController {
+                destinationVC.qrCodeHandler = self.qrCodeHandler
+            }
+        }
+        
+        if segue.identifier == "wallect_connect_segue" {
+            /*if let destinationVC = segue.destination as? ScannerViewController {
+                destinationVC.qrCodeHandler = self.qrCodeHandler
+            }*/
         }
     }
     
