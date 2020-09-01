@@ -134,7 +134,7 @@ public class Application {
                 
                 let formatter = EtherNumberFormatter()
                 let ethNumber = formatter.string(from:BigInt(totalEth))
-                let ethDouble = Double(ethNumber)!
+                let ethDouble = Double(ethNumber.replacingOccurrences(of: ",", with: "."))!
                 
                 let fees = ethDouble * price
        
