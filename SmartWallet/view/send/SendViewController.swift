@@ -67,20 +67,24 @@ class SendViewController: UIViewController {
         
     }
     
+    func getSafeGas() -> BigUInt {
+        var safeTxGas =  BigUInt(10000)
+        if fromToken?.symbol != "ETH" {
+            safeTxGas =  BigUInt(30000)
+        }
+        
+        return safeTxGas
+    }
+    
     func refreshView() {
         self.tokenLabel.text = self.fromToken?.symbol
         self.maxAmountLabel.text = "Max: "+self.fromToken!.formattedBalance()
-        
-        var safeTxGas =  BigUInt(10000)
-        if fromToken?.symbol != "ETH" {
-            safeTxGas =  BigUInt(20000)
-        }
         
         Application.updateGasPrice() { (result) in
             switch result {
             case .success(_):
                 DispatchQueue.main.async {
-                    self.gasFeesLabels.text = Application.calculateGasFees(safeGas: safeTxGas)
+                    self.gasFeesLabels.text = Application.calculateGasFees(safeGas: self.getSafeGas())
                 }
                 return
             case .failure(_):
@@ -107,7 +111,26 @@ class SendViewController: UIViewController {
             return
         }
         
-        if amount > fromToken!.balance! {
+        let ethNeeded = Application.calculateEtherForGas(safeGas: self.getSafeGas())
+        
+        if fromToken!.symbol != "ETH" {
+            if BigUInt(ethNeeded) > self.tokens![0].balance! {
+                self.amountTextFieldController?.setErrorText("Insuffisant ETH for gas", errorAccessibilityValue: "Insuffisant balance")
+                return
+            }
+            
+            if BigUInt(amount) > fromToken!.balance! {
+                self.amountTextFieldController?.setErrorText("Insuffisant balance", errorAccessibilityValue: "Insuffisant balance")
+                return
+            }
+        } else {
+            if BigUInt(amount) + ethNeeded > fromToken!.balance! {
+                self.amountTextFieldController?.setErrorText("Insuffisant balance", errorAccessibilityValue: "Insuffisant balance")
+                return
+            }
+        }
+        
+        if BigUInt(amount) > fromToken!.balance! {
             self.amountTextFieldController?.setErrorText("Insuffisant balance", errorAccessibilityValue: "Insuffisant balance")
             return
         }
