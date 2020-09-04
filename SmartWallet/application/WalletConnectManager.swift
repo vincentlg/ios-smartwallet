@@ -81,8 +81,7 @@ class WalletConnectManager{
             self.requestTx = transaction
             self.requestID = id
             
-            self.presenter!(self.sessionMeta!, "Approve transaction",
-                            "Value: "+ethNumber+" ETH", transaction.gas)
+            self.presenter!(self.sessionMeta!, "Approve transaction", "Value: "+ethNumber+" ETH", transaction.gas)
         }
     }
     

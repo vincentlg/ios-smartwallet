@@ -32,11 +32,12 @@ class ApproveViewController: UIViewController {
         self.approveAmount.becomeFirstResponder()
         self.approveAmount.text = self.sourceToken?.shortAmount(amount: BigInt(self.baseAmount!))
         
-        Application.calculateGasFees(safeGas: BigUInt(15000)) { (result) in
+        Application.updateGasPrice() { (result) in
             switch result {
-            case .success(let fees):
+            case .success(_):
                 DispatchQueue.main.async {
-                    self.GasFeesLabel.text = fees
+                    let gas = BigUInt(15000)
+                    self.GasFeesLabel.text = Application.calculateGasFees(safeGas: gas)
                 }
                 return
             case .failure(_):

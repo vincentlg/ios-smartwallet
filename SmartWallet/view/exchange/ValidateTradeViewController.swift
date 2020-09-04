@@ -39,11 +39,12 @@ class ValidateTradeViewController: UIViewController {
         self.desTokenLabel.text = self.destToken?.symbol
         self.slipageLabel.text = self.maxDestAmount
         
-        Application.calculateGasFees(safeGas: BigUInt(paraswapTx!.gas!)!) { (result) in
+        Application.updateGasPrice() { (result) in
             switch result {
-            case .success(let fees):
+            case .success(_):
                 DispatchQueue.main.async {
-                    self.gasFeesLabel.text = fees
+                    let gas = BigUInt(self.paraswapTx!.gas!)!
+                    self.gasFeesLabel.text = Application.calculateGasFees(safeGas: gas)
                 }
                 return
             case .failure(_):

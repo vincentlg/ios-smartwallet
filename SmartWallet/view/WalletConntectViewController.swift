@@ -62,10 +62,12 @@ class WalletConnectViewController: UIViewController{
         
         self.GasFeesLabel.isHidden = true
         self.feesLabel.isHidden = true
+        self.errorLabel.text = nil
         
-        let gasAmount = BigUInt(hex: self.gas!)
         
         if (self.gas != nil) {
+            let gasAmount = BigUInt(hex: self.gas!)!
+                  
             let hud = JGProgressHUD(style: .dark)
             hud.show(in: self.view)
             Application.updateEthPrice() { (result) in
@@ -73,19 +75,25 @@ class WalletConnectViewController: UIViewController{
                 case .failure(_), .success(_):
                     DispatchQueue.main.async {
                         hud.dismiss()
-                        Application.calculateGasFees(safeGas: BigUInt(hex: self.gas!)!) { (result) in
+                        Application.updateGasPrice() { (result) in
                                    switch result {
-                                   case .success(let fefees):
+                                   case .success(_):
                                        DispatchQueue.main.async {
+                                        let ethNeeded = Application.calculateEtherForGas(safeGas: gasAmount)
+                                        if let ethAvailable = self.ethAmount, (ethNeeded > ethAvailable) {
+                                            self.errorLabel.text = "You don't have enough ETH to pay the transaction and the gas Fees."
+                                        }
+                                        
+                                        let fees = Application.calculateGasFees(safeGas: gasAmount)
                                         self.GasFeesLabel.isHidden = false
                                         self.feesLabel.isHidden = false
-                                        
-                                        self.feesLabel.text = fefees
+                                        self.feesLabel.text = fees
                                        }
                                        return
                                    case .failure(_):
                                        self.GasFeesLabel.isHidden = true
                                        self.feesLabel.isHidden = true
+                                       self.errorLabel.text = nil
                                        return
                                    }
                                    

@@ -48,7 +48,7 @@ class WalletViewController: UIViewController {
            MDCSnackbarManager.default.show(snack)
         }
         
-        WalletConnectManager.createSession(scannedCode: "wc:cd195ee2-c2fe-4047-96b7-cbc7d66e00f0@1?bridge=https%3A%2F%2Fbridge.walletconnect.org&key=cbfa48718956f47b02c17a6594845f12ef3b141cb18610a8d3285ab25b9be59e", presentFunction: self.displayWCMessage)
+        WalletConnectManager.createSession(scannedCode: "wc:547316ed-0402-4c13-b77f-785edcb123c5@1?bridge=https%3A%2F%2Fbridge.walletconnect.org&key=9bfaae0406b0084166d34a7e0c54276eac5d57488162916039d6647a713f8818", presentFunction: self.displayWCMessage)
         
     }
     
@@ -235,6 +235,7 @@ class WalletViewController: UIViewController {
                 destinationVC.initWith(peerMeta: self.wcPeerParam!, action: self.wcAction!, actionDetails: self.wacActionDetails!, gas: self.wcGas)
                 destinationVC.approveHandler = WalletConnectManager.approveHandler
                 destinationVC.rejectHandler = WalletConnectManager.rejectHandler
+                destinationVC.ethAmount = self.walletTabViewController.tokenBalances["ETH"]?.balance
             }
         }
     }

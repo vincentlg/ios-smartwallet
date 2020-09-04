@@ -76,11 +76,11 @@ class SendViewController: UIViewController {
             safeTxGas =  BigUInt(20000)
         }
         
-        Application.calculateGasFees(safeGas: safeTxGas) { (result) in
+        Application.updateGasPrice() { (result) in
             switch result {
-            case .success(let fees):
+            case .success(_):
                 DispatchQueue.main.async {
-                    self.gasFeesLabels.text = fees
+                    self.gasFeesLabels.text = Application.calculateGasFees(safeGas: safeTxGas)
                 }
                 return
             case .failure(_):

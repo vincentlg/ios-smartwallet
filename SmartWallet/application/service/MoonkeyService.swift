@@ -36,7 +36,7 @@ struct GaspriceResponse: Codable {
     public var gas_prices: Gasprice
 }
 
-struct Gasprice: Codable {
+public struct Gasprice: Codable {
     var fast: String
     var fastest: String
     var safelow: String

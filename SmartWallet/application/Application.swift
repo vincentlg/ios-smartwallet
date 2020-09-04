@@ -19,6 +19,7 @@ public class Application {
     static public var baseGas: BigUInt = BigUInt(70000)
     static public var ethPrice: Double?
     static public var tokenPrices: [String: [String: Double]]?
+    static public var gasPrices: Gasprice?
     
     
     //TODO should be returned from services
@@ -118,37 +119,49 @@ public class Application {
         }
     }
     
-    static func calculateGasFees(safeGas: BigUInt, completion: @escaping (Result<(String), Error>) -> Void)  -> Void {
-        guard let price = self.ethPrice else {
-            completion(.failure(NSError(domain: "Error nill EthPrice", code: 0, userInfo: nil)))
-            return
-        }
-
+    static func updateGasPrice(completion: @escaping (Result<(Gasprice), Error>) -> Void)  -> Void {
         self.moonkeyService.getGasPrice() { (result) in
-            switch result {
-            case .success(let gasPriceResponse):
-                let gasPrice = BigUInt(gasPriceResponse.gas_prices.fast)!
-                
-                let totalGas = safeGas + Application.baseGas
-                let totalEth = totalGas * gasPrice
-                
-                let formatter = EtherNumberFormatter()
-                let ethNumber = formatter.string(from:BigInt(totalEth))
-                let ethDouble = Double(ethNumber.replacingOccurrences(of: ",", with: "."))!
-                
-                let fees = ethDouble * price
-       
-                completion(.success("$"+String(format: "%.2f", fees)))
-                return
-                
-            case .failure(let error):
-                completion(.failure(error))
-                return
+                   switch result {
+                   case .success(let gasPriceResponse):
+                    self.gasPrices = gasPriceResponse.gas_prices
+                    completion(.success(gasPriceResponse.gas_prices))
+                    break
+                    
+                   case .failure(let error):
+                    completion(.failure(error))
+                    break
             }
         }
+    }
+    
+    static func calculateEtherForGas(safeGas: BigUInt) -> BigUInt {
+           guard let gasPrices = self.gasPrices else {
+               return BigUInt(0)
+           }
+
+           let gasPrice = BigUInt(gasPrices.fast)!
+               
+           let totalGas = safeGas + Application.baseGas
+           let totalEth = totalGas * gasPrice
         
+        return totalEth
+    }
+    
+    static func calculateGasFees(safeGas: BigUInt)  -> String {
         
-        
+        guard let price = self.ethPrice else {
+            return ""
+        }
+       
+        let totalEth = calculateEtherForGas(safeGas: safeGas)
+                
+        let formatter = EtherNumberFormatter()
+        let ethNumber = formatter.string(from:BigInt(totalEth))
+        let ethDouble = Double(ethNumber.replacingOccurrences(of: ",", with: "."))!
+                
+        let fees = ethDouble * price
+       
+        return "$"+String(format: "%.2f", fees)
     }
     
     static func isAccountOwner(completion: @escaping (Result<(Bool), Error>) -> Void)  -> Void {

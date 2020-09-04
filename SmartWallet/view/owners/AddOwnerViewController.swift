@@ -33,31 +33,32 @@ class AddOwnerViewController:UIViewController {
         self.addressTextField.becomeFirstResponder()
         
         let hud = JGProgressHUD(style: .dark)
-               hud.show(in: self.view)
-               Application.updateEthPrice() { (result) in
-                   switch result {
-                   case .failure(_), .success(_):
-                       DispatchQueue.main.async {
-                           Application.calculateGasFees(safeGas: BigUInt(50000)) { (result) in
-                               switch result {
-                               case .success(let fees):
-                                   DispatchQueue.main.async {
-                                        hud.dismiss()
-                                       self.gasFeesLabel.text = fees
-                                   }
-                                   return
-                               case .failure(_):
-                                    hud.dismiss()
-                                   self.gasFeesLabel.text = "error"
-                                   return
-                               }
-                               
-                           }
-                          
-                       }
-                       break
-                   }
-               }
+        hud.show(in: self.view)
+        Application.updateEthPrice() { (result) in
+            switch result {
+            case .failure(_), .success(_):
+                DispatchQueue.main.async {
+                    Application.updateGasPrice() { (result) in
+                        switch result {
+                        case .success(_):
+                            DispatchQueue.main.async {
+                                hud.dismiss()
+                                let gas = BigUInt(50000)
+                                self.gasFeesLabel.text = Application.calculateGasFees(safeGas: gas)
+                            }
+                            return
+                        case .failure(_):
+                            hud.dismiss()
+                            self.gasFeesLabel.text = "error"
+                            return
+                        }
+                        
+                    }
+                    
+                }
+                break
+            }
+        }
     }
     
     @IBAction func addAction(_ sender: Any) {
@@ -72,11 +73,11 @@ class AddOwnerViewController:UIViewController {
         let hud = JGProgressHUD(style: .extraLight)
         hud.textLabel.text = "Your address is being added.\nPlease wait (around 1 min)"
         hud.show(in: self.view)
-       
+        
         
         let data = Application.smartwallet!.encodeAddOwnerWithThreshold(owner:  web3.EthereumAddress(self.addressTextField.text!),
                                                                         threshold: BigUInt(1))
-
+        
         Application.relay(to: Application.smartwallet!.address, value: BigUInt(0), data: Data(hexString: data)!, safeTxGas: BigUInt(50000)) { (result) in
             switch result {
                 
@@ -120,7 +121,7 @@ class AddOwnerViewController:UIViewController {
     public func displayErrorOccured() {
         let snackBarMessage = MDCSnackbarMessage()
         snackBarMessage.text = "An error occured. Please try again."
-       MDCSnackbarManager.default.show(snackBarMessage)
+        MDCSnackbarManager.default.show(snackBarMessage)
     }
     
     func qrCodeFound(qrcode: String) {
