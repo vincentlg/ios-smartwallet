@@ -16,7 +16,7 @@ class OwnerTableViewCell: UITableViewCell {
     public func display(address:String){
         
         if address == Application.account!.first.ethereumAddress.value.lowercased() {
-            self.addressLabel.text = "Moonkey (\(address))"
+            self.addressLabel.text = "This phone (\(address))"
         } else {
             self.addressLabel.text = address
         }

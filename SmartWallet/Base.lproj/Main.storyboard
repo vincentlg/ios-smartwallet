@@ -360,10 +360,10 @@
             </objects>
             <point key="canvasLocation" x="196" y="-884"/>
         </scene>
-        <!--View Controller-->
+        <!--Wallet Connect View Controller-->
         <scene sceneID="h69-iW-aKv">
             <objects>
-                <viewController id="jsH-h5-BMu" sceneMemberID="viewController">
+                <viewController id="jsH-h5-BMu" customClass="WalletConnectViewController" customModule="Moonkey" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xkn-wf-fo5" customClass="GradientView" customModule="Moonkey" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,8 +397,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View your public address, balance and activity Request approval for transactions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdc-Yr-Hu6">
-                                        <rect key="frame" x="10" y="158.5" width="354" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="10" y="158.5" width="354" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -413,6 +413,7 @@
                                                 <state key="normal" title="Reject"/>
                                                 <connections>
                                                     <action selector="buyAction:" destination="tZB-LC-HMu" eventType="touchUpInside" id="XTt-ja-4FG"/>
+                                                    <action selector="reject:" destination="jsH-h5-BMu" eventType="touchUpInside" id="eb7-Mp-bIU"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hp3-rI-VHI" customClass="WalletButton" customModule="Moonkey" customModuleProvider="target">
@@ -422,6 +423,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Approve"/>
                                                 <connections>
+                                                    <action selector="approve:" destination="jsH-h5-BMu" eventType="touchUpInside" id="dMj-GS-VmR"/>
                                                     <action selector="buyAction:" destination="tZB-LC-HMu" eventType="touchUpInside" id="xgg-NY-Kig"/>
                                                 </connections>
                                             </button>
@@ -439,15 +441,24 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j47-VZ-oEx">
+                                        <rect key="frame" x="30" y="348.5" width="314" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="450" id="0Vn-uv-Ab8"/>
+                                    <constraint firstAttribute="trailing" secondItem="j47-VZ-oEx" secondAttribute="trailing" constant="30" id="44P-Oz-0Mc"/>
                                     <constraint firstAttribute="trailing" secondItem="xdc-Yr-Hu6" secondAttribute="trailing" constant="10" id="4Wn-7o-wI2"/>
                                     <constraint firstItem="nLU-Bk-q33" firstAttribute="leading" secondItem="yt4-p7-Gde" secondAttribute="leading" constant="30" id="B1d-zG-Apn"/>
                                     <constraint firstAttribute="trailing" secondItem="Qnh-bG-zzU" secondAttribute="trailing" constant="30" id="DKJ-FB-7zb"/>
+                                    <constraint firstItem="nLU-Bk-q33" firstAttribute="top" secondItem="j47-VZ-oEx" secondAttribute="bottom" constant="5" id="EC3-Aj-xeE"/>
                                     <constraint firstAttribute="trailing" secondItem="yYX-Rw-hLj" secondAttribute="trailing" constant="3" id="F4W-kV-K4k"/>
                                     <constraint firstItem="B2L-D7-1Ps" firstAttribute="leading" secondItem="yt4-p7-Gde" secondAttribute="leading" constant="10" id="Gw7-we-lPo"/>
+                                    <constraint firstItem="j47-VZ-oEx" firstAttribute="leading" secondItem="yt4-p7-Gde" secondAttribute="leading" constant="30" id="K0h-qz-vb5"/>
                                     <constraint firstItem="B2L-D7-1Ps" firstAttribute="top" secondItem="zts-aX-GBn" secondAttribute="bottom" constant="20" id="QoJ-sZ-0tl"/>
                                     <constraint firstAttribute="trailing" secondItem="B2L-D7-1Ps" secondAttribute="trailing" constant="10" id="SkZ-2s-hmk"/>
                                     <constraint firstItem="zts-aX-GBn" firstAttribute="top" secondItem="xIc-1M-NNa" secondAttribute="bottom" constant="3" id="VuC-pj-0cX"/>
@@ -483,6 +494,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ytM-fh-wkK"/>
                     </view>
+                    <connections>
+                        <outlet property="GasFeesLabel" destination="nLU-Bk-q33" id="h6L-T4-ODL"/>
+                        <outlet property="actionDetailsLabel" destination="xdc-Yr-Hu6" id="p0a-rQ-UMk"/>
+                        <outlet property="actionLabel" destination="B2L-D7-1Ps" id="4jn-nD-jYi"/>
+                        <outlet property="descriptionLabel" destination="zts-aX-GBn" id="9q7-UK-bIF"/>
+                        <outlet property="errorLabel" destination="j47-VZ-oEx" id="f38-vs-4Jk"/>
+                        <outlet property="feesLabel" destination="yYX-Rw-hLj" id="rcV-tr-HgR"/>
+                        <outlet property="logoImageView" destination="pkK-O7-kdz" id="Snz-Hd-6iX"/>
+                        <outlet property="nameLabel" destination="xIc-1M-NNa" id="dGr-5g-qx4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Km5-5r-JGF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

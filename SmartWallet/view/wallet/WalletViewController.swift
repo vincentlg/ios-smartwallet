@@ -35,8 +35,10 @@ class WalletViewController: UIViewController {
     
     let walletTabViewController = WalletTabViewController()
     
-    var wcPeerParam: WCSessionRequestParam?
-    var wcMessage: String?
+    var wcPeerParam: WCPeerMeta?
+    var wcAction: String?
+    var wacActionDetails: String?
+    var wcGas: String?
     
     public var isNewWallet = false
     
@@ -46,7 +48,7 @@ class WalletViewController: UIViewController {
            MDCSnackbarManager.default.show(snack)
         }
         
-        WalletConnectManager.createSession(scannedCode: "wc:96ce89d9-1e9e-4993-97b4-e334cf80192e@1?bridge=https%3A%2F%2Fbridge.walletconnect.org&key=883f35b0eca024f0835ce603c467f450e0c64c7e1fc5b425b4875206f263451e", presentFunction: self.displayWCMessage)
+        WalletConnectManager.createSession(scannedCode: "wc:cd195ee2-c2fe-4047-96b7-cbc7d66e00f0@1?bridge=https%3A%2F%2Fbridge.walletconnect.org&key=cbfa48718956f47b02c17a6594845f12ef3b141cb18610a8d3285ab25b9be59e", presentFunction: self.displayWCMessage)
         
     }
     
@@ -120,7 +122,7 @@ class WalletViewController: UIViewController {
     }
     
     private func qrCodeHandler(code: String) -> Void{
-        print(code)
+        WalletConnectManager.createSession(scannedCode: code, presentFunction: self.displayWCMessage)
     }
     
     private func calculateFiatValue() -> String {
@@ -192,9 +194,11 @@ class WalletViewController: UIViewController {
         }
     }
     
-    private func displayWCMessage(peerParam: WCSessionRequestParam, message: String){
+    private func displayWCMessage(peerParam: WCPeerMeta, action: String, actionDetails: String, gas: String?){
         self.wcPeerParam = peerParam
-        self.wcMessage = message
+        self.wcAction = action
+        self.wacActionDetails = actionDetails
+        self.wcGas = gas
         self.performSegue(withIdentifier: "wallect_connect_segue", sender: self)
     }
     
@@ -227,9 +231,11 @@ class WalletViewController: UIViewController {
         }
         
         if segue.identifier == "wallect_connect_segue" {
-            /*if let destinationVC = segue.destination as? ScannerViewController {
-                destinationVC.qrCodeHandler = self.qrCodeHandler
-            }*/
+            if let destinationVC = segue.destination as? WalletConnectViewController {
+                destinationVC.initWith(peerMeta: self.wcPeerParam!, action: self.wcAction!, actionDetails: self.wacActionDetails!, gas: self.wcGas)
+                destinationVC.approveHandler = WalletConnectManager.approveHandler
+                destinationVC.rejectHandler = WalletConnectManager.rejectHandler
+            }
         }
     }
     
