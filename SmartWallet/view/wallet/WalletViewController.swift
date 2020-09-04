@@ -47,9 +47,6 @@ class WalletViewController: UIViewController {
         if let snack = self.snackBarMessage {
            MDCSnackbarManager.default.show(snack)
         }
-        
-        WalletConnectManager.createSession(scannedCode: "wc:547316ed-0402-4c13-b77f-785edcb123c5@1?bridge=https%3A%2F%2Fbridge.walletconnect.org&key=9bfaae0406b0084166d34a7e0c54276eac5d57488162916039d6647a713f8818", presentFunction: self.displayWCMessage)
-        
     }
     
     override func viewDidLoad() {

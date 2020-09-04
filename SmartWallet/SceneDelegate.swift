@@ -44,11 +44,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         
-        
+        WalletConnectManager.willEnterForeground()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-       
+        WalletConnectManager.willEnterBackground()
     }
 
 

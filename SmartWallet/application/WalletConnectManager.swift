@@ -13,15 +13,15 @@ import web3
 
 class WalletConnectManager{
     
-    static var sessionMeta: WCPeerMeta?
     static let meta: WCPeerMeta =  WCPeerMeta(name: "MoonKey", url: "https://rockside.io")
-    static var interactor: WCInteractor?
     
-    static var presenter: ((_: WCPeerMeta, _: String, _: String, _: String?) -> Void)?
+    static var interactor: WCInteractor?
+    static var sessionMeta: WCPeerMeta?
     
     static var requestTx: WCEthereumTransaction?
     static var requestID: Int64?
     
+    static var presenter: ((_: WCPeerMeta, _: String, _: String, _: String?) -> Void)?
     
     static func createSession(scannedCode: String, presentFunction: @escaping ((_: WCPeerMeta, _: String, _: String, _: String?) -> Void)){
         
@@ -31,25 +31,13 @@ class WalletConnectManager{
         
         self.presenter = presentFunction
         
-        let interactor = WCInteractor(session: session, meta: meta, uuid:  UIDevice.current.identifierForVendor ?? UUID(), sessionRequestTimeout: 60)
+        let interactor = WCInteractor(session: session, meta: meta, uuid:  UIDevice.current.identifierForVendor ?? UUID(), sessionRequestTimeout: 360)
         
         
-        configure(interactor: interactor)
-        
-        interactor.connect().done { connected in
-            NSLog("####### connect success")
-            
-        }.catch { error in
-            NSLog("####### connect Error")
-        }
-        
-        self.interactor = interactor
-    }
-    
-    static func configure(interactor: WCInteractor) {
         interactor.onError = { error in
-            NSLog("####### interacton On Error")
+            NSLog("Interactor on Error: \(error.localizedDescription)")
         }
+        
         
         interactor.onSessionRequest = { (id, peerParam) in
             self.sessionMeta = peerParam.peerMeta
@@ -58,21 +46,17 @@ class WalletConnectManager{
         }
         
         interactor.onDisconnect = { (error) in
-            NSLog("####### on disconnect")
+            NSLog("Interactor disconnected")
             if let error = error {
-                print(error)
+                NSLog("Interactor on disconnect: \(error.localizedDescription)")
                 // TODO "Ask to reconnecr"
-                interactor.resume()
+                //interactor.resume()
+                self.cleanRequest()
+                self.cleanSession()
             }
         }
         
-        interactor.eth.onSign = {(id, payload) in
-            NSLog("####### on eth Sign")
-        }
-        
         interactor.eth.onTransaction = { (id, event, transaction) in
-            NSLog(transaction.toJSONString()!)
-            
             let value = BigInt(hex: transaction.value!)!
             let formatter = EtherNumberFormatter()
             var ethNumber = formatter.string(from: value)
@@ -83,7 +67,14 @@ class WalletConnectManager{
             
             self.presenter!(self.sessionMeta!, "Approve transaction", "Value: "+ethNumber+" ETH", transaction.gas)
         }
+        
+        interactor.connect().done { _ in }.catch { error in
+            self.cleanSession()
+        }
+        
+        self.interactor = interactor
     }
+    
     
     static public func rejectHandler() -> Void {
         
@@ -91,13 +82,14 @@ class WalletConnectManager{
             self.interactor?.rejectSession().cauterize()
         } else {
             self.interactor?.rejectRequest(id: self.requestID!, message: "Request rejected.").cauterize()
+            self.cleanRequest()
         }
-     }
-     
-     static public func approveHandler() -> Void {
+    }
+    
+    static public func approveHandler() -> Void {
         if self.requestTx == nil {
             self.interactor?.approveSession(accounts:  [Application.smartwallet!.address.value],
-                                        chainId: Application.network.ID).cauterize()
+                                            chainId: Application.network.ID).cauterize()
         } else {
             let data = Data(hexString: self.requestTx!.data)!
             let gas = BigUInt(hex: self.requestTx!.gas!)!
@@ -105,20 +97,41 @@ class WalletConnectManager{
             
             Application.relay(to: web3.EthereumAddress(self.requestTx!.to!), value: value,
                               data: data, safeTxGas:gas) { (result) in
-                switch result {
-                case .success(let txResponse):
-                    self.interactor!.approveRequest(id: self.requestID!, result: txResponse.transaction_hash).cauterize()
-                    break
-                    
-                case .failure(_):
-                    self.interactor?.rejectRequest(id: self.requestID!, message: "An error occured.").cauterize()
-                    break
-                }
+                                switch result {
+                                case .success(let txResponse):
+                                    self.interactor!.approveRequest(id: self.requestID!, result: txResponse.transaction_hash).cauterize()
+                                    self.cleanRequest()
+                                    break
+                                    
+                                case .failure(_):
+                                    self.interactor?.rejectRequest(id: self.requestID!, message: "An error occured.").cauterize()
+                                    self.cleanRequest()
+                                    break
+                                }
             }
         }
-     }
+    }
     
- 
+    static private func cleanRequest() -> Void {
+        self.requestID = nil
+        self.requestTx = nil
+    }
     
+    static private func cleanSession() -> Void {
+        self.sessionMeta = nil
+        self.interactor = nil
+    }
     
+    static func willEnterBackground() {
+        if (self.interactor?.state == .connected){
+            NSLog("PAUSE")
+            self.interactor?.pause()
+        }
+    }
+    
+    static func willEnterForeground(){
+        if (self.interactor?.state == .paused){
+            self.interactor?.resume()
+        }
+    }
 }
