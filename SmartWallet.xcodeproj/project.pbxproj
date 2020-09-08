@@ -279,11 +279,11 @@
 				B63B472C24ED6BF5000EFF59 /* SLIP.swift */,
 				B63B472D24ED6BF5000EFF59 /* String+Clear.swift */,
 				B63B473224ED6BF5000EFF59 /* BigIntEncoding.swift */,
-				B63B473324ED6BF5000EFF59 /* Crypto.h */,
 				B63B473424ED6BF5000EFF59 /* PrivateKey.swift */,
 				B63B473524ED6BF5000EFF59 /* Blockchain.swift */,
 				B63B474924ED6BF5000EFF59 /* Ethereum.swift */,
 				B63B473624ED6BF5000EFF59 /* Data+Clear.swift */,
+				B63B473324ED6BF5000EFF59 /* Crypto.h */,
 				B63B473724ED6BF5000EFF59 /* Crypto.m */,
 				B63B473824ED6BF5000EFF59 /* Ethereum */,
 			);
@@ -396,14 +396,14 @@
 		DC40D7AD2412AC1B00C792EB /* application */ = {
 			isa = PBXGroup;
 			children = (
-				B63B471124ED6A21000EFF59 /* BigInt+Hex.swift */,
-				DCFFBE4D246AB12800AB0C4B /* UIImageView+extension.swift */,
-				DCBA5D01242928CE00EE8CA9 /* UIColor+hex.swift */,
 				DCFFBE532472C78000AB0C4B /* service */,
 				DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */,
 				DC40D7AE2412AC2F00C792EB /* UIViewController+NavController.swift */,
 				B6A6435524EEA48D009D1750 /* Application.swift */,
 				B674FB8124FE4A4D003E1460 /* WalletConnectManager.swift */,
+				DCBA5D01242928CE00EE8CA9 /* UIColor+hex.swift */,
+				DCFFBE4D246AB12800AB0C4B /* UIImageView+extension.swift */,
+				B63B471124ED6A21000EFF59 /* BigInt+Hex.swift */,
 			);
 			path = application;
 			sourceTree = "<group>";
@@ -491,8 +491,8 @@
 		DC996BE22418DBBE00248748 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				B621AB1924F402C9009535E2 /* owners */,
 				B6A6435424EEA43F009D1750 /* components */,
+				B621AB1924F402C9009535E2 /* owners */,
 				DCD8CE44243DD7AF0078BB1D /* settings */,
 				DCD11D07241B9BE40046ECD0 /* exchange */,
 				DCA3CCED242387C900FC135C /* send */,

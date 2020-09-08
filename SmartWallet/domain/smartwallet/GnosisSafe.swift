@@ -116,7 +116,10 @@ public struct GnosisSafe: SmartWallet {
                 return
             }
             
-            completion(.success(res == "0x0000000000000000000000000000000000000000000000000000000000000001"))
+            let decoded = try! ABIDecoder.decodeData(res, types: [Bool.self])
+            let result: Bool = try! decoded.first!.decoded()
+            
+            completion(.success(result))
         }
     }
     

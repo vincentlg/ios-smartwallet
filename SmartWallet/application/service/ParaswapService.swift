@@ -135,13 +135,10 @@ struct GetTxResponse:Codable {
         } catch {
             value = "0"
         }
-        
     }
-    
 }
 
 class ParaswapService {
-    
     
     let paraswapContract = web3.EthereumAddress("0x86969d29f5fd327e1009ba66072be22db6017cc6")
     
@@ -214,8 +211,11 @@ class ParaswapService {
                 completion(.failure(NSError(domain: "Nil result", code: 0, userInfo: nil)))
                 return
             }
-            let strippedResult = res.replacingOccurrences(of: "0x000000000000000000000000", with: "0x")
-            completion(.success(web3.EthereumAddress(strippedResult)))
+            
+            let decoded = try! ABIDecoder.decodeData(res, types: [EthereumAddress.self])
+            let address: EthereumAddress = try! decoded.first!.decoded()
+
+            completion(.success(address))
         }
     }
     
