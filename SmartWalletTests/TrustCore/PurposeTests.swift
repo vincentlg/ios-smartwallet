@@ -12,9 +12,6 @@ import XCTest
 class PurposeTests: XCTestCase {
     func testPurpose() {
         XCTAssertEqual(.bip44, Ethereum().coinPurpose)
-        XCTAssertEqual(.bip44, Wanchain().coinPurpose)
-        XCTAssertEqual(.bip44, Vechain().coinPurpose)
-        XCTAssertEqual(.bip44, Go().coinPurpose)
-        XCTAssertEqual(.bip44, TomoChain().coinPurpose)
+
     }
 }

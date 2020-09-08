@@ -48,31 +48,14 @@
 		B6E1E9E424ED7A1D0081CF82 /* SmartWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9A524ED77310081CF82 /* SmartWalletTests.swift */; };
 		B6E1E9E524ED7A1D0081CF82 /* EthereumAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9B024ED77C00081CF82 /* EthereumAccountTests.swift */; };
 		B6E1E9E624ED7A1D0081CF82 /* EtherNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9AE24ED77C00081CF82 /* EtherNumberFormatterTests.swift */; };
-		B6E1E9E724ED7A1D0081CF82 /* IdentityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9AF24ED77C00081CF82 /* IdentityTests.swift */; };
-		B6E1E9E824ED7A1D0081CF82 /* MessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9B124ED77C00081CF82 /* MessageTests.swift */; };
-		B6E1E9E924ED7A1D0081CF82 /* RocksideIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9AD24ED77C00081CF82 /* RocksideIntegrationTests.swift */; };
 		B6E1EA0624ED7A8A0081CF82 /* HDWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9EB24ED7A8A0081CF82 /* HDWalletTests.swift */; };
 		B6E1EA0724ED7A8A0081CF82 /* PublicKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9EC24ED7A8A0081CF82 /* PublicKeyTests.swift */; };
-		B6E1EA0824ED7A8A0081CF82 /* WanchainAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9EE24ED7A8A0081CF82 /* WanchainAddressTests.swift */; };
-		B6E1EA0924ED7A8A0081CF82 /* WanchainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9EF24ED7A8A0081CF82 /* WanchainTests.swift */; };
 		B6E1EA0A24ED7A8A0081CF82 /* DerivationPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9F024ED7A8A0081CF82 /* DerivationPathTests.swift */; };
 		B6E1EA0B24ED7A8A0081CF82 /* DataHexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9F124ED7A8A0081CF82 /* DataHexTests.swift */; };
-		B6E1EA0C24ED7A8A0081CF82 /* VechainTransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9F324ED7A8A0081CF82 /* VechainTransactionTests.swift */; };
 		B6E1EA0D24ED7A8A0081CF82 /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9F424ED7A8A0081CF82 /* CryptoTests.swift */; };
-		B6E1EA0E24ED7A8A0081CF82 /* FunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9F524ED7A8A0081CF82 /* FunctionTests.swift */; };
 		B6E1EA0F24ED7A8A0081CF82 /* PrivateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9F624ED7A8A0081CF82 /* PrivateKeyTests.swift */; };
 		B6E1EA1024ED7A8A0081CF82 /* SlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9F724ED7A8A0081CF82 /* SlipTests.swift */; };
 		B6E1EA1124ED7A8A0081CF82 /* PurposeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9F824ED7A8A0081CF82 /* PurposeTests.swift */; };
-		B6E1EA1224ED7A8A0081CF82 /* TransactionSigningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9FA24ED7A8A0081CF82 /* TransactionSigningTests.swift */; };
-		B6E1EA1324ED7A8A0081CF82 /* ABIEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9FC24ED7A8A0081CF82 /* ABIEncoderTests.swift */; };
-		B6E1EA1424ED7A8A0081CF82 /* ERC721EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9FD24ED7A8A0081CF82 /* ERC721EncoderTests.swift */; };
-		B6E1EA1524ED7A8A0081CF82 /* ABIDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1E9FE24ED7A8A0081CF82 /* ABIDecoderTests.swift */; };
-		B6E1EA1624ED7A8A0081CF82 /* EIP712TypedDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1EA0024ED7A8A0081CF82 /* EIP712TypedDataTests.swift */; };
-		B6E1EA1724ED7A8A0081CF82 /* cryptofights_712.json in Resources */ = {isa = PBXBuildFile; fileRef = B6E1EA0124ED7A8A0081CF82 /* cryptofights_712.json */; };
-		B6E1EA1824ED7A8A0081CF82 /* ERC20EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1EA0224ED7A8A0081CF82 /* ERC20EncoderTests.swift */; };
-		B6E1EA1924ED7A8A0081CF82 /* RLPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1EA0324ED7A8A0081CF82 /* RLPTests.swift */; };
-		B6E1EA1A24ED7A8A0081CF82 /* EthereumAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1EA0424ED7A8A0081CF82 /* EthereumAddressTests.swift */; };
-		B6E1EA1B24ED7A8A0081CF82 /* EthereumChecksumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1EA0524ED7A8A0081CF82 /* EthereumChecksumTests.swift */; };
 		DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */; };
 		DC33BA0424CED30100303610 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC33BA0324CED30100303610 /* GoogleService-Info.plist */; };
 		DC352DB6243CCDDA00654C5E /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC352DB5243CCDDA00654C5E /* ConnectViewController.swift */; };
@@ -176,33 +159,16 @@
 		B6E1E9A324ED77310081CF82 /* SmartWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E1E9A524ED77310081CF82 /* SmartWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWalletTests.swift; sourceTree = "<group>"; };
 		B6E1E9A724ED77310081CF82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6E1E9AD24ED77C00081CF82 /* RocksideIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RocksideIntegrationTests.swift; sourceTree = "<group>"; };
 		B6E1E9AE24ED77C00081CF82 /* EtherNumberFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtherNumberFormatterTests.swift; sourceTree = "<group>"; };
-		B6E1E9AF24ED77C00081CF82 /* IdentityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityTests.swift; sourceTree = "<group>"; };
 		B6E1E9B024ED77C00081CF82 /* EthereumAccountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthereumAccountTests.swift; sourceTree = "<group>"; };
-		B6E1E9B124ED77C00081CF82 /* MessageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTests.swift; sourceTree = "<group>"; };
 		B6E1E9EB24ED7A8A0081CF82 /* HDWalletTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HDWalletTests.swift; sourceTree = "<group>"; };
 		B6E1E9EC24ED7A8A0081CF82 /* PublicKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKeyTests.swift; sourceTree = "<group>"; };
-		B6E1E9EE24ED7A8A0081CF82 /* WanchainAddressTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WanchainAddressTests.swift; sourceTree = "<group>"; };
-		B6E1E9EF24ED7A8A0081CF82 /* WanchainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WanchainTests.swift; sourceTree = "<group>"; };
 		B6E1E9F024ED7A8A0081CF82 /* DerivationPathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DerivationPathTests.swift; sourceTree = "<group>"; };
 		B6E1E9F124ED7A8A0081CF82 /* DataHexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHexTests.swift; sourceTree = "<group>"; };
-		B6E1E9F324ED7A8A0081CF82 /* VechainTransactionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VechainTransactionTests.swift; sourceTree = "<group>"; };
 		B6E1E9F424ED7A8A0081CF82 /* CryptoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoTests.swift; sourceTree = "<group>"; };
-		B6E1E9F524ED7A8A0081CF82 /* FunctionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionTests.swift; sourceTree = "<group>"; };
 		B6E1E9F624ED7A8A0081CF82 /* PrivateKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateKeyTests.swift; sourceTree = "<group>"; };
 		B6E1E9F724ED7A8A0081CF82 /* SlipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlipTests.swift; sourceTree = "<group>"; };
 		B6E1E9F824ED7A8A0081CF82 /* PurposeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurposeTests.swift; sourceTree = "<group>"; };
-		B6E1E9FA24ED7A8A0081CF82 /* TransactionSigningTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionSigningTests.swift; sourceTree = "<group>"; };
-		B6E1E9FC24ED7A8A0081CF82 /* ABIEncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABIEncoderTests.swift; sourceTree = "<group>"; };
-		B6E1E9FD24ED7A8A0081CF82 /* ERC721EncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ERC721EncoderTests.swift; sourceTree = "<group>"; };
-		B6E1E9FE24ED7A8A0081CF82 /* ABIDecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABIDecoderTests.swift; sourceTree = "<group>"; };
-		B6E1EA0024ED7A8A0081CF82 /* EIP712TypedDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EIP712TypedDataTests.swift; sourceTree = "<group>"; };
-		B6E1EA0124ED7A8A0081CF82 /* cryptofights_712.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cryptofights_712.json; sourceTree = "<group>"; };
-		B6E1EA0224ED7A8A0081CF82 /* ERC20EncoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ERC20EncoderTests.swift; sourceTree = "<group>"; };
-		B6E1EA0324ED7A8A0081CF82 /* RLPTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLPTests.swift; sourceTree = "<group>"; };
-		B6E1EA0424ED7A8A0081CF82 /* EthereumAddressTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthereumAddressTests.swift; sourceTree = "<group>"; };
-		B6E1EA0524ED7A8A0081CF82 /* EthereumChecksumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthereumChecksumTests.swift; sourceTree = "<group>"; };
 		CB43F175874C92802541C5AD /* Pods-SmartWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.release.xcconfig"; path = "Target Support Files/Pods-SmartWallet/Pods-SmartWallet.release.xcconfig"; sourceTree = "<group>"; };
 		DC1E26F424169B0F00C686C4 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		DC33BA0324CED30100303610 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -305,17 +271,18 @@
 		B63B471F24ED6BF5000EFF59 /* TrustCore */ = {
 			isa = PBXGroup;
 			children = (
+				B63B472E24ED6BF5000EFF59 /* HDWallet */,
 				B63B472024ED6BF5000EFF59 /* Purpose.swift */,
 				B63B472124ED6BF5000EFF59 /* PublicKey.swift */,
 				B63B472224ED6BF5000EFF59 /* Data+Hex.swift */,
 				B63B472324ED6BF5000EFF59 /* Address.swift */,
 				B63B472C24ED6BF5000EFF59 /* SLIP.swift */,
 				B63B472D24ED6BF5000EFF59 /* String+Clear.swift */,
-				B63B472E24ED6BF5000EFF59 /* HDWallet */,
 				B63B473224ED6BF5000EFF59 /* BigIntEncoding.swift */,
 				B63B473324ED6BF5000EFF59 /* Crypto.h */,
 				B63B473424ED6BF5000EFF59 /* PrivateKey.swift */,
 				B63B473524ED6BF5000EFF59 /* Blockchain.swift */,
+				B63B474924ED6BF5000EFF59 /* Ethereum.swift */,
 				B63B473624ED6BF5000EFF59 /* Data+Clear.swift */,
 				B63B473724ED6BF5000EFF59 /* Crypto.m */,
 				B63B473824ED6BF5000EFF59 /* Ethereum */,
@@ -336,7 +303,6 @@
 		B63B473824ED6BF5000EFF59 /* Ethereum */ = {
 			isa = PBXGroup;
 			children = (
-				B63B474924ED6BF5000EFF59 /* Ethereum.swift */,
 			);
 			path = Ethereum;
 			sourceTree = "<group>";
@@ -368,19 +334,6 @@
 			path = transaction;
 			sourceTree = "<group>";
 		};
-		B6A6435324EEA3FB009D1750 /* extension */ = {
-			isa = PBXGroup;
-			children = (
-				DCBA5D01242928CE00EE8CA9 /* UIColor+hex.swift */,
-				DCFFBE4D246AB12800AB0C4B /* UIImageView+extension.swift */,
-				B63B471124ED6A21000EFF59 /* BigInt+Hex.swift */,
-				B63B470F24ED6A20000EFF59 /* Encodable+toJSONData.swift */,
-				B63B471024ED6A21000EFF59 /* PrivateKey+EthereumAddress.swift */,
-				B66A8F5A24F01EFD00BBD14B /* PrivateKey+v27.swift */,
-			);
-			path = extension;
-			sourceTree = "<group>";
-		};
 		B6A6435424EEA43F009D1750 /* components */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,9 +354,6 @@
 				B6E1E9A524ED77310081CF82 /* SmartWalletTests.swift */,
 				B6E1E9B024ED77C00081CF82 /* EthereumAccountTests.swift */,
 				B6E1E9AE24ED77C00081CF82 /* EtherNumberFormatterTests.swift */,
-				B6E1E9AF24ED77C00081CF82 /* IdentityTests.swift */,
-				B6E1E9B124ED77C00081CF82 /* MessageTests.swift */,
-				B6E1E9AD24ED77C00081CF82 /* RocksideIntegrationTests.swift */,
 				B6E1E9A724ED77310081CF82 /* Info.plist */,
 			);
 			path = SmartWalletTests;
@@ -414,68 +364,14 @@
 			children = (
 				B6E1E9EB24ED7A8A0081CF82 /* HDWalletTests.swift */,
 				B6E1E9EC24ED7A8A0081CF82 /* PublicKeyTests.swift */,
-				B6E1E9ED24ED7A8A0081CF82 /* Wanchain */,
 				B6E1E9F024ED7A8A0081CF82 /* DerivationPathTests.swift */,
 				B6E1E9F124ED7A8A0081CF82 /* DataHexTests.swift */,
-				B6E1E9F224ED7A8A0081CF82 /* VeChain */,
 				B6E1E9F424ED7A8A0081CF82 /* CryptoTests.swift */,
-				B6E1E9F524ED7A8A0081CF82 /* FunctionTests.swift */,
 				B6E1E9F624ED7A8A0081CF82 /* PrivateKeyTests.swift */,
 				B6E1E9F724ED7A8A0081CF82 /* SlipTests.swift */,
 				B6E1E9F824ED7A8A0081CF82 /* PurposeTests.swift */,
-				B6E1E9F924ED7A8A0081CF82 /* Ethereum */,
 			);
 			path = TrustCore;
-			sourceTree = "<group>";
-		};
-		B6E1E9ED24ED7A8A0081CF82 /* Wanchain */ = {
-			isa = PBXGroup;
-			children = (
-				B6E1E9EE24ED7A8A0081CF82 /* WanchainAddressTests.swift */,
-				B6E1E9EF24ED7A8A0081CF82 /* WanchainTests.swift */,
-			);
-			path = Wanchain;
-			sourceTree = "<group>";
-		};
-		B6E1E9F224ED7A8A0081CF82 /* VeChain */ = {
-			isa = PBXGroup;
-			children = (
-				B6E1E9F324ED7A8A0081CF82 /* VechainTransactionTests.swift */,
-			);
-			path = VeChain;
-			sourceTree = "<group>";
-		};
-		B6E1E9F924ED7A8A0081CF82 /* Ethereum */ = {
-			isa = PBXGroup;
-			children = (
-				B6E1E9FA24ED7A8A0081CF82 /* TransactionSigningTests.swift */,
-				B6E1E9FB24ED7A8A0081CF82 /* Solidity */,
-				B6E1EA0324ED7A8A0081CF82 /* RLPTests.swift */,
-				B6E1EA0424ED7A8A0081CF82 /* EthereumAddressTests.swift */,
-				B6E1EA0524ED7A8A0081CF82 /* EthereumChecksumTests.swift */,
-			);
-			path = Ethereum;
-			sourceTree = "<group>";
-		};
-		B6E1E9FB24ED7A8A0081CF82 /* Solidity */ = {
-			isa = PBXGroup;
-			children = (
-				B6E1E9FC24ED7A8A0081CF82 /* ABIEncoderTests.swift */,
-				B6E1E9FD24ED7A8A0081CF82 /* ERC721EncoderTests.swift */,
-				B6E1E9FE24ED7A8A0081CF82 /* ABIDecoderTests.swift */,
-				B6E1E9FF24ED7A8A0081CF82 /* EIP712 */,
-				B6E1EA0224ED7A8A0081CF82 /* ERC20EncoderTests.swift */,
-			);
-			path = Solidity;
-			sourceTree = "<group>";
-		};
-		B6E1E9FF24ED7A8A0081CF82 /* EIP712 */ = {
-			isa = PBXGroup;
-			children = (
-				B6E1EA0024ED7A8A0081CF82 /* EIP712TypedDataTests.swift */,
-				B6E1EA0124ED7A8A0081CF82 /* cryptofights_712.json */,
-			);
-			path = EIP712;
 			sourceTree = "<group>";
 		};
 		BD5C74D5907F4EAFBB5E6AD4 /* Frameworks */ = {
@@ -500,6 +396,9 @@
 		DC40D7AD2412AC1B00C792EB /* application */ = {
 			isa = PBXGroup;
 			children = (
+				B63B471124ED6A21000EFF59 /* BigInt+Hex.swift */,
+				DCFFBE4D246AB12800AB0C4B /* UIImageView+extension.swift */,
+				DCBA5D01242928CE00EE8CA9 /* UIColor+hex.swift */,
 				DCFFBE532472C78000AB0C4B /* service */,
 				DCBA5CFD24290D6600EE8CA9 /* WalletNavigationViewController.swift */,
 				DC40D7AE2412AC2F00C792EB /* UIViewController+NavController.swift */,
@@ -533,6 +432,8 @@
 				B63B471624ED6A41000EFF59 /* EthereumFormatter.swift */,
 				B63B474824ED6BF5000EFF59 /* PublicKey+Ethereum.swift */,
 				B635AF4025077E1300CF9F61 /* EthereumAddress+isValid.swift */,
+				B63B471024ED6A21000EFF59 /* PrivateKey+EthereumAddress.swift */,
+				B66A8F5A24F01EFD00BBD14B /* PrivateKey+v27.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -540,6 +441,7 @@
 		DC6071392431F9E100CED3BF /* infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				B63B470F24ED6A20000EFF59 /* Encodable+toJSONData.swift */,
 				B63B471524ED6A41000EFF59 /* WalletStorage.swift */,
 				DC60713A2431F9FF00CED3BF /* Http.swift */,
 			);
@@ -569,7 +471,6 @@
 		DC7AC3A123EC647000CC1C0D /* SmartWallet */ = {
 			isa = PBXGroup;
 			children = (
-				B6A6435324EEA3FB009D1750 /* extension */,
 				DC40D7AD2412AC1B00C792EB /* application */,
 				DC4ADC9E24190E0B008C23C7 /* domain */,
 				DC996BE22418DBBE00248748 /* view */,
@@ -735,7 +636,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6E1EA1724ED7A8A0081CF82 /* cryptofights_712.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,31 +778,15 @@
 			files = (
 				B6E1E9E424ED7A1D0081CF82 /* SmartWalletTests.swift in Sources */,
 				B6E1E9E524ED7A1D0081CF82 /* EthereumAccountTests.swift in Sources */,
-				B6E1EA0924ED7A8A0081CF82 /* WanchainTests.swift in Sources */,
-				B6E1EA1324ED7A8A0081CF82 /* ABIEncoderTests.swift in Sources */,
-				B6E1EA1B24ED7A8A0081CF82 /* EthereumChecksumTests.swift in Sources */,
-				B6E1EA1624ED7A8A0081CF82 /* EIP712TypedDataTests.swift in Sources */,
 				B6E1EA0B24ED7A8A0081CF82 /* DataHexTests.swift in Sources */,
 				B6E1EA0A24ED7A8A0081CF82 /* DerivationPathTests.swift in Sources */,
-				B6E1EA1A24ED7A8A0081CF82 /* EthereumAddressTests.swift in Sources */,
 				B6E1EA0724ED7A8A0081CF82 /* PublicKeyTests.swift in Sources */,
-				B6E1EA1524ED7A8A0081CF82 /* ABIDecoderTests.swift in Sources */,
 				B6E1EA0624ED7A8A0081CF82 /* HDWalletTests.swift in Sources */,
-				B6E1EA1924ED7A8A0081CF82 /* RLPTests.swift in Sources */,
-				B6E1EA1424ED7A8A0081CF82 /* ERC721EncoderTests.swift in Sources */,
 				B6E1EA0F24ED7A8A0081CF82 /* PrivateKeyTests.swift in Sources */,
 				B6E1E9E624ED7A1D0081CF82 /* EtherNumberFormatterTests.swift in Sources */,
-				B6E1E9E724ED7A1D0081CF82 /* IdentityTests.swift in Sources */,
-				B6E1EA1224ED7A8A0081CF82 /* TransactionSigningTests.swift in Sources */,
 				B6E1EA1124ED7A8A0081CF82 /* PurposeTests.swift in Sources */,
 				B6E1EA1024ED7A8A0081CF82 /* SlipTests.swift in Sources */,
-				B6E1EA1824ED7A8A0081CF82 /* ERC20EncoderTests.swift in Sources */,
-				B6E1EA0C24ED7A8A0081CF82 /* VechainTransactionTests.swift in Sources */,
-				B6E1EA0E24ED7A8A0081CF82 /* FunctionTests.swift in Sources */,
 				B6E1EA0D24ED7A8A0081CF82 /* CryptoTests.swift in Sources */,
-				B6E1E9E824ED7A1D0081CF82 /* MessageTests.swift in Sources */,
-				B6E1EA0824ED7A8A0081CF82 /* WanchainAddressTests.swift in Sources */,
-				B6E1E9E924ED7A1D0081CF82 /* RocksideIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

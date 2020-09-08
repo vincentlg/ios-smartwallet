@@ -20,7 +20,7 @@ class EthereumAccountTests: XCTestCase {
         let expectedPublicAddressString = "0xE8447B8D8f7Ad9499D085161B6613383fF77Eca8"
         let account = PrivateKey(data: privateKey)
         
-        XCTAssertEqual(account?.ethereumAddress, expectedPublicAddressString)
+        XCTAssertEqual(account?.ethereumAddress.value, expectedPublicAddressString.lowercased())
     }
     
     
