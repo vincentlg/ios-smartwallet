@@ -22,7 +22,6 @@ class AddOwnerViewController:UIViewController {
     
     var addressTextFieldController: MDCTextInputControllerUnderline?
     
-    var moonkeyService = MoonkeyService()
     
     var successHandler: SuccessHandler?
     
@@ -83,7 +82,7 @@ class AddOwnerViewController:UIViewController {
                 
             case .success(let txResponse):
                 DispatchQueue.main.async {
-                    _ = self.moonkeyService.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
+                    _ = Application.backendService.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
                         switch result {
                         case .success(_):
                             DispatchQueue.main.async {

@@ -24,9 +24,6 @@ class WalletViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tabHeaderView: UIView!
 
-    
-    var moonkeyService = MoonkeyService()
-    
     var transactionInProgress: Bool = false
     
     var snackBarMessage: MDCSnackbarMessage?
@@ -170,7 +167,7 @@ class WalletViewController: UIViewController {
         self.displayWaitingForTx(txHash: relayResponse.transaction_hash)
         
         
-        _ = self.moonkeyService.waitTxToBeMined(trackingID: relayResponse.tracking_id) { (result) in
+        _ = Application.backendService.waitTxToBeMined(trackingID: relayResponse.tracking_id) { (result) in
             switch result {
             case .success(_):
                 self.transactionInProgress = false

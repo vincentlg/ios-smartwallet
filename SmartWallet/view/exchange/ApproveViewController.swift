@@ -24,7 +24,7 @@ class ApproveViewController: UIViewController {
     var baseAmount: BigUInt?
     
     var approveAmountTextFieldController: MDCTextInputControllerUnderline?
-    let moonkeyService = MoonkeyService()
+    let backendService = BackendService()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,7 +64,7 @@ class ApproveViewController: UIViewController {
                 switch result {
                 case .success(let txResponse):
                     DispatchQueue.main.async {
-                        _ = self.moonkeyService.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
+                        _ = Application.backendService.waitTxToBeMined(trackingID: txResponse.tracking_id) { (result) in
                             
                             switch result {
                             case .success(_):

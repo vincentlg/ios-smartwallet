@@ -24,7 +24,7 @@ public class Application {
     //TODO should be returned from services
     static public var forwarderAddress: web3.EthereumAddress = web3.EthereumAddress("0x641d5315d213EA8eb03563f992c7fFfdd677D0cC")
     
-    static private var moonkeyService: MoonkeyService = MoonkeyService()
+    static public var backendService: BackendService = BackendService()
     static public var coinGeckoService: CoinGeckoService = CoinGeckoService()
     static public var etherscanService: EtherscanService = EtherscanService()
     
@@ -59,7 +59,7 @@ public class Application {
     
     static func relay(to: web3.EthereumAddress, value:BigUInt, data: Data, safeTxGas: BigUInt, completion: @escaping (Result<(RelayResponse), Error>) -> Void)  -> Void {
         
-        self.moonkeyService.getGasPrice() { (result) in
+        Application.backendService.getGasPrice() { (result) in
             switch result {
             case .success(let gasPriceResponse):
                 let gasPrice = BigUInt(gasPriceResponse.gas_prices.fast)!
@@ -70,7 +70,7 @@ public class Application {
                         
                         let gas = (safeTxGas + baseGas).description
                         print(gas)
-                        self.moonkeyService.relayTransaction(smartWallet: Application.smartwallet!, messageData: executeData, completion: completion)
+                        Application.backendService.relayTransaction(smartWallet: Application.smartwallet!, messageData: executeData, completion: completion)
                         return
                     case .failure(let error):
                         completion(.failure(error))
@@ -116,7 +116,7 @@ public class Application {
     }
     
     static func updateGasPrice(completion: @escaping (Result<(Gasprice), Error>) -> Void)  -> Void {
-        self.moonkeyService.getGasPrice() { (result) in
+        self.backendService.getGasPrice() { (result) in
                    switch result {
                    case .success(let gasPriceResponse):
                     self.gasPrices = gasPriceResponse.gas_prices
@@ -167,7 +167,6 @@ public class Application {
     
 
     static func infoForKey(_ key: String) -> String? {
-        NSLog(Bundle.main.infoDictionary!.description)
             return (Bundle.main.infoDictionary?[key] as? String)?
                 .replacingOccurrences(of: "\\", with: "")
      }

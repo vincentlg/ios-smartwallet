@@ -48,7 +48,6 @@ class ExchangeViewController: UIViewController {
     var allowanceAmount: BigUInt?
     
     var paraswapService = ParaswapService()
-    var moonkeyService = MoonkeyService()
     
     var watchTxHandler: WatchTxHandler?
     var displayErrorHandler: DisplayErrorHandler?

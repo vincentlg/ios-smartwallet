@@ -64,7 +64,7 @@
 		DC40D7AC2412A35C00C792EB /* WithoutWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */; };
 		DC40D7AF2412AC2F00C792EB /* UIViewController+NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40D7AE2412AC2F00C792EB /* UIViewController+NavController.swift */; };
 		DC40D7B12412B1C300C792EB /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40D7B02412B1C300C792EB /* RecoveryViewController.swift */; };
-		DC49E0D024B74C3B001B1F39 /* MoonkeyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC49E0CF24B74C3B001B1F39 /* MoonkeyService.swift */; };
+		DC49E0D024B74C3B001B1F39 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC49E0CF24B74C3B001B1F39 /* BackendService.swift */; };
 		DC4ADC9B2418F523008C23C7 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADC9A2418F523008C23C7 /* BalanceViewController.swift */; };
 		DC4ADC9D2418F7D5008C23C7 /* TransactionViewContrller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADC9C2418F7D5008C23C7 /* TransactionViewContrller.swift */; };
 		DC4ADCA024190E61008C23C7 /* TokenBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4ADC9F24190E61008C23C7 /* TokenBalance.swift */; };
@@ -181,7 +181,7 @@
 		DC40D7AB2412A35C00C792EB /* WithoutWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutWalletViewController.swift; sourceTree = "<group>"; };
 		DC40D7AE2412AC2F00C792EB /* UIViewController+NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavController.swift"; sourceTree = "<group>"; };
 		DC40D7B02412B1C300C792EB /* RecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
-		DC49E0CF24B74C3B001B1F39 /* MoonkeyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonkeyService.swift; sourceTree = "<group>"; };
+		DC49E0CF24B74C3B001B1F39 /* BackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendService.swift; sourceTree = "<group>"; };
 		DC4ADC9A2418F523008C23C7 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
 		DC4ADC9C2418F7D5008C23C7 /* TransactionViewContrller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewContrller.swift; sourceTree = "<group>"; };
 		DC4ADC9F24190E61008C23C7 /* TokenBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBalance.swift; sourceTree = "<group>"; };
@@ -556,7 +556,7 @@
 			children = (
 				DCFFBE512472BFBD00AB0C4B /* EtherscanService.swift */,
 				DC6071372431E5B100CED3BF /* ParaswapService.swift */,
-				DC49E0CF24B74C3B001B1F39 /* MoonkeyService.swift */,
+				DC49E0CF24B74C3B001B1F39 /* BackendService.swift */,
 				B64C5D8B24F925EB00F1BB67 /* CoinGeckoService.swift */,
 			);
 			path = service;
@@ -860,7 +860,7 @@
 				DCD8CE46243DD7CB0078BB1D /* SettingsViewController.swift in Sources */,
 				B621AB1D24F4034C009535E2 /* OwnerTableViewCell.swift in Sources */,
 				DCFFBE522472BFBD00AB0C4B /* EtherscanService.swift in Sources */,
-				DC49E0D024B74C3B001B1F39 /* MoonkeyService.swift in Sources */,
+				DC49E0D024B74C3B001B1F39 /* BackendService.swift in Sources */,
 				B63B476E24ED6BF5000EFF59 /* PublicKey+Ethereum.swift in Sources */,
 				B63B475A24ED6BF5000EFF59 /* DerivationPath.Index.swift in Sources */,
 				DC1E26F524169B0F00C686C4 /* ReceiveViewController.swift in Sources */,

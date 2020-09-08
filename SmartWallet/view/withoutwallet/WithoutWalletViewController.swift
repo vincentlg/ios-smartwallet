@@ -14,8 +14,7 @@ class WithoutWalletViewController: UIViewController {
     
     
     let walletStorage: WalletStorage = WalletStorage()
-    let moonKeyService: MoonkeyService = MoonkeyService()
-    
+   
     @IBAction func createWalletAction(_ sender: Any) {
         
         let hud = JGProgressHUD(style: .extraLight)
@@ -23,12 +22,12 @@ class WithoutWalletViewController: UIViewController {
         hud.show(in: self.view)
         
         let hdAccount = HDEthereumAccount()
-        self.moonKeyService.deployGnosisSafe(account: hdAccount.first.ethereumAddress.value){ (result) in
+        Application.backendService.deployGnosisSafe(account: hdAccount.first.ethereumAddress.value){ (result) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
                    
-                    _ = self.moonKeyService.waitTxToBeMined(trackingID: response.tracking_id) { (result) in
+                    _ = Application.backendService.waitTxToBeMined(trackingID: response.tracking_id) { (result) in
                         switch result {
                         case .success(let receipt):
                             DispatchQueue.main.async {

@@ -32,9 +32,6 @@ class SendViewController: UIViewController {
     var watchTxHandler: WatchTxHandler?
     var displayErrorHandler: DisplayErrorHandler?
     
-    
-    var moonkeyService: MoonkeyService = MoonkeyService()
-    
     @IBOutlet weak var tokenLabel: UILabel!
     
     @IBAction func selectTokenAction(_ sender: Any) {
