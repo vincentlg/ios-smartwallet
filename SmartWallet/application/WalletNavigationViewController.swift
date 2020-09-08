@@ -18,7 +18,6 @@ class WalletNavigationViewController: UINavigationController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
       
-        
         guard let walletId = try? self.walletStorage.retrieve() else {
             self.displayNoWalletView()
             return

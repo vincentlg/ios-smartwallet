@@ -59,11 +59,16 @@ class MoonkeyService {
         return "ropsten"
     }
     
+    let deployGnosisURL = Application.infoForKey("DeployGnosisURL")!
+    let relayParamsURL = Application.infoForKey("RelayParamsURL")!
+    let txInfosURL = Application.infoForKey("TxInfosURL")!
+    let relayURL = Application.infoForKey("RelayURL")!
+    
     public func deployGnosisSafe(account: String, completion: @escaping (Result<DeploySmartwalletResponse, Error>) -> Void)  -> Void {
         
         let body = DeploySmartwalletRequest(account: account)
         
-        var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/test-deploy-gnosis?network="+self.network)!)
+        var request = URLRequest(url: URL(string: self.deployGnosisURL+"?network="+self.network)!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()
@@ -85,7 +90,7 @@ class MoonkeyService {
     
     public func transactionStatus(trackingID: String, completion: @escaping (Result<TransactionDetails, Error>) -> Void)  -> Void {
         
-        var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-tx-infos/"+trackingID+"?network="+self.network)!)
+        var request = URLRequest(url: URL(string: self.txInfosURL+"/"+trackingID+"?network="+self.network)!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         Http.execute(with: request, receive: TransactionDetails.self){ (result) in
@@ -127,7 +132,7 @@ class MoonkeyService {
         
         let body = RelayRequest(to: smartWallet.address.value, data: messageData, gas: gas)
         
-        var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-tx-relay-message-data?network="+self.network)!)
+        var request = URLRequest(url: URL(string: self.relayURL+"?network="+self.network)!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = body.toJSONData()
@@ -137,7 +142,7 @@ class MoonkeyService {
     
     
     public func getGasPrice(completion: @escaping (Result<GaspriceResponse, Error>) -> Void)  -> Void {
-        var request = URLRequest(url: URL(string: "https://europe-west1-rockside-showcase.cloudfunctions.net/moonkey-params?network="+self.network)!)
+        var request = URLRequest(url: URL(string: self.relayParamsURL+"?network="+self.network)!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         Http.execute(with: request, receive: GaspriceResponse.self, completion: completion).resume()

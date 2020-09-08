@@ -38,7 +38,6 @@ class WalletConnectManager{
             NSLog("Interactor on Error: \(error.localizedDescription)")
         }
         
-        
         interactor.onSessionRequest = { (id, peerParam) in
             self.sessionMeta = peerParam.peerMeta
             self.presenter!(self.sessionMeta!, "Wants to connect your wallet",

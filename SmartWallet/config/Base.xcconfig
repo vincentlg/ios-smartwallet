@@ -12,3 +12,10 @@
 
 RPC_URL=https:\/\/eth-mainnet.alchemyapi.io\/v2\/yKy-FkvOSlIgp9W8_mCxhW-HEdISZ7-Y
 ETHERSCAN_APIKEY=HCYC8QMVAN8M5RSMKWT7FFGG2KTU1N3IVG
+
+
+DEPLOY_GNOSIS_URL=https:\/\/europe-west1-rockside-showcase.cloudfunctions.net/test-deploy-gnosis
+RELAY_PARAMS_URL=https:\/\/europe-west1-rockside-showcase.cloudfunctions.net\/moonkey-params
+TX_INFOS_URL=https:\/\/europe-west1-rockside-showcase.cloudfunctions.net\/moonkey-tx-infos
+RELAY_URL=https:\/\/europe-west1-rockside-showcase.cloudfunctions.net\/moonkey-tx-relay-message-data
+

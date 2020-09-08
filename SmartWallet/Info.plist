@@ -81,9 +81,17 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>RpcURL</key>
-	<string>$(RPC_URL)</string>
 	<key>EtherscanApiKey</key>
 	<string>$(ETHERSCAN_APIKEY)</string>
+	<key>RpcURL</key>
+	<string>$(RPC_URL)</string>
+	<key>RelayURL</key>
+	<string>$(RELAY_URL)</string>
+	<key>RelayParamsURL</key>
+	<string>$(RELAY_PARAMS_URL)</string>
+	<key>TxInfosURL</key>
+	<string>$(TX_INFOS_URL)</string>
+	<key>DeployGnosisURL</key>
+	<string>$(DEPLOY_GNOSIS_URL)</string>
 </dict>
 </plist>
