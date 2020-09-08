@@ -1,0 +1,16 @@
+//
+//  Debug.xcconfig
+//  SmartWallet
+//
+//  Created by Fred on 08/09/2020.
+//  Copyright © 2020 Frederic DE MATOS. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "SmartWallet/config/Base.xcconfig"
+#include "Pods/Target Support Files/Pods-SmartWallet/Pods-SmartWallet.debug.xcconfig"
+
+
+

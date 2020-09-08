@@ -70,9 +70,9 @@ PODS:
     - GoogleUtilities/Logger
   - JGProgressHUD (2.1)
   - KeychainAccess (4.1.0)
-  - MaterialComponents/AnimationTiming (113.2.0)
-  - MaterialComponents/Availability (113.2.0)
-  - MaterialComponents/Buttons (113.2.0):
+  - MaterialComponents/AnimationTiming (114.0.0)
+  - MaterialComponents/Availability (114.0.0)
+  - MaterialComponents/Buttons (114.0.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
@@ -84,41 +84,41 @@ PODS:
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - MaterialComponents/Elevation (113.2.0):
+  - MaterialComponents/Elevation (114.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Ink (113.2.0):
+  - MaterialComponents/Ink (114.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/OverlayWindow (113.2.0):
+  - MaterialComponents/OverlayWindow (114.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Application
-  - MaterialComponents/Palettes (113.2.0)
-  - MaterialComponents/private/Application (113.2.0)
-  - MaterialComponents/private/Color (113.2.0):
+  - MaterialComponents/Palettes (114.0.0)
+  - MaterialComponents/private/Application (114.0.0)
+  - MaterialComponents/private/Color (114.0.0):
     - MaterialComponents/Availability
-  - MaterialComponents/private/KeyboardWatcher (113.2.0):
+  - MaterialComponents/private/KeyboardWatcher (114.0.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/private/Math (113.2.0)
-  - MaterialComponents/private/Overlay (113.2.0)
-  - MaterialComponents/Ripple (113.2.0):
+  - MaterialComponents/private/Math (114.0.0)
+  - MaterialComponents/private/Overlay (114.0.0)
+  - MaterialComponents/Ripple (114.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (113.2.0)
-  - MaterialComponents/ShadowLayer (113.2.0):
+  - MaterialComponents/ShadowElevations (114.0.0)
+  - MaterialComponents/ShadowLayer (114.0.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/ShapeLibrary (113.2.0):
+  - MaterialComponents/ShapeLibrary (114.0.0):
     - MaterialComponents/private/Math
     - MaterialComponents/Shapes
-  - MaterialComponents/Shapes (113.2.0):
+  - MaterialComponents/Shapes (114.0.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
-  - MaterialComponents/Snackbar (113.2.0):
+  - MaterialComponents/Snackbar (114.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Availability
     - MaterialComponents/Buttons
@@ -131,7 +131,7 @@ PODS:
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
-  - MaterialComponents/TextFields (113.2.0):
+  - MaterialComponents/TextFields (114.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Buttons
     - MaterialComponents/Elevation
@@ -139,7 +139,7 @@ PODS:
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Typography (113.2.0):
+  - MaterialComponents/Typography (114.0.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
     - MDFTextAccessibility
@@ -242,7 +242,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
-  MaterialComponents: 5124df1e5a48f6ae004f8698ad9aa1ce419f6d77
+  MaterialComponents: 82c900f70f609710c47a9872bc2d59ce08ca0b18
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc

@@ -1,0 +1,14 @@
+//
+//  Base.xcconfig
+//  SmartWallet
+//
+//  Created by Fred on 08/09/2020.
+//  Copyright © 2020 Frederic DE MATOS. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+RPC_URL=https:\/\/eth-mainnet.alchemyapi.io\/v2\/yKy-FkvOSlIgp9W8_mCxhW-HEdISZ7-Y
+ETHERSCAN_APIKEY=HCYC8QMVAN8M5RSMKWT7FFGG2KTU1N3IVG

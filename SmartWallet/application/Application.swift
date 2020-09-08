@@ -28,7 +28,7 @@ public class Application {
     static public var coinGeckoService: CoinGeckoService = CoinGeckoService()
     static public var etherscanService: EtherscanService = EtherscanService()
     
-    static let ethereumClient: EthereumClient = EthereumClient(url: URL(string: "https://eth-mainnet.alchemyapi.io/v2/yKy-FkvOSlIgp9W8_mCxhW-HEdISZ7-Y")!)
+    static let ethereumClient: EthereumClient = EthereumClient(url: URL(string:infoForKey("RpcURL")! )!)
     
     static let erc20: ERC20 = ERC20(client: ethereumClient)
     
@@ -163,6 +163,14 @@ public class Application {
     static func isAccountOwner(completion: @escaping (Result<(Bool), Error>) -> Void)  -> Void {
         self.smartwallet?.isOwner(owner: web3.EthereumAddress(account!.first.ethereumAddress.value), completion: completion)
     }
+    
+    
+
+    static func infoForKey(_ key: String) -> String? {
+        NSLog(Bundle.main.infoDictionary!.description)
+            return (Bundle.main.infoDictionary?[key] as? String)?
+                .replacingOccurrences(of: "\\", with: "")
+     }
     
     
 }

@@ -81,5 +81,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>RpcURL</key>
+	<string>$(RPC_URL)</string>
+	<key>EtherscanApiKey</key>
+	<string>$(ETHERSCAN_APIKEY)</string>
 </dict>
 </plist>

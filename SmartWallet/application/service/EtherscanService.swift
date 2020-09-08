@@ -30,7 +30,7 @@ public enum TxAction {
 
 public class EtherscanService {
     
-    private var etherscanApiKey = "HCYC8QMVAN8M5RSMKWT7FFGG2KTU1N3IVG"
+    private var etherscanApiKey = Application.infoForKey("EtherscanApiKey")!
     
     
     var url:String {
