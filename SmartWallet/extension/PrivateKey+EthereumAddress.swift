@@ -11,6 +11,6 @@ import web3
 
 extension PrivateKey {
     public var ethereumAddress: web3.EthereumAddress {
-        return web3.EthereumAddress(self.publicKey().ethereumAddress.description)
+        return self.publicKey().ethereumAddress
     }
 }

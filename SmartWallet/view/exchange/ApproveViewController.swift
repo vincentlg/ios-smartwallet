@@ -56,9 +56,11 @@ class ApproveViewController: UIViewController {
             hud.textLabel.text = "Allowing Paraswap\nto use "+self.approveAmount.text!+" "+self.sourceToken!.symbol
             hud.show(in: self.view)
             
-            let erc20ApproveData = ERC20Encoder.encodeApprove(spender: EthereumAddress(string:self.paraswapAllowanceAddress!.value)!, tokens:  amountWei)
+            let to = web3.EthereumAddress(self.sourceToken!.address)
+            let function = ERC20Functions.approve(contract: to, spender: self.paraswapAllowanceAddress!, value: amountWei)
+            let transaction = try! function.transaction()
             
-            Application.relay(to: web3.EthereumAddress(self.sourceToken!.address), value: BigUInt(0), data: erc20ApproveData, safeTxGas: BigUInt(15000)) { (result) in
+            Application.relay(to: to, value: BigUInt(0), data: transaction.data!, safeTxGas: BigUInt(15000)) { (result) in
                 switch result {
                 case .success(let txResponse):
                     DispatchQueue.main.async {

@@ -149,7 +149,10 @@ class SendViewController: UIViewController {
         if (self.fromToken?.symbol != "ETH") {
             value = BigUInt(0)
             to = web3.EthereumAddress(self.fromToken!.address)
-            data = ERC20Encoder.encodeTransfer(to: EthereumAddress(string: destinationTextField.text!)!, tokens: BigUInt(amount))
+            
+            let function = ERC20Functions.transfer(contract: to, to: EthereumAddress(destinationTextField.text!), value: BigUInt(amount))
+            let transaction = try? function.transaction()
+            data = transaction!.data!
             
             safeTxGas = BigUInt(20000)
         }
@@ -157,7 +160,7 @@ class SendViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         
-        Application.relay(to: to, value: value,data: data, safeTxGas: safeTxGas) { (result) in
+        Application.relay(to: to, value: value, data: data, safeTxGas: safeTxGas) { (result) in
             switch result {
             case .success(let txResponse):
                 

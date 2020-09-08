@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import web3
 
 import MaterialComponents.MaterialTextFields
 

@@ -5,11 +5,13 @@
 // file LICENSE at the root of the source code distribution tree.
 
 import Foundation
+import web3
 
 public extension PublicKey {
     /// Ethereum address.
-    public var ethereumAddress: EthereumAddress {
+     var ethereumAddress: EthereumAddress {
         let hash = Crypto.hash(data[1...])
-        return EthereumAddress(data: hash.suffix(EthereumAddress.size))!
+        let data = hash.suffix(20)
+        return EthereumAddress(data.hexValue)
     }
 }
