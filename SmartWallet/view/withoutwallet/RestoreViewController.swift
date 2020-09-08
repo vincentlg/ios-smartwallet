@@ -15,8 +15,6 @@ class RestoreViewController: UIViewController {
     
     let walletStorage: WalletStorage = WalletStorage()
     
-    let rpc: RpcClient = RpcClient()
-    
     @IBOutlet weak var walletAddressTextField: MDCTextField!
     var walletAddressTextFieldController: MDCTextInputControllerUnderline?
     

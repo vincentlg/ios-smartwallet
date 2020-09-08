@@ -8,6 +8,7 @@
 
 import Foundation
 import web3
+import BigInt
 
 struct GetTokenResponse: Codable {
     var tokens: [Token]
@@ -35,10 +36,10 @@ struct PriceRouteDetails: Codable {
 }
 
 /*amount: PriceString
-exchange: string
-percent: NumberAsString
-srcAmount: PriceString,
-data?: any,*/
+ exchange: string
+ percent: NumberAsString
+ srcAmount: PriceString,
+ data?: any,*/
 
 class Route: Codable {
     var exchange: String
@@ -49,8 +50,8 @@ class Route: Codable {
 }
 
 /*exchange: string
-rate: NumberAsString
-unit: NumberAsString*/
+ rate: NumberAsString
+ unit: NumberAsString*/
 class OtherRoute: Codable {
     var exchange: String
     var unit: String
@@ -134,17 +135,15 @@ struct GetTxResponse:Codable {
         } catch {
             value = "0"
         }
-            
-       }
+        
+    }
     
 }
 
 class ParaswapService {
     
- 
-    let paraswapContract = "0x86969d29f5fd327e1009ba66072be22db6017cc6"
-    let rpc = RpcClient()
     
+    let paraswapContract = web3.EthereumAddress("0x86969d29f5fd327e1009ba66072be22db6017cc6")
     
     var url: String {
         
@@ -201,24 +200,40 @@ class ParaswapService {
     
     public func getParaswapSenderAddress(completion: @escaping (Result<web3.EthereumAddress, Error>) -> Void) -> Void {
         
-        let function = Function(name: "getTokenTransferProxy", parameters: [])
-        let encoder = ABIEncoder()
-        try! encoder.encode(function: function, arguments: [])
+        let function = GetTokenTransferProxyFunc(contract:paraswapContract )
+        let transaction = try! function.transaction()
         
-        let body = JSONRPCRequest(jsonrpc: "2.0", method: "eth_call", params: [["to":paraswapContract, "data":encoder.data.hexValue ]], id: 1)
-        
-        self.rpc.executeJSONRpc(with:body, receive: JSONRPCResult<String>.self) { (result) in
-            switch result {
-            case .success(let response):
-                let strippedResult = response.result!.replacingOccurrences(of: "0x000000000000000000000000", with: "0x")
-                completion(.success(web3.EthereumAddress(strippedResult)))
+        Application.ethereumClient.eth_call(transaction) { (error, result) in
+            
+            guard error == nil else {
+                completion(.failure(error!))
                 return
-                
-            case .failure(let error):
-                completion(.failure(error))
-                break
             }
-        }.resume()
+            
+            guard let res = result else {
+                completion(.failure(NSError(domain: "Nil result", code: 0, userInfo: nil)))
+                return
+            }
+            let strippedResult = res.replacingOccurrences(of: "0x000000000000000000000000", with: "0x")
+            completion(.success(web3.EthereumAddress(strippedResult)))
+        }
     }
+    
+}
 
+public struct GetTokenTransferProxyFunc: ABIFunction {
+    public static let name = "getTokenTransferProxy"
+    public let gasPrice: BigUInt? = nil
+    public let gasLimit: BigUInt? = nil
+    public let contract: web3.EthereumAddress
+    public let from: web3.EthereumAddress?
+    
+    
+    public init(contract: web3.EthereumAddress,
+                from: web3.EthereumAddress? = nil) {
+        self.contract = contract
+        self.from = from
+    }
+    
+    public func encode(to encoder: ABIFunctionEncoder) throws {}
 }

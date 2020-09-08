@@ -14,15 +14,13 @@ public protocol Message {
 }
 
 public protocol SmartWallet {
-    init(address: String, rpc: RpcClient)
+    init(address: String, rpc: EthereumClient)
     var address: web3.EthereumAddress { get }
     
     
     func encodeExecute(to: web3.EthereumAddress, value:BigUInt, data: Data, safeTxGas: BigUInt, baseGas: BigUInt, gasPrice: BigUInt, refundReceiver: web3.EthereumAddress, signature: Data) -> String
     
     func encodeAddOwnerWithThreshold(owner: web3.EthereumAddress, threshold: BigUInt) -> String
-      
-    func getRequiredTxGas(to: web3.EthereumAddress, value: BigUInt, data: Data, completion: @escaping (Result<(BigUInt), Error>) -> Void)  -> Void
     
     func isOwner(owner: web3.EthereumAddress, completion: @escaping (Result<(Bool), Error>) -> Void)  -> Void
     func getNonce(completion: @escaping (Result<(BigUInt), Error>) -> Void)  -> Void 

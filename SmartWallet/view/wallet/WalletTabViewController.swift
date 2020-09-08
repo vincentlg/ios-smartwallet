@@ -24,9 +24,6 @@ class WalletTabViewController: TabmanViewController {
     private var balanceViewController: BalanceViewContrller?
     private var transactionViewController: TransactionViewContrller?
     
-    
-    private let rpc = RpcClient()
-    
     var balanceUpdatedHandler: BalanceUpdatedHandler?
     var tokenBalances:[String : TokenBalance] = ["ETH": TokenBalance(symbol: "ETH", decimals: 18, address: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE")]
     
@@ -172,51 +169,39 @@ class WalletTabViewController: TabmanViewController {
     }
     
     private func getEthBalance() {
-        self.rpc.getBalance(account: Application.smartwallet!.address.value) { (result) in
-            switch result {
-            case .success(let balance):
-                DispatchQueue.main.async {
-                    self.hud.dismiss()
-                    self.tokenBalances["ETH"]?.balance = balance
-                    self.tokenBalances["ETH"]?.decimals = 18
-                    self.balanceViewController?.display(balances: self.tokenBalanceArray())
-                    self.balanceViewController?.refreshControl?.endRefreshing()
-                    self.balanceUpdatedHandler?()
-                }
-                
-                break
-            case .failure(_):
-                DispatchQueue.main.async {
+        
+        Application.ethereumClient.eth_getBalance(address: Application.smartwallet!.address.value, block: .Latest) { (error, balance) in
+            DispatchQueue.main.async {
+                if error != nil || balance == nil  {
                     self.balanceViewController?.refreshControl?.endRefreshing()
                     self.hud.dismiss()
+                    return
                 }
-                break
+                self.hud.dismiss()
+                self.tokenBalances["ETH"]?.balance = balance
+                self.tokenBalances["ETH"]?.decimals = 18
+                self.balanceViewController?.display(balances: self.tokenBalanceArray())
+                self.balanceViewController?.refreshControl?.endRefreshing()
+                self.balanceUpdatedHandler?()
             }
         }
     }
     
     private func get(tokenBalance: TokenBalance) {
-        
-        self.rpc.getErc20Balance(ercAddress: tokenBalance.address, account: Application.smartwallet!.address.value ) { (result) in
-            switch result {
-            case .success(let balance):
-                DispatchQueue.main.async {
-                    self.hud.dismiss()
-                    self.tokenBalances[tokenBalance.symbol]?.balance = balance
-                    self.balanceViewController?.display(balances:self.tokenBalanceArray())
-                    self.balanceUpdatedHandler?()
-                }
-                break
-                
-            case .failure(_):
-                DispatchQueue.main.async {
+        Application.erc20.balanceOf(tokenContract: tokenBalance.ethereumAddress, address: Application.smartwallet!.address) { (error, balance) in
+            DispatchQueue.main.async {
+                if error != nil || balance == nil  {
                     self.hud.dismiss()
                     self.displayErrorHandler?()
+                    return
                 }
-                break
+                
+                self.hud.dismiss()
+                self.tokenBalances[tokenBalance.symbol]?.balance = balance
+                self.balanceViewController?.display(balances:self.tokenBalanceArray())
+                self.balanceUpdatedHandler?()
             }
         }
-        
     }
     
     private func updateBalance() {

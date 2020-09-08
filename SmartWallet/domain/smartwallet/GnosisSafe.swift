@@ -11,18 +11,15 @@ import Foundation
 import web3
 import BigInt
 
-
-
 public struct GnosisSafe: SmartWallet {
     
-    
-    
     public let address: web3.EthereumAddress
-    public let rpc: RpcClient
     
-    public init(address: String,  rpc: RpcClient){
+    public let client: EthereumClient
+    
+    public init(address: String,  rpc: EthereumClient){
         self.address = web3.EthereumAddress(address)
-        self.rpc = rpc
+        self.client = rpc
     }
     
     public var ethereumAddress: String {
@@ -55,72 +52,71 @@ public struct GnosisSafe: SmartWallet {
     }
     
     public func getNonce(completion: @escaping (Result<(BigUInt), Error>) -> Void)  -> Void {
-        self.rpc.call(to: self.ethereumAddress, data: self.encodeGetNonce(), receive: JSONRPCResult<String>.self) { (result) in
-            switch result {
-            case .success(let response):
-                completion(.success(BigUInt(hex: response.result!)!))
-                return
-                
-            case .failure(let error):
-                completion(.failure(error))
+        let function = NonceFunc(contract: self.address)
+        let transaction = try! function.transaction()
+        
+        self.client.eth_call(transaction) { (error, result) in
+        
+            guard error == nil else {
+                completion(.failure(error!))
                 return
             }
+            
+            guard let res = result else {
+                completion(.failure(NSError(domain: "Nil result", code: 0, userInfo: nil)))
+                return
+            }
+            completion(.success(BigUInt(hex: res)!))
         }
     }
     
-    public func getRequiredTxGas(to: web3.EthereumAddress, value: BigUInt, data: Data, completion: @escaping (Result<(BigUInt), Error>) -> Void)  -> Void {
-        self.rpc.call(to: self.ethereumAddress, data: self.encodeRequiredTxGas(to: to, value: value, data: data), receive: JSONRPCResult<String>.self) { (result) in
-            switch result {
-            case .success(let response):
-              
-                let data = response.error!.message.data(using: .utf8)!
-                
-                let s = data.subdata(in: 20..<data.count)
-               
-                let decoded = try! web3.ABIDecoder.decodeData(s.hexValue, types: [BigUInt.self])
-                let gas: BigUInt = try! decoded[0].decoded()
-                completion(.success(gas))
-                return
-                
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
-    }
     
     public func getOwners(completion: @escaping (Result<([String]), Error>) -> Void)  -> Void {
-        self.rpc.call(to: self.ethereumAddress, data: self.encodeGetOwners(), receive: JSONRPCResult<String>.self) { (result) in
-            switch result {
-            case .success(let response):
-                do {
-                    let decoded = try web3.ABIDecoder.decodeData(response.result!, types: [ABIArray<web3.EthereumAddress>.self])
-                    let addresses: [web3.EthereumAddress] = try decoded.first!.decodedArray()
-                    completion(.success(addresses.map { $0.value}))
-                } catch (let error) {
-                    completion(.failure(error))
-                }
-                
-                return
-                
-            case .failure(let error):
-                completion(.failure(error))
+        
+        let function = GetOwnersFunc(contract: self.address)
+        let transaction = try! function.transaction()
+        
+        self.client.eth_call(transaction) { (error, result) in
+            
+            guard error == nil else {
+                completion(.failure(error!))
                 return
             }
+            
+            guard let res = result else {
+                completion(.failure(NSError(domain: "Nil result", code: 0, userInfo: nil)))
+                return
+            }
+            
+            do {
+                let decoded = try web3.ABIDecoder.decodeData(res, types: [ABIArray<web3.EthereumAddress>.self])
+                let addresses: [web3.EthereumAddress] = try decoded.first!.decodedArray()
+                completion(.success(addresses.map { $0.value}))
+            } catch (let error) {
+                completion(.failure(error))
+            }
+            
         }
+        
     }
     
     public func isOwner(owner: web3.EthereumAddress, completion: @escaping (Result<(Bool), Error>) -> Void)  -> Void {
-        self.rpc.call(to: self.ethereumAddress, data: self.encodeIsOwner(owner: owner), receive: JSONRPCResult<String>.self) { (result) in
-            switch result {
-            case .success(let response):
-                completion(.success(response.result == "0x0000000000000000000000000000000000000000000000000000000000000001"))
-                return
-                
-            case .failure(let error):
-                completion(.failure(error))
+        let function = IsOwnerFunc(contract: self.address, owner: owner)
+        let transaction = try! function.transaction()
+        
+        self.client.eth_call(transaction) { (error, result) in
+        
+            guard error == nil else {
+                completion(.failure(error!))
                 return
             }
+            
+            guard let res = result else {
+                completion(.failure(NSError(domain: "Nil result", code: 0, userInfo: nil)))
+                return
+            }
+            
+            completion(.success(res == "0x0000000000000000000000000000000000000000000000000000000000000001"))
         }
     }
     
@@ -143,72 +139,32 @@ public struct GnosisSafe: SmartWallet {
     
     public func getTransactionHash(to: web3.EthereumAddress, value:BigUInt, data: Data, safeTxGas: BigUInt = BigUInt(0), baseGas: BigUInt = BigUInt(0), gasPrice: BigUInt = BigUInt(0), refundReceiver: web3.EthereumAddress = .zero, nonce: BigUInt, completion: @escaping (Result<(String), Error>) -> Void)  -> Void {
         
-        self.rpc.call(to: self.ethereumAddress, data: self.encodeGetTransactionHash(to: to, value: value, data: data, safeTxGas: safeTxGas, baseGas: baseGas, gasPrice: gasPrice, refundReceiver: refundReceiver, nonce: nonce), receive: JSONRPCResult<String>.self) { (result) in
-            switch result {
-            case .success(let response):
-                completion(.success(response.result!))
-                return
-                
-            case .failure(let error):
-                completion(.failure(error))
+        let function = GetTransactionHashFunc(contract: self.address,
+                                                     gasPrice: gasPrice,
+                                                     to: to,
+                                                     value: value,
+                                                     data: data,
+                                                     safeTxGas: safeTxGas,
+                                                     baseGas: baseGas,
+                                                     refundReceiver: refundReceiver,
+                                                     nonce: nonce)
+               
+        let transaction = try! function.transaction()
+        
+        self.client.eth_call(transaction) { (error, result) in
+        
+            guard error == nil else {
+                completion(.failure(error!))
                 return
             }
+            
+            guard let res = result else {
+                completion(.failure(NSError(domain: "Nil result", code: 0, userInfo: nil)))
+                return
+            }
+            
+           completion(.success(res))
         }
-    }
-    
-    //MARK: Private methods
-    private func encodeGetTransactionHash(to: web3.EthereumAddress, value:BigUInt, data: Data,  safeTxGas: BigUInt = BigUInt(0), baseGas: BigUInt = BigUInt(0), gasPrice: BigUInt = BigUInt(0), refundReceiver: web3.EthereumAddress = .zero, nonce: BigUInt) -> String {
-        
-        let function = GetTransactionHashFunc(contract: self.address,
-                                              gasPrice: gasPrice,
-                                              to: to,
-                                              value: value,
-                                              data: data,
-                                              safeTxGas: safeTxGas,
-                                              baseGas: baseGas,
-                                              refundReceiver: refundReceiver,
-                                              nonce: nonce)
-        
-        let transaction = try? function.transaction()
-        
-        return transaction!.data!.hexValue
-    }
-    
-    
-    private func encodeRequiredTxGas(to: web3.EthereumAddress, value:BigUInt, data: Data) -> String {
-        
-        let function = RequiredTxGasFunc(contract: self.address,
-                                         from: self.address,
-                                         to: to,
-                                         value: value,
-                                         data: data)
-        
-        let transaction = try? function.transaction()
-        
-        return transaction!.data!.hexValue
-    }
-    
-    private func encodeGetNonce() -> String {
-        let function = NonceFunc(contract: self.address)
-        let transaction = try? function.transaction()
-        
-        return transaction!.data!.hexValue
-    }
-    
-    
-    private func encodeIsOwner(owner: web3.EthereumAddress) -> String {
-        
-        let function = IsOwnerFunc(contract: self.address, owner: owner)
-        let transaction = try? function.transaction()
-        
-        return transaction!.data!.hexValue
-    }
-    
-    private func encodeGetOwners() -> String {
-        let function = GetOwnersFunc(contract: self.address)
-        let transaction = try? function.transaction()
-        
-        return transaction!.data!.hexValue
     }
     
 }
@@ -424,48 +380,5 @@ public struct AddOwnerWithThresholdFunc: ABIFunction {
     public func encode(to encoder: ABIFunctionEncoder) throws {
         try encoder.encode(self.owner)
         try encoder.encode(self.threshold)
-    }
-}
-
-
-
-
-public struct RequiredTxGasFunc: ABIFunction {
-    public static let name = "requiredTxGas"
-    
-    public let gasPrice: BigUInt?
-    public let gasLimit: BigUInt?
-    public var contract: web3.EthereumAddress
-    public let from: web3.EthereumAddress?
-    
-    public let to: web3.EthereumAddress
-    
-    public var value:BigUInt
-    public var data: Data
-    public var operation: UInt8
-    
-    public init(contract: web3.EthereumAddress,
-                from: web3.EthereumAddress,
-                gasPrice: BigUInt = BigUInt(0),
-                gasLimit: BigUInt? = nil,
-                to: web3.EthereumAddress,
-                value: BigUInt,
-                data: Data) {
-        self.contract = contract
-        self.from = from
-        self.gasPrice = gasPrice
-        self.gasLimit = gasLimit
-        self.to = to
-        
-        self.value = value
-        self.data = data
-        self.operation = 0
-    }
-    
-    public func encode(to encoder: ABIFunctionEncoder) throws {
-        try encoder.encode(self.to)
-        try encoder.encode(self.value)
-        try encoder.encode(self.data)
-        try encoder.encode(self.operation)
     }
 }

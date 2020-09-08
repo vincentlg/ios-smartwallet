@@ -20,13 +20,9 @@ public class Application {
     static public var ethPrice: Double?
     static public var tokenPrices: [String: [String: Double]]?
     static public var gasPrices: Gasprice?
-    
-    
+
     //TODO should be returned from services
     static public var forwarderAddress: web3.EthereumAddress = web3.EthereumAddress("0x641d5315d213EA8eb03563f992c7fFfdd677D0cC")
-    
-
-    static public var rpc:RpcClient = RpcClient()
     
     static private var moonkeyService: MoonkeyService = MoonkeyService()
     static public var coinGeckoService: CoinGeckoService = CoinGeckoService()
@@ -37,7 +33,7 @@ public class Application {
     static let erc20: ERC20 = ERC20(client: ethereumClient)
     
     static func restore(walletId: WalletID){
-        self.smartwallet = GnosisSafe(address: walletId.address, rpc: rpc)
+        self.smartwallet = GnosisSafe(address: walletId.address, rpc: ethereumClient)
         self.account = HDEthereumAccount(mnemonic: walletId.mnemonic)
     }
     

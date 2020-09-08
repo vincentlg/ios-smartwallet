@@ -71,7 +71,7 @@ class ValidateTradeViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         
-        Application.relay(to: web3.EthereumAddress(self.paraswapService.paraswapContract), value: BigUInt(tx.value!)!, data: Data(hexString: tx.data!)!, safeTxGas: BigUInt(tx.gas!)!) { (result) in
+        Application.relay(to: self.paraswapService.paraswapContract, value: BigUInt(tx.value!)!, data: Data(hexString: tx.data!)!, safeTxGas: BigUInt(tx.gas!)!) { (result) in
             switch result {
             case .success(let txResponse):
                 DispatchQueue.main.async {
