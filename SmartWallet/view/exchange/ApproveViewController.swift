@@ -62,7 +62,7 @@ class ApproveViewController: UIViewController {
             let function = ERC20Functions.approve(contract: to, spender: self.paraswapAllowanceAddress!, value: amountWei)
             let transaction = try! function.transaction()
             
-            Application.relay(to: to, value: BigUInt(0), data: transaction.data!, safeTxGas: BigUInt(15000)) { (result) in
+            Application.relay(to: to, value: BigUInt(0), data: transaction.data!, safeTxGas: BigUInt(30000)) { (result) in
                 switch result {
                 case .success(let txResponse):
                     DispatchQueue.main.async {

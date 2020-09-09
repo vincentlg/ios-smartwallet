@@ -33,7 +33,7 @@ class ExchangeViewController: UIViewController {
     }
     
     
-    let slippage = 3
+    let slippage = 1
     
     var tokens: [Token]?
     var tokensBalance: [TokenBalance]?
