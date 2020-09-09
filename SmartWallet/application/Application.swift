@@ -16,7 +16,7 @@ public class Application {
     static public var smartwallet: SmartWallet?
     static public var account: HDEthereumAccount?
     static public var network: Chain = .mainnet
-    static public var baseGas: BigUInt = BigUInt(50000)
+    static public var baseGas: BigUInt = BigUInt(45000)
     static public var ethPrice: Double?
     static public var tokenPrices: [String: [String: Double]]?
     static public var gasPrices: Speeds?
