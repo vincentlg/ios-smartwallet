@@ -48,7 +48,9 @@ class ValidateTradeViewController: UIViewController {
                 }
                 return
             case .failure(_):
-                self.gasFeesLabel.text = "error"
+                DispatchQueue.main.async {
+                    self.gasFeesLabel.text = "error"
+                }
                 return
             }
         }

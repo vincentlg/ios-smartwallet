@@ -16,13 +16,10 @@ public class Application {
     static public var smartwallet: SmartWallet?
     static public var account: HDEthereumAccount?
     static public var network: Chain = .mainnet
-    static public var baseGas: BigUInt = BigUInt(70000)
+    static public var baseGas: BigUInt = BigUInt(50000)
     static public var ethPrice: Double?
     static public var tokenPrices: [String: [String: Double]]?
-    static public var gasPrices: Gasprice?
-
-    //TODO should be returned from services
-    static public var forwarderAddress: web3.EthereumAddress = web3.EthereumAddress("0x641d5315d213EA8eb03563f992c7fFfdd677D0cC")
+    static public var gasPrices: Speeds?
     
     static public var backendService: BackendService = BackendService()
     static public var coinGeckoService: CoinGeckoService = CoinGeckoService()
@@ -42,12 +39,16 @@ public class Application {
         self.account = nil
     }
     
-    static func encodeExecute(to: web3.EthereumAddress, value:BigUInt, data: Data, safeTxGas: BigUInt, gasPrice: BigUInt = BigUInt(0), completion: @escaping (Result<(String), Error>) -> Void)  -> Void {
-        self.smartwallet!.getTransactionHashWithNonce(to: to, value: value, data: data, safeTxGas: safeTxGas, baseGas: baseGas, gasPrice: gasPrice, refundReceiver: forwarderAddress) { (result) in
+    static func encodeExecute(to: web3.EthereumAddress, value:BigUInt, data: Data, safeTxGas: BigUInt, speed: Speed, completion: @escaping (Result<(String), Error>) -> Void)  -> Void {
+        
+        let gasPrice = BigUInt(speed.gas_price)!
+        let refundAddress = EthereumAddress(speed.relayer)
+        
+        self.smartwallet!.getTransactionHashWithNonce(to: to, value: value, data: data, safeTxGas: safeTxGas, baseGas: baseGas, gasPrice:gasPrice , refundReceiver: refundAddress) { (result) in
             switch result {
             case .success(let hash):
                 let signature = self.account!.first.signV27(hash: Data(hex: hash)!)
-                let executeData = self.smartwallet!.encodeExecute(to: to, value: value, data: data, safeTxGas: safeTxGas, baseGas: baseGas, gasPrice: gasPrice, refundReceiver: forwarderAddress, signature: signature)
+                let executeData = self.smartwallet!.encodeExecute(to: to, value: value, data: data, safeTxGas: safeTxGas, baseGas: baseGas, gasPrice: gasPrice, refundReceiver: refundAddress, signature: signature)
                 completion(.success(executeData))
                 return
             case .failure(let error):
@@ -59,12 +60,11 @@ public class Application {
     
     static func relay(to: web3.EthereumAddress, value:BigUInt, data: Data, safeTxGas: BigUInt, completion: @escaping (Result<(RelayResponse), Error>) -> Void)  -> Void {
         
-        Application.backendService.getGasPrice() { (result) in
+        Application.backendService.getGasPrice(address: self.smartwallet!.address) { (result) in
             switch result {
             case .success(let gasPriceResponse):
-                let gasPrice = BigUInt(gasPriceResponse.gas_prices.fast)!
                 
-                self.encodeExecute(to: to, value: value, data: data, safeTxGas: safeTxGas, gasPrice:gasPrice) { (result) in
+                self.encodeExecute(to: to, value: value, data: data, safeTxGas: safeTxGas, speed:gasPriceResponse.speeds.fastest) { (result) in
                     switch result {
                     case .success(let executeData):
                         
@@ -115,30 +115,31 @@ public class Application {
         }
     }
     
-    static func updateGasPrice(completion: @escaping (Result<(Gasprice), Error>) -> Void)  -> Void {
-        self.backendService.getGasPrice() { (result) in
-                   switch result {
-                   case .success(let gasPriceResponse):
-                    self.gasPrices = gasPriceResponse.gas_prices
-                    completion(.success(gasPriceResponse.gas_prices))
-                    break
-                    
-                   case .failure(let error):
-                    completion(.failure(error))
-                    break
+    static func updateGasPrice(completion: @escaping (Result<(Speeds), Error>) -> Void)  -> Void {
+        self.backendService.getGasPrice(address: self.smartwallet!.address) { (result) in
+            switch result {
+            case .success(let gasPriceResponse):
+                self.gasPrices = gasPriceResponse.speeds
+                completion(.success(gasPriceResponse.speeds))
+                break
+                
+            case .failure(let error):
+                NSLog(error.localizedDescription)
+                completion(.failure(error))
+                break
             }
         }
     }
     
     static func calculateEtherForGas(safeGas: BigUInt) -> BigUInt {
-           guard let gasPrices = self.gasPrices else {
-               return BigUInt(0)
-           }
-
-           let gasPrice = BigUInt(gasPrices.fast)!
-               
-           let totalGas = safeGas + Application.baseGas
-           let totalEth = totalGas * gasPrice
+        guard let gasPrices = self.gasPrices else {
+            return BigUInt(0)
+        }
+        
+        
+        let gasPrice = BigUInt(gasPrices.fastest.gas_price)!
+        let totalGas = safeGas + Application.baseGas
+        let totalEth = totalGas * gasPrice
         
         return totalEth
     }
@@ -148,15 +149,15 @@ public class Application {
         guard let price = self.ethPrice else {
             return ""
         }
-       
+        
         let totalEth = calculateEtherForGas(safeGas: safeGas)
-                
+        
         let formatter = EtherNumberFormatter()
         let ethNumber = formatter.string(from:BigInt(totalEth))
         let ethDouble = Double(ethNumber.replacingOccurrences(of: ",", with: "."))!
-                
+        
         let fees = ethDouble * price
-       
+        
         return "$"+String(format: "%.2f", fees)
     }
     
@@ -165,11 +166,11 @@ public class Application {
     }
     
     
-
+    
     static func infoForKey(_ key: String) -> String? {
-            return (Bundle.main.infoDictionary?[key] as? String)?
-                .replacingOccurrences(of: "\\", with: "")
-     }
+        return (Bundle.main.infoDictionary?[key] as? String)?
+            .replacingOccurrences(of: "\\", with: "")
+    }
     
     
 }

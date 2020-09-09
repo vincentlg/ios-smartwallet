@@ -8,6 +8,7 @@
 
 import Foundation
 import BigInt
+import web3
 
 struct DeploySmartwalletRequest: Codable {
     var account: String
@@ -29,18 +30,26 @@ public struct TransactionDetails: Codable {
 struct RelayRequest: Codable {
     let to: String
     let data: String
-    let gas: String
+}
+
+public struct GetParamsRequest: Codable {
+    public var address: String
 }
 
 public struct GaspriceResponse: Codable {
-    public var gas_prices: Gasprice
+    public var speeds: Speeds
 }
 
-public struct Gasprice: Codable {
-    var fast: String
-    var fastest: String
-    var safelow: String
-    var standard: String
+public struct Speeds: Codable {
+    var fast: Speed
+    var fastest: Speed
+    var safelow: Speed
+    var standard: Speed
+}
+
+public struct Speed: Codable {
+    var gas_price: String
+    var relayer: String
 }
 
 public struct RelayResponse: Codable {
@@ -130,7 +139,7 @@ public class BackendService {
     
     public func relayTransaction(smartWallet: SmartWallet, messageData: String, gas: String = "", completion: @escaping (Result<RelayResponse, Error>) -> Void)  -> Void {
         
-        let body = RelayRequest(to: smartWallet.address.value, data: messageData, gas: gas)
+        let body = RelayRequest(to: smartWallet.address.value, data: messageData)
         
         var request = URLRequest(url: URL(string: self.relayURL+"?network="+self.network)!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -141,9 +150,13 @@ public class BackendService {
     }
     
     
-    public func getGasPrice(completion: @escaping (Result<GaspriceResponse, Error>) -> Void)  -> Void {
+    public func getGasPrice(address: EthereumAddress, completion: @escaping (Result<GaspriceResponse, Error>) -> Void)  -> Void {
         var request = URLRequest(url: URL(string: self.relayParamsURL+"?network="+self.network)!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let body = GetParamsRequest(address: address.value)
+        request.httpMethod = "POST"
+        request.httpBody = body.toJSONData()
         
         Http.execute(with: request, receive: GaspriceResponse.self, completion: completion).resume()
     }

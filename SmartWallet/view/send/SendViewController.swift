@@ -85,7 +85,9 @@ class SendViewController: UIViewController {
                 }
                 return
             case .failure(_):
-                self.gasFeesLabels.text = "error"
+                DispatchQueue.main.async {
+                    self.gasFeesLabels.text = "error"
+                }
                 return
             }
             

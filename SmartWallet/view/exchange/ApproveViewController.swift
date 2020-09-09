@@ -41,7 +41,9 @@ class ApproveViewController: UIViewController {
                 }
                 return
             case .failure(_):
-                self.GasFeesLabel.text = "error"
+                DispatchQueue.main.async {
+                    self.GasFeesLabel.text = "error"
+                }
                 return
             }
             

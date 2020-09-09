@@ -47,8 +47,10 @@ class AddOwnerViewController:UIViewController {
                             }
                             return
                         case .failure(_):
-                            hud.dismiss()
-                            self.gasFeesLabel.text = "error"
+                            DispatchQueue.main.async {
+                                hud.dismiss()
+                                self.gasFeesLabel.text = "error"
+                            }
                             return
                         }
                         
