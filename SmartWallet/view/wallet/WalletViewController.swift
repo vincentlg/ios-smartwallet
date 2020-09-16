@@ -11,7 +11,6 @@ import UIKit
 import Tabman
 import MaterialComponents.MaterialSnackbar
 import BigInt
-import WalletConnect
 
 
 
@@ -31,11 +30,6 @@ class WalletViewController: UIViewController {
     let formatter = EtherNumberFormatter()
     
     let walletTabViewController = WalletTabViewController()
-    
-    var wcPeerParam: WCPeerMeta?
-    var wcAction: String?
-    var wacActionDetails: String?
-    var wcGas: String?
     
     public var isNewWallet = false
     
@@ -115,10 +109,6 @@ class WalletViewController: UIViewController {
         self.amountLabel.text = self.calculateFiatValue()
     }
     
-    private func qrCodeHandler(code: String) -> Void{
-        WalletConnectManager.createSession(scannedCode: code, presentFunction: self.displayWCMessage)
-    }
-    
     private func calculateFiatValue() -> String {
         let balanceList = Array<TokenBalance>(self.walletTabViewController.tokenBalances.values)
         
@@ -188,14 +178,6 @@ class WalletViewController: UIViewController {
         }
     }
     
-    private func displayWCMessage(peerParam: WCPeerMeta, action: String, actionDetails: String, gas: String?){
-        self.wcPeerParam = peerParam
-        self.wcAction = action
-        self.wacActionDetails = actionDetails
-        self.wcGas = gas
-        self.performSegue(withIdentifier: "wallect_connect_segue", sender: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "send-token-segue" {
             if let destinationVC = segue.destination as? SendViewController {
@@ -218,22 +200,7 @@ class WalletViewController: UIViewController {
             }
         }
         
-        if segue.identifier == "scanner_segue" {
-            if let destinationVC = segue.destination as? ScannerViewController {
-                destinationVC.qrCodeHandler = self.qrCodeHandler
-            }
-        }
-        
-        if segue.identifier == "wallect_connect_segue" {
-            if let destinationVC = segue.destination as? WalletConnectViewController {
-                destinationVC.initWith(peerMeta: self.wcPeerParam!, action: self.wcAction!, actionDetails: self.wacActionDetails!, gas: self.wcGas)
-                destinationVC.approveHandler = WalletConnectManager.approveHandler
-                destinationVC.rejectHandler = WalletConnectManager.rejectHandler
-                destinationVC.ethAmount = self.walletTabViewController.tokenBalances["ETH"]?.balance
-            }
-        }
     }
-    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
