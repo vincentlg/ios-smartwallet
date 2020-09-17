@@ -1,6 +1,5 @@
 PODS:
   - BigInt (5.0.0)
-  - CryptoSwift (1.3.1)
   - Firebase/Analytics (6.31.1):
     - Firebase/Core
   - Firebase/Core (6.31.1):
@@ -151,25 +150,12 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - Pageboy (3.6.1)
-  - PromiseKit (6.13.1):
-    - PromiseKit/CorePromise (= 6.13.1)
-    - PromiseKit/Foundation (= 6.13.1)
-    - PromiseKit/UIKit (= 6.13.1)
-  - PromiseKit/CorePromise (6.13.1)
-  - PromiseKit/Foundation (6.13.1):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.13.1):
-    - PromiseKit/CorePromise
   - PromisesObjC (1.2.10)
   - secp256k1.swift (0.1.4)
   - Starscream (3.1.1)
   - Tabman (2.9.1):
     - Pageboy (~> 3.6.0)
   - TrezorCrypto (0.0.9)
-  - WalletConnect (0.1.0):
-    - CryptoSwift
-    - PromiseKit
-    - Starscream
   - web3.swift (0.5.0):
     - BigInt (~> 5.0.0)
     - GenericJSON (~> 2.0)
@@ -185,13 +171,11 @@ DEPENDENCIES:
   - Starscream (~> 3.1.1)
   - Tabman (~> 2.6)
   - TrezorCrypto (~> 0.0.9)
-  - WalletConnect (from `https://github.com/trustwallet/wallet-connect-swift`, branch `master`)
   - web3.swift (~> 0.5.0)
 
 SPEC REPOS:
   trunk:
     - BigInt
-    - CryptoSwift
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -209,7 +193,6 @@ SPEC REPOS:
     - MDFTextAccessibility
     - nanopb
     - Pageboy
-    - PromiseKit
     - PromisesObjC
     - secp256k1.swift
     - Starscream
@@ -217,19 +200,8 @@ SPEC REPOS:
     - TrezorCrypto
     - web3.swift
 
-EXTERNAL SOURCES:
-  WalletConnect:
-    :branch: master
-    :git: https://github.com/trustwallet/wallet-connect-swift
-
-CHECKOUT OPTIONS:
-  WalletConnect:
-    :commit: e6b97b434f49153637e32db1eecd4ffa13e0467b
-    :git: https://github.com/trustwallet/wallet-connect-swift
-
 SPEC CHECKSUMS:
   BigInt: 74b4d88367b0e819d9f77393549226d36faeb0d8
-  CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   Firebase: 658370fa0181826a74b7cfca8d68c5856ca749ae
   FirebaseAnalytics: 0ca9aa2af7cc4dc92392b7a78bfc49feaa2eb60f
   FirebaseCore: 6fb954e350af0885803d5aa49865d15d9a6b264c
@@ -247,15 +219,13 @@ SPEC CHECKSUMS:
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   Pageboy: 29a2d474ad99404b4d77f325e0ab6d705930a4fb
-  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   secp256k1.swift: a7e7a214f6db6ce5db32cc6b2b45e5c4dd633634
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   Tabman: 085d89c65be9e883629bdaf5b1453a6397e57846
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
-  WalletConnect: c5be4e3ed9efbefb8480ab27e1766d4549a92709
   web3.swift: 8d26e319070e19f0e3ca692caafb0b28ff60e867
 
-PODFILE CHECKSUM: 1cdf1899e48bc2e6b01bc3424b5f94ba7bbc255a
+PODFILE CHECKSUM: 378be0b4df112297ba5b31d82ed8082f533c4952
 
 COCOAPODS: 1.9.3
