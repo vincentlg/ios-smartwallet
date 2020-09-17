@@ -1,7 +1,7 @@
 # ios-smartwallet
 
 ## What is this application doing?
-This application is a demonstration of the integration of the Paraswap protocol with Rockside in a native iOS application. The simplest and easiest way to use Defi.
+This application is a demonstration of the integration of the Paraswap protocol with Rockside in a native iOS application.
 
 ## What is Paraswap?
 ParaSwap is a decentralized exchange aggregator that provides the best prices over multiple DEXs on the Ethereum blockchain ([paraswap website](https://paraswap.io))
