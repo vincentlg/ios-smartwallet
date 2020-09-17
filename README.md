@@ -1,4 +1,4 @@
-# ios-smartwallet
+# paraswap Rockside iOS Showcase Application
 
 ## What is this application doing?
 This application is a demonstration of the integration of the Paraswap protocol with Rockside in a native iOS application.
